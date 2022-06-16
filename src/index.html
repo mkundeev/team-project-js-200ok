@@ -13,8 +13,34 @@
     />
     <script type="module" src="./index.js"></script>
   </head>
+  <!-- ❗️❗️❗️ Add partials like so for every page -->
+  <!-- ------------ FOOTER ---------------------->
+  <footer class="footer">
+    <div class="container wrap-copyright">
+      <p class="copyright">&#169; 2020 | All Rights Reserved |</p>
+      <div class="footer_wrap-developed">
+        <p>Developed with</p>
+        <video
+          class="footer_logo-vodeo"
+          src="./images/footer/logo-like.mp4"
+          autoplay
+          width="30"
+          height="30"
+        >
+          Sorry, your browser doesn't support embedded videos
+        </video>
+        <p>
+          by
+          <a href="/" class="footer_modal" aria-label="GoIT Students"
+            >GoIT Students</a
+          >
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-------------- MODAL WINDOW ------------------>
+  <div class="backdrop is-hidden" data-modal></div>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/header-main.html"></include>
     <include src="./partials/gallery.html"></include>
     <include src="./partials/footer.html"></include>
