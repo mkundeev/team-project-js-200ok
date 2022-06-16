@@ -1,7 +1,14 @@
-@import './common';
-@import './example';
+
+
 @import './utils/variables';
 @import './utils/common';
 @import './utils/container';
 @import './utils/visually-hidden';
 @import './utils/_button';
+@import './basic/button';
+@import './components/header';
+@import './components/gallery';
+@import './components/gallery-card';
+@import './components/footer';
+@import './components/modal';
+
