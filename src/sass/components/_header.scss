@@ -10,7 +10,7 @@
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(.././images/header/header-home-mobil-2x-min.jpg);
+    background-image: url(.././images/header/header-home-mobil-min-2x.jpg);
   }
 
   @media screen and (min-width: 768px) {
@@ -117,6 +117,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.14;
+    padding: 4px;
     border: none;
     border-bottom: 1px solid var(--input-line-header-color);
     outline: none;
@@ -220,7 +221,8 @@
     line-height: 1.33;
     text-transform: uppercase;
     color: var(--primary-text-header-color);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 500ms;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 500ms,
+      border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 500ms;
 
     &--flicker {
       position: relative;
@@ -254,6 +256,7 @@
 
     &:hover {
       background-color: var(--accent-header-color);
+      border-color: var(--accent-header-color);
     }
   }
 
