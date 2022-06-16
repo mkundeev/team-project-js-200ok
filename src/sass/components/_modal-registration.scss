@@ -77,7 +77,7 @@
   border-radius: 4px;
 
   padding-left: 20px;
-  transition: border-color 250ms var(--time--animation);
+  transition: border-color 250ms var(--cubic-bezier);
 
   &:focus {
     outline: none;
