@@ -1,15 +1,15 @@
-
-
+@import '~node_modules/modern-normalize/modern-normalize.css';
 @import './utils/variables';
 @import './utils/common';
 @import './utils/container';
 @import './utils/visually-hidden';
-@import './utils/_button';
 @import './basic/button';
+@import './basic/modal-container';
 @import './components/header';
 @import './components/gallery';
 @import './components/gallery-card';
 @import './components/footer';
 @import './components/modal';
+@import './components/modal-registration';
 @import './firebaestest';
 

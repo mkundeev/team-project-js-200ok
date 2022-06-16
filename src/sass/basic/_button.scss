@@ -1,0 +1,34 @@
+.modal__button {
+  width: 110px;
+  min-height: 44px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  border: 1px solid #000000;
+  border-radius: 5px;
+  color: var(--primary-color-text-modal);
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    border: transparent;
+    background-color: var(--accent-background-color-button-modal);
+    color: var(--accent-color-text-button-modal);
+  }
+  @media screen and (min-width: 768px) {
+    width: 125px;
+    height: 40px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+    height: 44px;
+  }
+}
