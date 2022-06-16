@@ -1,4 +1,4 @@
-<div class="auth-modal backdrop visually-hidden ">
+<div class="auth-modal backdrop  visually-hidden ">
     <div class="modal-container auth-modal-container">
         <button type="button" class="auth-modal-close">
            <!-- svg -->
@@ -6,22 +6,23 @@
 
         <div class="form-field">
             <b class="form-title">Welcome to Filmoteka!</b>
-
-            <label class="form-label">Name
+            <form class="form-register"> 
+             <label class="form-label">Name
                 <span class="form-wrapper">
                     <input class="form-input" type="text" id="name">
                 </span>
             </label>
             <label class="form-label">Email
                 <span class="form-wrapper">
-                    <input class="form-input" type="email" id="email">
+                    <input class="form-input" type="email" id="email" required >
                 </span>
             </label>
             <label class="form-label">Password
                 <span class="form-wrapper">
-                    <input class="form-input" type="tel" id="pass">
+                    <input class="form-input" type="password" id="pass" required >
                 </span>
-            </label>
+            </label></form>
+     
         </div>
         
         <div class="auth-btn-container">
