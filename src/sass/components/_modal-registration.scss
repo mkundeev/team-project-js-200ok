@@ -6,7 +6,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   top: 0;
   left: 0;
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.3s var(--cubic-bezier);
   overflow-y: auto;
 }
 .modal-container {
@@ -20,17 +20,11 @@
   transform: translate(-50%);
   padding: 40px 32px;
 
-  transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1000ms var(--cubic-bezier);
 
   .backdrop.visually-hidden & {
     transform: translate(-50%, -50%);
   }
-}
-
-.form {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .auth-modal-container {
@@ -54,45 +48,6 @@
 
   color: var(--accent-header-color);
   margin-bottom: 20px;
-}
-
-// .form-policy {
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: 30px;
-// }
-
-// .form-comment {
-//   padding: 12px 16px;
-//   height: 120px;
-//   border: 1px solid rgba(33, 33, 33, 0.2);
-
-//   border-radius: 4px;
-//   margin-bottom: 20px;
-//   margin-top: 4px;
-//   resize: none;
-//   transition: border-color 250ms var(--time--animation);
-
-//   &:focus {
-//     outline: none;
-//     border-color: var(--accent--color);
-//   }
-
-//   &::placeholder {
-//     font-size: 12px;
-//     line-height: 1.17;
-//     letter-spacing: 0.01em;
-
-//     color: rgba(117, 117, 117, 0.5);
-//   }
-// }
-
-.form-checkbox-label {
-  font-size: 14px;
-  line-height: 1.71;
-
-  letter-spacing: 0.03em;
-  margin-bottom: 30px;
 }
 
 .form-field {
@@ -121,33 +76,12 @@
 
   border-radius: 4px;
 
-  padding-left: 42px;
+  padding-left: 20px;
   transition: border-color 250ms var(--time--animation);
 
   &:focus {
     outline: none;
     border-color: var(--accent-header-color);
-  }
-}
-
-.form-button {
-  display: block;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.form-icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-
-  .form-input:focus ~ & {
-    fill: var(--accent--color);
-    transition: fill 250ms var(--time--animation);
   }
 }
 
