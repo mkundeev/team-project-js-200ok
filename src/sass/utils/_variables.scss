@@ -1,0 +1,31 @@
+:root {
+  /* шрифт */
+  --text-main: 'Roboto', sans-serif;
+  /* Кольори */
+  /* Хедер */
+  --primary-text-header-color: #ffffff;
+  --accent-header-color: #ff6b08;
+  --error-text-header-color: #ff001b;
+  --input-line-header-color: #ffffff;
+  --accent-button-header-color: #ff6b01;
+  --logo-fill: #818181;
+  /* Основна сторінка */
+  --movie-title-color: #000000;
+  --color-genre: #ff6b08;
+  --color-year: #ff6b08;
+  --color-rating: #ff6b01;
+  /* Пагінація */
+  --page-text-color: #000000;
+  --arrow-background-color: #f7f7f7;
+  --current-page-background-color: #ff6b08;
+  /* Футер */
+  --footer-text-color: #545454;
+  --footer-heart-color: #ff6b08;
+  --footer-background-color: #f7f7f7;
+  /* Карточка одного фільма (модалка) */
+  --backdrop-color: #000000;
+  --primary-color-text-modal: #000000;
+  --secondary-color-text-modal: #8c8c8c;
+  --accent-background-color-button-modal: #ff6b01;
+  --accent-color-text-button-modal: #ffffff;
+}
