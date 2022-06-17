@@ -6,6 +6,12 @@ const refs = {
 
 refs.openModalBtn.addEventListener('click', showModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
+document.addEventListener('keydown', closeEsc);
+function closeEsc(evt) {
+  if (evt.key === 'Escape') {
+    closeModal();
+  }
+}
 
 function showModal() {
   refs.modal.classList.toggle('is-hidden');
