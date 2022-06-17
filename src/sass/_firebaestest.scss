@@ -1,0 +1,19 @@
+.fb-wrap{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    width: 300px;
+    padding: 20px;
+    border: 2px solid black;
+    display: none;
+}
+.fb-register-form, .fb-sign-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid black;
+    padding: 10px;
+}
+.d-none{
+    display: none;
+}
