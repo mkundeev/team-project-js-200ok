@@ -2,7 +2,7 @@
 import * as Modal from './js/modal-regist/registration';
 
 
-import "./services/firebase"
+import "./js/service/firebase"
 
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
