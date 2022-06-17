@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { getDatabase, ref, set, update, onValue } from 'firebase/database';
-
+import { getFirestore, addDoc, collection } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyDnwCZBeYmcTq0nXclQPrYar33DgzNWAw0",
   authDomain: "film-200ok.firebaseapp.com",
@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-const db = getDatabase();
+const db = getFirestore();
 
 let userId = null;
 
@@ -97,14 +97,19 @@ onAuthStateChanged(auth, user => {
 });
 
 
-function writeUserData(userId, name) {
-  const db = getDatabase();
-  set(ref(db, 'users/' + userId), {
-    name,
+function writeUserData(userId) {
+  try {
+  const docRef = await addDoc(collection(db, "users"), {
+    first: "Ada",
+    last: "Lovelace",
+    born: 1815
   });
+  console.log("Document written with ID: ", docRef.id);
+} catch (e) {
+  console.error("Error adding document: ", e);
 }
 
-
+}
 
 function updateData(e) {
     e.preventDefault()
