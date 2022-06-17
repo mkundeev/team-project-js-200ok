@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { getDatabase, ref, set, update, onValue } from 'firebase/database';
-import { getFirestore, addDoc, collection } from "firebase/firestore";
+import { getDatabase, ref, set, update, get } from 'firebase/database';
+
 const firebaseConfig = {
   apiKey: "AIzaSyDnwCZBeYmcTq0nXclQPrYar33DgzNWAw0",
   authDomain: "film-200ok.firebaseapp.com",
@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-const db = getFirestore();
+const db = getDatabase();
 
 let userId = null;
 
@@ -32,7 +32,7 @@ signBtn.addEventListener('click', SignUserEmailAndPasOnSubmit)
 regBtn.addEventListener('click', RegUserEmailAndPasOnSubmit)
 exitBtn.addEventListener('click', exitUser);
 messageForm.addEventListener('submit', updateData);
-
+getDataForm.addEventListener('submit', getData);
 
 
 function SignUserEmailAndPasOnSubmit(e) {
@@ -85,51 +85,48 @@ onAuthStateChanged(auth, user => {
   if (user) {
     
     userId = user.uid;
-      exitBtn.classList.toggle('d-none')
-    regBtn.classList.toggle('d-none')
-    getData(userId)
+    exitBtn.classList.remove('d-none')
+    regBtn.classList.add('d-none')
+    
   } else {
     userId = null;
-    exitBtn.classList.toggle('d-none')
-    regBtn.classList.toggle('d-none')
+    exitBtn.classList.add('d-none')
+    regBtn.classList.remove('d-none')
 
   }
 });
 
 
 function writeUserData(userId) {
-  try {
-  const docRef = await addDoc(collection(db, "users"), {
-    first: "Ada",
-    last: "Lovelace",
-    born: 1815
+  const db = getDatabase();
+  set(ref(db, 'users/' + userId), {
+    watched: [1,2,3],
+    queue:[1,2,3]
   });
-  console.log("Document written with ID: ", docRef.id);
-} catch (e) {
-  console.error("Error adding document: ", e);
 }
 
-}
+
 
 function updateData(e) {
     e.preventDefault()
     const message = e.target.elements.message.value
-  update(ref(db, 'users/' + userId), {
-    data: message,
-  });
+  update(ref(db, 'users/' + userId + '/watched'), 
+   { id1: null}
+  );
     e.target.reset();
 }
 
 
-function getData(userId) {
-  const dataRef = ref(db, 'users/' + userId+ '/data');
-onValue(dataRef, (snapshot) => {
-  const data = snapshot.val();
-  if (!data) {
-    return;
+function getData(e) {
+  e.preventDefault()
+  get(ref(db, 'users/' + userId+ '/watched')).then((snapshot) => {
+  if (snapshot.exists()) {
+    console.log(snapshot.val());
+  } else {
+    console.log("No data available");
   }
- getDataForm.elements.data.value = data
-
+}).catch((error) => {
+  console.error(error);
 });
 }
 
