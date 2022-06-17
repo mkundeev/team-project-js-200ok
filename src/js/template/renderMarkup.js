@@ -2,7 +2,15 @@ import { refs } from '../service/refs';
 const { MovieTrendContainer } = refs;
 
 export function renderMovieGallery(results) {
-  MovieTrendContainer.innerHTML = '';
+  renderMarkup(results);
+}
+
+export function renderSearchResultMovie(results) {
+  renderMarkup(results);
+}
+
+function renderMarkup(results) {
+  refs.movieContainer.innerHTML = '';
 
   const markup = results
     .map(
@@ -12,12 +20,12 @@ export function renderMovieGallery(results) {
 <a href="#!" class="list-card__link">
 <!-- постер -->
 <div class="moviе-item__img-container">
-<img
-        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
+ <img
+         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
         alt="${title}"
-        class="moviе-item__img"
-    />
-    </div>
+         class="moviе-item__img"
+   />
+     </div>
 <!-- обгортка інформації під постером -->
 <div class="moviе-stats">
     <h2 class="moviе-stats__title">${title}</h2>
@@ -35,5 +43,5 @@ export function renderMovieGallery(results) {
     )
     .join('');
 
-  MovieTrendContainer.insertAdjacentHTML('beforeend', markup);
+  refs.movieContainer.insertAdjacentHTML('beforeend', markup);
 }
