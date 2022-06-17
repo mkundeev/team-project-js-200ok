@@ -1,3 +1,9 @@
+
+import * as Modal from './js/modal-regist/registration';
+
+
+import "./services/firebase"
+
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import {
@@ -19,6 +25,7 @@ const movieTrending = async () => {
     console.error(error.message);
   }
 };
+
 
 document.addEventListener('DOMContentLoaded', movieTrending);
 
@@ -42,3 +49,6 @@ const movieSearch = async ev => {
 };
 
 refs.form.addEventListener('submit', movieSearch);
+
+document.addEventListener('DOMContentLoaded', moviePagination);
+
