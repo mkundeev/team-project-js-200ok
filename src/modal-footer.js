@@ -6,9 +6,13 @@ const refs = {
 
 refs.openModalBtn.addEventListener('click', showModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
-// refs.modal.addEventListener('click', closeEmptyField);
+refs.modal.addEventListener('click', closeEmptyField);
 
-// function closeEmptyField(evt) {}
+function closeEmptyField(evt) {
+  if (evt.target === evt.currentTarget) {
+    closeModal();
+  }
+}
 
 function showModal(evt) {
   evt.stopPropagation();
@@ -17,8 +21,8 @@ function showModal(evt) {
   const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
   const body = document.body;
   body.style.position = 'fixed';
+  body.style.width = '100%';
   body.style.top = `-${scrollY}`;
-  console.log(evt.key);
 }
 
 function closeModal() {
@@ -29,8 +33,10 @@ function closeModal() {
   const scrollY = body.style.top;
   body.style.position = '';
   body.style.top = '';
+  body.style.width = '';
   window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
+
 function closeEsc(evt) {
   if (evt.key === 'Escape') {
     closeModal();
