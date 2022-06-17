@@ -1,4 +1,4 @@
-
+import * as Modal from './js/momal-registration/registration';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import { renderMovieGallery } from './js/template/renderMarkup';
@@ -18,4 +18,3 @@ const moviePagination = async event => {
 };
 
 document.addEventListener('DOMContentLoaded', moviePagination);
-
