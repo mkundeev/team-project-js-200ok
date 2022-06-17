@@ -1,6 +1,8 @@
 
-import "./services/firebase"
+import * as Modal from './js/modal-regist/registration';
 
+
+import "./services/firebase"
 
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
@@ -21,5 +23,3 @@ const moviePagination = async event => {
 };
 
 document.addEventListener('DOMContentLoaded', moviePagination);
-
-
