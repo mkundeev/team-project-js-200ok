@@ -1,0 +1,166 @@
+.footer_wrap-developed {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.copyright {
+  display: block;
+  text-align: center;
+}
+.footer_logo-video {
+  margin: 0 10px;
+  width: 30px;
+  height: 30px;
+  @include tablet {
+    width: 40px;
+    height: 40px;
+  }
+}
+.wrap-copyright {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-bottom: 9.9px;
+}
+.footer {
+  padding: 28.71px 0 29.7px 0;
+
+  color: var(--footer-text-color);
+  background: var(--footer-background-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+
+  @include tablet {
+    padding: 30px 0;
+    font-size: 16px;
+    line-height: 1.19;
+  }
+  @include desktop {
+    padding-bottom: 28px;
+  }
+}
+.wrap-footer-bottom {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.footer_modal {
+  text-decoration: underline;
+}
+.footer_wrap {
+  @include tablet {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+  }
+}
+.content {
+  flex: 1;
+}
+
+// ----------------кнопка закрытия модалки -------------------
+.close-button__img {
+  stroke: black;
+}
+.close-button {
+  display: flex;
+  top: 8px;
+  right: 8px;
+  position: absolute;
+
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+
+  color: #000000;
+  background: #ffffff;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.44;
+  transition: fill 250ms cubic-bezier(0.39, 1.03, 0.82, 0.08);
+  &:focus,
+  &:hover {
+    fill: rgb(157, 157, 243);
+  }
+}
+// ---------- Стили модалки-----------------
+.developer-item {
+  width: 100%;
+  margin: 0 10px 30px 10px;
+  box-shadow: 3px 3px rgb(157, 157, 243), -1em 0 0.4em rgb(197, 197, 196);
+  @include tablet {
+    width: calc(100% / 2 - 30px);
+  }
+  @include desktop {
+    width: calc(100% / 3 - 30px);
+  }
+}
+.modal.modal-footer {
+  @include tablet {
+    margin-top: 100px;
+  }
+}
+.developer {
+  margin-bottom: -30px;
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -30px;
+  }
+}
+.slogans {
+  font-weight: italic;
+  font-size: 20px;
+  line-height: 1.14;
+  color: var(--footer-heart-color);
+  text-shadow: 1px 1px 2px rgb(16, 16, 16);
+  @include tablet {
+    font-size: 35px;
+  }
+  @include desktop {
+    margin-right: 50px;
+  }
+}
+.name-company {
+  font-size: 15px;
+  line-height: 1.5;
+  @include tablet {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+}
+.wrap-slogans {
+  margin-left: 15px;
+}
+.wrap-logo-developer {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: center;
+  align-items: flex-end;
+  @include tablet {
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+}
+.logo-developer {
+  margin-right: 8px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 2px 2px rgb(157, 157, 243), -1em 0 0.4em rgb(197, 197, 196);
+  @include tablet {
+    margin-right: 12px;
+  }
+  @include desktop {
+    margin-right: 20px;
+  }
+}
