@@ -42,16 +42,21 @@
 
   &__list {
     display: flex;
+    
+   
   }
+   
 
   &__item:not(:last-child) {
-    margin-right: 20px;
+      margin-right: 20px;
 
     @media screen and (min-width: 768px) {
       margin-right: 40px;
     }
   }
-
+    .site-nav__item.mr-0 {
+      margin-right: 0;
+    }
   &__link {
     font-size: 12px;
     line-height: 1.16;
