@@ -33,7 +33,7 @@
   padding: 40px 20px;
 
   @media screen and (min-width: 768px) {
-    min-width: 350px;
+    min-width: 390px;
     min-height: 390px;
   }
 }
@@ -113,17 +113,30 @@
     background-color: #ff6b01;
   }
 }
+.icon-form {
+  stroke: var(--logo-fill);
+  &:hover,
+  &:focus {
+    stroke: var(--primary-text-header-color);
+  }
+}
 
 .auth-btn-container {
   display: flex;
   justify-content: space-around;
-  margin-top: 30px;
+  margin-bottom: 30px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 40px;
+    margin-bottom: 40px;
   }
 }
 
-.modal__button:not(:last-child) {
-  margin-right: 20px;
+.dtn-style {
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
+}
+.is-active-btn {
+  background-color: var(--accent-background-color-button-modal);
+  color: var(--accent-color-text-button-modal);
 }

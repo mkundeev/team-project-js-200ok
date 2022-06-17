@@ -33,7 +33,22 @@ export const MovieService = {
     return this._page;
   },
 
-  get query() {
-    return this._query;
+  async getSearchMovieResult() {
+    console.log(this._query);
+    const response = await axios.get(
+      `search/movie?language=en-US-RU-UA&query=${this._query}&page=${this._page}`
+    );
+
+    const { genres } = await this.getGenres(); //массив обьектов жанров
+    let { results, total_pages } = response.data;
+
+    results = results.map(result => ({
+      ...result,
+      genre_ids: result.genre_ids.map(
+        id => genres.find(genre => genre.id === id).name
+      ),
+    }));
+
+    return { results, total_pages };
   },
 };
