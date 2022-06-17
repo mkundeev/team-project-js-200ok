@@ -103,15 +103,15 @@
     width: calc(100% / 3 - 30px);
   }
 }
-// .modal.modal-footer {
-//   margin-top: 5px;
-//   @include tablet {
-//     margin-top: 500px;
-//   }
-//   @include desktop {
-//     margin-top: 150px;
-//   }
-// }
+.modal.modal-footer {
+  top: 10%;
+  @include tablet {
+    top: 130%;
+  }
+  @include desktop {
+    top: 50%;
+  }
+}
 .developer {
   margin-bottom: -30px;
   @include tablet {
