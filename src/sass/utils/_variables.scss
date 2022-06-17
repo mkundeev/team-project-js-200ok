@@ -1,7 +1,8 @@
 :root {
   /* шрифт */
   --text-main: 'Roboto', sans-serif;
-  /* Кольори */
+  /* Aнімація */
+  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
   /* Хедер */
   --primary-text-header-color: #ffffff;
   --accent-header-color: #ff6b08;
