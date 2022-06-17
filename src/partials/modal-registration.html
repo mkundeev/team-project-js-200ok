@@ -1,13 +1,34 @@
-<div class="auth-modal backdrop  visually-hidden ">
+<div class="auth-modal backdrop  js-auth-modal visually-hidden">
     <div class="modal-container auth-modal-container">
-        <button type="button" class="auth-modal-close">
-           <!-- svg -->
+        <button type="button" class="auth-modal-close js-btn-modal">
+           <svg class="icon-form" width="24" height="24">
+          <use href="./images/symbol-defs.svg#icon-close"></use>
+        </svg>
         </button>
+         <div class="auth-btn-container">
+            <button class="modal__button auth-btn is-active-btn" > Authorization</button>
+            <button class="modal__button regist-btn" >Registration</button>
+            
+        </div>
 
         <div class="form-field">
             <b class="form-title">Welcome to Filmoteka!</b>
-            <form class="form-register"> 
-             <label class="form-label">Name
+            <form class="form-authorization " > 
+            <label class="form-label">Email
+                <span class="form-wrapper">
+                    <input class="form-input" type="email" id="email" required >
+                </span>
+            </label>
+            <label class="form-label">Password
+                <span class="form-wrapper">
+                    <input class="form-input" type="password" id="pass" required >
+                </span>
+            </label>
+        <div class="btn-auth_wrap"> <button class="modal__button dtn-style js-form-btn_authorization  " id="login">Log in</button></div>
+        </form>
+
+         <form class="form-register visually-hidden"> 
+            <label class="form-label">Name
                 <span class="form-wrapper">
                     <input class="form-input" type="text" id="name">
                 </span>
@@ -21,16 +42,13 @@
                 <span class="form-wrapper">
                     <input class="form-input" type="password" id="pass" required >
                 </span>
-            </label></form>
-     
-        </div>
-        
-        <div class="auth-btn-container">
-            <button class="modal__button " id="login">Log in</button>
-            <button class="modal__button " id="register">Sign up</button>
-            
-        </div>
+            </label>  
+            <button class="modal__button dtn-style js-form-btn_register " id="register">Sing up</button>
+        </form>
+    </div>
 
     </div>
 </div>
-</div>
+</div >
+
+
