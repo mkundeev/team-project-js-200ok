@@ -1,6 +1,7 @@
 import './js/service/firebase';
 import './js/modal/modal';
 import './js/form/registration';
+import './js/scroll/scroll';
 import { VisibleComponent } from './js/spinner/spinner';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
