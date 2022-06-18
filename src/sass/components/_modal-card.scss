@@ -56,13 +56,13 @@ body.modal-open {
 }
 
 .modal__close-icon {
-    fill: #000000;
+    stroke: #000000;
 
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     .modal__close-button:hover &,
     :focus & {
-        fill: var(--accent-background-color-button-modal);
+        stroke: var(--accent-background-color-button-modal);
     }
 }
 

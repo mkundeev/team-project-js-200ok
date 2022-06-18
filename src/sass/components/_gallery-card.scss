@@ -2,13 +2,6 @@
 .moviе-item__img-container {
     border-radius: 5px;
     overflow: hidden;
-    height: 400px;
-    @include tablet {
-        height: 455px;
-    }
-    @include desktop {
-        height: 574px;
-    }
 }
 
 .moviе-item__img {
