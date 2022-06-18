@@ -21,12 +21,14 @@ function renderMarkup(results) {
 <a href="#!" class="list-card__link">
 <!-- постер -->
 
-<img
-      src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
-      alt="${title}"
-      class="moviе-item__img"
-      data-id=${id}
-/>
+<div class="moviе-item__img-container">
+ <img
+         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
+        alt="${title}"
+         class="moviе-item__img" 
+         data-id=${id}
+   />
+     </div>
 
 <!-- обгортка інформації під постером -->
 <div class="moviе-stats">
