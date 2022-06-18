@@ -1,1 +1,0 @@
-{"mappings":"oeAAAA,EAAA","sources":["src/js/modal/renderMarkupCard.js"],"sourcesContent":["import { refs } from '../service/refs';\n\nfunction renderMarkupCard(response) {}\n"],"names":["parcelRequire"],"version":3,"file":"index.90088a21.js.map"}
