@@ -15,6 +15,7 @@
   border-radius: 5px;
   color: var(--primary-color-text-modal);
   background-color: transparent;
+  transition: border-color 250ms var(--cubic-bezier);
 
   &:hover,
   &:focus {
