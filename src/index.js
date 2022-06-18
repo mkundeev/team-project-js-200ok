@@ -7,7 +7,7 @@ import './js/template/pagination';
 import './js/scroll/scroll';
 
 import { VisibleComponent } from './js/spinner/spinner';
-
+import { renderMarkupCard } from './js/modal/renderMarkupCard';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import {
@@ -60,9 +60,7 @@ const movieSearch = async ev => {
     MovieService.total_pages = total_pages;
     MovieService._page = 1;
     renderSearchResultMovie(results);
-
     createPagination();
-
     refs.form.reset();
   } catch (error) {
     console.error(error.message);
@@ -71,9 +69,13 @@ const movieSearch = async ev => {
 refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
-const movieSearchOneFilm = ev => {
-  const response = MovieService.getSearchMovieById(ev.target.dataset.id);
-  console.log(response);
+const movieSearchOneFilm = async ev => {
+  if (ev.target.classList.contains('moviе-item__img')) {
+    const response = await MovieService.getSearchMovieById(
+      ev.target.dataset.id
+    );
+    renderMarkupCard(response);
+  }
 };
 
 refs.movieOneCardContainer.addEventListener('click', movieSearchOneFilm);

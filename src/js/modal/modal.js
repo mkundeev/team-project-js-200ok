@@ -1,6 +1,18 @@
-
-const footerModal = controlModal('[data-modal-open]', '[data-modal-close]', '[data-modal]');
-const registrationModal = controlModal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
+const footerModal = controlModal(
+  '[data-modal-open]',
+  '[data-modal-close]',
+  '[data-modal]'
+);
+const registrationModal = controlModal(
+  '.js-site-nav',
+  '.js-btn-modal',
+  '.js-auth-modal'
+);
+const cardModal = controlModal(
+  '.films__gallery',
+  '.modal__close-button',
+  '.js-backdrop'
+);
 
 function controlModal(openModalBtn, closeModalBtn, modal) {
   const refs = {
@@ -43,7 +55,17 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
       closeModal();
     }
   }
+
+  window.addEventListener('scroll', () => {
+    document.documentElement.style.setProperty(
+      '--scroll-y',
+      `${window.scrollY}px`
+    );
+  });
+
   refs.openModalBtn.addEventListener('click', showModal);
   refs.closeModalBtn.addEventListener('click', closeModal);
   refs.modal.addEventListener('click', closeEmptyField);
 }
+
+// функция при закрытии модалки остается без возращения к топ

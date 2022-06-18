@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { renderMarkupCard } from '../modal/renderMarkupCard';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 const API_KEY = '5a76e3dab3643dd50fee1a5fab49be2c';
 axios.defaults.params = { api_key: API_KEY };
@@ -58,9 +58,10 @@ export const MovieService = {
   },
 
   async getSearchMovieById(id) {
-    console.log(this.movie_id);
-    const { response } = await axios.get(`movie/${id}`);
+    console.log(id);
+    const response = await axios.get(`movie/${id}`);
 
-    return response;
+    console.log(response);
+    return response.data;
   },
 };
