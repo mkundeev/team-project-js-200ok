@@ -7,9 +7,10 @@ paginationEl.addEventListener('click', onRenderGallery);
 
 // paginationEl.innerHTML = createPagination();
 
+let page = MovieService._page;
+
 export function createPagination() {
   let totalPages = MovieService.total_pages;
-  let page = MovieService._page;
 
   let paginationItem = '';
   let activePage = '';
@@ -77,27 +78,6 @@ export function createPagination() {
   // return paginationItem;
 }
 
-function changeCurrentPage(data) {
-  const dots = 3;
-
-  if (Number(data)) {
-    page = Number(data);
-  } else {
-    if (data === 'minus') {
-      page -= 1;
-    }
-    if (data === 'plus') {
-      page += 1;
-    }
-    if (data === 'dots-minus') {
-      page -= dots;
-    }
-    if (data === 'dots-plus') {
-      page += dots;
-    }
-  }
-}
-
 async function onRenderGallery(event) {
   const dataSet = event.target.dataset.action;
 
@@ -106,7 +86,7 @@ async function onRenderGallery(event) {
   MovieService.changePage(page);
 
   try {
-    if (!MovieService._query) {
+    if (MovieService._query === '') {
       const { results } = await MovieService.getMovieTrend();
       renderMovieGallery(results);
       createPagination();
@@ -117,5 +97,26 @@ async function onRenderGallery(event) {
     }
   } catch (error) {
     console.log(error.message);
+  }
+}
+
+function changeCurrentPage(dataSet) {
+  const dots = 3;
+
+  if (Number(dataSet)) {
+    page = Number(dataSet);
+  } else {
+    if (dataSet === 'minus') {
+      page -= 1;
+    }
+    if (dataSet === 'plus') {
+      page += 1;
+    }
+    if (dataSet === 'dots-minus') {
+      page -= dots;
+    }
+    if (dataSet === 'dots-plus') {
+      page += dots;
+    }
   }
 }
