@@ -1,23 +1,28 @@
-const refs = {
-  btnAutorization: document.querySelector('.auth-btn'),
-  btnRegistration: document.querySelector('.regist-btn'),
-  formAutorization: document.querySelector('.form-authorization'),
-  formRegistration: document.querySelector('.form-register'),
-};
+const btnAutorization = document.querySelector('.auth-btn');
+const btnRegistration = document.querySelector('.regist-btn');
+const formAutorization = document.querySelector('.form-authorization');
+const formRegistration = document.querySelector('.form-register');
 
-refs.btnAutorization.addEventListener('click', onAutorization);
-refs.btnRegistration.addEventListener('click', onRegistration);
+btnAutorization.addEventListener('click', onAutorization);
+btnRegistration.addEventListener('click', onRegistration);
+const visually = 'visually-hidden';
+const active = 'is-active-btn';
 
 function onAutorization() {
-  refs.formRegistration.classList.add('visually-hidden');
-  refs.formAutorization.classList.remove('visually-hidden');
-  refs.btnRegistration.classList.remove('is-active-btn');
-  refs.btnAutorization.classList.add('is-active-btn');
+  addClass(formRegistration, visually);
+  removeClass(formAutorization, visually);
+  removeClass(btnRegistration, active);
+  addClass(btnAutorization, active);
 }
 function onRegistration() {
-  refs.formAutorization.classList.add('visually-hidden');
-  refs.formRegistration.classList.remove('visually-hidden');
-  refs.btnAutorization.classList.remove('is-active-btn');
-  refs.btnRegistration.classList.add('is-active-btn');
+  addClass(formAutorization, visually);
+  removeClass(formRegistration, visually);
+  removeClass(btnAutorization, active);
+  addClass(btnRegistration, active);
 }
-
+function addClass(element, clas) {
+  element.classList.add(clas);
+}
+function removeClass(element, clas) {
+  element.classList.remove(clas);
+}
