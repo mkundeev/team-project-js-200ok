@@ -23,7 +23,7 @@ function renderMarkup(results) {
  <img
          src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
         alt="${title}"
-         class="moviе-item__img"
+         class="moviе-item__img" 
          data-id=${id}
    />
      </div>
