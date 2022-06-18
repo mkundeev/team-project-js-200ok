@@ -3,13 +3,20 @@ import './js/service/firebaseStorage';
 import './js/service/firebaseAuth';
 import './js/modal/modal';
 import './js/form/registration';
+
+import './js/template/pagination';
+
+import './js/scroll/scroll';
+
 import { VisibleComponent } from './js/spinner/spinner';
+import { renderMarkupCard } from './js/modal/renderMarkupCard';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import {
   renderMovieGallery,
   renderSearchResultMovie,
 } from './js/template/renderMarkup';
+import { createPagination } from './js/template/pagination';
 
 const spinner = new VisibleComponent({
   selector: '.js-spinner',
@@ -27,7 +34,11 @@ const movieTrending = async () => {
   try {
     refs.movieContainer.innerHTML = '';
 
-    const { results } = await MovieService.getMovieTrend();
+    const { results, total_pages } = await MovieService.getMovieTrend();
+    MovieService.total_pages = total_pages;
+
+    createPagination();
+
     renderMovieGallery(results);
   } catch (error) {
     console.error(error.message);
@@ -46,13 +57,27 @@ const movieSearch = async ev => {
 
   try {
     refs.movieContainer.innerHTML = '';
-    const { results } = await MovieService.getSearchMovieResult();
+    const { results, total_pages } = await MovieService.getSearchMovieResult();
 
+    MovieService.total_pages = total_pages;
+    MovieService._page = 1;
     renderSearchResultMovie(results);
+    createPagination();
     refs.form.reset();
   } catch (error) {
     console.error(error.message);
   }
 };
-
 refs.form.addEventListener('submit', movieSearch);
+
+// запрос и отрисовка фильма по ID
+const movieSearchOneFilm = async ev => {
+  if (ev.target.classList.contains('moviе-item__img')) {
+    const response = await MovieService.getSearchMovieById(
+      ev.target.dataset.id
+    );
+    renderMarkupCard(response);
+  }
+};
+
+refs.movieOneCardContainer.addEventListener('click', movieSearchOneFilm);

@@ -1,17 +1,17 @@
+import { refs } from '../service/refs';
 import { MovieService } from '../service/fetchItems';
-
-// console.log(MovieService.getMovieTrend());
-
+import { renderMovieGallery } from '../template/renderMarkup';
 const paginationEl = document.querySelector('.pagination__list');
 
 paginationEl.addEventListener('click', onRenderGallery);
 
-let totalPages = 50;
-let page = 1;
+// paginationEl.innerHTML = createPagination();
 
-paginationEl.innerHTML = createPagination(totalPages, page);
+let page = MovieService._page;
 
-function createPagination(totalPages, page) {
+export function createPagination() {
+  let totalPages = MovieService.total_pages;
+
   let paginationItem = '';
   let activePage = '';
   let beforePage = page - 1;
@@ -19,8 +19,10 @@ function createPagination(totalPages, page) {
 
   if (page > 1) {
     paginationItem += `<li class="pagination__item">
-      <span class="pagination__btn-minus" data-action="minus">-</span>
-    </li>`;
+        <span class="pagination__btn-minus" data-action="minus">
+          
+        </span>
+      </li>`;
   }
 
   if (page > 2) {
@@ -68,16 +70,37 @@ function createPagination(totalPages, page) {
 
   if (page < totalPages) {
     paginationItem += `<li class="pagination__item">
-      <span class="pagination__btn-plus" data-action="plus">+</span>
+      <span class="pagination__btn-plus" data-action="plus"></span>
     </li>`;
   }
 
   paginationEl.innerHTML = paginationItem;
-  return paginationItem;
+  // return paginationItem;
 }
 
-function onRenderGallery(event) {
+async function onRenderGallery(event) {
   const dataSet = event.target.dataset.action;
+
+  changeCurrentPage(dataSet);
+
+  MovieService.changePage(page);
+
+  try {
+    if (MovieService._query === '') {
+      const { results } = await MovieService.getMovieTrend();
+      renderMovieGallery(results);
+      createPagination();
+    } else {
+      const { results } = await MovieService.getSearchMovieResult();
+      renderMovieGallery(results);
+      createPagination();
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+function changeCurrentPage(dataSet) {
   const dots = 3;
 
   if (Number(dataSet)) {
@@ -96,6 +119,4 @@ function onRenderGallery(event) {
       page += dots;
     }
   }
-
-  createPagination(totalPages, page);
 }
