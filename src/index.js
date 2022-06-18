@@ -1,14 +1,21 @@
 import './js/service/firebase';
 import './js/modal/modal';
 import './js/form/registration';
-
-
+import { VisibleComponent } from './js/spinner/spinner';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import {
   renderMovieGallery,
   renderSearchResultMovie,
 } from './js/template/renderMarkup';
+
+const spinner = new VisibleComponent({
+  selector: '.js-spinner',
+  className: 'visually-hidden',
+  isHide: true,
+});
+// spinner.show();  //спинер додається
+// spinner.hide()  //спінер удаляється
 
 // MovieService.getSearchMovieResult().then(response => console.log(response));
 // MovieService.getGenres().then(response => console.log(response));
