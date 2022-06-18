@@ -14,9 +14,9 @@ function renderMarkup(results) {
 
   const markup = results
     .map(
-      ({ title, vote_average, release_date, genre_ids, poster_path }) =>
+      ({ title, vote_average, release_date, genre_ids, poster_path, id }) =>
         `
-<li class="gallery-items films__gallery-item">
+<li class="gallery-items films__gallery-item " >
 <a href="#!" class="list-card__link">
 <!-- постер -->
 <div class="moviе-item__img-container">
@@ -24,6 +24,7 @@ function renderMarkup(results) {
          src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
         alt="${title}"
          class="moviе-item__img"
+         data-id=${id}
    />
      </div>
 <!-- обгортка інформації під постером -->

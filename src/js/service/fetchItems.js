@@ -56,4 +56,21 @@ export const MovieService = {
 
     return { results, total_pages };
   },
+
+  async getSearchMovieById(id) {
+    console.log(this.movie_id);
+    const response = await axios.get(`movie/${id}`);
+
+    // const { genres } = await this.getGenres(); //массив обьектов жанров
+    // let { results, total_pages } = response.data;
+
+    // results = results.map(result => ({
+    //   ...result,
+    //   genre_ids: result.genre_ids.map(
+    //     id => genres.find(genre => genre.id === id).name
+    //   ),
+    // }));
+
+    return { response };
+  },
 };
