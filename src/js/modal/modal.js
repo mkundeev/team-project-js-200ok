@@ -1,10 +1,6 @@
-// const refs = {
-//   openModalBtn: document.querySelector('[data-modal-open]'),
-//   closeModalBtn: document.querySelector('[data-modal-close]'),
-//   modal: document.querySelector('[data-modal]'),
-// };
 
-controlModal('[data-modal-open]', '[data-modal-close]', '[data-modal]');
+const footerModal = controlModal('[data-modal-open]', '[data-modal-close]', '[data-modal]');
+const registrationModal = controlModal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
 
 function controlModal(openModalBtn, closeModalBtn, modal) {
   const refs = {
@@ -13,24 +9,13 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
     modal: document.querySelector(modal),
   };
 
-  // refs.closeModalBtn.addEventListener('click', () => {
-  //   refs.modal.classList.toggle('is-hidden');
-  //   document.removeEventListener('keydown', closeEsc);
-
-  //   const body = document.body;
-  //   const scrollY = body.style.top;
-  //   body.style.position = '';
-  //   body.style.top = '';
-  //   body.style.width = '';
-  //   window.scrollTo(0, parseInt(scrollY || '0') * -1);
-  // });
-
   function closeEmptyField(evt) {
     if (evt.target === evt.currentTarget) {
       closeModal();
     }
   }
   function showModal(evt) {
+    evt.preventDefault();
     evt.stopPropagation();
     document.addEventListener('keydown', closeEsc);
     refs.modal.classList.toggle('is-hidden');
