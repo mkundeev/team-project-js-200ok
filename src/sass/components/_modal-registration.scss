@@ -30,12 +30,15 @@
 .auth-modal-container {
   min-width: 310px;
   min-height: 380px;
-  padding: 40px 20px;
+  padding: 0;
 
   @media screen and (min-width: 768px) {
     min-width: 390px;
     min-height: 390px;
   }
+}
+.form-field {
+  padding: 0 20px 40px 20px;
 }
 
 .form-title {
@@ -47,7 +50,7 @@
   letter-spacing: 0.03em;
 
   color: var(--accent-header-color);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .form-field {
@@ -101,13 +104,14 @@
   height: 25px;
 
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: -20px;
+  right: -20px;
   margin-right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+   transition: border-color 250ms var(--cubic-bezier);
   &:hover,
   &:focus {
     background-color: #ff6b01;
@@ -115,6 +119,7 @@
 }
 .icon-form {
   stroke: var(--logo-fill);
+   transition: stroke 250ms var(--cubic-bezier);
   &:hover,
   &:focus {
     stroke: var(--primary-text-header-color);
@@ -125,19 +130,31 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 30px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 40px;
-  }
 }
 
 .dtn-style {
   margin: 0 auto;
   display: block;
-  margin-top: 20px;
+  margin-top: 35px;
+}
+
+.modal-button {
+  width: 50%;
+  min-height: 55px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.33;
+
+  text-transform: uppercase;
+  border: 1px solid #000000;
+  background-color: var(--accent-color-text-button-modal);
+  cursor: pointer;
 }
 .is-active-btn {
   background-color: var(--accent-background-color-button-modal);
   color: var(--accent-color-text-button-modal);
   border: transparent;
+  transition: border-color 250ms var(--cubic-bezier);
 }
