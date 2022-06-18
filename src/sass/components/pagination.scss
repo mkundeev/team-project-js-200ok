@@ -25,10 +25,6 @@
     color: #ffffff;
   }
 
-  &__item:hover .pagination__icon {
-    fill: var(--accent-header-color);
-  }
-
   &__number,
   &__dots {
     display: flex;
@@ -40,6 +36,12 @@
     height: 100%;
   }
 
+  &__dots {
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
   &__btn-minus,
   &__btn-plus {
     display: flex;
@@ -47,6 +49,20 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+  }
+
+  &__btn-minus {
+    background-image: url(.././images/arrow-left.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+  }
+
+  &__btn-plus {
+    background-image: url(.././images/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
   }
 }
 

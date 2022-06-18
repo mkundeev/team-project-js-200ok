@@ -1,17 +1,16 @@
+import { refs } from '../service/refs';
 import { MovieService } from '../service/fetchItems';
-
-// console.log(MovieService.getMovieTrend());
-
+import { renderMovieGallery } from '../template/renderMarkup';
 const paginationEl = document.querySelector('.pagination__list');
 
 paginationEl.addEventListener('click', onRenderGallery);
 
-let totalPages = 50;
-let page = 1;
+// paginationEl.innerHTML = createPagination();
 
-paginationEl.innerHTML = createPagination(totalPages, page);
+export function createPagination() {
+  let totalPages = MovieService.total_pages;
+  let page = MovieService._page;
 
-function createPagination(totalPages, page) {
   let paginationItem = '';
   let activePage = '';
   let beforePage = page - 1;
@@ -19,8 +18,10 @@ function createPagination(totalPages, page) {
 
   if (page > 1) {
     paginationItem += `<li class="pagination__item">
-      <span class="pagination__btn-minus" data-action="minus">-</span>
-    </li>`;
+        <span class="pagination__btn-minus" data-action="minus">
+          
+        </span>
+      </li>`;
   }
 
   if (page > 2) {
@@ -68,34 +69,53 @@ function createPagination(totalPages, page) {
 
   if (page < totalPages) {
     paginationItem += `<li class="pagination__item">
-      <span class="pagination__btn-plus" data-action="plus">+</span>
+      <span class="pagination__btn-plus" data-action="plus"></span>
     </li>`;
   }
 
   paginationEl.innerHTML = paginationItem;
-  return paginationItem;
+  // return paginationItem;
 }
 
-function onRenderGallery(event) {
-  const dataSet = event.target.dataset.action;
+function changeCurrentPage(data) {
   const dots = 3;
 
-  if (Number(dataSet)) {
-    page = Number(dataSet);
+  if (Number(data)) {
+    page = Number(data);
   } else {
-    if (dataSet === 'minus') {
+    if (data === 'minus') {
       page -= 1;
     }
-    if (dataSet === 'plus') {
+    if (data === 'plus') {
       page += 1;
     }
-    if (dataSet === 'dots-minus') {
+    if (data === 'dots-minus') {
       page -= dots;
     }
-    if (dataSet === 'dots-plus') {
+    if (data === 'dots-plus') {
       page += dots;
     }
   }
+}
 
-  createPagination(totalPages, page);
+async function onRenderGallery(event) {
+  const dataSet = event.target.dataset.action;
+
+  changeCurrentPage(dataSet);
+
+  MovieService.changePage(page);
+
+  try {
+    if (!MovieService._query) {
+      const { results } = await MovieService.getMovieTrend();
+      renderMovieGallery(results);
+      createPagination();
+    } else {
+      const { results } = await MovieService.getSearchMovieResult();
+      renderMovieGallery(results);
+      createPagination();
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 }
