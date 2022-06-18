@@ -31,6 +31,7 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
     }
   }
   function showModal(evt) {
+    evt.preventDefault();
     evt.stopPropagation();
     document.addEventListener('keydown', closeEsc);
     refs.modal.classList.toggle('is-hidden');
