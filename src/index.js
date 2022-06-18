@@ -1,4 +1,6 @@
-import './js/service/firebase';
+
+import './js/service/firebaseStorage';
+import './js/service/firebaseAuth';
 import './js/modal/modal';
 import './js/form/registration';
 

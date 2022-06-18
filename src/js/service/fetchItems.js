@@ -57,6 +57,14 @@ export const MovieService = {
     return { results, total_pages };
   },
 
+
+  async getMoviebyId() {
+    
+    const response = await axios.get('/movie/507086');
+ 
+    return response.data
+  }
+
   async getSearchMovieById(id) {
     console.log(id);
     const response = await axios.get(`movie/${id}`);
@@ -64,4 +72,7 @@ export const MovieService = {
     console.log(response);
     return response.data;
   },
+
 };
+
+
