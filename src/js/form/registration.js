@@ -20,5 +20,4 @@ function onRegistration() {
   refs.btnAutorization.classList.remove('is-active-btn');
   refs.btnRegistration.classList.add('is-active-btn');
 }
-controlModal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
-//відкриття модалки
+
