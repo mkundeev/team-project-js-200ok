@@ -7,10 +7,12 @@ axios.defaults.params = { api_key: API_KEY };
 export const MovieService = {
   _query: '',
   _page: 1,
-  total_pages: null,
+  total_pages: '',
 
   async getMovieTrend() {
-    const response = await axios.get('/trending/movie/week');
+    const response = await axios.get(
+      `/trending/movie/week?language=en-US-RU-UA&page=${this._page}`
+    );
     const { genres } = await this.getGenres(); //массив обьектов жанров
     let { results, total_pages } = response.data;
 
@@ -33,8 +35,11 @@ export const MovieService = {
     return this._page;
   },
 
+  changePage(newPage) {
+    this._page = newPage;
+  },
+
   async getSearchMovieResult() {
-    console.log(this._query);
     const response = await axios.get(
       `search/movie?language=en-US-RU-UA&query=${this._query}&page=${this._page}`
     );
