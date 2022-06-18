@@ -3,7 +3,7 @@ import * as Modal from './js/modal-regist/registration';
 
 
 import "./js/service/firebase"
-
+import"./js/modal/modal"
 
 
 import { refs } from './js/service/refs';
