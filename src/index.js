@@ -66,7 +66,7 @@ const movieSearch = async ev => {
     const { results, total_pages } = await MovieService.getSearchMovieResult();
 
     MovieService.total_pages = total_pages;
-    
+
     renderSearchResultMovie(results);
     createPagination();
     refs.form.reset();
