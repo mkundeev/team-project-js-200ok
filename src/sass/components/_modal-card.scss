@@ -15,11 +15,9 @@ body.modal-open {
   transform: translate(-50%);
   padding: 50px 20px 40px 20px;
 
-
   transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 
   .backdrop.visually-hidden & {
-
     transform: translate(-50%, -50%);
   }
 
@@ -48,8 +46,6 @@ body.modal-open {
 
   width: 30px;
   height: 30px;
-=======
-
 
   position: absolute;
   top: 8px;
@@ -59,7 +55,6 @@ body.modal-open {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
 }
 
 .modal__close-icon {
@@ -70,9 +65,8 @@ body.modal-open {
   .modal__close-button:hover &,
   :focus & {
     stroke: var(--accent-background-color-button-modal);
-
+  }
 }
-
 .modal__container {
   margin-left: auto;
   margin-right: auto;
@@ -80,7 +74,6 @@ body.modal-open {
   @include tablet {
     display: flex;
     align-items: flex-start;
-
   }
 }
 
@@ -226,7 +219,6 @@ table td {
   width: 110px;
   min-height: 44px;
 
-
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -316,4 +308,3 @@ table td {
   @include desktop {
   }
 }
-
