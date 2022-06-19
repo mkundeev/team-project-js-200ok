@@ -1,7 +1,6 @@
 import { refs } from '../service/refs';
 
-
-export function renderMarkupCard(data) {
+export function renderMarkupCard(data, key) {
   refs.cardModalMovie.innerHTML = '';
   const {
     poster_path,
@@ -15,11 +14,19 @@ export function renderMarkupCard(data) {
     id,
   } = data;
 
-  const markup = `<img
+  const markup = `
+<div class="modal__img-wrap">
+      <a href="https://www.youtube.com/watch?v=${key}" class="modal__img-link">
+      <img
         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
         alt="${title}"
-        class="modal__img"
-    />
+        class="modal__img" data-id=${id}/>
+        <div class="modal__play-bacground">
+          <span class="modal__svg-background"></span>
+        </div>
+        </a>
+</div>
+
       <div class="modal__info-container">
         <h2 class="modal__title-film">${title}</h2>
         <table class="modal__info">
@@ -68,6 +75,4 @@ export function renderMarkupCard(data) {
         </div>
       </div>`;
   refs.cardModalMovie.insertAdjacentHTML('beforeend', markup);
-  
-
 }
