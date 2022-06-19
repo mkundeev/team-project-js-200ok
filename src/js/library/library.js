@@ -36,6 +36,7 @@ function addFilmToDb(e) {
 async function showFilmList(watched,queue) {
     refs.watchBtn.classList.toggle('is-active')
     refs.queueBtn.classList.toggle('is-active')
+    let results = [];
     watched? results = await getFilms(watched):results = await getFilms(queue)
     renderMovieGallery((Object.values(results)),watched,queue)
 }
