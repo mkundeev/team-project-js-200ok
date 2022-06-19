@@ -11,8 +11,8 @@ export const refs = {
     deletQueueBtn: document.querySelector('#js-queue-delete'),  
 }
 
-refs.watchBtn.addEventListener('click', showWatchedList)
-refs.queueBtn.addEventListener('click', showQueueList)
+refs.watchBtn.addEventListener('click',(e)=> showFilmList("watched",false))
+refs.queueBtn.addEventListener('click', (e)=> showFilmList(false ,"queue"))
 refs.modalCard.addEventListener('click', addFilmToDb)
 
 
@@ -33,18 +33,24 @@ function addFilmToDb(e) {
     updateFilms(currentCardData, "queue")}
 }
 
-async function showWatchedList() {
-    const results = await getFilms("watched")
-    renderMovieGallery((Object.values(results)),"watched",false)
-}
-async function showQueueList() {
-    const results = await getFilms("queue")
-    renderMovieGallery((Object.values(results)),false,"queue")
+async function showFilmList(watched,queue) {
+    refs.watchBtn.classList.toggle('is-active')
+    refs.queueBtn.classList.toggle('is-active')
+    watched? results = await getFilms(watched):results = await getFilms(queue)
+    renderMovieGallery((Object.values(results)),watched,queue)
 }
 
+// async function showWatchedList() {
+//     refs.watchBtn.classList.toggle('is-active')
+//     refs.queueBtn.classList.toggle('is-active')
+//     const results = await getFilms("watched")
+//     renderMovieGallery((Object.values(results)),"watched",false)
+// }
+// async function showQueueList() {
+//     refs.watchBtn.classList.toggle('is-active')
+//     refs.queueBtn.classList.toggle('is-active')
+//     const results = await getFilms("queue")
+//     renderMovieGallery((Object.values(results)),false,"queue")
+// }
 
-
-
-
-
-export {getCurrentCardData}
+export {getCurrentCardData, showFilmList}

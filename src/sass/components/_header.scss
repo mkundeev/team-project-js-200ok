@@ -241,4 +241,8 @@
     background-color: var(--accent-header-color);
     border-color: var(--accent-header-color);
   }
+  &.is-active{
+    background-color: var(--accent-header-color);
+    border-color: var(--accent-header-color);
+  }
 }

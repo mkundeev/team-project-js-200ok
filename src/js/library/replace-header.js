@@ -1,4 +1,5 @@
-import {movieTrending} from '../../index'
+import { movieTrending } from '../../index'
+import { showFilmList } from './library';
 
 const libraryLinkEl = document.querySelector('.js-library');
 const homeLinkEl = document.querySelector('.js-home');
@@ -11,7 +12,7 @@ homeLinkEl.addEventListener('click', onReplaceHeaderByHome);
 
 function onReplaceHeaderByLibrary(event) {
   event.preventDefault();
-
+  showFilmList("watched",false)
   headerFormEl.classList.add('header-none');
   headerListEl.classList.remove('header-none');
 
@@ -24,6 +25,7 @@ function onReplaceHeaderByLibrary(event) {
 
 function onReplaceHeaderByHome(event) {
   event.preventDefault();
+  movieTrending()
   headerFormEl.classList.remove('header-none');
   headerListEl.classList.add('header-none');
 
