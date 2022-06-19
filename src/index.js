@@ -119,7 +119,11 @@ const creatModal = ev => {
 function delFromList(e, src) {
       const id = e.target.dataset.id
       deletFilm(id, src);
-      refs.movieContainer.querySelector(`[data-id="${id}"]`).remove()
+  refs.movieContainer.querySelector(`[data-id="${id}"]`).remove()
+  console.dir(refs.movieContainer.childNodes)
+  if(refs.movieContainer.childNodes.length <= 1)
+  {refs.movieContainer.innerHTML = '<li><p>There are no films in your library</p></li>'}
+
     }
 
 
