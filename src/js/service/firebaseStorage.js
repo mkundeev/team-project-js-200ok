@@ -8,18 +8,36 @@ import {MovieService} from './fetchItems';
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
-let userId=null
+let userId = null
+let userName = '';
 
-function getUserId(id) {
+
+function getUserData(id, name) {
   userId = id;
+  userName = name;
 }
 
 
 function updateFilms(results, src) {
-  update(ref(db, `users/${userId}/${src}`),
+  if (userId === null) {
+    console.log('Please register for access to library')
+    return
+  }
+  get(ref(db, `users/${userId}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+    console.log(`${userName}, you alredy have this film in your library`)
+  
+  } else {
+    update(ref(db, `users/${userId}/${src}`),
    { [results.id]: results}
   );
+  }
+}).catch((error) => {
+  console.error(error);
+});
+  
 }
+
 
 function deletFilm(id, src) {
   update(ref(db, `users/${userId}/${src}`),
@@ -41,4 +59,4 @@ function getFilms(src) {
 });
 }
 
-export {getUserId, updateFilms, getFilms, deletFilm }
+export {getUserData, updateFilms, getFilms, deletFilm }

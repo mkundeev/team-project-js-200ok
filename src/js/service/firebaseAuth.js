@@ -2,13 +2,14 @@
 import firebaseConfig from '../config/firebaseConfig'
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile} from "firebase/auth";
-import { getUserId } from './firebaseStorage';
+import { getUserData } from './firebaseStorage';
 import { libraryLinkEl } from '../library/replace-header';
 
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 let userId = null
+let userName = '';
 
 
 
@@ -27,16 +28,18 @@ exitBtn.addEventListener('click', exitUser);
 onAuthStateChanged(auth, (user )=> {
   if (user) {
     userId = user.uid;
-    getUserId(userId)
+    userName= user.displayName
+    getUserData(userId, userName)
     exitBtn.classList.remove('d-none')
     logInBtn.classList.add('d-none')
     libraryLinkEl.parentNode.classList.remove('d-none')
   } else {
     userId = null;
+    userName = null;
     exitBtn.classList.add('d-none')
     logInBtn.classList.remove('d-none')
     libraryLinkEl.parentNode.classList.add('d-none')
-    getUserId(null)
+    getUserData(null, '')
   }
 });
 
