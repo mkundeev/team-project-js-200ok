@@ -22,7 +22,7 @@
 
   transition: transform 1000ms var(--cubic-bezier);
 
-  .backdrop.visually-hidden & {
+  .backdrop.is-hidden & {
     transform: translate(-50%, -50%);
   }
 }
@@ -111,7 +111,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-   transition: border-color 250ms var(--cubic-bezier);
+  transition: border-color 250ms var(--cubic-bezier);
   &:hover,
   &:focus {
     background-color: #ff6b01;
@@ -119,7 +119,7 @@
 }
 .icon-form {
   stroke: var(--logo-fill);
-   transition: stroke 250ms var(--cubic-bezier);
+  transition: stroke 250ms var(--cubic-bezier);
   &:hover,
   &:focus {
     stroke: var(--primary-text-header-color);
