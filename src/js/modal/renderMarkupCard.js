@@ -1,5 +1,6 @@
 import { refs } from '../service/refs';
 
+
 export function renderMarkupCard(data) {
   refs.cardModalMovie.innerHTML = '';
   const {
@@ -50,21 +51,23 @@ export function renderMarkupCard(data) {
           ${overview}
         </p>
         <div class="modal__button-container">
-          <button type="submit" class="modal__button" id="auth-delete-js" data-id=${id}>
+          <button type="submit" class="modal__button js-watched-add" data-id=${id}>
             ADD TO WATCHED
           </button>
-          <button type="submit" class="modal__button" id="auth-add-js" data-id=${id}>
+          <button type="submit" class="modal__button js-queue-add" data-id=${id}>
             ADD TO QUEUE
           </button>
         </div>
         <div class="modal__button-container">
-          <button type="submit" class="modal__button" id="auth-delete-js" data-id=${id}>
-            ADD TO WATCHED
+          <button type="submit" class="modal__button d-none js-watched-delete"  data-id=${id}>
+            DELETE FROM WATCHED
           </button>
-          <button type="submit" class="modal__button" id="auth-add-js" data-id=${id}>
-            ADD TO QUEUE
+          <button type="submit" class="modal__button d-none js-queue-delete"  data-id=${id}>
+            DELETE FROM  QUEUE
           </button>
         </div>
       </div>`;
   refs.cardModalMovie.insertAdjacentHTML('beforeend', markup);
+  
+
 }
