@@ -16,11 +16,16 @@ export function renderMarkupCard(data) {
 
   const markup = `
 <div class="modal__img-wrap">
-      // <a href="" class="modal__img-link">
-      <img
-        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
-        alt="${title}"
-        class="modal__img" data-id=${id}/>
+      <a href="" class="modal__img-link">
+  ${
+    poster_path
+      ? ` <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}" 
+         alt="${title}" loading="lazy" 
+        class="modal__img" data-id=${id}
+   />`
+      : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg"  alt="${title}" loading="lazy" 
+        class="modal__img" data-id=${id} >`
+  }
         <div class="modal__play-bacground">
           <span class="modal__svg-background"></span>
         </div>
