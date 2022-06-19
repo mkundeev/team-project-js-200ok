@@ -58,7 +58,7 @@ export function renderMarkupCard(data, key) {
           ${overview}
         </p>
         <div class="modal__button-container">
-          <button type="submit" class="modal__button js-watched-add" data-id=${id}>
+          <button type="submit" class="modal__button js-watched-add" id="js-watched-add" data-id=${id}>
             ADD TO WATCHED
           </button>
           <button type="submit" class="modal__button js-queue-add" data-id=${id}>
