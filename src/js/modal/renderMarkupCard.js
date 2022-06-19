@@ -50,21 +50,23 @@ export function renderMarkupCard(data) {
         <p class="modal__article-about-movie">
           ${overview}
         </p>
-        <div class="modal__button-container">
-          <button type="submit" class="modal__button js-watched-add" id="js-watched-add" data-id=${id}>
-            ADD TO WATCHED
-          </button>
-          <button type="submit" class="modal__button js-queue-add" data-id=${id}>
-            ADD TO QUEUE
-          </button>
-        </div>
-        <div class="modal__button-container">
-          <button type="submit" class="modal__button d-none js-watched-delete"  data-id=${id}>
-            DELETE FROM WATCHED
-          </button>
-          <button type="submit" class="modal__button d-none js-queue-delete"  data-id=${id}>
-            DELETE FROM  QUEUE
-          </button>
+        <div class="modal__button-wrap">
+          <div class="modal__button-container">
+            <button type="submit" class="modal__button js-watched-add" id="js-watched-add" data-id=${id}>
+              ADD TO WATCHED
+            </button>
+            <button type="button" class="modal__button js-watched-delete visually-hidden" id="js-watched-del" data-id=${id}>
+              DELETE FROM WATCHED
+            </button>
+          </div>
+          <div class="modal__button-container">
+          <button type="submit" class="modal__button js-queue-add" id="js-queue-add" data-id=${id}>
+              ADD TO QUEUE
+            </button>
+            <button type="submit" class="modal__button js-queue-delete visually-hidden" id="js-queue-del" data-id=${id}>
+              DELETE FROM  QUEUE
+            </button>
+          </div>
         </div>
       </div>`;
   refs.cardModalMovie.insertAdjacentHTML('beforeend', markup);

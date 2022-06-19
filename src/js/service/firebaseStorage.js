@@ -62,4 +62,4 @@ function getFilms(src) {
 
 
 
-export {getUserId, updateFilms, getFilms }
+export {getUserId, updateFilms, getFilms, deletFilm }

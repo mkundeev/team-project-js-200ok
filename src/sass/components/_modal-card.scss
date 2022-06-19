@@ -203,7 +203,7 @@ table td {
     color: var(--primary-color-text-modal);
 }
 
-.modal__button-container {
+.modal__button-wrap{
     display: flex;
     justify-content: space-between;
 
@@ -211,6 +211,7 @@ table td {
         justify-content: start;
     }
 }
+
 
 .modal__button {
     width: 110px;

@@ -1,3 +1,5 @@
+import {movieTrending} from '../../index'
+
 const libraryLinkEl = document.querySelector('.js-library');
 const homeLinkEl = document.querySelector('.js-home');
 const headerFormEl = document.querySelector('.form-wrap');
@@ -31,3 +33,4 @@ function onReplaceHeaderByHome(event) {
   headerEl.classList.remove('library-bg');
   headerEl.classList.add('home-bg');
 }
+
