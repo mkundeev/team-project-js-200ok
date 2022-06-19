@@ -81,13 +81,19 @@ refs.form.addEventListener('submit', movieSearch);
 // запрос и отрисовка фильма по ID
 const movieSearchOneFilm = async ev => {
   console.log(ev.target.tagName )
-  if (ev.target.tagName === 'IMG') {
-    const response = await MovieService.getSearchMovieById(
-      ev.target.dataset.id
-    );
+  const response = await MovieService.getSearchMovieById(ev.target.dataset.id);
    getCurrentCardData(response);
-    renderMarkupCard(response);
-  }
+  renderMarkupCard(response);
 };
 
+
+
 refs.movieOneCardContainer.addEventListener('click', movieSearchOneFilm);
+
+
+// добавить слушателя на отрисованую разметку
+// const creatModal = ev => {
+//   movieSearchOneFilm(ev).then(()=>{const addWatchBtn = document.querySelector('#js-watched-add');
+//   addWatchBtn.addEventListener('click',()=>console.log(1))
+//   })
+// }

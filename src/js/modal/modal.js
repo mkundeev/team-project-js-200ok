@@ -1,6 +1,4 @@
 
-
-
 controlModal(
   '[data-modal-open]',
   '[data-modal-close]',
@@ -54,4 +52,47 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
   refs.closeModalBtn.addEventListener('click', closeModal);
   refs.modal.addEventListener('click', closeEmptyField);
 }
+//====================test==========================//
+// class Modal{
+//   construktor(openBtn, closeBtn, modal) {
+//     this.openModalBtn = document.querySelector(openModalBtn);
+//     this.closeModalBtn = document.querySelector(closeModalBtn);
+//     this.modalEl = document.querySelector(modal);
+//     this.body = document.querySelector('body');
+    
+//   }
+//   addEventListners() {
+//     this.openModalBtn.addEventListener('click', this.showModal);
+//     this.closeModalBtn.addEventListener('click', this.closeModal);
+//     this.modalEl.addEventListener('click', this.closeEmptyField);
+//   }
 
+//   closeEmptyField(evt) {
+//     if (evt.target === evt.currentTarget) {
+//       this.closeModal();
+//     }
+//   }
+//   showModal(evt) {
+//     this.body.classList.add('modal-open')
+//     evt.preventDefault();
+//     evt.stopPropagation();
+//     document.addEventListener('keydown', closeEsc);
+//     this.modalEl.classList.toggle('is-hidden');
+//   }
+//   closeModal(evt) {
+//     this.modalEl.classList.toggle('is-hidden');
+//     document.removeEventListener('keydown', closeEsc);
+//     this.body.classList.remove('modal-open')
+//   }
+
+//   closeEsc(evt) {
+//     if (evt.key === 'Escape') {
+//       this.closeModal;
+//     }
+//   }
+
+// }
+
+// const authModal = new Modal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
+// authModal.addEventListener
+// console.log(authModal)
