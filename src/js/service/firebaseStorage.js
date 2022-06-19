@@ -37,9 +37,9 @@ function updateFilms(results, src) {
   );
 }
 
-function deletFilm(results, src) {
+function deletFilm(id, src) {
   update(ref(db, `users/${userId}/${src}`),
-   { [results]: null}
+   { [id]: null}
   );
 }
 
@@ -48,8 +48,9 @@ function deletFilm(results, src) {
 
 
 function getFilms(src) {
-  get(ref(db, `users/${userId}`)).then((snapshot) => {
-  if (snapshot.exists()) {
+  return get(ref(db, `users/${userId}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+    console.log(snapshot.val()[src])
     return snapshot.val()[src]
   } else {
     console.log("No data available");
@@ -58,6 +59,7 @@ function getFilms(src) {
   console.error(error);
 });
 }
+
 
 
 export {getUserId, updateFilms, getFilms }
