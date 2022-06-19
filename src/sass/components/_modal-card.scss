@@ -210,6 +210,10 @@ table td {
   color: var(--primary-color-text-modal);
 }
 
+.modal__button-container:first-child{
+  margin-right: 15px;
+}
+
 .modal__button-wrap {
   display: flex;
   justify-content: space-between;
@@ -253,9 +257,6 @@ table td {
     width: 136px;
     height: 44px;
 
-    &:not(:last-child) {
-      margin-right: 15px;
-    }
   }
 }
 
