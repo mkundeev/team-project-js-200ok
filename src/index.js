@@ -7,7 +7,9 @@ import './js/library/library';
 import './js/scroll/scroll';
 import './js/modal/renderMarkupCard';
 import './js/template/pagination';
+
 import './js/library/replace-header';
+
 
 
 import {deletFilm} from './js/service/firebaseStorage'
@@ -33,7 +35,7 @@ let currentCardData = {};
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
 
-// MovieService.getSearchMovieResult().then(response => console.log(response));
+MovieService.getMovieTrend().then(response => console.log(response));
 // MovieService.getGenres().then(response => console.log(response));
 
 // запрос и отрисовка популярных фильмов
@@ -69,7 +71,7 @@ const movieSearch = async ev => {
     const { results, total_pages } = await MovieService.getSearchMovieResult();
 
     MovieService.total_pages = total_pages;
-    
+
     renderSearchResultMovie(results);
     createPagination();
     refs.form.reset();
@@ -82,9 +84,15 @@ refs.form.addEventListener('submit', movieSearch);
 // запрос и отрисовка фильма по ID
 const movieSearchOneFilm = async ev => {
   console.log(ev.target.tagName);
-  const response = await MovieService.getSearchMovieById(ev.target.dataset.id);
-  getCurrentCardData(response);
-  renderMarkupCard(response);
+
+  if (ev.target.tagName === 'IMG') {
+    const response = await MovieService.getSearchMovieById(
+      ev.target.dataset.id
+    );
+    const key = await MovieService.getVideo(ev.target.dataset.id);
+    getCurrentCardData(response);
+    renderMarkupCard(response, key);
+  }
 };
 
 

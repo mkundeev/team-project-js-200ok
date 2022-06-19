@@ -20,7 +20,6 @@ function renderMarkup(results,watched,queue) {
 <a href="#!" class="list-card__link">
 <!-- постер -->
 
-
  <img
          src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
         alt="${title}"
