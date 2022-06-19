@@ -3,7 +3,10 @@ import { renderMovieGallery } from '../template/renderMarkup'
 import{refs as el} from '../service/refs'
 
 
-let currentCardData={}
+let currentCardData = {}
+
+let watchedFilmsArray = [];
+let queueFilmsArray = [];
 
 export const refs = {
     modalCard: document.querySelector('.modal__card'),
@@ -40,7 +43,8 @@ async function showFilmList(watched,queue) {
     let results = [];
     try
    { watched ? results = await getFilms(watched) : results = await getFilms(queue);
-        renderMovieGallery((Object.values(results)), watched, queue)
+        renderMovieGallery((Object.values(results)), watched, queue);
+        
     }catch(error){
         console.error(error);
         el.movieContainer.innerHTML = '<li><p>There are no films in your library</p></li>'
