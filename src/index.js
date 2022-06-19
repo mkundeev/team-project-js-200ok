@@ -83,12 +83,12 @@ refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
 const movieSearchOneFilm = async ev => {
-  if (ev.target.tagName === 'IMG') {
+  
     const response = await MovieService.getSearchMovieById( ev.target.dataset.id);
     // const key = await MovieService.getVideo(ev.target.dataset.id);
     getCurrentCardData(response);
     renderMarkupCard(response);
-  }
+  
 };
 
 

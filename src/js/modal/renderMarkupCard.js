@@ -16,7 +16,7 @@ export function renderMarkupCard(data) {
 
   const markup = `
 <div class="modal__img-wrap">
-      // <a href="" class="modal__img-link">
+      <a href="" class="modal__img-link">
       <img
         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
         alt="${title}"

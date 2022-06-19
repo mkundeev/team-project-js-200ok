@@ -1,5 +1,6 @@
 import { movieTrending } from '../../index'
-import { showFilmList } from './library';
+import { showFilmList, refs } from './library';
+
 
 const libraryLinkEl = document.querySelector('.js-library');
 const homeLinkEl = document.querySelector('.js-home');
@@ -11,8 +12,13 @@ libraryLinkEl.addEventListener('click', onReplaceHeaderByLibrary);
 homeLinkEl.addEventListener('click', onReplaceHeaderByHome);
 
 function onReplaceHeaderByLibrary(event) {
-  event.preventDefault();
-  showFilmList("watched",false)
+  event.preventDefault()
+  showFilmList("watched", false)
+  if(refs.queueBtn.classList.contains('is-active'))
+  { refs.watchBtn.classList.add('is-active')
+    refs.queueBtn.classList.remove('is-active')
+  }
+  
   headerFormEl.classList.add('header-none');
   headerListEl.classList.remove('header-none');
 
@@ -24,7 +30,7 @@ function onReplaceHeaderByLibrary(event) {
 }
 
 function onReplaceHeaderByHome(event) {
-  event.preventDefault();
+  event.preventDefault()
   movieTrending()
   headerFormEl.classList.remove('header-none');
   headerListEl.classList.add('header-none');
@@ -36,3 +42,4 @@ function onReplaceHeaderByHome(event) {
   headerEl.classList.add('home-bg');
 }
 
+export {libraryLinkEl}

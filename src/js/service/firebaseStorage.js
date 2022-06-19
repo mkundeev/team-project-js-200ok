@@ -1,5 +1,5 @@
 
-import { getDatabase, ref, set, update, get } from 'firebase/database';
+import { getDatabase, ref, set, update, get, child } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../config/firebaseConfig'
 import {MovieService} from './fetchItems';
@@ -13,6 +13,7 @@ let userId=null
 function getUserId(id) {
   userId = id;
 }
+
 
 function updateFilms(results, src) {
   update(ref(db, `users/${userId}/${src}`),
