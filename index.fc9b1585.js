@@ -1532,7 +1532,7 @@ function(e){Ke="9.8.3",Oe(new Q("database",((e,{instanceIdentifier:t})=>xs(e.get
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-Ue("firebase","9.8.3","app");var Ds,Ms={apiKey:"AIzaSyDnwCZBeYmcTq0nXclQPrYar33DgzNWAw0",authDomain:"film-200ok.firebaseapp.com",databaseURL:"https://film-200ok-default-rtdb.europe-west1.firebasedatabase.app",projectId:"film-200ok",storageBucket:"film-200ok.appspot.com",messagingSenderId:"753579295585",appId:"1:753579295585:web:2ad7e6bbd602aac4027b20"};n(Ds=s("bRlFp")).defaults.baseURL="https://api.themoviedb.org/3/";n(Ds).defaults.params={api_key:"5a76e3dab3643dd50fee1a5fab49be2c"};const Us={_query:"",_page:1,total_pages:"",id:null,key:null,async getMovieTrend(){const e=await n(Ds).get(`/trending/movie/week?language=en-US-RU-UA&page=${this._page}`),{genres:t}=await this.getGenres();let{results:r,total_pages:i}=e.data;return r=r.map((e=>({...e,genre_ids:e.genre_ids.map((e=>t.find((t=>t.id===e)).name))}))),{results:r,total_pages:i}},async getGenres(){const{data:e}=await n(Ds).get("genre/movie/list");return e},get page(){return this._page},changePage(e){this._page=e},async getSearchMovieResult(){const e=await n(Ds).get(`search/movie?language=en-US-RU-UA&query=${this._query}&page=${this._page}`),{genres:t}=await this.getGenres();let{results:r,total_pages:i}=e.data;return r=r.map((e=>({...e,genre_ids:e.genre_ids.map((e=>t.find((t=>t.id===e)).name))}))),{results:r,total_pages:i}},getMoviebyId:async()=>(await n(Ds).get("/movie/507086")).data,async getSearchMovieById(e){console.log(e);const t=await n(Ds).get(`movie/${e}`);return console.log(t),t.data},async getVideo(e){console.log(e);const t=await n(Ds).get(`movie/${e}/videos?language=en-US-UA-RU`);return key=t.data.results[1].key,console.log(t.data.results),console.log(key),key}},Fs=(De(Ms),function(e=Me(),t){return Ae(e,"database").getImmediate({identifier:t})}());let Bs=null;function js(e){Bs=e}function qs(e,t){Ns(Ss(Fs,`users/${Bs}/${t}`),{[e.id]:e})}function Ws(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var i=0;for(r=Object.getOwnPropertySymbols(e);i<r.length;i++)t.indexOf(r[i])<0&&Object.prototype.propertyIsEnumerable.call(e,r[i])&&(n[r[i]]=e[r[i]])}return n}Object.create;Object.create;function Hs(){return{"dependent-sdk-initialized-before-auth":"Another Firebase SDK was initialized and is trying to use Auth before Auth is initialized. Please be sure to call `initializeAuth` or `getAuth` before starting any other Firebase SDK."}}const Vs=Hs,$s=new S("auth","Firebase",{"dependent-sdk-initialized-before-auth":"Another Firebase SDK was initialized and is trying to use Auth before Auth is initialized. Please be sure to call `initializeAuth` or `getAuth` before starting any other Firebase SDK."}),zs=new ae("@firebase/auth");function Gs(e,...t){zs.logLevel<=te.ERROR&&zs.error(`Auth (9.8.3): ${e}`,...t)}
+Ue("firebase","9.8.3","app");var Ds,Ms={apiKey:"AIzaSyDnwCZBeYmcTq0nXclQPrYar33DgzNWAw0",authDomain:"film-200ok.firebaseapp.com",databaseURL:"https://film-200ok-default-rtdb.europe-west1.firebasedatabase.app",projectId:"film-200ok",storageBucket:"film-200ok.appspot.com",messagingSenderId:"753579295585",appId:"1:753579295585:web:2ad7e6bbd602aac4027b20"};n(Ds=s("bRlFp")).defaults.baseURL="https://api.themoviedb.org/3/";n(Ds).defaults.params={api_key:"5a76e3dab3643dd50fee1a5fab49be2c"};const Us={_query:"",_page:1,total_pages:"",id:null,key:null,async getMovieTrend(){const e=await n(Ds).get(`/trending/movie/week?language=en-US-RU-UA&page=${this._page}`),{genres:t}=await this.getGenres();let{results:r,total_pages:i}=e.data;return r=r.map((e=>({...e,genre_ids:e.genre_ids.map((e=>t.find((t=>t.id===e)).name))}))),{results:r,total_pages:i}},async getGenres(){const{data:e}=await n(Ds).get("genre/movie/list");return e},get page(){return this._page},changePage(e){this._page=e},async getSearchMovieResult(){const e=await n(Ds).get(`search/movie?language=en-US-RU-UA&query=${this._query}&page=${this._page}`),{genres:t}=await this.getGenres();let{results:r,total_pages:i}=e.data;return r=r.map((e=>({...e,genre_ids:e.genre_ids.map((e=>t.find((t=>t.id===e)).name))}))),{results:r,total_pages:i}},async getSearchMovieById(e){console.log(e);const t=await n(Ds).get(`movie/${e}`);return console.log(t),t.data},async getVideo(e){console.log(e);const t=await n(Ds).get(`movie/${e}/videos?language=en-US-UA-RU`);return key=t.data.results[1].key,console.log(t.data.results),console.log(key),key}},Fs=(De(Ms),function(e=Me(),t){return Ae(e,"database").getImmediate({identifier:t})}());let Bs=null;function js(e){Bs=e}function qs(e,t){Ns(Ss(Fs,`users/${Bs}/${t}`),{[e.id]:e})}function Ws(e,t){Ns(Ss(Fs,`users/${Bs}/${t}`),{[e]:null})}function Hs(e){return Ps(Ss(Fs,`users/${Bs}`)).then((t=>{if(t.exists())return console.log(t.val()[e]),t.val()[e];console.log("No data available")})).catch((e=>{console.error(e)}))}function Vs(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var i=0;for(r=Object.getOwnPropertySymbols(e);i<r.length;i++)t.indexOf(r[i])<0&&Object.prototype.propertyIsEnumerable.call(e,r[i])&&(n[r[i]]=e[r[i]])}return n}Object.create;Object.create;function $s(){return{"dependent-sdk-initialized-before-auth":"Another Firebase SDK was initialized and is trying to use Auth before Auth is initialized. Please be sure to call `initializeAuth` or `getAuth` before starting any other Firebase SDK."}}const zs=$s,Gs=new S("auth","Firebase",{"dependent-sdk-initialized-before-auth":"Another Firebase SDK was initialized and is trying to use Auth before Auth is initialized. Please be sure to call `initializeAuth` or `getAuth` before starting any other Firebase SDK."}),Ks=new ae("@firebase/auth");function Ys(e,...t){Ks.logLevel<=te.ERROR&&Ks.error(`Auth (9.8.3): ${e}`,...t)}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1548,7 +1548,7 @@ Ue("firebase","9.8.3","app");var Ds,Ms={apiKey:"AIzaSyDnwCZBeYmcTq0nXclQPrYar33D
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */function Ks(e,...t){throw Qs(e,...t)}function Ys(e,...t){return Qs(e,...t)}function Js(e,t,n){const r=Object.assign(Object.assign({},Vs()),{[t]:n});return new S("auth","Firebase",r).create(t,{appName:e.name})}function Qs(e,...t){if("string"!=typeof e){const n=t[0],r=[...t.slice(1)];return r[0]&&(r[0].appName=e.name),e._errorFactory.create(n,...r)}return $s.create(e,...t)}function Xs(e,t,...n){if(!e)throw Qs(t,...n)}function Zs(e){const t="INTERNAL ASSERTION FAILED: "+e;throw Gs(t),new Error(t)}function eo(e,t){e||Zs(t)}
+ */function Js(e,...t){throw Zs(e,...t)}function Qs(e,...t){return Zs(e,...t)}function Xs(e,t,n){const r=Object.assign(Object.assign({},zs()),{[t]:n});return new S("auth","Firebase",r).create(t,{appName:e.name})}function Zs(e,...t){if("string"!=typeof e){const n=t[0],r=[...t.slice(1)];return r[0]&&(r[0].appName=e.name),e._errorFactory.create(n,...r)}return Gs.create(e,...t)}function eo(e,t,...n){if(!e)throw Zs(t,...n)}function to(e){const t="INTERNAL ASSERTION FAILED: "+e;throw Ys(t),new Error(t)}function no(e,t){e||to(t)}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1564,137 +1564,7 @@ Ue("firebase","9.8.3","app");var Ds,Ms={apiKey:"AIzaSyDnwCZBeYmcTq0nXclQPrYar33D
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */const to=new Map;function no(e){eo(e instanceof Function,"Expected a class definition");let t=to.get(e);return t?(eo(t instanceof e,"Instance stored in cache mismatched with class"),t):(t=new e,to.set(e,t),t)}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function ro(){var e;return"undefined"!=typeof self&&(null===(e=self.location)||void 0===e?void 0:e.href)||""}function io(){return"http:"===so()||"https:"===so()}function so(){var e;return"undefined"!=typeof self&&(null===(e=self.location)||void 0===e?void 0:e.protocol)||null}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */function oo(){return!("undefined"!=typeof navigator&&navigator&&"onLine"in navigator&&"boolean"==typeof navigator.onLine&&(io()||I()||"connection"in navigator))||navigator.onLine}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-class ao{get(){return oo()?this.isMobile?this.longDelay:this.shortDelay:Math.min(5e3,this.shortDelay)}constructor(e,t){this.shortDelay=e,this.longDelay=t,eo(t>e,"Short delay should be less than long delay!"),this.isMobile=b()||E()}}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */function co(e,t){eo(e.emulator,"Emulator should always be set here");const{url:n}=e.emulator;return t?`${n}${t.startsWith("/")?t.slice(1):t}`:n}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */class lo{static initialize(e,t,n){this.fetchImpl=e,t&&(this.headersImpl=t),n&&(this.responseImpl=n)}static fetch(){return this.fetchImpl?this.fetchImpl:"undefined"!=typeof self&&"fetch"in self?self.fetch:void Zs("Could not find fetch implementation, make sure you call FetchProvider.initialize() with an appropriate polyfill")}static headers(){return this.headersImpl?this.headersImpl:"undefined"!=typeof self&&"Headers"in self?self.Headers:void Zs("Could not find Headers implementation, make sure you call FetchProvider.initialize() with an appropriate polyfill")}static response(){return this.responseImpl?this.responseImpl:"undefined"!=typeof self&&"Response"in self?self.Response:void Zs("Could not find Response implementation, make sure you call FetchProvider.initialize() with an appropriate polyfill")}}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */const ho={CREDENTIAL_MISMATCH:"custom-token-mismatch",MISSING_CUSTOM_TOKEN:"internal-error",INVALID_IDENTIFIER:"invalid-email",MISSING_CONTINUE_URI:"internal-error",INVALID_PASSWORD:"wrong-password",MISSING_PASSWORD:"internal-error",EMAIL_EXISTS:"email-already-in-use",PASSWORD_LOGIN_DISABLED:"operation-not-allowed",INVALID_IDP_RESPONSE:"invalid-credential",INVALID_PENDING_TOKEN:"invalid-credential",FEDERATED_USER_ID_ALREADY_LINKED:"credential-already-in-use",MISSING_REQ_TYPE:"internal-error",EMAIL_NOT_FOUND:"user-not-found",RESET_PASSWORD_EXCEED_LIMIT:"too-many-requests",EXPIRED_OOB_CODE:"expired-action-code",INVALID_OOB_CODE:"invalid-action-code",MISSING_OOB_CODE:"internal-error",CREDENTIAL_TOO_OLD_LOGIN_AGAIN:"requires-recent-login",INVALID_ID_TOKEN:"invalid-user-token",TOKEN_EXPIRED:"user-token-expired",USER_NOT_FOUND:"user-token-expired",TOO_MANY_ATTEMPTS_TRY_LATER:"too-many-requests",INVALID_CODE:"invalid-verification-code",INVALID_SESSION_INFO:"invalid-verification-id",INVALID_TEMPORARY_PROOF:"invalid-credential",MISSING_SESSION_INFO:"missing-verification-id",SESSION_EXPIRED:"code-expired",MISSING_ANDROID_PACKAGE_NAME:"missing-android-pkg-name",UNAUTHORIZED_DOMAIN:"unauthorized-continue-uri",INVALID_OAUTH_CLIENT_ID:"invalid-oauth-client-id",ADMIN_ONLY_OPERATION:"admin-restricted-operation",INVALID_MFA_PENDING_CREDENTIAL:"invalid-multi-factor-session",MFA_ENROLLMENT_NOT_FOUND:"multi-factor-info-not-found",MISSING_MFA_ENROLLMENT_ID:"missing-multi-factor-info",MISSING_MFA_PENDING_CREDENTIAL:"missing-multi-factor-session",SECOND_FACTOR_EXISTS:"second-factor-already-in-use",SECOND_FACTOR_LIMIT_EXCEEDED:"maximum-second-factor-count-exceeded",BLOCKING_FUNCTION_ERROR_RESPONSE:"internal-error"},uo=new ao(3e4,6e4);
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */function fo(e,t){return e.tenantId&&!t.tenantId?Object.assign(Object.assign({},t),{tenantId:e.tenantId}):t}async function po(e,t,n,r,i={}){return go(e,i,(async()=>{let i={},s={};r&&("GET"===t?s=r:i={body:JSON.stringify(r)});const o=j(Object.assign({key:e.config.apiKey},s)).slice(1),a=await e._getAdditionalHeaders();return a["Content-Type"]="application/json",e.languageCode&&(a["X-Firebase-Locale"]=e.languageCode),lo.fetch()(_o(e,e.config.apiHost,n,o),Object.assign({method:t,headers:a,referrerPolicy:"no-referrer"},i))}))}async function go(e,t,n){e._canInitEmulator=!1;const r=Object.assign(Object.assign({},ho),t);try{const t=new yo(e),i=await Promise.race([n(),t.promise]);t.clearNetworkTimeout();const s=await i.json();if("needConfirmation"in s)throw vo(e,"account-exists-with-different-credential",s);if(i.ok&&!("errorMessage"in s))return s;{const t=i.ok?s.errorMessage:s.error.message,[n,o]=t.split(" : ");if("FEDERATED_USER_ID_ALREADY_LINKED"===n)throw vo(e,"credential-already-in-use",s);if("EMAIL_EXISTS"===n)throw vo(e,"email-already-in-use",s);if("USER_DISABLED"===n)throw vo(e,"user-disabled",s);const a=r[n]||n.toLowerCase().replace(/[_\s]+/g,"-");if(o)throw Js(e,a,o);Ks(e,a)}}catch(t){if(t instanceof k)throw t;Ks(e,"network-request-failed")}}async function mo(e,t,n,r,i={}){const s=await po(e,t,n,r,i);return"mfaPendingCredential"in s&&Ks(e,"multi-factor-auth-required",{_serverResponse:s}),s}function _o(e,t,n,r){const i=`${t}${n}?${r}`;return e.config.emulator?co(e.config,i):`${e.config.apiScheme}://${i}`}class yo{clearNetworkTimeout(){clearTimeout(this.timer)}constructor(e){this.auth=e,this.timer=null,this.promise=new Promise(((e,t)=>{this.timer=setTimeout((()=>t(Ys(this.auth,"network-request-failed"))),uo.get())}))}}function vo(e,t,n){const r={appName:e.name};n.email&&(r.email=n.email),n.phoneNumber&&(r.phoneNumber=n.phoneNumber);const i=Ys(e,t,r);return i.customData._tokenResponse=n,i}
+ */const ro=new Map;function io(e){no(e instanceof Function,"Expected a class definition");let t=ro.get(e);return t?(no(t instanceof e,"Instance stored in cache mismatched with class"),t):(t=new e,ro.set(e,t),t)}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1727,7 +1597,7 @@ class ao{get(){return oo()?this.isMobile?this.longDelay:this.shortDelay:Math.min
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function wo(e){if(e)try{const t=new Date(Number(e));if(!isNaN(t.getTime()))return t.toUTCString()}catch(e){}}
+function so(){var e;return"undefined"!=typeof self&&(null===(e=self.location)||void 0===e?void 0:e.href)||""}function oo(){return"http:"===ao()||"https:"===ao()}function ao(){var e;return"undefined"!=typeof self&&(null===(e=self.location)||void 0===e?void 0:e.protocol)||null}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1743,7 +1613,7 @@ function wo(e){if(e)try{const t=new Date(Number(e));if(!isNaN(t.getTime()))retur
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */function bo(e){return 1e3*Number(e)}function Io(e){const[t,n,r]=e.split(".");if(void 0===t||void 0===n||void 0===r)return Gs("JWT malformed, contained fewer than 3 sections"),null;try{const e=g(n);return e?JSON.parse(e):(Gs("Failed to decode base64 JWT payload"),null)}catch(e){return Gs("Caught error parsing JWT payload as JSON",e),null}}
+ */function co(){return!("undefined"!=typeof navigator&&navigator&&"onLine"in navigator&&"boolean"==typeof navigator.onLine&&(oo()||I()||"connection"in navigator))||navigator.onLine}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1760,7 +1630,7 @@ function wo(e){if(e)try{const t=new Date(Number(e));if(!isNaN(t.getTime()))retur
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-async function Eo(e,t,n=!1){if(n)return t;try{return await t}catch(t){throw t instanceof k&&function({code:e}){return"auth/user-disabled"===e||"auth/user-token-expired"===e}
+class lo{get(){return co()?this.isMobile?this.longDelay:this.shortDelay:Math.min(5e3,this.shortDelay)}constructor(e,t){this.shortDelay=e,this.longDelay=t,no(t>e,"Short delay should be less than long delay!"),this.isMobile=b()||E()}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1776,7 +1646,7 @@ async function Eo(e,t,n=!1){if(n)return t;try{return await t}catch(t){throw t in
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */(t)&&e.auth.currentUser===e&&await e.auth.signOut(),t}}class Co{_start(){this.isRunning||(this.isRunning=!0,this.schedule())}_stop(){this.isRunning&&(this.isRunning=!1,null!==this.timerId&&clearTimeout(this.timerId))}getInterval(e){var t;if(e){const e=this.errorBackoff;return this.errorBackoff=Math.min(2*this.errorBackoff,96e4),e}{this.errorBackoff=3e4;const e=(null!==(t=this.user.stsTokenManager.expirationTime)&&void 0!==t?t:0)-Date.now()-3e5;return Math.max(0,e)}}schedule(e=!1){if(!this.isRunning)return;const t=this.getInterval(e);this.timerId=setTimeout((async()=>{await this.iteration()}),t)}async iteration(){try{await this.user.getIdToken(!0)}catch(e){return void("auth/network-request-failed"===e.code&&this.schedule(!0))}this.schedule()}constructor(e){this.user=e,this.isRunning=!1,this.timerId=null,this.errorBackoff=3e4}}
+ */function ho(e,t){no(e.emulator,"Emulator should always be set here");const{url:n}=e.emulator;return t?`${n}${t.startsWith("/")?t.slice(1):t}`:n}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1792,7 +1662,137 @@ async function Eo(e,t,n=!1){if(n)return t;try{return await t}catch(t){throw t in
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class To{_initializeTime(){this.lastSignInTime=wo(this.lastLoginAt),this.creationTime=wo(this.createdAt)}_copy(e){this.createdAt=e.createdAt,this.lastLoginAt=e.lastLoginAt,this._initializeTime()}toJSON(){return{createdAt:this.createdAt,lastLoginAt:this.lastLoginAt}}constructor(e,t){this.createdAt=e,this.lastLoginAt=t,this._initializeTime()}}
+ */class uo{static initialize(e,t,n){this.fetchImpl=e,t&&(this.headersImpl=t),n&&(this.responseImpl=n)}static fetch(){return this.fetchImpl?this.fetchImpl:"undefined"!=typeof self&&"fetch"in self?self.fetch:void to("Could not find fetch implementation, make sure you call FetchProvider.initialize() with an appropriate polyfill")}static headers(){return this.headersImpl?this.headersImpl:"undefined"!=typeof self&&"Headers"in self?self.Headers:void to("Could not find Headers implementation, make sure you call FetchProvider.initialize() with an appropriate polyfill")}static response(){return this.responseImpl?this.responseImpl:"undefined"!=typeof self&&"Response"in self?self.Response:void to("Could not find Response implementation, make sure you call FetchProvider.initialize() with an appropriate polyfill")}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */const fo={CREDENTIAL_MISMATCH:"custom-token-mismatch",MISSING_CUSTOM_TOKEN:"internal-error",INVALID_IDENTIFIER:"invalid-email",MISSING_CONTINUE_URI:"internal-error",INVALID_PASSWORD:"wrong-password",MISSING_PASSWORD:"internal-error",EMAIL_EXISTS:"email-already-in-use",PASSWORD_LOGIN_DISABLED:"operation-not-allowed",INVALID_IDP_RESPONSE:"invalid-credential",INVALID_PENDING_TOKEN:"invalid-credential",FEDERATED_USER_ID_ALREADY_LINKED:"credential-already-in-use",MISSING_REQ_TYPE:"internal-error",EMAIL_NOT_FOUND:"user-not-found",RESET_PASSWORD_EXCEED_LIMIT:"too-many-requests",EXPIRED_OOB_CODE:"expired-action-code",INVALID_OOB_CODE:"invalid-action-code",MISSING_OOB_CODE:"internal-error",CREDENTIAL_TOO_OLD_LOGIN_AGAIN:"requires-recent-login",INVALID_ID_TOKEN:"invalid-user-token",TOKEN_EXPIRED:"user-token-expired",USER_NOT_FOUND:"user-token-expired",TOO_MANY_ATTEMPTS_TRY_LATER:"too-many-requests",INVALID_CODE:"invalid-verification-code",INVALID_SESSION_INFO:"invalid-verification-id",INVALID_TEMPORARY_PROOF:"invalid-credential",MISSING_SESSION_INFO:"missing-verification-id",SESSION_EXPIRED:"code-expired",MISSING_ANDROID_PACKAGE_NAME:"missing-android-pkg-name",UNAUTHORIZED_DOMAIN:"unauthorized-continue-uri",INVALID_OAUTH_CLIENT_ID:"invalid-oauth-client-id",ADMIN_ONLY_OPERATION:"admin-restricted-operation",INVALID_MFA_PENDING_CREDENTIAL:"invalid-multi-factor-session",MFA_ENROLLMENT_NOT_FOUND:"multi-factor-info-not-found",MISSING_MFA_ENROLLMENT_ID:"missing-multi-factor-info",MISSING_MFA_PENDING_CREDENTIAL:"missing-multi-factor-session",SECOND_FACTOR_EXISTS:"second-factor-already-in-use",SECOND_FACTOR_LIMIT_EXCEEDED:"maximum-second-factor-count-exceeded",BLOCKING_FUNCTION_ERROR_RESPONSE:"internal-error"},po=new lo(3e4,6e4);
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */function go(e,t){return e.tenantId&&!t.tenantId?Object.assign(Object.assign({},t),{tenantId:e.tenantId}):t}async function mo(e,t,n,r,i={}){return _o(e,i,(async()=>{let i={},s={};r&&("GET"===t?s=r:i={body:JSON.stringify(r)});const o=j(Object.assign({key:e.config.apiKey},s)).slice(1),a=await e._getAdditionalHeaders();return a["Content-Type"]="application/json",e.languageCode&&(a["X-Firebase-Locale"]=e.languageCode),uo.fetch()(vo(e,e.config.apiHost,n,o),Object.assign({method:t,headers:a,referrerPolicy:"no-referrer"},i))}))}async function _o(e,t,n){e._canInitEmulator=!1;const r=Object.assign(Object.assign({},fo),t);try{const t=new wo(e),i=await Promise.race([n(),t.promise]);t.clearNetworkTimeout();const s=await i.json();if("needConfirmation"in s)throw bo(e,"account-exists-with-different-credential",s);if(i.ok&&!("errorMessage"in s))return s;{const t=i.ok?s.errorMessage:s.error.message,[n,o]=t.split(" : ");if("FEDERATED_USER_ID_ALREADY_LINKED"===n)throw bo(e,"credential-already-in-use",s);if("EMAIL_EXISTS"===n)throw bo(e,"email-already-in-use",s);if("USER_DISABLED"===n)throw bo(e,"user-disabled",s);const a=r[n]||n.toLowerCase().replace(/[_\s]+/g,"-");if(o)throw Xs(e,a,o);Js(e,a)}}catch(t){if(t instanceof k)throw t;Js(e,"network-request-failed")}}async function yo(e,t,n,r,i={}){const s=await mo(e,t,n,r,i);return"mfaPendingCredential"in s&&Js(e,"multi-factor-auth-required",{_serverResponse:s}),s}function vo(e,t,n,r){const i=`${t}${n}?${r}`;return e.config.emulator?ho(e.config,i):`${e.config.apiScheme}://${i}`}class wo{clearNetworkTimeout(){clearTimeout(this.timer)}constructor(e){this.auth=e,this.timer=null,this.promise=new Promise(((e,t)=>{this.timer=setTimeout((()=>t(Qs(this.auth,"network-request-failed"))),po.get())}))}}function bo(e,t,n){const r={appName:e.name};n.email&&(r.email=n.email),n.phoneNumber&&(r.phoneNumber=n.phoneNumber);const i=Qs(e,t,r);return i.customData._tokenResponse=n,i}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function Io(e){if(e)try{const t=new Date(Number(e));if(!isNaN(t.getTime()))return t.toUTCString()}catch(e){}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */function Eo(e){return 1e3*Number(e)}function Co(e){const[t,n,r]=e.split(".");if(void 0===t||void 0===n||void 0===r)return Ys("JWT malformed, contained fewer than 3 sections"),null;try{const e=g(n);return e?JSON.parse(e):(Ys("Failed to decode base64 JWT payload"),null)}catch(e){return Ys("Caught error parsing JWT payload as JSON",e),null}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+async function To(e,t,n=!1){if(n)return t;try{return await t}catch(t){throw t instanceof k&&function({code:e}){return"auth/user-disabled"===e||"auth/user-token-expired"===e}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */(t)&&e.auth.currentUser===e&&await e.auth.signOut(),t}}class ko{_start(){this.isRunning||(this.isRunning=!0,this.schedule())}_stop(){this.isRunning&&(this.isRunning=!1,null!==this.timerId&&clearTimeout(this.timerId))}getInterval(e){var t;if(e){const e=this.errorBackoff;return this.errorBackoff=Math.min(2*this.errorBackoff,96e4),e}{this.errorBackoff=3e4;const e=(null!==(t=this.user.stsTokenManager.expirationTime)&&void 0!==t?t:0)-Date.now()-3e5;return Math.max(0,e)}}schedule(e=!1){if(!this.isRunning)return;const t=this.getInterval(e);this.timerId=setTimeout((async()=>{await this.iteration()}),t)}async iteration(){try{await this.user.getIdToken(!0)}catch(e){return void("auth/network-request-failed"===e.code&&this.schedule(!0))}this.schedule()}constructor(e){this.user=e,this.isRunning=!1,this.timerId=null,this.errorBackoff=3e4}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */class So{_initializeTime(){this.lastSignInTime=Io(this.lastLoginAt),this.creationTime=Io(this.createdAt)}_copy(e){this.createdAt=e.createdAt,this.lastLoginAt=e.lastLoginAt,this._initializeTime()}toJSON(){return{createdAt:this.createdAt,lastLoginAt:this.lastLoginAt}}constructor(e,t){this.createdAt=e,this.lastLoginAt=t,this._initializeTime()}}
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -1808,7 +1808,7 @@ async function Eo(e,t,n=!1){if(n)return t;try{return await t}catch(t){throw t in
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */async function ko(e){var t;const n=e.auth,r=await e.getIdToken(),i=await Eo(e,async function(e,t){return po(e,"POST","/v1/accounts:lookup",t)}(n,{idToken:r}));Xs(null==i?void 0:i.users.length,n,"internal-error");const s=i.users[0];e._notifyReloadListener(s);const o=(null===(t=s.providerUserInfo)||void 0===t?void 0:t.length)?s.providerUserInfo.map((e=>{var{providerId:t}=e,n=Ws(e,["providerId"]);return{providerId:t,uid:n.rawId||"",displayName:n.displayName||null,email:n.email||null,phoneNumber:n.phoneNumber||null,photoURL:n.photoUrl||null}})):[];const a=(c=e.providerData,l=o,[...c.filter((e=>!l.some((t=>t.providerId===e.providerId)))),...l]);var c,l;const h=e.isAnonymous,u=!(e.email&&s.passwordHash||(null==a?void 0:a.length)),d=!!h&&u,f={uid:s.localId,displayName:s.displayName||null,photoURL:s.photoUrl||null,email:s.email||null,emailVerified:s.emailVerified||!1,phoneNumber:s.phoneNumber||null,tenantId:s.tenantId||null,providerData:a,metadata:new To(s.createdAt,s.lastLoginAt),isAnonymous:d};Object.assign(e,f)}
+ */async function Ro(e){var t;const n=e.auth,r=await e.getIdToken(),i=await To(e,async function(e,t){return mo(e,"POST","/v1/accounts:lookup",t)}(n,{idToken:r}));eo(null==i?void 0:i.users.length,n,"internal-error");const s=i.users[0];e._notifyReloadListener(s);const o=(null===(t=s.providerUserInfo)||void 0===t?void 0:t.length)?s.providerUserInfo.map((e=>{var{providerId:t}=e,n=Vs(e,["providerId"]);return{providerId:t,uid:n.rawId||"",displayName:n.displayName||null,email:n.email||null,phoneNumber:n.phoneNumber||null,photoURL:n.photoUrl||null}})):[];const a=(c=e.providerData,l=o,[...c.filter((e=>!l.some((t=>t.providerId===e.providerId)))),...l]);var c,l;const h=e.isAnonymous,u=!(e.email&&s.passwordHash||(null==a?void 0:a.length)),d=!!h&&u,f={uid:s.localId,displayName:s.displayName||null,photoURL:s.photoUrl||null,email:s.email||null,emailVerified:s.emailVerified||!1,phoneNumber:s.phoneNumber||null,tenantId:s.tenantId||null,providerData:a,metadata:new So(s.createdAt,s.lastLoginAt),isAnonymous:d};Object.assign(e,f)}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1825,7 +1825,7 @@ async function Eo(e,t,n=!1){if(n)return t;try{return await t}catch(t){throw t in
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class So{get isExpired(){return!this.expirationTime||Date.now()>this.expirationTime-3e4}updateFromServerResponse(e){Xs(e.idToken,"internal-error"),Xs(void 0!==e.idToken,"internal-error"),Xs(void 0!==e.refreshToken,"internal-error");const t="expiresIn"in e&&void 0!==e.expiresIn?Number(e.expiresIn):function(e){const t=Io(e);return Xs(t,"internal-error"),Xs(void 0!==t.exp,"internal-error"),Xs(void 0!==t.iat,"internal-error"),Number(t.exp)-Number(t.iat)}(e.idToken);this.updateTokensAndExpiration(e.idToken,e.refreshToken,t)}async getToken(e,t=!1){return Xs(!this.accessToken||this.refreshToken,e,"user-token-expired"),t||!this.accessToken||this.isExpired?this.refreshToken?(await this.refresh(e,this.refreshToken),this.accessToken):null:this.accessToken}clearRefreshToken(){this.refreshToken=null}async refresh(e,t){const{accessToken:n,refreshToken:r,expiresIn:i}=await
+class No{get isExpired(){return!this.expirationTime||Date.now()>this.expirationTime-3e4}updateFromServerResponse(e){eo(e.idToken,"internal-error"),eo(void 0!==e.idToken,"internal-error"),eo(void 0!==e.refreshToken,"internal-error");const t="expiresIn"in e&&void 0!==e.expiresIn?Number(e.expiresIn):function(e){const t=Co(e);return eo(t,"internal-error"),eo(void 0!==t.exp,"internal-error"),eo(void 0!==t.iat,"internal-error"),Number(t.exp)-Number(t.iat)}(e.idToken);this.updateTokensAndExpiration(e.idToken,e.refreshToken,t)}async getToken(e,t=!1){return eo(!this.accessToken||this.refreshToken,e,"user-token-expired"),t||!this.accessToken||this.isExpired?this.refreshToken?(await this.refresh(e,this.refreshToken),this.accessToken):null:this.accessToken}clearRefreshToken(){this.refreshToken=null}async refresh(e,t){const{accessToken:n,refreshToken:r,expiresIn:i}=await
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1842,7 +1842,7 @@ class So{get isExpired(){return!this.expirationTime||Date.now()>this.expirationT
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-async function(e,t){const n=await go(e,{},(async()=>{const n=j({grant_type:"refresh_token",refresh_token:t}).slice(1),{tokenApiHost:r,apiKey:i}=e.config,s=_o(e,r,"/v1/token",`key=${i}`),o=await e._getAdditionalHeaders();return o["Content-Type"]="application/x-www-form-urlencoded",lo.fetch()(s,{method:"POST",headers:o,body:n})}));return{accessToken:n.access_token,expiresIn:n.expires_in,refreshToken:n.refresh_token}}(e,t);this.updateTokensAndExpiration(n,r,Number(i))}updateTokensAndExpiration(e,t,n){this.refreshToken=t||null,this.accessToken=e||null,this.expirationTime=Date.now()+1e3*n}static fromJSON(e,t){const{refreshToken:n,accessToken:r,expirationTime:i}=t,s=new So;return n&&(Xs("string"==typeof n,"internal-error",{appName:e}),s.refreshToken=n),r&&(Xs("string"==typeof r,"internal-error",{appName:e}),s.accessToken=r),i&&(Xs("number"==typeof i,"internal-error",{appName:e}),s.expirationTime=i),s}toJSON(){return{refreshToken:this.refreshToken,accessToken:this.accessToken,expirationTime:this.expirationTime}}_assign(e){this.accessToken=e.accessToken,this.refreshToken=e.refreshToken,this.expirationTime=e.expirationTime}_clone(){return Object.assign(new So,this.toJSON())}_performRefresh(){return Zs("not implemented")}constructor(){this.refreshToken=null,this.accessToken=null,this.expirationTime=null}}
+async function(e,t){const n=await _o(e,{},(async()=>{const n=j({grant_type:"refresh_token",refresh_token:t}).slice(1),{tokenApiHost:r,apiKey:i}=e.config,s=vo(e,r,"/v1/token",`key=${i}`),o=await e._getAdditionalHeaders();return o["Content-Type"]="application/x-www-form-urlencoded",uo.fetch()(s,{method:"POST",headers:o,body:n})}));return{accessToken:n.access_token,expiresIn:n.expires_in,refreshToken:n.refresh_token}}(e,t);this.updateTokensAndExpiration(n,r,Number(i))}updateTokensAndExpiration(e,t,n){this.refreshToken=t||null,this.accessToken=e||null,this.expirationTime=Date.now()+1e3*n}static fromJSON(e,t){const{refreshToken:n,accessToken:r,expirationTime:i}=t,s=new No;return n&&(eo("string"==typeof n,"internal-error",{appName:e}),s.refreshToken=n),r&&(eo("string"==typeof r,"internal-error",{appName:e}),s.accessToken=r),i&&(eo("number"==typeof i,"internal-error",{appName:e}),s.expirationTime=i),s}toJSON(){return{refreshToken:this.refreshToken,accessToken:this.accessToken,expirationTime:this.expirationTime}}_assign(e){this.accessToken=e.accessToken,this.refreshToken=e.refreshToken,this.expirationTime=e.expirationTime}_clone(){return Object.assign(new No,this.toJSON())}_performRefresh(){return to("not implemented")}constructor(){this.refreshToken=null,this.accessToken=null,this.expirationTime=null}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1858,7 +1858,7 @@ async function(e,t){const n=await go(e,{},(async()=>{const n=j({grant_type:"refr
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */function Ro(e,t){Xs("string"==typeof e||void 0===e,"internal-error",{appName:t})}class No{async getIdToken(e){const t=await Eo(this,this.stsTokenManager.getToken(this.auth,e));return Xs(t,this.auth,"internal-error"),this.accessToken!==t&&(this.accessToken=t,await this.auth._persistUserIfCurrent(this),this.auth._notifyListenersIfCurrent(this)),t}getIdTokenResult(e){return async function(e,t=!1){const n=J(e),r=await n.getIdToken(t),i=Io(r);Xs(i&&i.exp&&i.auth_time&&i.iat,n.auth,"internal-error");const s="object"==typeof i.firebase?i.firebase:void 0,o=null==s?void 0:s.sign_in_provider;return{claims:i,token:r,authTime:wo(bo(i.auth_time)),issuedAtTime:wo(bo(i.iat)),expirationTime:wo(bo(i.exp)),signInProvider:o||null,signInSecondFactor:(null==s?void 0:s.sign_in_second_factor)||null}}(this,e)}reload(){return async function(e){const t=J(e);await ko(t),await t.auth._persistUserIfCurrent(t),t.auth._notifyListenersIfCurrent(t)}(this)}_assign(e){this!==e&&(Xs(this.uid===e.uid,this.auth,"internal-error"),this.displayName=e.displayName,this.photoURL=e.photoURL,this.email=e.email,this.emailVerified=e.emailVerified,this.phoneNumber=e.phoneNumber,this.isAnonymous=e.isAnonymous,this.tenantId=e.tenantId,this.providerData=e.providerData.map((e=>Object.assign({},e))),this.metadata._copy(e.metadata),this.stsTokenManager._assign(e.stsTokenManager))}_clone(e){return new No(Object.assign(Object.assign({},this),{auth:e,stsTokenManager:this.stsTokenManager._clone()}))}_onReload(e){Xs(!this.reloadListener,this.auth,"internal-error"),this.reloadListener=e,this.reloadUserInfo&&(this._notifyReloadListener(this.reloadUserInfo),this.reloadUserInfo=null)}_notifyReloadListener(e){this.reloadListener?this.reloadListener(e):this.reloadUserInfo=e}_startProactiveRefresh(){this.proactiveRefresh._start()}_stopProactiveRefresh(){this.proactiveRefresh._stop()}async _updateTokensIfNecessary(e,t=!1){let n=!1;e.idToken&&e.idToken!==this.stsTokenManager.accessToken&&(this.stsTokenManager.updateFromServerResponse(e),n=!0),t&&await ko(this),await this.auth._persistUserIfCurrent(this),n&&this.auth._notifyListenersIfCurrent(this)}async delete(){const e=await this.getIdToken();return await Eo(this,async function(e,t){return po(e,"POST","/v1/accounts:delete",t)}(this.auth,{idToken:e})),this.stsTokenManager.clearRefreshToken(),this.auth.signOut()}toJSON(){return Object.assign(Object.assign({uid:this.uid,email:this.email||void 0,emailVerified:this.emailVerified,displayName:this.displayName||void 0,isAnonymous:this.isAnonymous,photoURL:this.photoURL||void 0,phoneNumber:this.phoneNumber||void 0,tenantId:this.tenantId||void 0,providerData:this.providerData.map((e=>Object.assign({},e))),stsTokenManager:this.stsTokenManager.toJSON(),_redirectEventId:this._redirectEventId},this.metadata.toJSON()),{apiKey:this.auth.config.apiKey,appName:this.auth.name})}get refreshToken(){return this.stsTokenManager.refreshToken||""}static _fromJSON(e,t){var n,r,i,s,o,a,c,l;const h=null!==(n=t.displayName)&&void 0!==n?n:void 0,u=null!==(r=t.email)&&void 0!==r?r:void 0,d=null!==(i=t.phoneNumber)&&void 0!==i?i:void 0,f=null!==(s=t.photoURL)&&void 0!==s?s:void 0,p=null!==(o=t.tenantId)&&void 0!==o?o:void 0,g=null!==(a=t._redirectEventId)&&void 0!==a?a:void 0,m=null!==(c=t.createdAt)&&void 0!==c?c:void 0,_=null!==(l=t.lastLoginAt)&&void 0!==l?l:void 0,{uid:y,emailVerified:v,isAnonymous:w,providerData:b,stsTokenManager:I}=t;Xs(y&&I,e,"internal-error");const E=So.fromJSON(this.name,I);Xs("string"==typeof y,e,"internal-error"),Ro(h,e.name),Ro(u,e.name),Xs("boolean"==typeof v,e,"internal-error"),Xs("boolean"==typeof w,e,"internal-error"),Ro(d,e.name),Ro(f,e.name),Ro(p,e.name),Ro(g,e.name),Ro(m,e.name),Ro(_,e.name);const C=new No({uid:y,auth:e,email:u,emailVerified:v,displayName:h,isAnonymous:w,photoURL:f,phoneNumber:d,tenantId:p,stsTokenManager:E,createdAt:m,lastLoginAt:_});return b&&Array.isArray(b)&&(C.providerData=b.map((e=>Object.assign({},e)))),g&&(C._redirectEventId=g),C}static async _fromIdTokenResponse(e,t,n=!1){const r=new So;r.updateFromServerResponse(t);const i=new No({uid:t.localId,auth:e,stsTokenManager:r,isAnonymous:n});return await ko(i),i}constructor(e){var{uid:t,auth:n,stsTokenManager:r}=e,i=Ws(e,["uid","auth","stsTokenManager"]);this.providerId="firebase",this.proactiveRefresh=new Co(this),this.reloadUserInfo=null,this.reloadListener=null,this.uid=t,this.auth=n,this.stsTokenManager=r,this.accessToken=r.accessToken,this.displayName=i.displayName||null,this.email=i.email||null,this.emailVerified=i.emailVerified||!1,this.phoneNumber=i.phoneNumber||null,this.photoURL=i.photoURL||null,this.isAnonymous=i.isAnonymous||!1,this.tenantId=i.tenantId||null,this.providerData=i.providerData?[...i.providerData]:[],this.metadata=new To(i.createdAt||void 0,i.lastLoginAt||void 0)}}
+ */function Po(e,t){eo("string"==typeof e||void 0===e,"internal-error",{appName:t})}class Oo{async getIdToken(e){const t=await To(this,this.stsTokenManager.getToken(this.auth,e));return eo(t,this.auth,"internal-error"),this.accessToken!==t&&(this.accessToken=t,await this.auth._persistUserIfCurrent(this),this.auth._notifyListenersIfCurrent(this)),t}getIdTokenResult(e){return async function(e,t=!1){const n=J(e),r=await n.getIdToken(t),i=Co(r);eo(i&&i.exp&&i.auth_time&&i.iat,n.auth,"internal-error");const s="object"==typeof i.firebase?i.firebase:void 0,o=null==s?void 0:s.sign_in_provider;return{claims:i,token:r,authTime:Io(Eo(i.auth_time)),issuedAtTime:Io(Eo(i.iat)),expirationTime:Io(Eo(i.exp)),signInProvider:o||null,signInSecondFactor:(null==s?void 0:s.sign_in_second_factor)||null}}(this,e)}reload(){return async function(e){const t=J(e);await Ro(t),await t.auth._persistUserIfCurrent(t),t.auth._notifyListenersIfCurrent(t)}(this)}_assign(e){this!==e&&(eo(this.uid===e.uid,this.auth,"internal-error"),this.displayName=e.displayName,this.photoURL=e.photoURL,this.email=e.email,this.emailVerified=e.emailVerified,this.phoneNumber=e.phoneNumber,this.isAnonymous=e.isAnonymous,this.tenantId=e.tenantId,this.providerData=e.providerData.map((e=>Object.assign({},e))),this.metadata._copy(e.metadata),this.stsTokenManager._assign(e.stsTokenManager))}_clone(e){return new Oo(Object.assign(Object.assign({},this),{auth:e,stsTokenManager:this.stsTokenManager._clone()}))}_onReload(e){eo(!this.reloadListener,this.auth,"internal-error"),this.reloadListener=e,this.reloadUserInfo&&(this._notifyReloadListener(this.reloadUserInfo),this.reloadUserInfo=null)}_notifyReloadListener(e){this.reloadListener?this.reloadListener(e):this.reloadUserInfo=e}_startProactiveRefresh(){this.proactiveRefresh._start()}_stopProactiveRefresh(){this.proactiveRefresh._stop()}async _updateTokensIfNecessary(e,t=!1){let n=!1;e.idToken&&e.idToken!==this.stsTokenManager.accessToken&&(this.stsTokenManager.updateFromServerResponse(e),n=!0),t&&await Ro(this),await this.auth._persistUserIfCurrent(this),n&&this.auth._notifyListenersIfCurrent(this)}async delete(){const e=await this.getIdToken();return await To(this,async function(e,t){return mo(e,"POST","/v1/accounts:delete",t)}(this.auth,{idToken:e})),this.stsTokenManager.clearRefreshToken(),this.auth.signOut()}toJSON(){return Object.assign(Object.assign({uid:this.uid,email:this.email||void 0,emailVerified:this.emailVerified,displayName:this.displayName||void 0,isAnonymous:this.isAnonymous,photoURL:this.photoURL||void 0,phoneNumber:this.phoneNumber||void 0,tenantId:this.tenantId||void 0,providerData:this.providerData.map((e=>Object.assign({},e))),stsTokenManager:this.stsTokenManager.toJSON(),_redirectEventId:this._redirectEventId},this.metadata.toJSON()),{apiKey:this.auth.config.apiKey,appName:this.auth.name})}get refreshToken(){return this.stsTokenManager.refreshToken||""}static _fromJSON(e,t){var n,r,i,s,o,a,c,l;const h=null!==(n=t.displayName)&&void 0!==n?n:void 0,u=null!==(r=t.email)&&void 0!==r?r:void 0,d=null!==(i=t.phoneNumber)&&void 0!==i?i:void 0,f=null!==(s=t.photoURL)&&void 0!==s?s:void 0,p=null!==(o=t.tenantId)&&void 0!==o?o:void 0,g=null!==(a=t._redirectEventId)&&void 0!==a?a:void 0,m=null!==(c=t.createdAt)&&void 0!==c?c:void 0,_=null!==(l=t.lastLoginAt)&&void 0!==l?l:void 0,{uid:y,emailVerified:v,isAnonymous:w,providerData:b,stsTokenManager:I}=t;eo(y&&I,e,"internal-error");const E=No.fromJSON(this.name,I);eo("string"==typeof y,e,"internal-error"),Po(h,e.name),Po(u,e.name),eo("boolean"==typeof v,e,"internal-error"),eo("boolean"==typeof w,e,"internal-error"),Po(d,e.name),Po(f,e.name),Po(p,e.name),Po(g,e.name),Po(m,e.name),Po(_,e.name);const C=new Oo({uid:y,auth:e,email:u,emailVerified:v,displayName:h,isAnonymous:w,photoURL:f,phoneNumber:d,tenantId:p,stsTokenManager:E,createdAt:m,lastLoginAt:_});return b&&Array.isArray(b)&&(C.providerData=b.map((e=>Object.assign({},e)))),g&&(C._redirectEventId=g),C}static async _fromIdTokenResponse(e,t,n=!1){const r=new No;r.updateFromServerResponse(t);const i=new Oo({uid:t.localId,auth:e,stsTokenManager:r,isAnonymous:n});return await Ro(i),i}constructor(e){var{uid:t,auth:n,stsTokenManager:r}=e,i=Vs(e,["uid","auth","stsTokenManager"]);this.providerId="firebase",this.proactiveRefresh=new ko(this),this.reloadUserInfo=null,this.reloadListener=null,this.uid=t,this.auth=n,this.stsTokenManager=r,this.accessToken=r.accessToken,this.displayName=i.displayName||null,this.email=i.email||null,this.emailVerified=i.emailVerified||!1,this.phoneNumber=i.phoneNumber||null,this.photoURL=i.photoURL||null,this.isAnonymous=i.isAnonymous||!1,this.tenantId=i.tenantId||null,this.providerData=i.providerData?[...i.providerData]:[],this.metadata=new So(i.createdAt||void 0,i.lastLoginAt||void 0)}}
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -1874,7 +1874,7 @@ async function(e,t){const n=await go(e,{},(async()=>{const n=j({grant_type:"refr
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class Po{async _isAvailable(){return!0}async _set(e,t){this.storage[e]=t}async _get(e){const t=this.storage[e];return void 0===t?null:t}async _remove(e){delete this.storage[e]}_addListener(e,t){}_removeListener(e,t){}constructor(){this.type="NONE",this.storage={}}}Po.type="NONE";const Oo=Po;
+ */class Ao{async _isAvailable(){return!0}async _set(e,t){this.storage[e]=t}async _get(e){const t=this.storage[e];return void 0===t?null:t}async _remove(e){delete this.storage[e]}_addListener(e,t){}_removeListener(e,t){}constructor(){this.type="NONE",this.storage={}}}Ao.type="NONE";const xo=Ao;
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -1890,7 +1890,7 @@ async function(e,t){const n=await go(e,{},(async()=>{const n=j({grant_type:"refr
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */function Ao(e,t,n){return`firebase:${e}:${t}:${n}`}class xo{setCurrentUser(e){return this.persistence._set(this.fullUserKey,e.toJSON())}async getCurrentUser(){const e=await this.persistence._get(this.fullUserKey);return e?No._fromJSON(this.auth,e):null}removeCurrentUser(){return this.persistence._remove(this.fullUserKey)}savePersistenceForRedirect(){return this.persistence._set(this.fullPersistenceKey,this.persistence.type)}async setPersistence(e){if(this.persistence===e)return;const t=await this.getCurrentUser();return await this.removeCurrentUser(),this.persistence=e,t?this.setCurrentUser(t):void 0}delete(){this.persistence._removeListener(this.fullUserKey,this.boundEventHandler)}static async create(e,t,n="authUser"){if(!t.length)return new xo(no(Oo),e,n);const r=(await Promise.all(t.map((async e=>{if(await e._isAvailable())return e})))).filter((e=>e));let i=r[0]||no(Oo);const s=Ao(n,e.config.apiKey,e.name);let o=null;for(const n of t)try{const t=await n._get(s);if(t){const r=No._fromJSON(e,t);n!==i&&(o=r),i=n;break}}catch(e){}const a=r.filter((e=>e._shouldAllowMigration));return i._shouldAllowMigration&&a.length?(i=a[0],o&&await i._set(s,o.toJSON()),await Promise.all(t.map((async e=>{if(e!==i)try{await e._remove(s)}catch(e){}}))),new xo(i,e,n)):new xo(i,e,n)}constructor(e,t,n){this.persistence=e,this.auth=t,this.userKey=n;const{config:r,name:i}=this.auth;this.fullUserKey=Ao(this.userKey,r.apiKey,i),this.fullPersistenceKey=Ao("persistence",r.apiKey,i),this.boundEventHandler=t._onStorageEvent.bind(t),this.persistence._addListener(this.fullUserKey,this.boundEventHandler)}}
+ */function Lo(e,t,n){return`firebase:${e}:${t}:${n}`}class Do{setCurrentUser(e){return this.persistence._set(this.fullUserKey,e.toJSON())}async getCurrentUser(){const e=await this.persistence._get(this.fullUserKey);return e?Oo._fromJSON(this.auth,e):null}removeCurrentUser(){return this.persistence._remove(this.fullUserKey)}savePersistenceForRedirect(){return this.persistence._set(this.fullPersistenceKey,this.persistence.type)}async setPersistence(e){if(this.persistence===e)return;const t=await this.getCurrentUser();return await this.removeCurrentUser(),this.persistence=e,t?this.setCurrentUser(t):void 0}delete(){this.persistence._removeListener(this.fullUserKey,this.boundEventHandler)}static async create(e,t,n="authUser"){if(!t.length)return new Do(io(xo),e,n);const r=(await Promise.all(t.map((async e=>{if(await e._isAvailable())return e})))).filter((e=>e));let i=r[0]||io(xo);const s=Lo(n,e.config.apiKey,e.name);let o=null;for(const n of t)try{const t=await n._get(s);if(t){const r=Oo._fromJSON(e,t);n!==i&&(o=r),i=n;break}}catch(e){}const a=r.filter((e=>e._shouldAllowMigration));return i._shouldAllowMigration&&a.length?(i=a[0],o&&await i._set(s,o.toJSON()),await Promise.all(t.map((async e=>{if(e!==i)try{await e._remove(s)}catch(e){}}))),new Do(i,e,n)):new Do(i,e,n)}constructor(e,t,n){this.persistence=e,this.auth=t,this.userKey=n;const{config:r,name:i}=this.auth;this.fullUserKey=Lo(this.userKey,r.apiKey,i),this.fullPersistenceKey=Lo("persistence",r.apiKey,i),this.boundEventHandler=t._onStorageEvent.bind(t),this.persistence._addListener(this.fullUserKey,this.boundEventHandler)}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1906,7 +1906,7 @@ async function(e,t){const n=await go(e,{},(async()=>{const n=j({grant_type:"refr
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */function Lo(e){const t=e.toLowerCase();if(t.includes("opera/")||t.includes("opr/")||t.includes("opios/"))return"Opera";if(Fo(t))return"IEMobile";if(t.includes("msie")||t.includes("trident/"))return"IE";if(t.includes("edge/"))return"Edge";if(Do(t))return"Firefox";if(t.includes("silk/"))return"Silk";if(jo(t))return"Blackberry";if(qo(t))return"Webos";if(Mo(t))return"Safari";if((t.includes("chrome/")||Uo(t))&&!t.includes("edge/"))return"Chrome";if(Bo(t))return"Android";{const t=/([a-zA-Z\d\.]+)\/[a-zA-Z\d\.]*$/,n=e.match(t);if(2===(null==n?void 0:n.length))return n[1]}return"Other"}function Do(e=w()){return/firefox\//i.test(e)}function Mo(e=w()){const t=e.toLowerCase();return t.includes("safari/")&&!t.includes("chrome/")&&!t.includes("crios/")&&!t.includes("android")}function Uo(e=w()){return/crios\//i.test(e)}function Fo(e=w()){return/iemobile/i.test(e)}function Bo(e=w()){return/android/i.test(e)}function jo(e=w()){return/blackberry/i.test(e)}function qo(e=w()){return/webos/i.test(e)}function Wo(e=w()){return/iphone|ipad|ipod/i.test(e)}function Ho(){return C()&&10===document.documentMode}function Vo(e=w()){return Wo(e)||Bo(e)||qo(e)||jo(e)||/windows phone/i.test(e)||Fo(e)}
+ */function Mo(e){const t=e.toLowerCase();if(t.includes("opera/")||t.includes("opr/")||t.includes("opios/"))return"Opera";if(jo(t))return"IEMobile";if(t.includes("msie")||t.includes("trident/"))return"IE";if(t.includes("edge/"))return"Edge";if(Uo(t))return"Firefox";if(t.includes("silk/"))return"Silk";if(Wo(t))return"Blackberry";if(Ho(t))return"Webos";if(Fo(t))return"Safari";if((t.includes("chrome/")||Bo(t))&&!t.includes("edge/"))return"Chrome";if(qo(t))return"Android";{const t=/([a-zA-Z\d\.]+)\/[a-zA-Z\d\.]*$/,n=e.match(t);if(2===(null==n?void 0:n.length))return n[1]}return"Other"}function Uo(e=w()){return/firefox\//i.test(e)}function Fo(e=w()){const t=e.toLowerCase();return t.includes("safari/")&&!t.includes("chrome/")&&!t.includes("crios/")&&!t.includes("android")}function Bo(e=w()){return/crios\//i.test(e)}function jo(e=w()){return/iemobile/i.test(e)}function qo(e=w()){return/android/i.test(e)}function Wo(e=w()){return/blackberry/i.test(e)}function Ho(e=w()){return/webos/i.test(e)}function Vo(e=w()){return/iphone|ipad|ipod/i.test(e)}function $o(){return C()&&10===document.documentMode}function zo(e=w()){return Vo(e)||qo(e)||Ho(e)||Wo(e)||/windows phone/i.test(e)||jo(e)}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1923,7 +1923,7 @@ async function(e,t){const n=await go(e,{},(async()=>{const n=j({grant_type:"refr
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function $o(e,t=[]){let n;switch(e){case"Browser":n=Lo(w());break;case"Worker":n=`${Lo(w())}-${e}`;break;default:n=e}return`${n}/JsCore/9.8.3/${t.length?t.join(","):"FirebaseCore-web"}`}
+function Go(e,t=[]){let n;switch(e){case"Browser":n=Mo(w());break;case"Worker":n=`${Mo(w())}-${e}`;break;default:n=e}return`${n}/JsCore/9.8.3/${t.length?t.join(","):"FirebaseCore-web"}`}
 /**
  * @license
  * Copyright 2022 Google LLC
@@ -1939,7 +1939,7 @@ function $o(e,t=[]){let n;switch(e){case"Browser":n=Lo(w());break;case"Worker":n
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class zo{pushCallback(e,t){const n=t=>new Promise(((n,r)=>{try{n(e(t))}catch(e){r(e)}}));n.onAbort=t,this.queue.push(n);const r=this.queue.length-1;return()=>{this.queue[r]=()=>Promise.resolve()}}async runMiddleware(e){var t;if(this.auth.currentUser===e)return;const n=[];try{for(const t of this.queue)await t(e),t.onAbort&&n.push(t.onAbort)}catch(e){n.reverse();for(const e of n)try{e()}catch(e){}throw this.auth._errorFactory.create("login-blocked",{originalMessage:null===(t=e)||void 0===t?void 0:t.message})}}constructor(e){this.auth=e,this.queue=[]}}
+ */class Ko{pushCallback(e,t){const n=t=>new Promise(((n,r)=>{try{n(e(t))}catch(e){r(e)}}));n.onAbort=t,this.queue.push(n);const r=this.queue.length-1;return()=>{this.queue[r]=()=>Promise.resolve()}}async runMiddleware(e){var t;if(this.auth.currentUser===e)return;const n=[];try{for(const t of this.queue)await t(e),t.onAbort&&n.push(t.onAbort)}catch(e){n.reverse();for(const e of n)try{e()}catch(e){}throw this.auth._errorFactory.create("login-blocked",{originalMessage:null===(t=e)||void 0===t?void 0:t.message})}}constructor(e){this.auth=e,this.queue=[]}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -1955,40 +1955,7 @@ function $o(e,t=[]){let n;switch(e){case"Browser":n=Lo(w());break;case"Worker":n
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class Go{_initializeWithPersistence(e,t){return t&&(this._popupRedirectResolver=no(t)),this._initializationPromise=this.queue((async()=>{var n,r;if(!this._deleted&&(this.persistenceManager=await xo.create(this,e),!this._deleted)){if(null===(n=this._popupRedirectResolver)||void 0===n?void 0:n._shouldInitProactively)try{await this._popupRedirectResolver._initialize(this)}catch(e){}await this.initializeCurrentUser(t),this.lastNotifiedUid=(null===(r=this.currentUser)||void 0===r?void 0:r.uid)||null,this._deleted||(this._isInitialized=!0)}})),this._initializationPromise}async _onStorageEvent(){if(this._deleted)return;const e=await this.assertedPersistence.getCurrentUser();return this.currentUser||e?this.currentUser&&e&&this.currentUser.uid===e.uid?(this._currentUser._assign(e),void await this.currentUser.getIdToken()):void await this._updateCurrentUser(e,!0):void 0}async initializeCurrentUser(e){var t;const n=await this.assertedPersistence.getCurrentUser();let r=n,i=!1;if(e&&this.config.authDomain){await this.getOrInitRedirectPersistenceManager();const n=null===(t=this.redirectUser)||void 0===t?void 0:t._redirectEventId,s=null==r?void 0:r._redirectEventId,o=await this.tryRedirectSignIn(e);n&&n!==s||!(null==o?void 0:o.user)||(r=o.user,i=!0)}if(!r)return this.directlySetCurrentUser(null);if(!r._redirectEventId){if(i)try{await this.beforeStateQueue.runMiddleware(r)}catch(e){r=n,this._popupRedirectResolver._overrideRedirectResult(this,(()=>Promise.reject(e)))}return r?this.reloadAndSetCurrentUserOrClear(r):this.directlySetCurrentUser(null)}return Xs(this._popupRedirectResolver,this,"argument-error"),await this.getOrInitRedirectPersistenceManager(),this.redirectUser&&this.redirectUser._redirectEventId===r._redirectEventId?this.directlySetCurrentUser(r):this.reloadAndSetCurrentUserOrClear(r)}async tryRedirectSignIn(e){let t=null;try{t=await this._popupRedirectResolver._completeRedirectFn(this,e,!0)}catch(e){await this._setRedirectUser(null)}return t}async reloadAndSetCurrentUserOrClear(e){try{await ko(e)}catch(e){if("auth/network-request-failed"!==e.code)return this.directlySetCurrentUser(null)}return this.directlySetCurrentUser(e)}useDeviceLanguage(){this.languageCode=function(){if("undefined"==typeof navigator)return null;const e=navigator;return e.languages&&e.languages[0]||e.language||null}()}async _delete(){this._deleted=!0}async updateCurrentUser(e){const t=e?J(e):null;return t&&Xs(t.auth.config.apiKey===this.config.apiKey,this,"invalid-user-token"),this._updateCurrentUser(t&&t._clone(this))}async _updateCurrentUser(e,t=!1){if(!this._deleted)return e&&Xs(this.tenantId===e.tenantId,this,"tenant-id-mismatch"),t||await this.beforeStateQueue.runMiddleware(e),this.queue((async()=>{await this.directlySetCurrentUser(e),this.notifyAuthListeners()}))}async signOut(){return await this.beforeStateQueue.runMiddleware(null),(this.redirectPersistenceManager||this._popupRedirectResolver)&&await this._setRedirectUser(null),this._updateCurrentUser(null,!0)}setPersistence(e){return this.queue((async()=>{await this.assertedPersistence.setPersistence(no(e))}))}_getPersistence(){return this.assertedPersistence.persistence.type}_updateErrorMap(e){this._errorFactory=new S("auth","Firebase",e())}onAuthStateChanged(e,t,n){return this.registerStateListener(this.authStateSubscription,e,t,n)}beforeAuthStateChanged(e,t){return this.beforeStateQueue.pushCallback(e,t)}onIdTokenChanged(e,t,n){return this.registerStateListener(this.idTokenSubscription,e,t,n)}toJSON(){var e;return{apiKey:this.config.apiKey,authDomain:this.config.authDomain,appName:this.name,currentUser:null===(e=this._currentUser)||void 0===e?void 0:e.toJSON()}}async _setRedirectUser(e,t){const n=await this.getOrInitRedirectPersistenceManager(t);return null===e?n.removeCurrentUser():n.setCurrentUser(e)}async getOrInitRedirectPersistenceManager(e){if(!this.redirectPersistenceManager){const t=e&&no(e)||this._popupRedirectResolver;Xs(t,this,"argument-error"),this.redirectPersistenceManager=await xo.create(this,[no(t._redirectPersistence)],"redirectUser"),this.redirectUser=await this.redirectPersistenceManager.getCurrentUser()}return this.redirectPersistenceManager}async _redirectUserForId(e){var t,n;return this._isInitialized&&await this.queue((async()=>{})),(null===(t=this._currentUser)||void 0===t?void 0:t._redirectEventId)===e?this._currentUser:(null===(n=this.redirectUser)||void 0===n?void 0:n._redirectEventId)===e?this.redirectUser:null}async _persistUserIfCurrent(e){if(e===this.currentUser)return this.queue((async()=>this.directlySetCurrentUser(e)))}_notifyListenersIfCurrent(e){e===this.currentUser&&this.notifyAuthListeners()}_key(){return`${this.config.authDomain}:${this.config.apiKey}:${this.name}`}_startProactiveRefresh(){this.isProactiveRefreshEnabled=!0,this.currentUser&&this._currentUser._startProactiveRefresh()}_stopProactiveRefresh(){this.isProactiveRefreshEnabled=!1,this.currentUser&&this._currentUser._stopProactiveRefresh()}get _currentUser(){return this.currentUser}notifyAuthListeners(){var e,t;if(!this._isInitialized)return;this.idTokenSubscription.next(this.currentUser);const n=null!==(t=null===(e=this.currentUser)||void 0===e?void 0:e.uid)&&void 0!==t?t:null;this.lastNotifiedUid!==n&&(this.lastNotifiedUid=n,this.authStateSubscription.next(this.currentUser))}registerStateListener(e,t,n,r){if(this._deleted)return()=>{};const i="function"==typeof t?t:t.next.bind(t),s=this._isInitialized?Promise.resolve():this._initializationPromise;return Xs(s,this,"internal-error"),s.then((()=>i(this.currentUser))),"function"==typeof t?e.addObserver(t,n,r):e.addObserver(t)}async directlySetCurrentUser(e){this.currentUser&&this.currentUser!==e&&(this._currentUser._stopProactiveRefresh(),e&&this.isProactiveRefreshEnabled&&e._startProactiveRefresh()),this.currentUser=e,e?await this.assertedPersistence.setCurrentUser(e):await this.assertedPersistence.removeCurrentUser()}queue(e){return this.operations=this.operations.then(e,e),this.operations}get assertedPersistence(){return Xs(this.persistenceManager,this,"internal-error"),this.persistenceManager}_logFramework(e){e&&!this.frameworks.includes(e)&&(this.frameworks.push(e),this.frameworks.sort(),this.clientVersion=$o(this.config.clientPlatform,this._getFrameworks()))}_getFrameworks(){return this.frameworks}async _getAdditionalHeaders(){var e;const t={"X-Client-Version":this.clientVersion};this.app.options.appId&&(t["X-Firebase-gmpid"]=this.app.options.appId);const n=await(null===(e=this.heartbeatServiceProvider.getImmediate({optional:!0}))||void 0===e?void 0:e.getHeartbeatsHeader());return n&&(t["X-Firebase-Client"]=n),t}constructor(e,t,n){this.app=e,this.heartbeatServiceProvider=t,this.config=n,this.currentUser=null,this.emulatorConfig=null,this.operations=Promise.resolve(),this.authStateSubscription=new Yo(this),this.idTokenSubscription=new Yo(this),this.beforeStateQueue=new zo(this),this.redirectUser=null,this.isProactiveRefreshEnabled=!1,this._canInitEmulator=!0,this._isInitialized=!1,this._deleted=!1,this._initializationPromise=null,this._popupRedirectResolver=null,this._errorFactory=$s,this.lastNotifiedUid=void 0,this.languageCode=null,this.tenantId=null,this.settings={appVerificationDisabledForTesting:!1},this.frameworks=[],this.name=e.name,this.clientVersion=n.sdkClientVersion}}function Ko(e){return J(e)}class Yo{get next(){return Xs(this.observer,this.auth,"internal-error"),this.observer.next.bind(this.observer)}constructor(e){this.auth=e,this.observer=null,this.addObserver=V((e=>this.observer=e))}}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-class Jo{toJSON(){return Zs("not implemented")}_getIdTokenResponse(e){return Zs("not implemented")}_linkToIdToken(e,t){return Zs("not implemented")}_getReauthenticationResolver(e){return Zs("not implemented")}constructor(e,t){this.providerId=e,this.signInMethod=t}}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */async function Qo(e,t){return po(e,"POST","/v1/accounts:update",t)}
+ */class Yo{_initializeWithPersistence(e,t){return t&&(this._popupRedirectResolver=io(t)),this._initializationPromise=this.queue((async()=>{var n,r;if(!this._deleted&&(this.persistenceManager=await Do.create(this,e),!this._deleted)){if(null===(n=this._popupRedirectResolver)||void 0===n?void 0:n._shouldInitProactively)try{await this._popupRedirectResolver._initialize(this)}catch(e){}await this.initializeCurrentUser(t),this.lastNotifiedUid=(null===(r=this.currentUser)||void 0===r?void 0:r.uid)||null,this._deleted||(this._isInitialized=!0)}})),this._initializationPromise}async _onStorageEvent(){if(this._deleted)return;const e=await this.assertedPersistence.getCurrentUser();return this.currentUser||e?this.currentUser&&e&&this.currentUser.uid===e.uid?(this._currentUser._assign(e),void await this.currentUser.getIdToken()):void await this._updateCurrentUser(e,!0):void 0}async initializeCurrentUser(e){var t;const n=await this.assertedPersistence.getCurrentUser();let r=n,i=!1;if(e&&this.config.authDomain){await this.getOrInitRedirectPersistenceManager();const n=null===(t=this.redirectUser)||void 0===t?void 0:t._redirectEventId,s=null==r?void 0:r._redirectEventId,o=await this.tryRedirectSignIn(e);n&&n!==s||!(null==o?void 0:o.user)||(r=o.user,i=!0)}if(!r)return this.directlySetCurrentUser(null);if(!r._redirectEventId){if(i)try{await this.beforeStateQueue.runMiddleware(r)}catch(e){r=n,this._popupRedirectResolver._overrideRedirectResult(this,(()=>Promise.reject(e)))}return r?this.reloadAndSetCurrentUserOrClear(r):this.directlySetCurrentUser(null)}return eo(this._popupRedirectResolver,this,"argument-error"),await this.getOrInitRedirectPersistenceManager(),this.redirectUser&&this.redirectUser._redirectEventId===r._redirectEventId?this.directlySetCurrentUser(r):this.reloadAndSetCurrentUserOrClear(r)}async tryRedirectSignIn(e){let t=null;try{t=await this._popupRedirectResolver._completeRedirectFn(this,e,!0)}catch(e){await this._setRedirectUser(null)}return t}async reloadAndSetCurrentUserOrClear(e){try{await Ro(e)}catch(e){if("auth/network-request-failed"!==e.code)return this.directlySetCurrentUser(null)}return this.directlySetCurrentUser(e)}useDeviceLanguage(){this.languageCode=function(){if("undefined"==typeof navigator)return null;const e=navigator;return e.languages&&e.languages[0]||e.language||null}()}async _delete(){this._deleted=!0}async updateCurrentUser(e){const t=e?J(e):null;return t&&eo(t.auth.config.apiKey===this.config.apiKey,this,"invalid-user-token"),this._updateCurrentUser(t&&t._clone(this))}async _updateCurrentUser(e,t=!1){if(!this._deleted)return e&&eo(this.tenantId===e.tenantId,this,"tenant-id-mismatch"),t||await this.beforeStateQueue.runMiddleware(e),this.queue((async()=>{await this.directlySetCurrentUser(e),this.notifyAuthListeners()}))}async signOut(){return await this.beforeStateQueue.runMiddleware(null),(this.redirectPersistenceManager||this._popupRedirectResolver)&&await this._setRedirectUser(null),this._updateCurrentUser(null,!0)}setPersistence(e){return this.queue((async()=>{await this.assertedPersistence.setPersistence(io(e))}))}_getPersistence(){return this.assertedPersistence.persistence.type}_updateErrorMap(e){this._errorFactory=new S("auth","Firebase",e())}onAuthStateChanged(e,t,n){return this.registerStateListener(this.authStateSubscription,e,t,n)}beforeAuthStateChanged(e,t){return this.beforeStateQueue.pushCallback(e,t)}onIdTokenChanged(e,t,n){return this.registerStateListener(this.idTokenSubscription,e,t,n)}toJSON(){var e;return{apiKey:this.config.apiKey,authDomain:this.config.authDomain,appName:this.name,currentUser:null===(e=this._currentUser)||void 0===e?void 0:e.toJSON()}}async _setRedirectUser(e,t){const n=await this.getOrInitRedirectPersistenceManager(t);return null===e?n.removeCurrentUser():n.setCurrentUser(e)}async getOrInitRedirectPersistenceManager(e){if(!this.redirectPersistenceManager){const t=e&&io(e)||this._popupRedirectResolver;eo(t,this,"argument-error"),this.redirectPersistenceManager=await Do.create(this,[io(t._redirectPersistence)],"redirectUser"),this.redirectUser=await this.redirectPersistenceManager.getCurrentUser()}return this.redirectPersistenceManager}async _redirectUserForId(e){var t,n;return this._isInitialized&&await this.queue((async()=>{})),(null===(t=this._currentUser)||void 0===t?void 0:t._redirectEventId)===e?this._currentUser:(null===(n=this.redirectUser)||void 0===n?void 0:n._redirectEventId)===e?this.redirectUser:null}async _persistUserIfCurrent(e){if(e===this.currentUser)return this.queue((async()=>this.directlySetCurrentUser(e)))}_notifyListenersIfCurrent(e){e===this.currentUser&&this.notifyAuthListeners()}_key(){return`${this.config.authDomain}:${this.config.apiKey}:${this.name}`}_startProactiveRefresh(){this.isProactiveRefreshEnabled=!0,this.currentUser&&this._currentUser._startProactiveRefresh()}_stopProactiveRefresh(){this.isProactiveRefreshEnabled=!1,this.currentUser&&this._currentUser._stopProactiveRefresh()}get _currentUser(){return this.currentUser}notifyAuthListeners(){var e,t;if(!this._isInitialized)return;this.idTokenSubscription.next(this.currentUser);const n=null!==(t=null===(e=this.currentUser)||void 0===e?void 0:e.uid)&&void 0!==t?t:null;this.lastNotifiedUid!==n&&(this.lastNotifiedUid=n,this.authStateSubscription.next(this.currentUser))}registerStateListener(e,t,n,r){if(this._deleted)return()=>{};const i="function"==typeof t?t:t.next.bind(t),s=this._isInitialized?Promise.resolve():this._initializationPromise;return eo(s,this,"internal-error"),s.then((()=>i(this.currentUser))),"function"==typeof t?e.addObserver(t,n,r):e.addObserver(t)}async directlySetCurrentUser(e){this.currentUser&&this.currentUser!==e&&(this._currentUser._stopProactiveRefresh(),e&&this.isProactiveRefreshEnabled&&e._startProactiveRefresh()),this.currentUser=e,e?await this.assertedPersistence.setCurrentUser(e):await this.assertedPersistence.removeCurrentUser()}queue(e){return this.operations=this.operations.then(e,e),this.operations}get assertedPersistence(){return eo(this.persistenceManager,this,"internal-error"),this.persistenceManager}_logFramework(e){e&&!this.frameworks.includes(e)&&(this.frameworks.push(e),this.frameworks.sort(),this.clientVersion=Go(this.config.clientPlatform,this._getFrameworks()))}_getFrameworks(){return this.frameworks}async _getAdditionalHeaders(){var e;const t={"X-Client-Version":this.clientVersion};this.app.options.appId&&(t["X-Firebase-gmpid"]=this.app.options.appId);const n=await(null===(e=this.heartbeatServiceProvider.getImmediate({optional:!0}))||void 0===e?void 0:e.getHeartbeatsHeader());return n&&(t["X-Firebase-Client"]=n),t}constructor(e,t,n){this.app=e,this.heartbeatServiceProvider=t,this.config=n,this.currentUser=null,this.emulatorConfig=null,this.operations=Promise.resolve(),this.authStateSubscription=new Qo(this),this.idTokenSubscription=new Qo(this),this.beforeStateQueue=new Ko(this),this.redirectUser=null,this.isProactiveRefreshEnabled=!1,this._canInitEmulator=!0,this._isInitialized=!1,this._deleted=!1,this._initializationPromise=null,this._popupRedirectResolver=null,this._errorFactory=Gs,this.lastNotifiedUid=void 0,this.languageCode=null,this.tenantId=null,this.settings={appVerificationDisabledForTesting:!1},this.frameworks=[],this.name=e.name,this.clientVersion=n.sdkClientVersion}}function Jo(e){return J(e)}class Qo{get next(){return eo(this.observer,this.auth,"internal-error"),this.observer.next.bind(this.observer)}constructor(e){this.auth=e,this.observer=null,this.addObserver=V((e=>this.observer=e))}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2005,7 +1972,23 @@ class Jo{toJSON(){return Zs("not implemented")}_getIdTokenResponse(e){return Zs(
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class Xo extends Jo{static _fromEmailAndPassword(e,t){return new Xo(e,t,"password")}static _fromEmailAndCode(e,t,n=null){return new Xo(e,t,"emailLink",n)}toJSON(){return{email:this._email,password:this._password,signInMethod:this.signInMethod,tenantId:this._tenantId}}static fromJSON(e){const t="string"==typeof e?JSON.parse(e):e;if((null==t?void 0:t.email)&&(null==t?void 0:t.password)){if("password"===t.signInMethod)return this._fromEmailAndPassword(t.email,t.password);if("emailLink"===t.signInMethod)return this._fromEmailAndCode(t.email,t.password,t.tenantId)}return null}async _getIdTokenResponse(e){switch(this.signInMethod){case"password":
+class Xo{toJSON(){return to("not implemented")}_getIdTokenResponse(e){return to("not implemented")}_linkToIdToken(e,t){return to("not implemented")}_getReauthenticationResolver(e){return to("not implemented")}constructor(e,t){this.providerId=e,this.signInMethod=t}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */async function Zo(e,t){return mo(e,"POST","/v1/accounts:update",t)}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2022,7 +2005,7 @@ class Xo extends Jo{static _fromEmailAndPassword(e,t){return new Xo(e,t,"passwor
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-return async function(e,t){return mo(e,"POST","/v1/accounts:signInWithPassword",fo(e,t))}(e,{returnSecureToken:!0,email:this._email,password:this._password});case"emailLink":
+class ea extends Xo{static _fromEmailAndPassword(e,t){return new ea(e,t,"password")}static _fromEmailAndCode(e,t,n=null){return new ea(e,t,"emailLink",n)}toJSON(){return{email:this._email,password:this._password,signInMethod:this.signInMethod,tenantId:this._tenantId}}static fromJSON(e){const t="string"==typeof e?JSON.parse(e):e;if((null==t?void 0:t.email)&&(null==t?void 0:t.password)){if("password"===t.signInMethod)return this._fromEmailAndPassword(t.email,t.password);if("emailLink"===t.signInMethod)return this._fromEmailAndCode(t.email,t.password,t.tenantId)}return null}async _getIdTokenResponse(e){switch(this.signInMethod){case"password":
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2039,55 +2022,7 @@ return async function(e,t){return mo(e,"POST","/v1/accounts:signInWithPassword",
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-return async function(e,t){return mo(e,"POST","/v1/accounts:signInWithEmailLink",fo(e,t))}(e,{email:this._email,oobCode:this._password});default:Ks(e,"internal-error")}}async _linkToIdToken(e,t){switch(this.signInMethod){case"password":return Qo(e,{idToken:t,returnSecureToken:!0,email:this._email,password:this._password});case"emailLink":return async function(e,t){return mo(e,"POST","/v1/accounts:signInWithEmailLink",fo(e,t))}(e,{idToken:t,email:this._email,oobCode:this._password});default:Ks(e,"internal-error")}}_getReauthenticationResolver(e){return this._getIdTokenResponse(e)}constructor(e,t,n,r=null){super("password",n),this._email=e,this._password=t,this._tenantId=r}}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */async function Zo(e,t){return mo(e,"POST","/v1/accounts:signInWithIdp",fo(e,t))}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */class ea extends Jo{static _fromParams(e){const t=new ea(e.providerId,e.signInMethod);return e.idToken||e.accessToken?(e.idToken&&(t.idToken=e.idToken),e.accessToken&&(t.accessToken=e.accessToken),e.nonce&&!e.pendingToken&&(t.nonce=e.nonce),e.pendingToken&&(t.pendingToken=e.pendingToken)):e.oauthToken&&e.oauthTokenSecret?(t.accessToken=e.oauthToken,t.secret=e.oauthTokenSecret):Ks("argument-error"),t}toJSON(){return{idToken:this.idToken,accessToken:this.accessToken,secret:this.secret,nonce:this.nonce,pendingToken:this.pendingToken,providerId:this.providerId,signInMethod:this.signInMethod}}static fromJSON(e){const t="string"==typeof e?JSON.parse(e):e,{providerId:n,signInMethod:r}=t,i=Ws(t,["providerId","signInMethod"]);if(!n||!r)return null;const s=new ea(n,r);return s.idToken=i.idToken||void 0,s.accessToken=i.accessToken||void 0,s.secret=i.secret,s.nonce=i.nonce,s.pendingToken=i.pendingToken||null,s}_getIdTokenResponse(e){return Zo(e,this.buildRequest())}_linkToIdToken(e,t){const n=this.buildRequest();return n.idToken=t,Zo(e,n)}_getReauthenticationResolver(e){const t=this.buildRequest();return t.autoCreate=!1,Zo(e,t)}buildRequest(){const e={requestUri:"http://localhost",returnSecureToken:!0};if(this.pendingToken)e.pendingToken=this.pendingToken;else{const t={};this.idToken&&(t.id_token=this.idToken),this.accessToken&&(t.access_token=this.accessToken),this.secret&&(t.oauth_token_secret=this.secret),t.providerId=this.providerId,this.nonce&&!this.pendingToken&&(t.nonce=this.nonce),e.postBody=j(t)}return e}constructor(){super(...arguments),this.pendingToken=null}}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */const ta={USER_NOT_FOUND:"user-not-found"};
+return async function(e,t){return yo(e,"POST","/v1/accounts:signInWithPassword",go(e,t))}(e,{returnSecureToken:!0,email:this._email,password:this._password});case"emailLink":
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2104,7 +2039,7 @@ return async function(e,t){return mo(e,"POST","/v1/accounts:signInWithEmailLink"
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class na extends Jo{static _fromVerification(e,t){return new na({verificationId:e,verificationCode:t})}static _fromTokenResponse(e,t){return new na({phoneNumber:e,temporaryProof:t})}_getIdTokenResponse(e){return async function(e,t){return mo(e,"POST","/v1/accounts:signInWithPhoneNumber",fo(e,t))}(e,this._makeVerificationRequest())}_linkToIdToken(e,t){return async function(e,t){const n=await mo(e,"POST","/v1/accounts:signInWithPhoneNumber",fo(e,t));if(n.temporaryProof)throw vo(e,"account-exists-with-different-credential",n);return n}(e,Object.assign({idToken:t},this._makeVerificationRequest()))}_getReauthenticationResolver(e){return async function(e,t){return mo(e,"POST","/v1/accounts:signInWithPhoneNumber",fo(e,Object.assign(Object.assign({},t),{operation:"REAUTH"})),ta)}(e,this._makeVerificationRequest())}_makeVerificationRequest(){const{temporaryProof:e,phoneNumber:t,verificationId:n,verificationCode:r}=this.params;return e&&t?{temporaryProof:e,phoneNumber:t}:{sessionInfo:n,code:r}}toJSON(){const e={providerId:this.providerId};return this.params.phoneNumber&&(e.phoneNumber=this.params.phoneNumber),this.params.temporaryProof&&(e.temporaryProof=this.params.temporaryProof),this.params.verificationCode&&(e.verificationCode=this.params.verificationCode),this.params.verificationId&&(e.verificationId=this.params.verificationId),e}static fromJSON(e){"string"==typeof e&&(e=JSON.parse(e));const{verificationId:t,verificationCode:n,phoneNumber:r,temporaryProof:i}=e;return n||t||r||i?new na({verificationId:t,verificationCode:n,phoneNumber:r,temporaryProof:i}):null}constructor(e){super("phone","phone"),this.params=e}}
+return async function(e,t){return yo(e,"POST","/v1/accounts:signInWithEmailLink",go(e,t))}(e,{email:this._email,oobCode:this._password});default:Js(e,"internal-error")}}async _linkToIdToken(e,t){switch(this.signInMethod){case"password":return Zo(e,{idToken:t,returnSecureToken:!0,email:this._email,password:this._password});case"emailLink":return async function(e,t){return yo(e,"POST","/v1/accounts:signInWithEmailLink",go(e,t))}(e,{idToken:t,email:this._email,oobCode:this._password});default:Js(e,"internal-error")}}_getReauthenticationResolver(e){return this._getIdTokenResponse(e)}constructor(e,t,n,r=null){super("password",n),this._email=e,this._password=t,this._tenantId=r}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2120,7 +2055,39 @@ class na extends Jo{static _fromVerification(e,t){return new na({verificationId:
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class ra{static parseLink(e){const t=function(e){const t=q(W(e)).link,n=t?q(W(t)).deep_link_id:null,r=q(W(e)).deep_link_id;return(r?q(W(r)).link:null)||r||n||t||e}(e);try{return new ra(t)}catch(e){return null}}constructor(e){var t,n,r,i,s,o;const a=q(W(e)),c=null!==(t=a.apiKey)&&void 0!==t?t:null,l=null!==(n=a.oobCode)&&void 0!==n?n:null,h=function(e){switch(e){case"recoverEmail":return"RECOVER_EMAIL";case"resetPassword":return"PASSWORD_RESET";case"signIn":return"EMAIL_SIGNIN";case"verifyEmail":return"VERIFY_EMAIL";case"verifyAndChangeEmail":return"VERIFY_AND_CHANGE_EMAIL";case"revertSecondFactorAddition":return"REVERT_SECOND_FACTOR_ADDITION";default:return null}}(null!==(r=a.mode)&&void 0!==r?r:null);Xs(c&&l&&h,"argument-error"),this.apiKey=c,this.operation=h,this.code=l,this.continueUrl=null!==(i=a.continueUrl)&&void 0!==i?i:null,this.languageCode=null!==(s=a.languageCode)&&void 0!==s?s:null,this.tenantId=null!==(o=a.tenantId)&&void 0!==o?o:null}}
+ */async function ta(e,t){return yo(e,"POST","/v1/accounts:signInWithIdp",go(e,t))}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */class na extends Xo{static _fromParams(e){const t=new na(e.providerId,e.signInMethod);return e.idToken||e.accessToken?(e.idToken&&(t.idToken=e.idToken),e.accessToken&&(t.accessToken=e.accessToken),e.nonce&&!e.pendingToken&&(t.nonce=e.nonce),e.pendingToken&&(t.pendingToken=e.pendingToken)):e.oauthToken&&e.oauthTokenSecret?(t.accessToken=e.oauthToken,t.secret=e.oauthTokenSecret):Js("argument-error"),t}toJSON(){return{idToken:this.idToken,accessToken:this.accessToken,secret:this.secret,nonce:this.nonce,pendingToken:this.pendingToken,providerId:this.providerId,signInMethod:this.signInMethod}}static fromJSON(e){const t="string"==typeof e?JSON.parse(e):e,{providerId:n,signInMethod:r}=t,i=Vs(t,["providerId","signInMethod"]);if(!n||!r)return null;const s=new na(n,r);return s.idToken=i.idToken||void 0,s.accessToken=i.accessToken||void 0,s.secret=i.secret,s.nonce=i.nonce,s.pendingToken=i.pendingToken||null,s}_getIdTokenResponse(e){return ta(e,this.buildRequest())}_linkToIdToken(e,t){const n=this.buildRequest();return n.idToken=t,ta(e,n)}_getReauthenticationResolver(e){const t=this.buildRequest();return t.autoCreate=!1,ta(e,t)}buildRequest(){const e={requestUri:"http://localhost",returnSecureToken:!0};if(this.pendingToken)e.pendingToken=this.pendingToken;else{const t={};this.idToken&&(t.id_token=this.idToken),this.accessToken&&(t.access_token=this.accessToken),this.secret&&(t.oauth_token_secret=this.secret),t.providerId=this.providerId,this.nonce&&!this.pendingToken&&(t.nonce=this.nonce),e.postBody=j(t)}return e}constructor(){super(...arguments),this.pendingToken=null}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */const ra={USER_NOT_FOUND:"user-not-found"};
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2137,7 +2104,23 @@ class na extends Jo{static _fromVerification(e,t){return new na({verificationId:
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class ia{static credential(e,t){return Xo._fromEmailAndPassword(e,t)}static credentialWithLink(e,t){const n=ra.parseLink(t);return Xs(n,"argument-error"),Xo._fromEmailAndCode(e,n.code,n.tenantId)}constructor(){this.providerId=ia.PROVIDER_ID}}ia.PROVIDER_ID="password",ia.EMAIL_PASSWORD_SIGN_IN_METHOD="password",ia.EMAIL_LINK_SIGN_IN_METHOD="emailLink";
+class ia extends Xo{static _fromVerification(e,t){return new ia({verificationId:e,verificationCode:t})}static _fromTokenResponse(e,t){return new ia({phoneNumber:e,temporaryProof:t})}_getIdTokenResponse(e){return async function(e,t){return yo(e,"POST","/v1/accounts:signInWithPhoneNumber",go(e,t))}(e,this._makeVerificationRequest())}_linkToIdToken(e,t){return async function(e,t){const n=await yo(e,"POST","/v1/accounts:signInWithPhoneNumber",go(e,t));if(n.temporaryProof)throw bo(e,"account-exists-with-different-credential",n);return n}(e,Object.assign({idToken:t},this._makeVerificationRequest()))}_getReauthenticationResolver(e){return async function(e,t){return yo(e,"POST","/v1/accounts:signInWithPhoneNumber",go(e,Object.assign(Object.assign({},t),{operation:"REAUTH"})),ra)}(e,this._makeVerificationRequest())}_makeVerificationRequest(){const{temporaryProof:e,phoneNumber:t,verificationId:n,verificationCode:r}=this.params;return e&&t?{temporaryProof:e,phoneNumber:t}:{sessionInfo:n,code:r}}toJSON(){const e={providerId:this.providerId};return this.params.phoneNumber&&(e.phoneNumber=this.params.phoneNumber),this.params.temporaryProof&&(e.temporaryProof=this.params.temporaryProof),this.params.verificationCode&&(e.verificationCode=this.params.verificationCode),this.params.verificationId&&(e.verificationId=this.params.verificationId),e}static fromJSON(e){"string"==typeof e&&(e=JSON.parse(e));const{verificationId:t,verificationCode:n,phoneNumber:r,temporaryProof:i}=e;return n||t||r||i?new ia({verificationId:t,verificationCode:n,phoneNumber:r,temporaryProof:i}):null}constructor(e){super("phone","phone"),this.params=e}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */class sa{static parseLink(e){const t=function(e){const t=q(W(e)).link,n=t?q(W(t)).deep_link_id:null,r=q(W(e)).deep_link_id;return(r?q(W(r)).link:null)||r||n||t||e}(e);try{return new sa(t)}catch(e){return null}}constructor(e){var t,n,r,i,s,o;const a=q(W(e)),c=null!==(t=a.apiKey)&&void 0!==t?t:null,l=null!==(n=a.oobCode)&&void 0!==n?n:null,h=function(e){switch(e){case"recoverEmail":return"RECOVER_EMAIL";case"resetPassword":return"PASSWORD_RESET";case"signIn":return"EMAIL_SIGNIN";case"verifyEmail":return"VERIFY_EMAIL";case"verifyAndChangeEmail":return"VERIFY_AND_CHANGE_EMAIL";case"revertSecondFactorAddition":return"REVERT_SECOND_FACTOR_ADDITION";default:return null}}(null!==(r=a.mode)&&void 0!==r?r:null);eo(c&&l&&h,"argument-error"),this.apiKey=c,this.operation=h,this.code=l,this.continueUrl=null!==(i=a.continueUrl)&&void 0!==i?i:null,this.languageCode=null!==(s=a.languageCode)&&void 0!==s?s:null,this.tenantId=null!==(o=a.tenantId)&&void 0!==o?o:null}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2154,7 +2137,24 @@ class ia{static credential(e,t){return Xo._fromEmailAndPassword(e,t)}static cred
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class sa{setDefaultLanguage(e){this.defaultLanguageCode=e}setCustomParameters(e){return this.customParameters=e,this}getCustomParameters(){return this.customParameters}constructor(e){this.providerId=e,this.defaultLanguageCode=null,this.customParameters={}}}
+class oa{static credential(e,t){return ea._fromEmailAndPassword(e,t)}static credentialWithLink(e,t){const n=sa.parseLink(t);return eo(n,"argument-error"),ea._fromEmailAndCode(e,n.code,n.tenantId)}constructor(){this.providerId=oa.PROVIDER_ID}}oa.PROVIDER_ID="password",oa.EMAIL_PASSWORD_SIGN_IN_METHOD="password",oa.EMAIL_LINK_SIGN_IN_METHOD="emailLink";
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+class aa{setDefaultLanguage(e){this.defaultLanguageCode=e}setCustomParameters(e){return this.customParameters=e,this}getCustomParameters(){return this.customParameters}constructor(e){this.providerId=e,this.defaultLanguageCode=null,this.customParameters={}}}
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -2170,7 +2170,7 @@ class sa{setDefaultLanguage(e){this.defaultLanguageCode=e}setCustomParameters(e)
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class oa extends sa{addScope(e){return this.scopes.includes(e)||this.scopes.push(e),this}getScopes(){return[...this.scopes]}constructor(){super(...arguments),this.scopes=[]}}
+ */class ca extends aa{addScope(e){return this.scopes.includes(e)||this.scopes.push(e),this}getScopes(){return[...this.scopes]}constructor(){super(...arguments),this.scopes=[]}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2187,7 +2187,7 @@ class sa{setDefaultLanguage(e){this.defaultLanguageCode=e}setCustomParameters(e)
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class aa extends oa{static credential(e){return ea._fromParams({providerId:aa.PROVIDER_ID,signInMethod:aa.FACEBOOK_SIGN_IN_METHOD,accessToken:e})}static credentialFromResult(e){return aa.credentialFromTaggedObject(e)}static credentialFromError(e){return aa.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e||!("oauthAccessToken"in e))return null;if(!e.oauthAccessToken)return null;try{return aa.credential(e.oauthAccessToken)}catch(e){return null}}constructor(){super("facebook.com")}}aa.FACEBOOK_SIGN_IN_METHOD="facebook.com",aa.PROVIDER_ID="facebook.com";
+class la extends ca{static credential(e){return na._fromParams({providerId:la.PROVIDER_ID,signInMethod:la.FACEBOOK_SIGN_IN_METHOD,accessToken:e})}static credentialFromResult(e){return la.credentialFromTaggedObject(e)}static credentialFromError(e){return la.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e||!("oauthAccessToken"in e))return null;if(!e.oauthAccessToken)return null;try{return la.credential(e.oauthAccessToken)}catch(e){return null}}constructor(){super("facebook.com")}}la.FACEBOOK_SIGN_IN_METHOD="facebook.com",la.PROVIDER_ID="facebook.com";
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2204,7 +2204,7 @@ class aa extends oa{static credential(e){return ea._fromParams({providerId:aa.PR
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class ca extends oa{static credential(e,t){return ea._fromParams({providerId:ca.PROVIDER_ID,signInMethod:ca.GOOGLE_SIGN_IN_METHOD,idToken:e,accessToken:t})}static credentialFromResult(e){return ca.credentialFromTaggedObject(e)}static credentialFromError(e){return ca.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e)return null;const{oauthIdToken:t,oauthAccessToken:n}=e;if(!t&&!n)return null;try{return ca.credential(t,n)}catch(e){return null}}constructor(){super("google.com"),this.addScope("profile")}}ca.GOOGLE_SIGN_IN_METHOD="google.com",ca.PROVIDER_ID="google.com";
+class ha extends ca{static credential(e,t){return na._fromParams({providerId:ha.PROVIDER_ID,signInMethod:ha.GOOGLE_SIGN_IN_METHOD,idToken:e,accessToken:t})}static credentialFromResult(e){return ha.credentialFromTaggedObject(e)}static credentialFromError(e){return ha.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e)return null;const{oauthIdToken:t,oauthAccessToken:n}=e;if(!t&&!n)return null;try{return ha.credential(t,n)}catch(e){return null}}constructor(){super("google.com"),this.addScope("profile")}}ha.GOOGLE_SIGN_IN_METHOD="google.com",ha.PROVIDER_ID="google.com";
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2221,7 +2221,7 @@ class ca extends oa{static credential(e,t){return ea._fromParams({providerId:ca.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class la extends oa{static credential(e){return ea._fromParams({providerId:la.PROVIDER_ID,signInMethod:la.GITHUB_SIGN_IN_METHOD,accessToken:e})}static credentialFromResult(e){return la.credentialFromTaggedObject(e)}static credentialFromError(e){return la.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e||!("oauthAccessToken"in e))return null;if(!e.oauthAccessToken)return null;try{return la.credential(e.oauthAccessToken)}catch(e){return null}}constructor(){super("github.com")}}la.GITHUB_SIGN_IN_METHOD="github.com",la.PROVIDER_ID="github.com";
+class ua extends ca{static credential(e){return na._fromParams({providerId:ua.PROVIDER_ID,signInMethod:ua.GITHUB_SIGN_IN_METHOD,accessToken:e})}static credentialFromResult(e){return ua.credentialFromTaggedObject(e)}static credentialFromError(e){return ua.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e||!("oauthAccessToken"in e))return null;if(!e.oauthAccessToken)return null;try{return ua.credential(e.oauthAccessToken)}catch(e){return null}}constructor(){super("github.com")}}ua.GITHUB_SIGN_IN_METHOD="github.com",ua.PROVIDER_ID="github.com";
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2238,7 +2238,7 @@ class la extends oa{static credential(e){return ea._fromParams({providerId:la.PR
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class ha extends oa{static credential(e,t){return ea._fromParams({providerId:ha.PROVIDER_ID,signInMethod:ha.TWITTER_SIGN_IN_METHOD,oauthToken:e,oauthTokenSecret:t})}static credentialFromResult(e){return ha.credentialFromTaggedObject(e)}static credentialFromError(e){return ha.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e)return null;const{oauthAccessToken:t,oauthTokenSecret:n}=e;if(!t||!n)return null;try{return ha.credential(t,n)}catch(e){return null}}constructor(){super("twitter.com")}}
+class da extends ca{static credential(e,t){return na._fromParams({providerId:da.PROVIDER_ID,signInMethod:da.TWITTER_SIGN_IN_METHOD,oauthToken:e,oauthTokenSecret:t})}static credentialFromResult(e){return da.credentialFromTaggedObject(e)}static credentialFromError(e){return da.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e)return null;const{oauthAccessToken:t,oauthTokenSecret:n}=e;if(!t||!n)return null;try{return da.credential(t,n)}catch(e){return null}}constructor(){super("twitter.com")}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2255,7 +2255,7 @@ class ha extends oa{static credential(e,t){return ea._fromParams({providerId:ha.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-async function ua(e,t){return mo(e,"POST","/v1/accounts:signUp",fo(e,t))}
+async function fa(e,t){return yo(e,"POST","/v1/accounts:signUp",go(e,t))}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2271,89 +2271,7 @@ async function ua(e,t){return mo(e,"POST","/v1/accounts:signUp",fo(e,t))}
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */ha.TWITTER_SIGN_IN_METHOD="twitter.com",ha.PROVIDER_ID="twitter.com";class da{static async _fromIdTokenResponse(e,t,n,r=!1){const i=await No._fromIdTokenResponse(e,n,r),s=fa(n);return new da({user:i,providerId:s,_tokenResponse:n,operationType:t})}static async _forOperation(e,t,n){await e._updateTokensIfNecessary(n,!0);const r=fa(n);return new da({user:e,providerId:r,_tokenResponse:n,operationType:t})}constructor(e){this.user=e.user,this.providerId=e.providerId,this._tokenResponse=e._tokenResponse,this.operationType=e.operationType}}function fa(e){return e.providerId?e.providerId:"phoneNumber"in e?"phone":null}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-class pa extends k{static _fromErrorAndOperation(e,t,n,r){return new pa(e,t,n,r)}constructor(e,t,n,r){var i;super(t.code,t.message),this.operationType=n,this.user=r,Object.setPrototypeOf(this,pa.prototype),this.customData={appName:e.name,tenantId:null!==(i=e.tenantId)&&void 0!==i?i:void 0,_serverResponse:t.customData._serverResponse,operationType:n}}}function ga(e,t,n,r){return("reauthenticate"===t?n._getReauthenticationResolver(e):n._getIdTokenResponse(e)).catch((n=>{if("auth/multi-factor-auth-required"===n.code)throw pa._fromErrorAndOperation(e,n,t,r);throw n}))}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */async function ma(e,t,n=!1){const r=await Eo(e,t._linkToIdToken(e.auth,await e.getIdToken()),n);return da._forOperation(e,"link",r)}
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-async function _a(e,t,n=!1){const{auth:r}=e,i="reauthenticate";try{const s=await Eo(e,ga(r,i,t,e),n);Xs(s.idToken,r,"internal-error");const o=Io(s.idToken);Xs(o,r,"internal-error");const{sub:a}=o;return Xs(e.uid===a,r,"user-mismatch"),da._forOperation(e,i,s)}catch(e){throw"auth/user-not-found"===(null==e?void 0:e.code)&&Ks(r,"user-mismatch"),e}}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */async function ya(e,t,n=!1){const r="signIn",i=await ga(e,r,t),s=await da._fromIdTokenResponse(e,r,i);return n||await e._updateCurrentUser(s.user),s}async function va(e,t){return ya(Ko(e),t)}async function wa(e,t,n){const r=Ko(e),i=await ua(r,{returnSecureToken:!0,email:t,password:n}),s=await da._fromIdTokenResponse(r,"signIn",i);return await r._updateCurrentUser(s.user),s}function ba(e,t,n){return va(J(e),ia.credential(t,n))}
+ */da.TWITTER_SIGN_IN_METHOD="twitter.com",da.PROVIDER_ID="twitter.com";class pa{static async _fromIdTokenResponse(e,t,n,r=!1){const i=await Oo._fromIdTokenResponse(e,n,r),s=ga(n);return new pa({user:i,providerId:s,_tokenResponse:n,operationType:t})}static async _forOperation(e,t,n){await e._updateTokensIfNecessary(n,!0);const r=ga(n);return new pa({user:e,providerId:r,_tokenResponse:n,operationType:t})}constructor(e){this.user=e.user,this.providerId=e.providerId,this._tokenResponse=e._tokenResponse,this.operationType=e.operationType}}function ga(e){return e.providerId?e.providerId:"phoneNumber"in e?"phone":null}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2386,7 +2304,7 @@ async function _a(e,t,n=!1){const{auth:r}=e,i="reauthenticate";try{const s=await
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-async function Ia(e,{displayName:t,photoURL:n}){if(void 0===t&&void 0===n)return;const r=J(e),i={idToken:await r.getIdToken(),displayName:t,photoUrl:n,returnSecureToken:!0},s=await Eo(r,
+class ma extends k{static _fromErrorAndOperation(e,t,n,r){return new ma(e,t,n,r)}constructor(e,t,n,r){var i;super(t.code,t.message),this.operationType=n,this.user=r,Object.setPrototypeOf(this,ma.prototype),this.customData={appName:e.name,tenantId:null!==(i=e.tenantId)&&void 0!==i?i:void 0,_serverResponse:t.customData._serverResponse,operationType:n}}}function _a(e,t,n,r){return("reauthenticate"===t?n._getReauthenticationResolver(e):n._getIdTokenResponse(e)).catch((n=>{if("auth/multi-factor-auth-required"===n.code)throw ma._fromErrorAndOperation(e,n,t,r);throw n}))}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2402,8 +2320,7 @@ async function Ia(e,{displayName:t,photoURL:n}){if(void 0===t&&void 0===n)return
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-async function(e,t){return po(e,"POST","/v1/accounts:update",t)}(r.auth,i));r.displayName=s.displayName||null,r.photoURL=s.photoUrl||null;const o=r.providerData.find((({providerId:e})=>"password"===e));o&&(o.displayName=r.displayName,o.photoURL=r.photoURL),await r._updateTokensIfNecessary(s)}new WeakMap;
+ */async function ya(e,t,n=!1){const r=await To(e,t._linkToIdToken(e.auth,await e.getIdToken()),n);return pa._forOperation(e,"link",r)}
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -2420,7 +2337,7 @@ async function(e,t){return po(e,"POST","/v1/accounts:update",t)}(r.auth,i));r.di
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class Ea{_isAvailable(){try{return this.storage?(this.storage.setItem("__sak","1"),this.storage.removeItem("__sak"),Promise.resolve(!0)):Promise.resolve(!1)}catch(e){return Promise.resolve(!1)}}_set(e,t){return this.storage.setItem(e,JSON.stringify(t)),Promise.resolve()}_get(e){const t=this.storage.getItem(e);return Promise.resolve(t?JSON.parse(t):null)}_remove(e){return this.storage.removeItem(e),Promise.resolve()}get storage(){return this.storageRetriever()}constructor(e,t){this.storageRetriever=e,this.type=t}}
+async function va(e,t,n=!1){const{auth:r}=e,i="reauthenticate";try{const s=await To(e,_a(r,i,t,e),n);eo(s.idToken,r,"internal-error");const o=Co(s.idToken);eo(o,r,"internal-error");const{sub:a}=o;return eo(e.uid===a,r,"user-mismatch"),pa._forOperation(e,i,s)}catch(e){throw"auth/user-not-found"===(null==e?void 0:e.code)&&Js(r,"user-mismatch"),e}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2436,7 +2353,7 @@ class Ea{_isAvailable(){try{return this.storage?(this.storage.setItem("__sak","1
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class Ca extends Ea{forAllChangedKeys(e){for(const t of Object.keys(this.listeners)){const n=this.storage.getItem(t),r=this.localCache[t];n!==r&&e(t,r,n)}}onStorageEvent(e,t=!1){if(!e.key)return void this.forAllChangedKeys(((e,t,n)=>{this.notifyListeners(e,n)}));const n=e.key;if(t?this.detachListener():this.stopPolling(),this.safariLocalStorageNotSynced){const r=this.storage.getItem(n);if(e.newValue!==r)null!==e.newValue?this.storage.setItem(n,e.newValue):this.storage.removeItem(n);else if(this.localCache[n]===e.newValue&&!t)return}const r=()=>{const e=this.storage.getItem(n);(t||this.localCache[n]!==e)&&this.notifyListeners(n,e)},i=this.storage.getItem(n);Ho()&&i!==e.newValue&&e.newValue!==e.oldValue?setTimeout(r,10):r()}notifyListeners(e,t){this.localCache[e]=t;const n=this.listeners[e];if(n)for(const e of Array.from(n))e(t?JSON.parse(t):t)}startPolling(){this.stopPolling(),this.pollTimer=setInterval((()=>{this.forAllChangedKeys(((e,t,n)=>{this.onStorageEvent(new StorageEvent("storage",{key:e,oldValue:t,newValue:n}),!0)}))}),1e3)}stopPolling(){this.pollTimer&&(clearInterval(this.pollTimer),this.pollTimer=null)}attachListener(){window.addEventListener("storage",this.boundEventHandler)}detachListener(){window.removeEventListener("storage",this.boundEventHandler)}_addListener(e,t){0===Object.keys(this.listeners).length&&(this.fallbackToPolling?this.startPolling():this.attachListener()),this.listeners[e]||(this.listeners[e]=new Set,this.localCache[e]=this.storage.getItem(e)),this.listeners[e].add(t)}_removeListener(e,t){this.listeners[e]&&(this.listeners[e].delete(t),0===this.listeners[e].size&&delete this.listeners[e]),0===Object.keys(this.listeners).length&&(this.detachListener(),this.stopPolling())}async _set(e,t){await super._set(e,t),this.localCache[e]=JSON.stringify(t)}async _get(e){const t=await super._get(e);return this.localCache[e]=JSON.stringify(t),t}async _remove(e){await super._remove(e),delete this.localCache[e]}constructor(){super((()=>window.localStorage),"LOCAL"),this.boundEventHandler=(e,t)=>this.onStorageEvent(e,t),this.listeners={},this.localCache={},this.pollTimer=null,this.safariLocalStorageNotSynced=function(){const e=w();return Mo(e)||Wo(e)}()&&function(){try{return!(!window||window===window.top)}catch(e){return!1}}(),this.fallbackToPolling=Vo(),this._shouldAllowMigration=!0}}Ca.type="LOCAL";const Ta=Ca;
+ */async function wa(e,t,n=!1){const r="signIn",i=await _a(e,r,t),s=await pa._fromIdTokenResponse(e,r,i);return n||await e._updateCurrentUser(s.user),s}async function ba(e,t){return wa(Jo(e),t)}async function Ia(e,t,n){const r=Jo(e),i=await fa(r,{returnSecureToken:!0,email:t,password:n}),s=await pa._fromIdTokenResponse(r,"signIn",i);return await r._updateCurrentUser(s.user),s}function Ea(e,t,n){return ba(J(e),oa.credential(t,n))}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2452,7 +2369,90 @@ class Ea{_isAvailable(){try{return this.storage?(this.storage.setItem("__sak","1
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class ka extends Ea{_addListener(e,t){}_removeListener(e,t){}constructor(){super((()=>window.sessionStorage),"SESSION")}}ka.type="SESSION";const Sa=ka;
+ */
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+async function Ca(e,{displayName:t,photoURL:n}){if(void 0===t&&void 0===n)return;const r=J(e),i={idToken:await r.getIdToken(),displayName:t,photoUrl:n,returnSecureToken:!0},s=await To(r,
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+async function(e,t){return mo(e,"POST","/v1/accounts:update",t)}(r.auth,i));r.displayName=s.displayName||null,r.photoURL=s.photoUrl||null;const o=r.providerData.find((({providerId:e})=>"password"===e));o&&(o.displayName=r.displayName,o.photoURL=r.photoURL),await r._updateTokensIfNecessary(s)}new WeakMap;
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+class Ta{_isAvailable(){try{return this.storage?(this.storage.setItem("__sak","1"),this.storage.removeItem("__sak"),Promise.resolve(!0)):Promise.resolve(!1)}catch(e){return Promise.resolve(!1)}}_set(e,t){return this.storage.setItem(e,JSON.stringify(t)),Promise.resolve()}_get(e){const t=this.storage.getItem(e);return Promise.resolve(t?JSON.parse(t):null)}_remove(e){return this.storage.removeItem(e),Promise.resolve()}get storage(){return this.storageRetriever()}constructor(e,t){this.storageRetriever=e,this.type=t}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */class ka extends Ta{forAllChangedKeys(e){for(const t of Object.keys(this.listeners)){const n=this.storage.getItem(t),r=this.localCache[t];n!==r&&e(t,r,n)}}onStorageEvent(e,t=!1){if(!e.key)return void this.forAllChangedKeys(((e,t,n)=>{this.notifyListeners(e,n)}));const n=e.key;if(t?this.detachListener():this.stopPolling(),this.safariLocalStorageNotSynced){const r=this.storage.getItem(n);if(e.newValue!==r)null!==e.newValue?this.storage.setItem(n,e.newValue):this.storage.removeItem(n);else if(this.localCache[n]===e.newValue&&!t)return}const r=()=>{const e=this.storage.getItem(n);(t||this.localCache[n]!==e)&&this.notifyListeners(n,e)},i=this.storage.getItem(n);$o()&&i!==e.newValue&&e.newValue!==e.oldValue?setTimeout(r,10):r()}notifyListeners(e,t){this.localCache[e]=t;const n=this.listeners[e];if(n)for(const e of Array.from(n))e(t?JSON.parse(t):t)}startPolling(){this.stopPolling(),this.pollTimer=setInterval((()=>{this.forAllChangedKeys(((e,t,n)=>{this.onStorageEvent(new StorageEvent("storage",{key:e,oldValue:t,newValue:n}),!0)}))}),1e3)}stopPolling(){this.pollTimer&&(clearInterval(this.pollTimer),this.pollTimer=null)}attachListener(){window.addEventListener("storage",this.boundEventHandler)}detachListener(){window.removeEventListener("storage",this.boundEventHandler)}_addListener(e,t){0===Object.keys(this.listeners).length&&(this.fallbackToPolling?this.startPolling():this.attachListener()),this.listeners[e]||(this.listeners[e]=new Set,this.localCache[e]=this.storage.getItem(e)),this.listeners[e].add(t)}_removeListener(e,t){this.listeners[e]&&(this.listeners[e].delete(t),0===this.listeners[e].size&&delete this.listeners[e]),0===Object.keys(this.listeners).length&&(this.detachListener(),this.stopPolling())}async _set(e,t){await super._set(e,t),this.localCache[e]=JSON.stringify(t)}async _get(e){const t=await super._get(e);return this.localCache[e]=JSON.stringify(t),t}async _remove(e){await super._remove(e),delete this.localCache[e]}constructor(){super((()=>window.localStorage),"LOCAL"),this.boundEventHandler=(e,t)=>this.onStorageEvent(e,t),this.listeners={},this.localCache={},this.pollTimer=null,this.safariLocalStorageNotSynced=function(){const e=w();return Fo(e)||Vo(e)}()&&function(){try{return!(!window||window===window.top)}catch(e){return!1}}(),this.fallbackToPolling=zo(),this._shouldAllowMigration=!0}}ka.type="LOCAL";const Sa=ka;
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */class Ra extends Ta{_addListener(e,t){}_removeListener(e,t){}constructor(){super((()=>window.sessionStorage),"SESSION")}}Ra.type="SESSION";const Na=Ra;
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -2485,7 +2485,7 @@ class Ea{_isAvailable(){try{return this.storage?(this.storage.setItem("__sak","1
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class Ra{static _getInstance(e){const t=this.receivers.find((t=>t.isListeningto(e)));if(t)return t;const n=new Ra(e);return this.receivers.push(n),n}isListeningto(e){return this.eventTarget===e}async handleEvent(e){const t=e,{eventId:n,eventType:r,data:i}=t.data,s=this.handlersMap[r];if(!(null==s?void 0:s.size))return;t.ports[0].postMessage({status:"ack",eventId:n,eventType:r});const o=Array.from(s).map((async e=>e(t.origin,i))),a=await function(e){return Promise.all(e.map((async e=>{try{return{fulfilled:!0,value:await e}}catch(e){return{fulfilled:!1,reason:e}}})))}(o);t.ports[0].postMessage({status:"done",eventId:n,eventType:r,response:a})}_subscribe(e,t){0===Object.keys(this.handlersMap).length&&this.eventTarget.addEventListener("message",this.boundEventHandler),this.handlersMap[e]||(this.handlersMap[e]=new Set),this.handlersMap[e].add(t)}_unsubscribe(e,t){this.handlersMap[e]&&t&&this.handlersMap[e].delete(t),t&&0!==this.handlersMap[e].size||delete this.handlersMap[e],0===Object.keys(this.handlersMap).length&&this.eventTarget.removeEventListener("message",this.boundEventHandler)}constructor(e){this.eventTarget=e,this.handlersMap={},this.boundEventHandler=this.handleEvent.bind(this)}}
+class Pa{static _getInstance(e){const t=this.receivers.find((t=>t.isListeningto(e)));if(t)return t;const n=new Pa(e);return this.receivers.push(n),n}isListeningto(e){return this.eventTarget===e}async handleEvent(e){const t=e,{eventId:n,eventType:r,data:i}=t.data,s=this.handlersMap[r];if(!(null==s?void 0:s.size))return;t.ports[0].postMessage({status:"ack",eventId:n,eventType:r});const o=Array.from(s).map((async e=>e(t.origin,i))),a=await function(e){return Promise.all(e.map((async e=>{try{return{fulfilled:!0,value:await e}}catch(e){return{fulfilled:!1,reason:e}}})))}(o);t.ports[0].postMessage({status:"done",eventId:n,eventType:r,response:a})}_subscribe(e,t){0===Object.keys(this.handlersMap).length&&this.eventTarget.addEventListener("message",this.boundEventHandler),this.handlersMap[e]||(this.handlersMap[e]=new Set),this.handlersMap[e].add(t)}_unsubscribe(e,t){this.handlersMap[e]&&t&&this.handlersMap[e].delete(t),t&&0!==this.handlersMap[e].size||delete this.handlersMap[e],0===Object.keys(this.handlersMap).length&&this.eventTarget.removeEventListener("message",this.boundEventHandler)}constructor(e){this.eventTarget=e,this.handlersMap={},this.boundEventHandler=this.handleEvent.bind(this)}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2502,7 +2502,7 @@ class Ra{static _getInstance(e){const t=this.receivers.find((t=>t.isListeningto(
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function Na(e="",t=10){let n="";for(let e=0;e<t;e++)n+=Math.floor(10*Math.random());return e+n}
+function Oa(e="",t=10){let n="";for(let e=0;e<t;e++)n+=Math.floor(10*Math.random());return e+n}
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -2518,7 +2518,7 @@ function Na(e="",t=10){let n="";for(let e=0;e<t;e++)n+=Math.floor(10*Math.random
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */Ra.receivers=[];class Pa{removeMessageHandler(e){e.messageChannel&&(e.messageChannel.port1.removeEventListener("message",e.onMessage),e.messageChannel.port1.close()),this.handlers.delete(e)}async _send(e,t,n=50){const r="undefined"!=typeof MessageChannel?new MessageChannel:null;if(!r)throw new Error("connection_unavailable");let i,s;return new Promise(((o,a)=>{const c=Na("",20);r.port1.start();const l=setTimeout((()=>{a(new Error("unsupported_event"))}),n);s={messageChannel:r,onMessage(e){const t=e;if(t.data.eventId===c)switch(t.data.status){case"ack":clearTimeout(l),i=setTimeout((()=>{a(new Error("timeout"))}),3e3);break;case"done":clearTimeout(i),o(t.data.response);break;default:clearTimeout(l),clearTimeout(i),a(new Error("invalid_response"))}}},this.handlers.add(s),r.port1.addEventListener("message",s.onMessage),this.target.postMessage({eventType:e,eventId:c,data:t},[r.port2])})).finally((()=>{s&&this.removeMessageHandler(s)}))}constructor(e){this.target=e,this.handlers=new Set}}
+ */Pa.receivers=[];class Aa{removeMessageHandler(e){e.messageChannel&&(e.messageChannel.port1.removeEventListener("message",e.onMessage),e.messageChannel.port1.close()),this.handlers.delete(e)}async _send(e,t,n=50){const r="undefined"!=typeof MessageChannel?new MessageChannel:null;if(!r)throw new Error("connection_unavailable");let i,s;return new Promise(((o,a)=>{const c=Oa("",20);r.port1.start();const l=setTimeout((()=>{a(new Error("unsupported_event"))}),n);s={messageChannel:r,onMessage(e){const t=e;if(t.data.eventId===c)switch(t.data.status){case"ack":clearTimeout(l),i=setTimeout((()=>{a(new Error("timeout"))}),3e3);break;case"done":clearTimeout(i),o(t.data.response);break;default:clearTimeout(l),clearTimeout(i),a(new Error("invalid_response"))}}},this.handlers.add(s),r.port1.addEventListener("message",s.onMessage),this.target.postMessage({eventType:e,eventId:c,data:t},[r.port2])})).finally((()=>{s&&this.removeMessageHandler(s)}))}constructor(e){this.target=e,this.handlers=new Set}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2534,7 +2534,7 @@ function Na(e="",t=10){let n="";for(let e=0;e<t;e++)n+=Math.floor(10*Math.random
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */function Oa(){return window}
+ */function xa(){return window}
 /**
  * @license
  * Copyright 2020 Google LLC.
@@ -2551,7 +2551,7 @@ function Na(e="",t=10){let n="";for(let e=0;e<t;e++)n+=Math.floor(10*Math.random
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function Aa(){return void 0!==Oa().WorkerGlobalScope&&"function"==typeof Oa().importScripts}class xa{toPromise(){return new Promise(((e,t)=>{this.request.addEventListener("success",(()=>{e(this.request.result)})),this.request.addEventListener("error",(()=>{t(this.request.error)}))}))}constructor(e){this.request=e}}function La(e,t){return e.transaction(["firebaseLocalStorage"],t?"readwrite":"readonly").objectStore("firebaseLocalStorage")}function Da(){const e=indexedDB.open("firebaseLocalStorageDb",1);return new Promise(((t,n)=>{e.addEventListener("error",(()=>{n(e.error)})),e.addEventListener("upgradeneeded",(()=>{const t=e.result;try{t.createObjectStore("firebaseLocalStorage",{keyPath:"fbase_key"})}catch(e){n(e)}})),e.addEventListener("success",(async()=>{const n=e.result;n.objectStoreNames.contains("firebaseLocalStorage")?t(n):(n.close(),await function(){const e=indexedDB.deleteDatabase("firebaseLocalStorageDb");return new xa(e).toPromise()}(),t(await Da()))}))}))}async function Ma(e,t,n){const r=La(e,!0).put({fbase_key:t,value:n});return new xa(r).toPromise()}function Ua(e,t){const n=La(e,!0).delete(t);return new xa(n).toPromise()}class Fa{async _openDb(){return this.db||(this.db=await Da()),this.db}async _withRetries(e){let t=0;for(;;)try{const t=await this._openDb();return await e(t)}catch(e){if(t++>3)throw e;this.db&&(this.db.close(),this.db=void 0)}}async initializeServiceWorkerMessaging(){return Aa()?this.initializeReceiver():this.initializeSender()}async initializeReceiver(){this.receiver=Ra._getInstance(Aa()?self:null),this.receiver._subscribe("keyChanged",(async(e,t)=>({keyProcessed:(await this._poll()).includes(t.key)}))),this.receiver._subscribe("ping",(async(e,t)=>["keyChanged"]))}async initializeSender(){var e,t;if(this.activeServiceWorker=await async function(){if(!(null===navigator||void 0===navigator?void 0:navigator.serviceWorker))return null;try{return(await navigator.serviceWorker.ready).active}catch(e){return null}}(),!this.activeServiceWorker)return;this.sender=new Pa(this.activeServiceWorker);const n=await this.sender._send("ping",{},800);n&&(null===(e=n[0])||void 0===e?void 0:e.fulfilled)&&(null===(t=n[0])||void 0===t?void 0:t.value.includes("keyChanged"))&&(this.serviceWorkerReceiverAvailable=!0)}async notifyServiceWorker(e){var t;if(this.sender&&this.activeServiceWorker&&((null===(t=null===navigator||void 0===navigator?void 0:navigator.serviceWorker)||void 0===t?void 0:t.controller)||null)===this.activeServiceWorker)try{await this.sender._send("keyChanged",{key:e},this.serviceWorkerReceiverAvailable?800:50)}catch(t){}}async _isAvailable(){try{if(!indexedDB)return!1;const e=await Da();return await Ma(e,"__sak","1"),await Ua(e,"__sak"),!0}catch(e){}return!1}async _withPendingWrite(e){this.pendingWrites++;try{await e()}finally{this.pendingWrites--}}async _set(e,t){return this._withPendingWrite((async()=>(await this._withRetries((n=>Ma(n,e,t))),this.localCache[e]=t,this.notifyServiceWorker(e))))}async _get(e){const t=await this._withRetries((t=>async function(e,t){const n=La(e,!1).get(t),r=await new xa(n).toPromise();return void 0===r?null:r.value}(t,e)));return this.localCache[e]=t,t}async _remove(e){return this._withPendingWrite((async()=>(await this._withRetries((t=>Ua(t,e))),delete this.localCache[e],this.notifyServiceWorker(e))))}async _poll(){const e=await this._withRetries((e=>{const t=La(e,!1).getAll();return new xa(t).toPromise()}));if(!e)return[];if(0!==this.pendingWrites)return[];const t=[],n=new Set;for(const{fbase_key:r,value:i}of e)n.add(r),JSON.stringify(this.localCache[r])!==JSON.stringify(i)&&(this.notifyListeners(r,i),t.push(r));for(const e of Object.keys(this.localCache))this.localCache[e]&&!n.has(e)&&(this.notifyListeners(e,null),t.push(e));return t}notifyListeners(e,t){this.localCache[e]=t;const n=this.listeners[e];if(n)for(const e of Array.from(n))e(t)}startPolling(){this.stopPolling(),this.pollTimer=setInterval((async()=>this._poll()),800)}stopPolling(){this.pollTimer&&(clearInterval(this.pollTimer),this.pollTimer=null)}_addListener(e,t){0===Object.keys(this.listeners).length&&this.startPolling(),this.listeners[e]||(this.listeners[e]=new Set,this._get(e)),this.listeners[e].add(t)}_removeListener(e,t){this.listeners[e]&&(this.listeners[e].delete(t),0===this.listeners[e].size&&delete this.listeners[e]),0===Object.keys(this.listeners).length&&this.stopPolling()}constructor(){this.type="LOCAL",this._shouldAllowMigration=!0,this.listeners={},this.localCache={},this.pollTimer=null,this.pendingWrites=0,this.receiver=null,this.sender=null,this.serviceWorkerReceiverAvailable=!1,this.activeServiceWorker=null,this._workerInitializationPromise=this.initializeServiceWorkerMessaging().then((()=>{}),(()=>{}))}}Fa.type="LOCAL";const Ba=Fa;
+function La(){return void 0!==xa().WorkerGlobalScope&&"function"==typeof xa().importScripts}class Da{toPromise(){return new Promise(((e,t)=>{this.request.addEventListener("success",(()=>{e(this.request.result)})),this.request.addEventListener("error",(()=>{t(this.request.error)}))}))}constructor(e){this.request=e}}function Ma(e,t){return e.transaction(["firebaseLocalStorage"],t?"readwrite":"readonly").objectStore("firebaseLocalStorage")}function Ua(){const e=indexedDB.open("firebaseLocalStorageDb",1);return new Promise(((t,n)=>{e.addEventListener("error",(()=>{n(e.error)})),e.addEventListener("upgradeneeded",(()=>{const t=e.result;try{t.createObjectStore("firebaseLocalStorage",{keyPath:"fbase_key"})}catch(e){n(e)}})),e.addEventListener("success",(async()=>{const n=e.result;n.objectStoreNames.contains("firebaseLocalStorage")?t(n):(n.close(),await function(){const e=indexedDB.deleteDatabase("firebaseLocalStorageDb");return new Da(e).toPromise()}(),t(await Ua()))}))}))}async function Fa(e,t,n){const r=Ma(e,!0).put({fbase_key:t,value:n});return new Da(r).toPromise()}function Ba(e,t){const n=Ma(e,!0).delete(t);return new Da(n).toPromise()}class ja{async _openDb(){return this.db||(this.db=await Ua()),this.db}async _withRetries(e){let t=0;for(;;)try{const t=await this._openDb();return await e(t)}catch(e){if(t++>3)throw e;this.db&&(this.db.close(),this.db=void 0)}}async initializeServiceWorkerMessaging(){return La()?this.initializeReceiver():this.initializeSender()}async initializeReceiver(){this.receiver=Pa._getInstance(La()?self:null),this.receiver._subscribe("keyChanged",(async(e,t)=>({keyProcessed:(await this._poll()).includes(t.key)}))),this.receiver._subscribe("ping",(async(e,t)=>["keyChanged"]))}async initializeSender(){var e,t;if(this.activeServiceWorker=await async function(){if(!(null===navigator||void 0===navigator?void 0:navigator.serviceWorker))return null;try{return(await navigator.serviceWorker.ready).active}catch(e){return null}}(),!this.activeServiceWorker)return;this.sender=new Aa(this.activeServiceWorker);const n=await this.sender._send("ping",{},800);n&&(null===(e=n[0])||void 0===e?void 0:e.fulfilled)&&(null===(t=n[0])||void 0===t?void 0:t.value.includes("keyChanged"))&&(this.serviceWorkerReceiverAvailable=!0)}async notifyServiceWorker(e){var t;if(this.sender&&this.activeServiceWorker&&((null===(t=null===navigator||void 0===navigator?void 0:navigator.serviceWorker)||void 0===t?void 0:t.controller)||null)===this.activeServiceWorker)try{await this.sender._send("keyChanged",{key:e},this.serviceWorkerReceiverAvailable?800:50)}catch(t){}}async _isAvailable(){try{if(!indexedDB)return!1;const e=await Ua();return await Fa(e,"__sak","1"),await Ba(e,"__sak"),!0}catch(e){}return!1}async _withPendingWrite(e){this.pendingWrites++;try{await e()}finally{this.pendingWrites--}}async _set(e,t){return this._withPendingWrite((async()=>(await this._withRetries((n=>Fa(n,e,t))),this.localCache[e]=t,this.notifyServiceWorker(e))))}async _get(e){const t=await this._withRetries((t=>async function(e,t){const n=Ma(e,!1).get(t),r=await new Da(n).toPromise();return void 0===r?null:r.value}(t,e)));return this.localCache[e]=t,t}async _remove(e){return this._withPendingWrite((async()=>(await this._withRetries((t=>Ba(t,e))),delete this.localCache[e],this.notifyServiceWorker(e))))}async _poll(){const e=await this._withRetries((e=>{const t=Ma(e,!1).getAll();return new Da(t).toPromise()}));if(!e)return[];if(0!==this.pendingWrites)return[];const t=[],n=new Set;for(const{fbase_key:r,value:i}of e)n.add(r),JSON.stringify(this.localCache[r])!==JSON.stringify(i)&&(this.notifyListeners(r,i),t.push(r));for(const e of Object.keys(this.localCache))this.localCache[e]&&!n.has(e)&&(this.notifyListeners(e,null),t.push(e));return t}notifyListeners(e,t){this.localCache[e]=t;const n=this.listeners[e];if(n)for(const e of Array.from(n))e(t)}startPolling(){this.stopPolling(),this.pollTimer=setInterval((async()=>this._poll()),800)}stopPolling(){this.pollTimer&&(clearInterval(this.pollTimer),this.pollTimer=null)}_addListener(e,t){0===Object.keys(this.listeners).length&&this.startPolling(),this.listeners[e]||(this.listeners[e]=new Set,this._get(e)),this.listeners[e].add(t)}_removeListener(e,t){this.listeners[e]&&(this.listeners[e].delete(t),0===this.listeners[e].size&&delete this.listeners[e]),0===Object.keys(this.listeners).length&&this.stopPolling()}constructor(){this.type="LOCAL",this._shouldAllowMigration=!0,this.listeners={},this.localCache={},this.pollTimer=null,this.pendingWrites=0,this.receiver=null,this.sender=null,this.serviceWorkerReceiverAvailable=!1,this.activeServiceWorker=null,this._workerInitializationPromise=this.initializeServiceWorkerMessaging().then((()=>{}),(()=>{}))}}ja.type="LOCAL";const qa=ja;
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2567,24 +2567,7 @@ function Aa(){return void 0!==Oa().WorkerGlobalScope&&"function"==typeof Oa().im
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */function ja(e){return new Promise(((t,n)=>{const r=document.createElement("script");
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var i,s;r.setAttribute("src",e),r.onload=t,r.onerror=e=>{const t=Ys("internal-error");t.customData=e,n(t)},r.type="text/javascript",r.charset="UTF-8",(null!==(s=null===(i=document.getElementsByTagName("head"))||void 0===i?void 0:i[0])&&void 0!==s?s:document).appendChild(r)}))}function qa(e){return`__${e}${Math.floor(1e6*Math.random())}`}
+ */function Wa(e){return new Promise(((t,n)=>{const r=document.createElement("script");
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2601,6 +2584,7 @@ var i,s;r.setAttribute("src",e),r.onload=t,r.onerror=e=>{const t=Ys("internal-er
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var i,s;r.setAttribute("src",e),r.onload=t,r.onerror=e=>{const t=Qs("internal-error");t.customData=e,n(t)},r.type="text/javascript",r.charset="UTF-8",(null!==(s=null===(i=document.getElementsByTagName("head"))||void 0===i?void 0:i[0])&&void 0!==s?s:document).appendChild(r)}))}function Ha(e){return`__${e}${Math.floor(1e6*Math.random())}`}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2617,7 +2601,6 @@ var i,s;r.setAttribute("src",e),r.onload=t,r.onerror=e=>{const t=Ys("internal-er
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-qa("rcb"),new ao(3e4,6e4);async function Wa(e,t,n){var r;const i=await n.verify();try{let s;if(Xs("string"==typeof i,e,"argument-error"),Xs("recaptcha"===n.type,e,"argument-error"),s="string"==typeof t?{phoneNumber:t}:t,"session"in s){const t=s.session;if("phoneNumber"in s){Xs("enroll"===t.type,e,"internal-error");const n=await
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2634,7 +2617,7 @@ qa("rcb"),new ao(3e4,6e4);async function Wa(e,t,n){var r;const i=await n.verify(
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function(e,t){return po(e,"POST","/v2/accounts/mfaEnrollment:start",fo(e,t))}(e,{idToken:t.credential,phoneEnrollmentInfo:{phoneNumber:s.phoneNumber,recaptchaToken:i}});return n.phoneSessionInfo.sessionInfo}{Xs("signin"===t.type,e,"internal-error");const n=(null===(r=s.multiFactorHint)||void 0===r?void 0:r.uid)||s.multiFactorUid;Xs(n,e,"missing-multi-factor-info");const o=await function(e,t){return po(e,"POST","/v2/accounts/mfaSignIn:start",fo(e,t))}(e,{mfaPendingCredential:t.credential,mfaEnrollmentId:n,phoneSignInInfo:{recaptchaToken:i}});return o.phoneResponseInfo.sessionInfo}}{const{sessionInfo:t}=await async function(e,t){return po(e,"POST","/v1/accounts:sendVerificationCode",fo(e,t))}(e,{phoneNumber:s.phoneNumber,recaptchaToken:i});return t}}finally{n._reset()}}
+Ha("rcb"),new lo(3e4,6e4);async function Va(e,t,n){var r;const i=await n.verify();try{let s;if(eo("string"==typeof i,e,"argument-error"),eo("recaptcha"===n.type,e,"argument-error"),s="string"==typeof t?{phoneNumber:t}:t,"session"in s){const t=s.session;if("phoneNumber"in s){eo("enroll"===t.type,e,"internal-error");const n=await
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2651,7 +2634,24 @@ function(e,t){return po(e,"POST","/v2/accounts/mfaEnrollment:start",fo(e,t))}(e,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class Ha{verifyPhoneNumber(e,t){return Wa(this.auth,e,J(t))}static credential(e,t){return na._fromVerification(e,t)}static credentialFromResult(e){const t=e;return Ha.credentialFromTaggedObject(t)}static credentialFromError(e){return Ha.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e)return null;const{phoneNumber:t,temporaryProof:n}=e;return t&&n?na._fromTokenResponse(t,n):null}constructor(e){this.providerId=Ha.PROVIDER_ID,this.auth=Ko(e)}}
+function(e,t){return mo(e,"POST","/v2/accounts/mfaEnrollment:start",go(e,t))}(e,{idToken:t.credential,phoneEnrollmentInfo:{phoneNumber:s.phoneNumber,recaptchaToken:i}});return n.phoneSessionInfo.sessionInfo}{eo("signin"===t.type,e,"internal-error");const n=(null===(r=s.multiFactorHint)||void 0===r?void 0:r.uid)||s.multiFactorUid;eo(n,e,"missing-multi-factor-info");const o=await function(e,t){return mo(e,"POST","/v2/accounts/mfaSignIn:start",go(e,t))}(e,{mfaPendingCredential:t.credential,mfaEnrollmentId:n,phoneSignInInfo:{recaptchaToken:i}});return o.phoneResponseInfo.sessionInfo}}{const{sessionInfo:t}=await async function(e,t){return mo(e,"POST","/v1/accounts:sendVerificationCode",go(e,t))}(e,{phoneNumber:s.phoneNumber,recaptchaToken:i});return t}}finally{n._reset()}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+class $a{verifyPhoneNumber(e,t){return Va(this.auth,e,J(t))}static credential(e,t){return ia._fromVerification(e,t)}static credentialFromResult(e){const t=e;return $a.credentialFromTaggedObject(t)}static credentialFromError(e){return $a.credentialFromTaggedObject(e.customData||{})}static credentialFromTaggedObject({_tokenResponse:e}){if(!e)return null;const{phoneNumber:t,temporaryProof:n}=e;return t&&n?ia._fromTokenResponse(t,n):null}constructor(e){this.providerId=$a.PROVIDER_ID,this.auth=Jo(e)}}
 /**
  * @license
  * Copyright 2021 Google LLC
@@ -2668,7 +2668,7 @@ class Ha{verifyPhoneNumber(e,t){return Wa(this.auth,e,J(t))}static credential(e,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function Va(e,t){return t?no(t):(Xs(e._popupRedirectResolver,e,"argument-error"),e._popupRedirectResolver)}
+function za(e,t){return t?io(t):(eo(e._popupRedirectResolver,e,"argument-error"),e._popupRedirectResolver)}
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -2684,7 +2684,7 @@ function Va(e,t){return t?no(t):(Xs(e._popupRedirectResolver,e,"argument-error")
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */Ha.PROVIDER_ID="phone",Ha.PHONE_SIGN_IN_METHOD="phone";class $a extends Jo{_getIdTokenResponse(e){return Zo(e,this._buildIdpRequest())}_linkToIdToken(e,t){return Zo(e,this._buildIdpRequest(t))}_getReauthenticationResolver(e){return Zo(e,this._buildIdpRequest())}_buildIdpRequest(e){const t={requestUri:this.params.requestUri,sessionId:this.params.sessionId,postBody:this.params.postBody,tenantId:this.params.tenantId,pendingToken:this.params.pendingToken,returnSecureToken:!0,returnIdpCredential:!0};return e&&(t.idToken=e),t}constructor(e){super("custom","custom"),this.params=e}}function za(e){return ya(e.auth,new $a(e),e.bypassAuthState)}function Ga(e){const{auth:t,user:n}=e;return Xs(n,t,"internal-error"),_a(n,new $a(e),e.bypassAuthState)}async function Ka(e){const{auth:t,user:n}=e;return Xs(n,t,"internal-error"),ma(n,new $a(e),e.bypassAuthState)}
+ */$a.PROVIDER_ID="phone",$a.PHONE_SIGN_IN_METHOD="phone";class Ga extends Xo{_getIdTokenResponse(e){return ta(e,this._buildIdpRequest())}_linkToIdToken(e,t){return ta(e,this._buildIdpRequest(t))}_getReauthenticationResolver(e){return ta(e,this._buildIdpRequest())}_buildIdpRequest(e){const t={requestUri:this.params.requestUri,sessionId:this.params.sessionId,postBody:this.params.postBody,tenantId:this.params.tenantId,pendingToken:this.params.pendingToken,returnSecureToken:!0,returnIdpCredential:!0};return e&&(t.idToken=e),t}constructor(e){super("custom","custom"),this.params=e}}function Ka(e){return wa(e.auth,new Ga(e),e.bypassAuthState)}function Ya(e){const{auth:t,user:n}=e;return eo(n,t,"internal-error"),va(n,new Ga(e),e.bypassAuthState)}async function Ja(e){const{auth:t,user:n}=e;return eo(n,t,"internal-error"),ya(n,new Ga(e),e.bypassAuthState)}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2700,7 +2700,7 @@ function Va(e,t){return t?no(t):(Xs(e._popupRedirectResolver,e,"argument-error")
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */class Ya{execute(){return new Promise((async(e,t)=>{this.pendingPromise={resolve:e,reject:t};try{this.eventManager=await this.resolver._initialize(this.auth),await this.onExecution(),this.eventManager.registerConsumer(this)}catch(e){this.reject(e)}}))}async onAuthEvent(e){const{urlResponse:t,sessionId:n,postBody:r,tenantId:i,error:s,type:o}=e;if(s)return void this.reject(s);const a={auth:this.auth,requestUri:t,sessionId:n,tenantId:i||void 0,postBody:r||void 0,user:this.user,bypassAuthState:this.bypassAuthState};try{this.resolve(await this.getIdpTask(o)(a))}catch(e){this.reject(e)}}onError(e){this.reject(e)}getIdpTask(e){switch(e){case"signInViaPopup":case"signInViaRedirect":return za;case"linkViaPopup":case"linkViaRedirect":return Ka;case"reauthViaPopup":case"reauthViaRedirect":return Ga;default:Ks(this.auth,"internal-error")}}resolve(e){eo(this.pendingPromise,"Pending promise was never set"),this.pendingPromise.resolve(e),this.unregisterAndCleanUp()}reject(e){eo(this.pendingPromise,"Pending promise was never set"),this.pendingPromise.reject(e),this.unregisterAndCleanUp()}unregisterAndCleanUp(){this.eventManager&&this.eventManager.unregisterConsumer(this),this.pendingPromise=null,this.cleanUp()}constructor(e,t,n,r,i=!1){this.auth=e,this.resolver=n,this.user=r,this.bypassAuthState=i,this.pendingPromise=null,this.eventManager=null,this.filter=Array.isArray(t)?t:[t]}}
+ */class Qa{execute(){return new Promise((async(e,t)=>{this.pendingPromise={resolve:e,reject:t};try{this.eventManager=await this.resolver._initialize(this.auth),await this.onExecution(),this.eventManager.registerConsumer(this)}catch(e){this.reject(e)}}))}async onAuthEvent(e){const{urlResponse:t,sessionId:n,postBody:r,tenantId:i,error:s,type:o}=e;if(s)return void this.reject(s);const a={auth:this.auth,requestUri:t,sessionId:n,tenantId:i||void 0,postBody:r||void 0,user:this.user,bypassAuthState:this.bypassAuthState};try{this.resolve(await this.getIdpTask(o)(a))}catch(e){this.reject(e)}}onError(e){this.reject(e)}getIdpTask(e){switch(e){case"signInViaPopup":case"signInViaRedirect":return Ka;case"linkViaPopup":case"linkViaRedirect":return Ja;case"reauthViaPopup":case"reauthViaRedirect":return Ya;default:Js(this.auth,"internal-error")}}resolve(e){no(this.pendingPromise,"Pending promise was never set"),this.pendingPromise.resolve(e),this.unregisterAndCleanUp()}reject(e){no(this.pendingPromise,"Pending promise was never set"),this.pendingPromise.reject(e),this.unregisterAndCleanUp()}unregisterAndCleanUp(){this.eventManager&&this.eventManager.unregisterConsumer(this),this.pendingPromise=null,this.cleanUp()}constructor(e,t,n,r,i=!1){this.auth=e,this.resolver=n,this.user=r,this.bypassAuthState=i,this.pendingPromise=null,this.eventManager=null,this.filter=Array.isArray(t)?t:[t]}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2716,56 +2716,7 @@ function Va(e,t){return t?no(t):(Xs(e._popupRedirectResolver,e,"argument-error")
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */const Ja=new ao(2e3,1e4);class Qa extends Ya{async executeNotNull(){const e=await this.execute();return Xs(e,this.auth,"internal-error"),e}async onExecution(){eo(1===this.filter.length,"Popup operations only handle one event");const e=Na();this.authWindow=await this.resolver._openPopup(this.auth,this.provider,this.filter[0],e),this.authWindow.associatedEvent=e,this.resolver._originValidation(this.auth).catch((e=>{this.reject(e)})),this.resolver._isIframeWebStorageSupported(this.auth,(e=>{e||this.reject(Ys(this.auth,"web-storage-unsupported"))})),this.pollUserCancellation()}get eventId(){var e;return(null===(e=this.authWindow)||void 0===e?void 0:e.associatedEvent)||null}cancel(){this.reject(Ys(this.auth,"cancelled-popup-request"))}cleanUp(){this.authWindow&&this.authWindow.close(),this.pollId&&window.clearTimeout(this.pollId),this.authWindow=null,this.pollId=null,Qa.currentPopupAction=null}pollUserCancellation(){const e=()=>{var t,n;(null===(n=null===(t=this.authWindow)||void 0===t?void 0:t.window)||void 0===n?void 0:n.closed)?this.pollId=window.setTimeout((()=>{this.pollId=null,this.reject(Ys(this.auth,"popup-closed-by-user"))}),2e3):this.pollId=window.setTimeout(e,Ja.get())};e()}constructor(e,t,n,r,i){super(e,t,r,i),this.provider=n,this.authWindow=null,this.pollId=null,Qa.currentPopupAction&&Qa.currentPopupAction.cancel(),Qa.currentPopupAction=this}}Qa.currentPopupAction=null;
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-const Xa=new Map;class Za extends Ya{async execute(){let e=Xa.get(this.auth._key());if(!e){try{const t=await async function(e,t){const n=nc(t),r=tc(e);if(!await r._isAvailable())return!1;const i="true"===await r._get(n);return await r._remove(n),i}(this.resolver,this.auth)?await super.execute():null;e=()=>Promise.resolve(t)}catch(t){e=()=>Promise.reject(t)}Xa.set(this.auth._key(),e)}return this.bypassAuthState||Xa.set(this.auth._key(),(()=>Promise.resolve(null))),e()}async onAuthEvent(e){if("signInViaRedirect"===e.type)return super.onAuthEvent(e);if("unknown"!==e.type){if(e.eventId){const t=await this.auth._redirectUserForId(e.eventId);if(t)return this.user=t,super.onAuthEvent(e);this.resolve(null)}}else this.resolve(null)}async onExecution(){}cleanUp(){}constructor(e,t,n=!1){super(e,["signInViaRedirect","linkViaRedirect","reauthViaRedirect","unknown"],t,void 0,n),this.eventId=null}}function ec(e,t){Xa.set(e._key(),t)}function tc(e){return no(e._redirectPersistence)}function nc(e){return Ao("pendingRedirect",e.config.apiKey,e.name)}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */async function rc(e,t,n=!1){const r=Ko(e),i=Va(r,t),s=new Za(r,i,n),o=await s.execute();return o&&!n&&(delete o.user._redirectEventId,await r._persistUserIfCurrent(o.user),await r._setRedirectUser(null,t)),o}class ic{registerConsumer(e){this.consumers.add(e),this.queuedRedirectEvent&&this.isEventForConsumer(this.queuedRedirectEvent,e)&&(this.sendToConsumer(this.queuedRedirectEvent,e),this.saveEventToCache(this.queuedRedirectEvent),this.queuedRedirectEvent=null)}unregisterConsumer(e){this.consumers.delete(e)}onEvent(e){if(this.hasEventBeenHandled(e))return!1;let t=!1;return this.consumers.forEach((n=>{this.isEventForConsumer(e,n)&&(t=!0,this.sendToConsumer(e,n),this.saveEventToCache(e))})),this.hasHandledPotentialRedirect||!function(e){switch(e.type){case"signInViaRedirect":case"linkViaRedirect":case"reauthViaRedirect":return!0;case"unknown":return oc(e);default:return!1}}
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */(e)||(this.hasHandledPotentialRedirect=!0,t||(this.queuedRedirectEvent=e,t=!0)),t}sendToConsumer(e,t){var n;if(e.error&&!oc(e)){const r=(null===(n=e.error.code)||void 0===n?void 0:n.split("auth/")[1])||"internal-error";t.onError(Ys(this.auth,r))}else t.onAuthEvent(e)}isEventForConsumer(e,t){const n=null===t.eventId||!!e.eventId&&e.eventId===t.eventId;return t.filter.includes(e.type)&&n}hasEventBeenHandled(e){return Date.now()-this.lastProcessedEventTime>=6e5&&this.cachedEventUids.clear(),this.cachedEventUids.has(sc(e))}saveEventToCache(e){this.cachedEventUids.add(sc(e)),this.lastProcessedEventTime=Date.now()}constructor(e){this.auth=e,this.cachedEventUids=new Set,this.consumers=new Set,this.queuedRedirectEvent=null,this.hasHandledPotentialRedirect=!1,this.lastProcessedEventTime=Date.now()}}function sc(e){return[e.type,e.eventId,e.sessionId,e.tenantId].filter((e=>e)).join("-")}function oc({type:e,error:t}){return"unknown"===e&&"auth/no-auth-event"===(null==t?void 0:t.code)}
+ */const Xa=new lo(2e3,1e4);class Za extends Qa{async executeNotNull(){const e=await this.execute();return eo(e,this.auth,"internal-error"),e}async onExecution(){no(1===this.filter.length,"Popup operations only handle one event");const e=Oa();this.authWindow=await this.resolver._openPopup(this.auth,this.provider,this.filter[0],e),this.authWindow.associatedEvent=e,this.resolver._originValidation(this.auth).catch((e=>{this.reject(e)})),this.resolver._isIframeWebStorageSupported(this.auth,(e=>{e||this.reject(Qs(this.auth,"web-storage-unsupported"))})),this.pollUserCancellation()}get eventId(){var e;return(null===(e=this.authWindow)||void 0===e?void 0:e.associatedEvent)||null}cancel(){this.reject(Qs(this.auth,"cancelled-popup-request"))}cleanUp(){this.authWindow&&this.authWindow.close(),this.pollId&&window.clearTimeout(this.pollId),this.authWindow=null,this.pollId=null,Za.currentPopupAction=null}pollUserCancellation(){const e=()=>{var t,n;(null===(n=null===(t=this.authWindow)||void 0===t?void 0:t.window)||void 0===n?void 0:n.closed)?this.pollId=window.setTimeout((()=>{this.pollId=null,this.reject(Qs(this.auth,"popup-closed-by-user"))}),2e3):this.pollId=window.setTimeout(e,Xa.get())};e()}constructor(e,t,n,r,i){super(e,t,r,i),this.provider=n,this.authWindow=null,this.pollId=null,Za.currentPopupAction&&Za.currentPopupAction.cancel(),Za.currentPopupAction=this}}Za.currentPopupAction=null;
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2782,7 +2733,56 @@ const Xa=new Map;class Za extends Ya{async execute(){let e=Xa.get(this.auth._key
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const ac=/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/,cc=/^https?/;async function lc(e){if(e.config.emulator)return;const{authorizedDomains:t}=await async function(e,t={}){return po(e,"GET","/v1/projects",t)}(e);for(const e of t)try{if(hc(e))return}catch(e){}Ks(e,"unauthorized-domain")}function hc(e){const t=ro(),{protocol:n,hostname:r}=new URL(t);if(e.startsWith("chrome-extension://")){const i=new URL(e);return""===i.hostname&&""===r?"chrome-extension:"===n&&e.replace("chrome-extension://","")===t.replace("chrome-extension://",""):"chrome-extension:"===n&&i.hostname===r}if(!cc.test(n))return!1;if(ac.test(e))return r===e;const i=e.replace(/\./g,"\\.");return new RegExp("^(.+\\."+i+"|"+i+")$","i").test(r)}
+const ec=new Map;class tc extends Qa{async execute(){let e=ec.get(this.auth._key());if(!e){try{const t=await async function(e,t){const n=ic(t),r=rc(e);if(!await r._isAvailable())return!1;const i="true"===await r._get(n);return await r._remove(n),i}(this.resolver,this.auth)?await super.execute():null;e=()=>Promise.resolve(t)}catch(t){e=()=>Promise.reject(t)}ec.set(this.auth._key(),e)}return this.bypassAuthState||ec.set(this.auth._key(),(()=>Promise.resolve(null))),e()}async onAuthEvent(e){if("signInViaRedirect"===e.type)return super.onAuthEvent(e);if("unknown"!==e.type){if(e.eventId){const t=await this.auth._redirectUserForId(e.eventId);if(t)return this.user=t,super.onAuthEvent(e);this.resolve(null)}}else this.resolve(null)}async onExecution(){}cleanUp(){}constructor(e,t,n=!1){super(e,["signInViaRedirect","linkViaRedirect","reauthViaRedirect","unknown"],t,void 0,n),this.eventId=null}}function nc(e,t){ec.set(e._key(),t)}function rc(e){return io(e._redirectPersistence)}function ic(e){return Lo("pendingRedirect",e.config.apiKey,e.name)}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */async function sc(e,t,n=!1){const r=Jo(e),i=za(r,t),s=new tc(r,i,n),o=await s.execute();return o&&!n&&(delete o.user._redirectEventId,await r._persistUserIfCurrent(o.user),await r._setRedirectUser(null,t)),o}class oc{registerConsumer(e){this.consumers.add(e),this.queuedRedirectEvent&&this.isEventForConsumer(this.queuedRedirectEvent,e)&&(this.sendToConsumer(this.queuedRedirectEvent,e),this.saveEventToCache(this.queuedRedirectEvent),this.queuedRedirectEvent=null)}unregisterConsumer(e){this.consumers.delete(e)}onEvent(e){if(this.hasEventBeenHandled(e))return!1;let t=!1;return this.consumers.forEach((n=>{this.isEventForConsumer(e,n)&&(t=!0,this.sendToConsumer(e,n),this.saveEventToCache(e))})),this.hasHandledPotentialRedirect||!function(e){switch(e.type){case"signInViaRedirect":case"linkViaRedirect":case"reauthViaRedirect":return!0;case"unknown":return cc(e);default:return!1}}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */(e)||(this.hasHandledPotentialRedirect=!0,t||(this.queuedRedirectEvent=e,t=!0)),t}sendToConsumer(e,t){var n;if(e.error&&!cc(e)){const r=(null===(n=e.error.code)||void 0===n?void 0:n.split("auth/")[1])||"internal-error";t.onError(Qs(this.auth,r))}else t.onAuthEvent(e)}isEventForConsumer(e,t){const n=null===t.eventId||!!e.eventId&&e.eventId===t.eventId;return t.filter.includes(e.type)&&n}hasEventBeenHandled(e){return Date.now()-this.lastProcessedEventTime>=6e5&&this.cachedEventUids.clear(),this.cachedEventUids.has(ac(e))}saveEventToCache(e){this.cachedEventUids.add(ac(e)),this.lastProcessedEventTime=Date.now()}constructor(e){this.auth=e,this.cachedEventUids=new Set,this.consumers=new Set,this.queuedRedirectEvent=null,this.hasHandledPotentialRedirect=!1,this.lastProcessedEventTime=Date.now()}}function ac(e){return[e.type,e.eventId,e.sessionId,e.tenantId].filter((e=>e)).join("-")}function cc({type:e,error:t}){return"unknown"===e&&"auth/no-auth-event"===(null==t?void 0:t.code)}
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+const lc=/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/,hc=/^https?/;async function uc(e){if(e.config.emulator)return;const{authorizedDomains:t}=await async function(e,t={}){return mo(e,"GET","/v1/projects",t)}(e);for(const e of t)try{if(dc(e))return}catch(e){}Js(e,"unauthorized-domain")}function dc(e){const t=so(),{protocol:n,hostname:r}=new URL(t);if(e.startsWith("chrome-extension://")){const i=new URL(e);return""===i.hostname&&""===r?"chrome-extension:"===n&&e.replace("chrome-extension://","")===t.replace("chrome-extension://",""):"chrome-extension:"===n&&i.hostname===r}if(!hc.test(n))return!1;if(lc.test(e))return r===e;const i=e.replace(/\./g,"\\.");return new RegExp("^(.+\\."+i+"|"+i+")$","i").test(r)}
 /**
  * @license
  * Copyright 2020 Google LLC.
@@ -2798,7 +2798,7 @@ const ac=/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/,cc=/^https?/;async function lc(e
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */const uc=new ao(3e4,6e4);function dc(){const e=Oa().___jsl;if(null==e?void 0:e.H)for(const t of Object.keys(e.H))if(e.H[t].r=e.H[t].r||[],e.H[t].L=e.H[t].L||[],e.H[t].r=[...e.H[t].L],e.CP)for(let t=0;t<e.CP.length;t++)e.CP[t]=null}let fc=null;function pc(e){return fc=fc||function(e){return new Promise(((t,n)=>{var r,i,s;function o(){dc(),gapi.load("gapi.iframes",{callback:()=>{t(gapi.iframes.getContext())},ontimeout:()=>{dc(),n(Ys(e,"network-request-failed"))},timeout:uc.get()})}if(null===(i=null===(r=Oa().gapi)||void 0===r?void 0:r.iframes)||void 0===i?void 0:i.Iframe)t(gapi.iframes.getContext());else{if(!(null===(s=Oa().gapi)||void 0===s?void 0:s.load)){const t=qa("iframefcb");return Oa()[t]=()=>{gapi.load?o():n(Ys(e,"network-request-failed"))},ja(`https://apis.google.com/js/api.js?onload=${t}`).catch((e=>n(e)))}o()}})).catch((e=>{throw fc=null,e}))}(e),fc}
+ */const fc=new lo(3e4,6e4);function pc(){const e=xa().___jsl;if(null==e?void 0:e.H)for(const t of Object.keys(e.H))if(e.H[t].r=e.H[t].r||[],e.H[t].L=e.H[t].L||[],e.H[t].r=[...e.H[t].L],e.CP)for(let t=0;t<e.CP.length;t++)e.CP[t]=null}let gc=null;function mc(e){return gc=gc||function(e){return new Promise(((t,n)=>{var r,i,s;function o(){pc(),gapi.load("gapi.iframes",{callback:()=>{t(gapi.iframes.getContext())},ontimeout:()=>{pc(),n(Qs(e,"network-request-failed"))},timeout:fc.get()})}if(null===(i=null===(r=xa().gapi)||void 0===r?void 0:r.iframes)||void 0===i?void 0:i.Iframe)t(gapi.iframes.getContext());else{if(!(null===(s=xa().gapi)||void 0===s?void 0:s.load)){const t=Ha("iframefcb");return xa()[t]=()=>{gapi.load?o():n(Qs(e,"network-request-failed"))},Wa(`https://apis.google.com/js/api.js?onload=${t}`).catch((e=>n(e)))}o()}})).catch((e=>{throw gc=null,e}))}(e),gc}
 /**
  * @license
  * Copyright 2020 Google LLC.
@@ -2814,7 +2814,7 @@ const ac=/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/,cc=/^https?/;async function lc(e
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */const gc=new ao(5e3,15e3),mc={style:{position:"absolute",top:"-100px",width:"1px",height:"1px"},"aria-hidden":"true",tabindex:"-1"},_c=new Map([["identitytoolkit.googleapis.com","p"],["staging-identitytoolkit.sandbox.googleapis.com","s"],["test-identitytoolkit.sandbox.googleapis.com","t"]]);function yc(e){const t=e.config;Xs(t.authDomain,e,"auth-domain-config-required");const n=t.emulator?co(t,"emulator/auth/iframe"):`https://${e.config.authDomain}/__/auth/iframe`,r={apiKey:t.apiKey,appName:e.name,v:"9.8.3"},i=_c.get(e.config.apiHost);i&&(r.eid=i);const s=e._getFrameworks();return s.length&&(r.fw=s.join(",")),`${n}?${j(r).slice(1)}`}
+ */const _c=new lo(5e3,15e3),yc={style:{position:"absolute",top:"-100px",width:"1px",height:"1px"},"aria-hidden":"true",tabindex:"-1"},vc=new Map([["identitytoolkit.googleapis.com","p"],["staging-identitytoolkit.sandbox.googleapis.com","s"],["test-identitytoolkit.sandbox.googleapis.com","t"]]);function wc(e){const t=e.config;eo(t.authDomain,e,"auth-domain-config-required");const n=t.emulator?ho(t,"emulator/auth/iframe"):`https://${e.config.authDomain}/__/auth/iframe`,r={apiKey:t.apiKey,appName:e.name,v:"9.8.3"},i=vc.get(e.config.apiHost);i&&(r.eid=i);const s=e._getFrameworks();return s.length&&(r.fw=s.join(",")),`${n}?${j(r).slice(1)}`}
 /**
  * @license
  * Copyright 2020 Google LLC.
@@ -2831,7 +2831,7 @@ const ac=/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/,cc=/^https?/;async function lc(e
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const vc={location:"yes",resizable:"yes",statusbar:"yes",toolbar:"no"};class wc{close(){if(this.window)try{this.window.close()}catch(e){}}constructor(e){this.window=e,this.associatedEvent=null}}function bc(e,t,n,r=500,i=600){const s=Math.max((window.screen.availHeight-i)/2,0).toString(),o=Math.max((window.screen.availWidth-r)/2,0).toString();let a="";const c=Object.assign(Object.assign({},vc),{width:r.toString(),height:i.toString(),top:s,left:o}),l=w().toLowerCase();n&&(a=Uo(l)?"_blank":n),Do(l)&&(t=t||"http://localhost",c.scrollbars="yes");const h=Object.entries(c).reduce(((e,[t,n])=>`${e}${t}=${n},`),"");if(function(e=w()){var t;return Wo(e)&&!!(null===(t=window.navigator)||void 0===t?void 0:t.standalone)}(l)&&"_self"!==a)return function(e,t){const n=document.createElement("a");n.href=e,n.target=t;const r=document.createEvent("MouseEvent");r.initMouseEvent("click",!0,!0,window,1,0,0,0,0,!1,!1,!1,!1,1,null),n.dispatchEvent(r)}
+const bc={location:"yes",resizable:"yes",statusbar:"yes",toolbar:"no"};class Ic{close(){if(this.window)try{this.window.close()}catch(e){}}constructor(e){this.window=e,this.associatedEvent=null}}function Ec(e,t,n,r=500,i=600){const s=Math.max((window.screen.availHeight-i)/2,0).toString(),o=Math.max((window.screen.availWidth-r)/2,0).toString();let a="";const c=Object.assign(Object.assign({},bc),{width:r.toString(),height:i.toString(),top:s,left:o}),l=w().toLowerCase();n&&(a=Bo(l)?"_blank":n),Uo(l)&&(t=t||"http://localhost",c.scrollbars="yes");const h=Object.entries(c).reduce(((e,[t,n])=>`${e}${t}=${n},`),"");if(function(e=w()){var t;return Vo(e)&&!!(null===(t=window.navigator)||void 0===t?void 0:t.standalone)}(l)&&"_self"!==a)return function(e,t){const n=document.createElement("a");n.href=e,n.target=t;const r=document.createEvent("MouseEvent");r.initMouseEvent("click",!0,!0,window,1,0,0,0,0,!1,!1,!1,!1,1,null),n.dispatchEvent(r)}
 /**
  * @license
  * Copyright 2021 Google LLC
@@ -2847,7 +2847,7 @@ const vc={location:"yes",resizable:"yes",statusbar:"yes",toolbar:"no"};class wc{
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */(t||"",a),new wc(null);const u=window.open(t||"",a,h);Xs(u,e,"popup-blocked");try{u.focus()}catch(e){}return new wc(u)}function Ic(e,t,n,r,i,s){Xs(e.config.authDomain,e,"auth-domain-config-required"),Xs(e.config.apiKey,e,"invalid-api-key");const o={apiKey:e.config.apiKey,appName:e.name,authType:n,redirectUrl:r,v:"9.8.3",eventId:i};if(t instanceof sa){t.setDefaultLanguage(e.languageCode),o.providerId=t.providerId||"",M(t.getCustomParameters())||(o.customParameters=JSON.stringify(t.getCustomParameters()));for(const[e,t]of Object.entries(s||{}))o[e]=t}if(t instanceof oa){const e=t.getScopes().filter((e=>""!==e));e.length>0&&(o.scopes=e.join(","))}e.tenantId&&(o.tid=e.tenantId);const a=o;for(const e of Object.keys(a))void 0===a[e]&&delete a[e];return`${function({config:e}){return e.emulator?co(e,"emulator/auth/handler"):`https://${e.authDomain}/__/auth/handler`}
+ */(t||"",a),new Ic(null);const u=window.open(t||"",a,h);eo(u,e,"popup-blocked");try{u.focus()}catch(e){}return new Ic(u)}function Cc(e,t,n,r,i,s){eo(e.config.authDomain,e,"auth-domain-config-required"),eo(e.config.apiKey,e,"invalid-api-key");const o={apiKey:e.config.apiKey,appName:e.name,authType:n,redirectUrl:r,v:"9.8.3",eventId:i};if(t instanceof aa){t.setDefaultLanguage(e.languageCode),o.providerId=t.providerId||"",M(t.getCustomParameters())||(o.customParameters=JSON.stringify(t.getCustomParameters()));for(const[e,t]of Object.entries(s||{}))o[e]=t}if(t instanceof ca){const e=t.getScopes().filter((e=>""!==e));e.length>0&&(o.scopes=e.join(","))}e.tenantId&&(o.tid=e.tenantId);const a=o;for(const e of Object.keys(a))void 0===a[e]&&delete a[e];return`${function({config:e}){return e.emulator?ho(e,"emulator/auth/handler"):`https://${e.authDomain}/__/auth/handler`}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2863,7 +2863,7 @@ const vc={location:"yes",resizable:"yes",statusbar:"yes",toolbar:"no"};class wc{
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */(e)}?${j(a).slice(1)}`}const Ec=class{async _openPopup(e,t,n,r){var i;eo(null===(i=this.eventManagers[e._key()])||void 0===i?void 0:i.manager,"_initialize() not called before _openPopup()");return bc(e,Ic(e,t,n,ro(),r),Na())}async _openRedirect(e,t,n,r){var i;return await this._originValidation(e),i=Ic(e,t,n,ro(),r),Oa().location.href=i,new Promise((()=>{}))}_initialize(e){const t=e._key();if(this.eventManagers[t]){const{manager:e,promise:n}=this.eventManagers[t];return e?Promise.resolve(e):(eo(n,"If manager is not set, promise should be"),n)}const n=this.initAndGetManager(e);return this.eventManagers[t]={promise:n},n.catch((()=>{delete this.eventManagers[t]})),n}async initAndGetManager(e){const t=await async function(e){const t=await pc(e),n=Oa().gapi;return Xs(n,e,"internal-error"),t.open({where:document.body,url:yc(e),messageHandlersFilter:n.iframes.CROSS_ORIGIN_IFRAMES_FILTER,attributes:mc,dontclear:!0},(t=>new Promise((async(n,r)=>{await t.restyle({setHideOnLeave:!1});const i=Ys(e,"network-request-failed"),s=Oa().setTimeout((()=>{r(i)}),gc.get());function o(){Oa().clearTimeout(s),n(t)}t.ping(o).then(o,(()=>{r(i)}))}))))}(e),n=new ic(e);return t.register("authEvent",(t=>{Xs(null==t?void 0:t.authEvent,e,"invalid-auth-event");return{status:n.onEvent(t.authEvent)?"ACK":"ERROR"}}),gapi.iframes.CROSS_ORIGIN_IFRAMES_FILTER),this.eventManagers[e._key()]={manager:n},this.iframes[e._key()]=t,n}_isIframeWebStorageSupported(e,t){this.iframes[e._key()].send("webStorageSupport",{type:"webStorageSupport"},(n=>{var r;const i=null===(r=null==n?void 0:n[0])||void 0===r?void 0:r.webStorageSupport;void 0!==i&&t(!!i),Ks(e,"internal-error")}),gapi.iframes.CROSS_ORIGIN_IFRAMES_FILTER)}_originValidation(e){const t=e._key();return this.originValidationPromises[t]||(this.originValidationPromises[t]=lc(e)),this.originValidationPromises[t]}get _shouldInitProactively(){return Vo()||Mo()||Wo()}constructor(){this.eventManagers={},this.iframes={},this.originValidationPromises={},this._redirectPersistence=Sa,this._completeRedirectFn=rc,this._overrideRedirectResult=ec}};var Cc;
+ */(e)}?${j(a).slice(1)}`}const Tc=class{async _openPopup(e,t,n,r){var i;no(null===(i=this.eventManagers[e._key()])||void 0===i?void 0:i.manager,"_initialize() not called before _openPopup()");return Ec(e,Cc(e,t,n,so(),r),Oa())}async _openRedirect(e,t,n,r){var i;return await this._originValidation(e),i=Cc(e,t,n,so(),r),xa().location.href=i,new Promise((()=>{}))}_initialize(e){const t=e._key();if(this.eventManagers[t]){const{manager:e,promise:n}=this.eventManagers[t];return e?Promise.resolve(e):(no(n,"If manager is not set, promise should be"),n)}const n=this.initAndGetManager(e);return this.eventManagers[t]={promise:n},n.catch((()=>{delete this.eventManagers[t]})),n}async initAndGetManager(e){const t=await async function(e){const t=await mc(e),n=xa().gapi;return eo(n,e,"internal-error"),t.open({where:document.body,url:wc(e),messageHandlersFilter:n.iframes.CROSS_ORIGIN_IFRAMES_FILTER,attributes:yc,dontclear:!0},(t=>new Promise((async(n,r)=>{await t.restyle({setHideOnLeave:!1});const i=Qs(e,"network-request-failed"),s=xa().setTimeout((()=>{r(i)}),_c.get());function o(){xa().clearTimeout(s),n(t)}t.ping(o).then(o,(()=>{r(i)}))}))))}(e),n=new oc(e);return t.register("authEvent",(t=>{eo(null==t?void 0:t.authEvent,e,"invalid-auth-event");return{status:n.onEvent(t.authEvent)?"ACK":"ERROR"}}),gapi.iframes.CROSS_ORIGIN_IFRAMES_FILTER),this.eventManagers[e._key()]={manager:n},this.iframes[e._key()]=t,n}_isIframeWebStorageSupported(e,t){this.iframes[e._key()].send("webStorageSupport",{type:"webStorageSupport"},(n=>{var r;const i=null===(r=null==n?void 0:n[0])||void 0===r?void 0:r.webStorageSupport;void 0!==i&&t(!!i),Js(e,"internal-error")}),gapi.iframes.CROSS_ORIGIN_IFRAMES_FILTER)}_originValidation(e){const t=e._key();return this.originValidationPromises[t]||(this.originValidationPromises[t]=uc(e)),this.originValidationPromises[t]}get _shouldInitProactively(){return zo()||Fo()||Vo()}constructor(){this.eventManagers={},this.iframes={},this.originValidationPromises={},this._redirectPersistence=Na,this._completeRedirectFn=sc,this._overrideRedirectResult=nc}};var kc;
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2880,7 +2880,7 @@ const vc={location:"yes",resizable:"yes",statusbar:"yes",toolbar:"no"};class wc{
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class Tc{getUid(){var e;return this.assertAuthConfigured(),(null===(e=this.auth.currentUser)||void 0===e?void 0:e.uid)||null}async getToken(e){if(this.assertAuthConfigured(),await this.auth._initializationPromise,!this.auth.currentUser)return null;return{accessToken:await this.auth.currentUser.getIdToken(e)}}addAuthTokenListener(e){if(this.assertAuthConfigured(),this.internalListeners.has(e))return;const t=this.auth.onIdTokenChanged((t=>{var n;e((null===(n=t)||void 0===n?void 0:n.stsTokenManager.accessToken)||null)}));this.internalListeners.set(e,t),this.updateProactiveRefresh()}removeAuthTokenListener(e){this.assertAuthConfigured();const t=this.internalListeners.get(e);t&&(this.internalListeners.delete(e),t(),this.updateProactiveRefresh())}assertAuthConfigured(){Xs(this.auth._initializationPromise,"dependent-sdk-initialized-before-auth")}updateProactiveRefresh(){this.internalListeners.size>0?this.auth._startProactiveRefresh():this.auth._stopProactiveRefresh()}constructor(e){this.auth=e,this.internalListeners=new Map}}
+class Sc{getUid(){var e;return this.assertAuthConfigured(),(null===(e=this.auth.currentUser)||void 0===e?void 0:e.uid)||null}async getToken(e){if(this.assertAuthConfigured(),await this.auth._initializationPromise,!this.auth.currentUser)return null;return{accessToken:await this.auth.currentUser.getIdToken(e)}}addAuthTokenListener(e){if(this.assertAuthConfigured(),this.internalListeners.has(e))return;const t=this.auth.onIdTokenChanged((t=>{var n;e((null===(n=t)||void 0===n?void 0:n.stsTokenManager.accessToken)||null)}));this.internalListeners.set(e,t),this.updateProactiveRefresh()}removeAuthTokenListener(e){this.assertAuthConfigured();const t=this.internalListeners.get(e);t&&(this.internalListeners.delete(e),t(),this.updateProactiveRefresh())}assertAuthConfigured(){eo(this.auth._initializationPromise,"dependent-sdk-initialized-before-auth")}updateProactiveRefresh(){this.internalListeners.size>0?this.auth._startProactiveRefresh():this.auth._stopProactiveRefresh()}constructor(e){this.auth=e,this.internalListeners=new Map}}
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -2896,7 +2896,7 @@ class Tc{getUid(){var e;return this.assertAuthConfigured(),(null===(e=this.auth.
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */Cc="Browser",Oe(new Q("auth",((e,{options:t})=>{const n=e.getProvider("app").getImmediate(),r=e.getProvider("heartbeat"),{apiKey:i,authDomain:s}=n.options;return((e,n)=>{Xs(i&&!i.includes(":"),"invalid-api-key",{appName:e.name}),Xs(!(null==s?void 0:s.includes(":")),"argument-error",{appName:e.name});const r={apiKey:i,authDomain:s,clientPlatform:Cc,apiHost:"identitytoolkit.googleapis.com",tokenApiHost:"securetoken.googleapis.com",apiScheme:"https",sdkClientVersion:$o(Cc)},o=new Go(e,n,r);return function(e,t){const n=(null==t?void 0:t.persistence)||[],r=(Array.isArray(n)?n:[n]).map(no);(null==t?void 0:t.errorMap)&&e._updateErrorMap(t.errorMap),e._initializeWithPersistence(r,null==t?void 0:t.popupRedirectResolver)}(o,t),o})(n,r)}),"PUBLIC").setInstantiationMode("EXPLICIT").setInstanceCreatedCallback(((e,t,n)=>{e.getProvider("auth-internal").initialize()}))),Oe(new Q("auth-internal",(e=>{const t=Ko(e.getProvider("auth").getImmediate());return new Tc(t)}),"PRIVATE").setInstantiationMode("EXPLICIT")),Ue("@firebase/auth","0.20.3",function(e){switch(e){case"Node":return"node";case"ReactNative":return"rn";case"Worker":return"webworker";case"Cordova":return"cordova";default:return}}(Cc)),Ue("@firebase/auth","0.20.3","esm2017");const kc=
+ */kc="Browser",Oe(new Q("auth",((e,{options:t})=>{const n=e.getProvider("app").getImmediate(),r=e.getProvider("heartbeat"),{apiKey:i,authDomain:s}=n.options;return((e,n)=>{eo(i&&!i.includes(":"),"invalid-api-key",{appName:e.name}),eo(!(null==s?void 0:s.includes(":")),"argument-error",{appName:e.name});const r={apiKey:i,authDomain:s,clientPlatform:kc,apiHost:"identitytoolkit.googleapis.com",tokenApiHost:"securetoken.googleapis.com",apiScheme:"https",sdkClientVersion:Go(kc)},o=new Yo(e,n,r);return function(e,t){const n=(null==t?void 0:t.persistence)||[],r=(Array.isArray(n)?n:[n]).map(io);(null==t?void 0:t.errorMap)&&e._updateErrorMap(t.errorMap),e._initializeWithPersistence(r,null==t?void 0:t.popupRedirectResolver)}(o,t),o})(n,r)}),"PUBLIC").setInstantiationMode("EXPLICIT").setInstanceCreatedCallback(((e,t,n)=>{e.getProvider("auth-internal").initialize()}))),Oe(new Q("auth-internal",(e=>{const t=Jo(e.getProvider("auth").getImmediate());return new Sc(t)}),"PRIVATE").setInstantiationMode("EXPLICIT")),Ue("@firebase/auth","0.20.3",function(e){switch(e){case"Node":return"node";case"ReactNative":return"rn";case"Worker":return"webworker";case"Cordova":return"cordova";default:return}}(kc)),Ue("@firebase/auth","0.20.3","esm2017");const Rc=
 /**
  * @license
  * Copyright 2021 Google LLC
@@ -2913,5 +2913,5 @@ class Tc{getUid(){var e;return this.assertAuthConfigured(),(null===(e=this.auth.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function(e=Me()){const t=Ae(e,"auth");return t.isInitialized()?t.getImmediate():function(e,t){const n=Ae(e,"auth");if(n.isInitialized()){const e=n.getImmediate();if(F(n.getOptions(),null!=t?t:{}))return e;Ks(e,"already-initialized")}return n.initialize({options:t})}(e,{popupRedirectResolver:Ec,persistence:[Ba,Ta,Sa]})}(De(Ms));let Sc=null;const Rc=document.querySelector(".form-register"),Nc=document.querySelector(".form-authorization"),Pc=document.querySelector(".js-exit-btn"),Oc=document.querySelector(".js-site-nav");var Ac,xc,Lc;function Dc(e,t,n){const r={openModalBtn:document.querySelector(e),closeModalBtn:document.querySelector(t),modal:document.querySelector(n),body:document.querySelector("body")};function i(e){r.modal.classList.toggle("is-hidden"),document.removeEventListener("keydown",s),r.body.classList.remove("modal-open")}function s(e){"Escape"===e.key&&i()}r.openModalBtn.addEventListener("click",(function(e){r.body.classList.add("modal-open"),e.preventDefault(),e.stopPropagation(),document.addEventListener("keydown",s),r.modal.classList.toggle("is-hidden")})),r.closeModalBtn.addEventListener("click",i),r.modal.addEventListener("click",(function(e){e.target===e.currentTarget&&i()}))}Nc.addEventListener("submit",(function(e){e.preventDefault();const{email:t,password:n}=e.target.elements;(function(e,t){ba(kc,e,t).then((e=>{e.user})).catch((e=>{e.code,e.message}))})(t.value,n.value),e.target.reset()})),Rc.addEventListener("submit",(function(e){e.preventDefault();const{email:t,password:n,name:r}=e.target.elements;(function(e,t,n){wa(kc,e,t).then((e=>{e.user;Ia(kc.currentUser,{displayName:n})})).catch((e=>{e.code,e.message}))})(t.value,n.value,r.value),e.target.reset()})),Pc.addEventListener("click",(function(e){e.preventDefault(),(t=kc,J(t).signOut()).then((()=>{console.log("signoff"),Sc=null,js(null)})).catch((e=>{}));var t})),Ac=e=>{e?(Sc=e.uid,js(Sc),Pc.classList.remove("d-none"),Oc.classList.add("d-none")):(Sc=null,Pc.classList.add("d-none"),Oc.classList.remove("d-none"),js(null))},J(kc).onAuthStateChanged(Ac,xc,Lc),Dc("[data-modal-open]","[data-modal-close]","[data-modal]"),Dc(".js-site-nav",".js-btn-modal",".js-auth-modal"),Dc(".films__gallery",".modal__close-button",".js-backdrop");const Mc=document.querySelector(".auth-btn"),Uc=document.querySelector(".regist-btn"),Fc=document.querySelector(".form-authorization"),Bc=document.querySelector(".form-register");Mc.addEventListener("click",(function(){jc(Bc,"visually-hidden"),qc(Fc,"visually-hidden"),qc(Uc,"is-active-btn"),jc(Mc,"is-active-btn")})),Uc.addEventListener("click",(function(){jc(Fc,"visually-hidden"),qc(Bc,"visually-hidden"),qc(Mc,"is-active-btn"),jc(Uc,"is-active-btn")}));function jc(e,t){e.classList.add(t)}function qc(e,t){e.classList.remove(t)}const Wc={form:document.querySelector(".search-form"),movieContainer:document.querySelector(".films__gallery"),movieOneCardContainer:document.querySelector(".films__gallery"),cardModalMovie:document.querySelector(".js-modal-card")},{MovieTrendContainer:Hc}=Wc;function Vc(e){zc(e)}function $c(e){zc(e)}function zc(e){Wc.movieContainer.innerHTML="";const t=e.map((({id:e,title:t,vote_average:n,release_date:r,genre_ids:i,poster_path:s})=>`\n<li class="gallery-items films__gallery-item">\n<a href="#!" class="list-card__link">\n\x3c!-- постер --\x3e\n\n <img\n         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${s}"\n        alt="${t}"\n         class="moviе-item__img" \n         data-id=${e}\n   />\n\n\x3c!-- обгортка інформації під постером --\x3e\n<div class="moviе-stats">\n    <h2 class="moviе-stats__title">${t}</h2>\n    <div class="moviе-stats__info">\n\x3c!-- список жанрів --\x3e\n<p class="moviе-genre">${i}</p>\n\x3c!-- дата виходу та рейтинг --\x3e\n<p class="moviе-year">${new Date(r).getFullYear()}</p>\n\x3c!-- рейтинг --\x3e\n<p class="moviе-vote">${n}</p>\n</div>\n    </div>\n</a>\n</li>`)).join("");Wc.movieContainer.insertAdjacentHTML("beforeend",t)}const Gc=document.querySelector(".pagination__list");Gc.addEventListener("click",(async function(e){(function(e){const t=3;Number(e)?Kc=Number(e):("minus"===e&&(Kc-=1),"plus"===e&&(Kc+=1),"dots-minus"===e&&(Kc-=t),"dots-plus"===e&&(Kc+=t))})(e.target.dataset.action),Us.changePage(Kc);try{if(""===Us._query){const{results:e}=await Us.getMovieTrend();Vc(e),Yc()}else{const{results:e}=await Us.getSearchMovieResult();Vc(e),Yc()}}catch(e){console.log(e.message)}}));let Kc=Us._page;function Yc(){let e=Us.total_pages;Kc=Us._page;let t="",n="",r=Kc-1,i=Kc+1;Kc>1&&(t+='<li class="pagination__item">\n        <span class="pagination__btn-minus" data-action="minus">\n          \n        </span>\n      </li>'),Kc>2&&(t+='<li class="pagination__item"><span class="pagination__number" data-action="1">1</span></li>',Kc>3&&(t+='<li class="pagination__item"><span class="pagination__dots" data-action="dots-minus">...</span></li>')),Kc===e?r-=2:Kc===e-1&&(r-=1),1===Kc?i+=2:2===Kc&&(i+=1);for(let s=r;s<=i;s++)s>e||(0===s&&(s+=1),n=Kc===s?"activePage":"",t+=`<li class="pagination__item ${n}"><span class="pagination__number" data-action="${s}">${s}</span></li>`);Kc<e-1&&(Kc<e-2&&(t+='<li class="pagination__item"><span class="pagination__dots" data-action="dots-plus">...</span></li>'),t+=`<li class="pagination__item"><span class="pagination__number" data-action="${e}">${e}</span></li>`),Kc<e&&(t+='<li class="pagination__item">\n      <span class="pagination__btn-plus" data-action="plus"></span>\n    </li>'),Gc.innerHTML=t}let Jc={};({modalCard:document.querySelector(".modal__card"),addWatchBtn:document.querySelector("#js-watched-add"),delWatchBtn:document.querySelector("#js-watched-delete"),addQueueBtn:document.querySelector("#js-queue-add"),deletQueueBtn:document.querySelector("#js-queue-delete")}).modalCard.addEventListener("click",(function(e){e.preventDefault(e),e.target.classList.contains("js-watched-add")?(console.log(Jc),qs(Jc,"watched")):e.target.classList.contains("js-queue-add")&&(console.log(Jc),qs(Jc,"queue"))}));document.querySelector(".test").addEventListener("click",(async function(){(e="queue",Ps(Ss(Fs,`users/${Bs}`)).then((t=>{if(t.exists())return console.log(t.val()[e]),t.val()[e];console.log("No data available")})).catch((e=>{console.error(e)}))).then((e=>console.log(e)));var e}));const Qc=document.querySelector(".js-scroll");function Xc(e,t){Wc.cardModalMovie.innerHTML="";const{poster_path:n,title:r,vote_average:i,vote_count:s,popularity:o,original_title:a,genres:c,overview:l,id:h}=e,u=`\n<div class="modal__img-wrap">\n      <a href="https://www.youtube.com/watch?v=${t}" class="modal__img-link">\n      <img\n        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${n}"\n        alt="${r}"\n        class="modal__img" data-id=${h}/>\n        <div class="modal__play-bacground">\n          <span class="modal__svg-background"></span>\n        </div>\n        </a>\n</div>\n\n      <div class="modal__info-container">\n        <h2 class="modal__title-film">${r}</h2>\n        <table class="modal__info">\n          <tr>\n            <td class="modal__info-category">Vote/Votes</td>\n            <td class="modal__info-value">\n              <span class="modal__vote">${i}</span\n              ><span class="modal__slash">/</span\n              ><span class="modal__votes">${s}</span>\n            </td>\n          </tr>\n          <tr>\n            <td class="modal__info-category">Popularity</td>\n            <td class="modal__info-value">${o}</td>\n          </tr>\n          <tr>\n            <td class="modal__info-category">Original Title</td>\n            <td class="modal__info-value">${a}</td>\n          </tr>\n          <tr>\n            <td class="modal__info-category">Genre</td>\n            <td class="modal__info-value">${c.map((e=>e.name)).join(", ")}</td>\n          </tr>\n        </table>\n        <p class="modal__title-about">About</p>\n        <p class="modal__article-about-movie">\n          ${l}\n        </p>\n        <div class="modal__button-container">\n          <button type="submit" class="modal__button js-watched-add" id="js-watched-add" data-id=${h}>\n            ADD TO WATCHED\n          </button>\n          <button type="submit" class="modal__button js-queue-add" data-id=${h}>\n            ADD TO QUEUE\n          </button>\n        </div>\n        <div class="modal__button-container">\n          <button type="submit" class="modal__button d-none js-watched-delete"  data-id=${h}>\n            DELETE FROM WATCHED\n          </button>\n          <button type="submit" class="modal__button d-none js-queue-delete"  data-id=${h}>\n            DELETE FROM  QUEUE\n          </button>\n        </div>\n      </div>`;Wc.cardModalMovie.insertAdjacentHTML("beforeend",u)}Qc.addEventListener("click",(()=>window.scroll(0,0))),window.addEventListener("scroll",(function(e){e.preventDefault(),window.scrollY<320?Qc.classList.remove("isShown"):Qc.classList.add("isShown")}));const Zc=document.querySelector(".js-library"),el=document.querySelector(".js-home"),tl=document.querySelector(".form-wrap"),nl=document.querySelector(".library__list"),rl=document.querySelector(".header");Zc.addEventListener("click",(function(e){e.preventDefault(),tl.classList.add("header-none"),nl.classList.remove("header-none"),Zc.classList.add("site-nav__link-current"),el.classList.remove("site-nav__link-current"),rl.classList.add("library-bg"),rl.classList.remove("home-bg")})),el.addEventListener("click",(function(e){e.preventDefault(),tl.classList.remove("header-none"),nl.classList.add("header-none"),Zc.classList.remove("site-nav__link-current"),el.classList.add("site-nav__link-current"),rl.classList.remove("library-bg"),rl.classList.add("home-bg")}));new class{hide(){this.selector.classList.add(this.className)}show(){this.selector.classList.remove(this.className)}constructor({selector:e,className:t,isHide:n=!1}){this.selector=document.querySelector(e),this.className=t,n&&this.hide()}}({selector:".js-spinner",className:"visually-hidden",isHide:!0}).hide(),Us.getMovieTrend().then((e=>console.log(e)));document.addEventListener("DOMContentLoaded",(async()=>{try{Wc.movieContainer.innerHTML="";const{results:e,total_pages:t}=await Us.getMovieTrend();Us.total_pages=t,Yc(),Vc(e)}catch(e){console.error(e.message)}}));Wc.form.addEventListener("submit",(async e=>{if(e.preventDefault(),Us._page=1,Us._query=e.target.elements.query.value.trim(),Us._query)try{Wc.movieContainer.innerHTML="";const{results:e,total_pages:t}=await Us.getSearchMovieResult();Us.total_pages=t,$c(e),Yc(),Wc.form.reset()}catch(e){console.error(e.message)}}));Wc.movieOneCardContainer.addEventListener("click",(async e=>{if(console.log(e.target.tagName),"IMG"===e.target.tagName){const t=await Us.getSearchMovieById(e.target.dataset.id),n=await Us.getVideo(e.target.dataset.id);Jc=t,Xc(t,n)}}));
-//# sourceMappingURL=index.1e28f19e.js.map
+function(e=Me()){const t=Ae(e,"auth");return t.isInitialized()?t.getImmediate():function(e,t){const n=Ae(e,"auth");if(n.isInitialized()){const e=n.getImmediate();if(F(n.getOptions(),null!=t?t:{}))return e;Js(e,"already-initialized")}return n.initialize({options:t})}(e,{popupRedirectResolver:Tc,persistence:[qa,Sa,Na]})}(De(Ms));let Nc=null;const Pc=document.querySelector(".form-register"),Oc=document.querySelector(".form-authorization"),Ac=document.querySelector(".js-exit-btn"),xc=document.querySelector(".js-site-nav");var Lc,Dc,Mc;function Uc(e,t,n){const r={openModalBtn:document.querySelector(e),closeModalBtn:document.querySelector(t),modal:document.querySelector(n),body:document.querySelector("body")};function i(e){r.modal.classList.toggle("is-hidden"),document.removeEventListener("keydown",s),r.body.classList.remove("modal-open")}function s(e){"Escape"===e.key&&i()}r.openModalBtn.addEventListener("click",(function(e){r.body.classList.add("modal-open"),e.preventDefault(),e.stopPropagation(),document.addEventListener("keydown",s),r.modal.classList.toggle("is-hidden")})),r.closeModalBtn.addEventListener("click",i),r.modal.addEventListener("click",(function(e){e.target===e.currentTarget&&i()}))}Oc.addEventListener("submit",(function(e){e.preventDefault();const{email:t,password:n}=e.target.elements;(function(e,t){Ea(Rc,e,t).then((e=>{e.user})).catch((e=>{e.code,e.message}))})(t.value,n.value),e.target.reset()})),Pc.addEventListener("submit",(function(e){e.preventDefault();const{email:t,password:n,name:r}=e.target.elements;(function(e,t,n){Ia(Rc,e,t).then((e=>{e.user;Ca(Rc.currentUser,{displayName:n})})).catch((e=>{e.code,e.message}))})(t.value,n.value,r.value),e.target.reset()})),Ac.addEventListener("click",(function(e){e.preventDefault(),(t=Rc,J(t).signOut()).then((()=>{console.log("signoff"),Nc=null,js(null)})).catch((e=>{}));var t})),Lc=e=>{e?(Nc=e.uid,js(Nc),Ac.classList.remove("d-none"),xc.classList.add("d-none")):(Nc=null,Ac.classList.add("d-none"),xc.classList.remove("d-none"),js(null))},J(Rc).onAuthStateChanged(Lc,Dc,Mc),Uc("[data-modal-open]","[data-modal-close]","[data-modal]"),Uc(".js-site-nav",".js-btn-modal",".js-auth-modal"),Uc(".films__gallery",".modal__close-button",".js-backdrop");const Fc=document.querySelector(".auth-btn"),Bc=document.querySelector(".regist-btn"),jc=document.querySelector(".form-authorization"),qc=document.querySelector(".form-register");Fc.addEventListener("click",(function(){Wc(qc,"visually-hidden"),Hc(jc,"visually-hidden"),Hc(Bc,"is-active-btn"),Wc(Fc,"is-active-btn")})),Bc.addEventListener("click",(function(){Wc(jc,"visually-hidden"),Hc(qc,"visually-hidden"),Hc(Fc,"is-active-btn"),Wc(Bc,"is-active-btn")}));function Wc(e,t){e.classList.add(t)}function Hc(e,t){e.classList.remove(t)}const Vc={form:document.querySelector(".search-form"),movieContainer:document.querySelector(".films__gallery"),movieOneCardContainer:document.querySelector(".films__gallery"),cardModalMovie:document.querySelector(".js-modal-card")},{MovieTrendContainer:$c}=Vc;function zc(e,t="1",n="1"){Kc(e,t,n)}function Gc(e){Kc(e)}function Kc(e,t,n){Vc.movieContainer.innerHTML="";const r=e.map((({id:e,title:r,vote_average:i,release_date:s,genre_ids:o,poster_path:a})=>`\n<li class="gallery-items films__gallery-item" data-id=${e}>\n<a href="#!" class="list-card__link">\n\x3c!-- постер --\x3e\n\n <img\n         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${a}"\n        alt="${r}"\n         class="moviе-item__img" \n         data-id=${e}\n         data-watched=${t}\n         data-queue=${n}\n   />\n\n\x3c!-- обгортка інформації під постером --\x3e\n<div class="moviе-stats">\n    <h2 class="moviе-stats__title">${r}</h2>\n    <div class="moviе-stats__info">\n\x3c!-- список жанрів --\x3e\n<p class="moviе-genre">${o}</p>\n\x3c!-- дата виходу та рейтинг --\x3e\n<p class="moviе-year">${new Date(s).getFullYear()}</p>\n\x3c!-- рейтинг --\x3e\n<p class="moviе-vote">${i}</p>\n</div>\n    </div>\n</a>\n</li>`)).join("");Vc.movieContainer.insertAdjacentHTML("beforeend",r)}const Yc=document.querySelector(".pagination__list");Yc.addEventListener("click",(async function(e){(function(e){const t=3;Number(e)?Jc=Number(e):("minus"===e&&(Jc-=1),"plus"===e&&(Jc+=1),"dots-minus"===e&&(Jc-=t),"dots-plus"===e&&(Jc+=t))})(e.target.dataset.action),Us.changePage(Jc);try{if(""===Us._query){const{results:e}=await Us.getMovieTrend();zc(e),Qc()}else{const{results:e}=await Us.getSearchMovieResult();zc(e),Qc()}}catch(e){console.log(e.message)}}));let Jc=Us._page;function Qc(){let e=Us.total_pages;Jc=Us._page;let t="",n="",r=Jc-1,i=Jc+1;Jc>1&&(t+='<li class="pagination__item">\n        <span class="pagination__btn-minus" data-action="minus">\n          \n        </span>\n      </li>'),Jc>2&&(t+='<li class="pagination__item"><span class="pagination__number" data-action="1">1</span></li>',Jc>3&&(t+='<li class="pagination__item"><span class="pagination__dots" data-action="dots-minus">...</span></li>')),Jc===e?r-=2:Jc===e-1&&(r-=1),1===Jc?i+=2:2===Jc&&(i+=1);for(let s=r;s<=i;s++)s>e||(0===s&&(s+=1),n=Jc===s?"activePage":"",t+=`<li class="pagination__item ${n}"><span class="pagination__number" data-action="${s}">${s}</span></li>`);Jc<e-1&&(Jc<e-2&&(t+='<li class="pagination__item"><span class="pagination__dots" data-action="dots-plus">...</span></li>'),t+=`<li class="pagination__item"><span class="pagination__number" data-action="${e}">${e}</span></li>`),Jc<e&&(t+='<li class="pagination__item">\n      <span class="pagination__btn-plus" data-action="plus"></span>\n    </li>'),Yc.innerHTML=t}let Xc={};const Zc={modalCard:document.querySelector(".modal__card"),watchBtn:document.querySelector("#watched"),queueBtn:document.querySelector("#queue"),deletQueueBtn:document.querySelector("#js-queue-delete")};async function el(e,t){Zc.watchBtn.classList.toggle("is-active"),Zc.queueBtn.classList.toggle("is-active"),results=e?await Hs(e):await Hs(t),zc(Object.values(results),e,t)}Zc.watchBtn.addEventListener("click",(e=>el("watched",!1))),Zc.queueBtn.addEventListener("click",(e=>el(!1,"queue"))),Zc.modalCard.addEventListener("click",(function(e){e.preventDefault(e),e.target.classList.contains("js-watched-add")?(console.log(Xc),qs(Xc,"watched")):e.target.classList.contains("js-queue-add")&&(console.log(Xc),qs(Xc,"queue"))}));const tl=document.querySelector(".js-scroll");function nl(e,t){Vc.cardModalMovie.innerHTML="";const{poster_path:n,title:r,vote_average:i,vote_count:s,popularity:o,original_title:a,genres:c,overview:l,id:h}=e,u=`\n<div class="modal__img-wrap">\n      <a href="https://www.youtube.com/watch?v=${t}" class="modal__img-link">\n      <img\n        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${n}"\n        alt="${r}"\n        class="modal__img" data-id=${h}/>\n        <div class="modal__play-bacground">\n          <span class="modal__svg-background"></span>\n        </div>\n        </a>\n</div>\n\n      <div class="modal__info-container">\n        <h2 class="modal__title-film">${r}</h2>\n        <table class="modal__info">\n          <tr>\n            <td class="modal__info-category">Vote/Votes</td>\n            <td class="modal__info-value">\n              <span class="modal__vote">${i}</span\n              ><span class="modal__slash">/</span\n              ><span class="modal__votes">${s}</span>\n            </td>\n          </tr>\n          <tr>\n            <td class="modal__info-category">Popularity</td>\n            <td class="modal__info-value">${o}</td>\n          </tr>\n          <tr>\n            <td class="modal__info-category">Original Title</td>\n            <td class="modal__info-value">${a}</td>\n          </tr>\n          <tr>\n            <td class="modal__info-category">Genre</td>\n            <td class="modal__info-value">${c.map((e=>e.name)).join(", ")}</td>\n          </tr>\n        </table>\n        <p class="modal__title-about">About</p>\n        <p class="modal__article-about-movie">\n          ${l}\n        </p>\n        <div class="modal__button-wrap">\n          <div class="modal__button-container">\n            <button type="submit" class="modal__button js-watched-add" id="js-watched-add" data-id=${h}>\n              ADD TO WATCHED\n            </button>\n            <button type="button" class="modal__button js-watched-delete visually-hidden" id="js-watched-del" data-id=${h}>\n              DELETE FROM WATCHED\n            </button>\n          </div>\n          <div class="modal__button-container">\n          <button type="submit" class="modal__button js-queue-add" id="js-queue-add" data-id=${h}>\n              ADD TO QUEUE\n            </button>\n            <button type="submit" class="modal__button js-queue-delete visually-hidden" id="js-queue-del" data-id=${h}>\n              DELETE FROM  QUEUE\n            </button>\n          </div>\n        </div>\n      </div>`;Vc.cardModalMovie.insertAdjacentHTML("beforeend",u)}tl.addEventListener("click",(()=>window.scroll(0,0))),window.addEventListener("scroll",(function(e){e.preventDefault(),window.scrollY<320?tl.classList.remove("isShown"):tl.classList.add("isShown")}));const rl=document.querySelector(".js-library"),il=document.querySelector(".js-home"),sl=document.querySelector(".form-wrap"),ol=document.querySelector(".library__list"),al=document.querySelector(".header");rl.addEventListener("click",(function(e){e.preventDefault(),el("watched",!1),sl.classList.add("header-none"),ol.classList.remove("header-none"),rl.classList.add("site-nav__link-current"),il.classList.remove("site-nav__link-current"),al.classList.add("library-bg"),al.classList.remove("home-bg")})),il.addEventListener("click",(function(e){e.preventDefault(),cl(),sl.classList.remove("header-none"),ol.classList.add("header-none"),rl.classList.remove("site-nav__link-current"),il.classList.add("site-nav__link-current"),al.classList.remove("library-bg"),al.classList.add("home-bg")}));new class{hide(){this.selector.classList.add(this.className)}show(){this.selector.classList.remove(this.className)}constructor({selector:e,className:t,isHide:n=!1}){this.selector=document.querySelector(e),this.className=t,n&&this.hide()}}({selector:".js-spinner",className:"visually-hidden",isHide:!0}).hide(),Us.getMovieTrend().then((e=>console.log(e)));const cl=async()=>{try{Vc.movieContainer.innerHTML="";const{results:e,total_pages:t}=await Us.getMovieTrend();Us.total_pages=t,Qc(),zc(e)}catch(e){console.error(e.message)}};document.addEventListener("DOMContentLoaded",cl);Vc.form.addEventListener("submit",(async e=>{if(e.preventDefault(),Us._page=1,Us._query=e.target.elements.query.value.trim(),Us._query)try{Vc.movieContainer.innerHTML="";const{results:e,total_pages:t}=await Us.getSearchMovieResult();Us.total_pages=t,Gc(e),Qc(),Vc.form.reset()}catch(e){console.error(e.message)}}));const ll=async e=>{if(console.log(e.target.tagName),"IMG"===e.target.tagName){const t=await Us.getSearchMovieById(e.target.dataset.id),n=await Us.getVideo(e.target.dataset.id);Xc=t,nl(t,n)}};function hl(e,t){const n=e.target.dataset.id;Ws(n,t),Vc.movieContainer.querySelector(`[data-id="${n}"]`).remove()}Vc.movieOneCardContainer.addEventListener("click",(e=>{ll(e).then((()=>{const t=document.querySelector(".js-watched-add"),n=document.querySelector(".js-queue-add"),r=document.querySelector(".js-watched-delete"),i=document.querySelector(".js-queue-delete");"watched"===e.target.dataset.watched&&(t.classList.add("visually-hidden"),r.classList.remove("visually-hidden")),"queue"===e.target.dataset.queue&&(n.classList.add("visually-hidden"),i.classList.remove("visually-hidden")),r.addEventListener("click",(e=>hl(e,"watched"))),i.addEventListener("click",(e=>hl(e,"queue")))}))}));
+//# sourceMappingURL=index.fc9b1585.js.map
