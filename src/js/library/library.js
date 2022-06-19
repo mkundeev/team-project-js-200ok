@@ -1,17 +1,18 @@
-import {updateFilms, getFilms} from '../service/firebaseStorage'
+import { updateFilms, getFilms } from '../service/firebaseStorage'
+import {renderMovieGallery} from '../template/renderMarkup'
 
 
 let currentCardData={}
 
 export const refs = {
     modalCard: document.querySelector('.modal__card'),
-    addWatchBtn: document.querySelector('#js-watched-add'),
-    delWatchBtn: document.querySelector('#js-watched-delete'),
-    addQueueBtn: document.querySelector('#js-queue-add'),
-    deletQueueBtn: document.querySelector('#js-queue-delete'),
-     
+    watchBtn: document.querySelector('#watched'),
+    queueBtn: document.querySelector('#queue'),
+    deletQueueBtn: document.querySelector('#js-queue-delete'),  
 }
 
+refs.watchBtn.addEventListener('click',(e)=> showFilmList("watched",false))
+refs.queueBtn.addEventListener('click', (e)=> showFilmList(false ,"queue"))
 refs.modalCard.addEventListener('click', addFilmToDb)
 
 
@@ -31,21 +32,25 @@ function addFilmToDb(e) {
      console.log(currentCardData)   
     updateFilms(currentCardData, "queue")}
 }
-// function addFilmToQueue(e) {
-//     e.preventDefault(e)
-//     if (e.target.classList.contains('js-watched-add'))
-//     {
-//      console.log(currentCardData)   
-//     // renderLibraryMarkup(currentCardData)
-//     updateFilms(currentCardData, "watched")}
-// }
 
-const test = document.querySelector('.test')
-test.addEventListener('click', getWatchedFilmFromDb)
-
-async function getWatchedFilmFromDb() {
-    getFilms("queue").then((result)=>console.log(result))
+async function showFilmList(watched,queue) {
+    refs.watchBtn.classList.toggle('is-active')
+    refs.queueBtn.classList.toggle('is-active')
+    watched? results = await getFilms(watched):results = await getFilms(queue)
+    renderMovieGallery((Object.values(results)),watched,queue)
 }
 
+// async function showWatchedList() {
+//     refs.watchBtn.classList.toggle('is-active')
+//     refs.queueBtn.classList.toggle('is-active')
+//     const results = await getFilms("watched")
+//     renderMovieGallery((Object.values(results)),"watched",false)
+// }
+// async function showQueueList() {
+//     refs.watchBtn.classList.toggle('is-active')
+//     refs.queueBtn.classList.toggle('is-active')
+//     const results = await getFilms("queue")
+//     renderMovieGallery((Object.values(results)),false,"queue")
+// }
 
-export {getCurrentCardData}
+export {getCurrentCardData, showFilmList}

@@ -1,3 +1,6 @@
+import { movieTrending } from '../../index'
+import { showFilmList } from './library';
+
 const libraryLinkEl = document.querySelector('.js-library');
 const homeLinkEl = document.querySelector('.js-home');
 const headerFormEl = document.querySelector('.form-wrap');
@@ -9,7 +12,7 @@ homeLinkEl.addEventListener('click', onReplaceHeaderByHome);
 
 function onReplaceHeaderByLibrary(event) {
   event.preventDefault();
-
+  showFilmList("watched",false)
   headerFormEl.classList.add('header-none');
   headerListEl.classList.remove('header-none');
 
@@ -22,6 +25,7 @@ function onReplaceHeaderByLibrary(event) {
 
 function onReplaceHeaderByHome(event) {
   event.preventDefault();
+  movieTrending()
   headerFormEl.classList.remove('header-none');
   headerListEl.classList.add('header-none');
 
@@ -31,3 +35,4 @@ function onReplaceHeaderByHome(event) {
   headerEl.classList.remove('library-bg');
   headerEl.classList.add('home-bg');
 }
+

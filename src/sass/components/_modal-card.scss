@@ -206,14 +206,16 @@ table td {
   color: var(--primary-color-text-modal);
 }
 
-.modal__button-container {
-  display: flex;
-  justify-content: space-between;
+
+.modal__button-wrap{
+    display: flex;
+    justify-content: space-between;
 
   @include desktop {
     justify-content: start;
   }
 }
+
 
 .modal__button {
   width: 110px;

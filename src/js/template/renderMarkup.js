@@ -1,22 +1,22 @@
 import { refs } from '../service/refs';
 const { MovieTrendContainer } = refs;
 
-export function renderMovieGallery(results) {
-  renderMarkup(results);
+export function renderMovieGallery(results, watched ='1',queue='1') {
+  renderMarkup(results,watched,queue);
 }
 
 export function renderSearchResultMovie(results) {
   renderMarkup(results);
 }
 
-function renderMarkup(results) {
+function renderMarkup(results,watched,queue) {
   refs.movieContainer.innerHTML = '';
 
   const markup = results
     .map(
       ({ id, title, vote_average, release_date, genre_ids, poster_path }) =>
         `
-<li class="gallery-items films__gallery-item">
+<li class="gallery-items films__gallery-item" data-id=${id}>
 <a href="#!" class="list-card__link">
 <!-- постер -->
 
@@ -25,6 +25,8 @@ function renderMarkup(results) {
         alt="${title}"
          class="moviе-item__img" 
          data-id=${id}
+         data-watched=${watched}
+         data-queue=${queue}
    />
 
 <!-- обгортка інформації під постером -->

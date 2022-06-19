@@ -58,13 +58,6 @@ export const MovieService = {
     return { results, total_pages };
   },
 
-  // ===================================================TEST=======================================/
-  async getMoviebyId() {
-    const response = await axios.get('/movie/507086');
-
-    return response.data;
-  },
-  // ===================================================TEST=======================================/
   async getSearchMovieById(id) {
     console.log(id);
     const response = await axios.get(`movie/${id}`);

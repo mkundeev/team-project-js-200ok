@@ -10,26 +10,9 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 let userId=null
 
-
-
 function getUserId(id) {
   userId = id;
 }
-
-// async function updateFilms(src) {
-//   console.log(userId)
-//   try {
-
-//     const result = await MovieService.getMoviebyId()
-
-//     update(ref(db, `users/${userId}/${src}`),
-//       {b: result});
-    
-//     }catch (error) {
-//     console.error(error.message);
-//   }
-  
-// }
 
 function updateFilms(results, src) {
   update(ref(db, `users/${userId}/${src}`),
@@ -42,9 +25,6 @@ function deletFilm(id, src) {
    { [id]: null}
   );
 }
-
-// const test = document.querySelector('.test')
-// test.addEventListener('click',()=> updateFilms('watched'))
 
 
 function getFilms(src) {
@@ -60,6 +40,4 @@ function getFilms(src) {
 });
 }
 
-
-
-export {getUserId, updateFilms, getFilms }
+export {getUserId, updateFilms, getFilms, deletFilm }

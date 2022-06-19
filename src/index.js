@@ -11,6 +11,8 @@ import './js/template/pagination';
 import './js/library/replace-header';
 
 
+
+import {deletFilm} from './js/service/firebaseStorage'
 import { VisibleComponent } from './js/spinner/spinner';
 import { renderMarkupCard } from './js/modal/renderMarkupCard';
 import { refs } from './js/service/refs';
@@ -54,6 +56,7 @@ const movieTrending = async () => {
 
 document.addEventListener('DOMContentLoaded', movieTrending);
 
+
 // запрос и отрисовка фильмов по поиску
 const movieSearch = async ev => {
   ev.preventDefault();
@@ -92,11 +95,40 @@ const movieSearchOneFilm = async ev => {
   }
 };
 
-refs.movieOneCardContainer.addEventListener('click', movieSearchOneFilm);
+
 
 // добавить слушателя на отрисованую разметку
-// const creatModal = ev => {
-//   movieSearchOneFilm(ev).then(()=>{const addWatchBtn = document.querySelector('#js-watched-add');
-//   addWatchBtn.addEventListener('click',()=>console.log(1))
-//   })
-// }
+const creatModal = ev => {
+  movieSearchOneFilm(ev).then(() => {
+    const addWatchBtn = document.querySelector('.js-watched-add');
+    const addQueueBtn = document.querySelector('.js-queue-add');
+    const delWatchBtn = document.querySelector('.js-watched-delete');
+    const delQueueBtn = document.querySelector('.js-queue-delete');
+
+    if (ev.target.dataset.watched === "watched") {
+      addWatchBtn.classList.add('visually-hidden');
+      delWatchBtn.classList.remove('visually-hidden');
+    }
+    if (ev.target.dataset.queue === "queue") {
+      addQueueBtn.classList.add('visually-hidden');
+      delQueueBtn.classList.remove('visually-hidden');
+    }
+   
+    delWatchBtn.addEventListener('click',(e)=>delFromList(e, 'watched'))
+    delQueueBtn.addEventListener('click',(e)=>delFromList(e, 'queue'))
+    
+  })
+}
+
+function delFromList(e, src) {
+      const id = e.target.dataset.id
+      deletFilm(id, src);
+      refs.movieContainer.querySelector(`[data-id="${id}"]`).remove()
+    }
+
+
+refs.movieOneCardContainer.addEventListener('click', creatModal);
+
+
+
+export{movieTrending}
