@@ -85,9 +85,9 @@ refs.form.addEventListener('submit', movieSearch);
 const movieSearchOneFilm = async ev => {
   if (ev.target.tagName === 'IMG') {
     const response = await MovieService.getSearchMovieById( ev.target.dataset.id);
-    const key = await MovieService.getVideo(ev.target.dataset.id);
+    // const key = await MovieService.getVideo(ev.target.dataset.id);
     getCurrentCardData(response);
-    renderMarkupCard(response, key);
+    renderMarkupCard(response);
   }
 };
 

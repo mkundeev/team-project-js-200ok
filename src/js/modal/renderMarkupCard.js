@@ -1,6 +1,6 @@
 import { refs } from '../service/refs';
 
-export function renderMarkupCard(data, key) {
+export function renderMarkupCard(data) {
   refs.cardModalMovie.innerHTML = '';
   const {
     poster_path,
@@ -16,7 +16,7 @@ export function renderMarkupCard(data, key) {
 
   const markup = `
 <div class="modal__img-wrap">
-      <a href="https://www.youtube.com/watch?v=${key}" class="modal__img-link">
+      // <a href="" class="modal__img-link">
       <img
         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
         alt="${title}"
