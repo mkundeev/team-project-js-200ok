@@ -1,14 +1,14 @@
-
 import './js/service/firebaseStorage';
 import './js/service/firebaseAuth';
 import './js/modal/modal';
 import './js/form/registration';
+import './js/modal/renderMarkupCard';
 import './js/template/pagination';
 import './js/library/library';
 import './js/scroll/scroll';
-import './js/modal/renderMarkupCard'
-import './js/template/pagination'
-
+import './js/modal/renderMarkupCard';
+import './js/template/pagination';
+import './js/library/replace-header';
 
 import { VisibleComponent } from './js/spinner/spinner';
 import { renderMarkupCard } from './js/modal/renderMarkupCard';
@@ -21,7 +21,6 @@ import {
 import { createPagination } from './js/template/pagination';
 import { getCurrentCardData } from './js/library/library';
 
-
 const spinner = new VisibleComponent({
   selector: '.js-spinner',
   className: 'visually-hidden',
@@ -30,9 +29,8 @@ const spinner = new VisibleComponent({
 
 let currentCardData = {};
 
-
 // spinner.show();  //спинер додається
-spinner.hide()  //спінер удаляється
+spinner.hide(); //спінер удаляється
 
 // MovieService.getSearchMovieResult().then(response => console.log(response));
 // MovieService.getGenres().then(response => console.log(response));
@@ -56,8 +54,10 @@ const movieTrending = async () => {
 document.addEventListener('DOMContentLoaded', movieTrending);
 
 // запрос и отрисовка фильмов по поиску
+
 const movieSearch = async ev => {
   ev.preventDefault();
+  MovieService.changePage(1);
 
   MovieService._query = ev.target.elements.query.value.trim();
 
@@ -68,7 +68,7 @@ const movieSearch = async ev => {
     const { results, total_pages } = await MovieService.getSearchMovieResult();
 
     MovieService.total_pages = total_pages;
-    MovieService._page = 1;
+
     renderSearchResultMovie(results);
     createPagination();
     refs.form.reset();
@@ -76,16 +76,17 @@ const movieSearch = async ev => {
     console.error(error.message);
   }
 };
+
 refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
 const movieSearchOneFilm = async ev => {
-  console.log(ev.target.tagName )
+  console.log(ev.target.tagName);
   if (ev.target.tagName === 'IMG') {
     const response = await MovieService.getSearchMovieById(
       ev.target.dataset.id
     );
-   getCurrentCardData(response);
+    getCurrentCardData(response);
     renderMarkupCard(response);
   }
 };

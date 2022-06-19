@@ -2,34 +2,72 @@
   padding-top: 40px;
   padding-bottom: 44px;
   background-color: #201f26;
-  background-image: url(.././images/header/header-home-mobil-min.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  min-height: 220px;
 
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url(.././images/header/header-home-mobil-min-2x.jpg);
-  }
-
-  @media screen and (min-width: 768px) {
-    background-image: url(.././images/header/header-home-tab-min.jpg);
+  &.library-bg {
+    background-color: #201f26;
+    background-image: url(.././images/header/header-library-mob-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(.././images/header/header-home-tab-min-2x.jpg);
+      background-image: url(.././images/header/header-library-mob-2x-min.jpg);
+    }
+
+    @media screen and (min-width: 768px) {
+      background-image: url(.././images/header/header-library-tab-min.jpg);
+
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(.././images/header/header-library-tab-2x-min.jpg);
+      }
+    }
+
+    @media screen and (min-width: 1280px) {
+      background-image: url(.././images/header/header-library-desk-min.jpg);
+
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(.././images/header/header-library-desk-2x-min.jpg);
+      }
     }
   }
 
-  @media screen and (min-width: 1280px) {
-    background-image: url(.././images/header/header-home-desk-min.jpg);
+  &.home-bg {
+    background-image: url(.././images/header/header-home-mobil-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(.././images/header/header-home-desk-min-2x.jpg);
+      background-image: url(.././images/header/header-home-mobil-min-2x.jpg);
+    }
+
+    @media screen and (min-width: 768px) {
+      background-image: url(.././images/header/header-home-tab-min.jpg);
+
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(.././images/header/header-home-tab-min-2x.jpg);
+      }
+    }
+
+    @media screen and (min-width: 1280px) {
+      background-image: url(.././images/header/header-home-desk-min.jpg);
+
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(.././images/header/header-home-desk-min-2x.jpg);
+      }
     }
   }
 }
@@ -106,6 +144,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  &.header-none {
+    display: none;
+  }
 }
 
 .search-form {
@@ -161,43 +203,13 @@
 }
 
 .library {
-  padding-top: 40px;
-  padding-bottom: 60px;
-  background-color: #201f26;
-  background-image: url(.././images/header/header-library-mob-min.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url(.././images/header/header-library-mob-2x-min.jpg);
-  }
-
-  @media screen and (min-width: 768px) {
-    background-image: url(.././images/header/header-library-tab-min.jpg);
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(.././images/header/header-library-tab-2x-min.jpg);
-    }
-  }
-
-  @media screen and (min-width: 1280px) {
-    background-image: url(.././images/header/header-library-desk-min.jpg);
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(.././images/header/header-library-desk-2x-min.jpg);
-    }
-  }
-
   &__list {
     display: flex;
     justify-content: center;
+
+    &.header-none {
+      display: none;
+    }
   }
 
   &__item:not(:last-child) {
