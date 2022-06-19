@@ -1,17 +1,15 @@
-import { refs } from '../service/refs';
+// import { refs } from '../service/refs';
 import { MovieService } from '../service/fetchItems';
 import { renderMovieGallery } from '../template/renderMarkup';
 const paginationEl = document.querySelector('.pagination__list');
 
 paginationEl.addEventListener('click', onRenderGallery);
 
-// paginationEl.innerHTML = createPagination();
-
 let page = MovieService._page;
 
 export function createPagination() {
   let totalPages = MovieService.total_pages;
-
+  page = MovieService._page;
   let paginationItem = '';
   let activePage = '';
   let beforePage = page - 1;
@@ -75,10 +73,15 @@ export function createPagination() {
   }
 
   paginationEl.innerHTML = paginationItem;
-  // return paginationItem;
 }
 
 async function onRenderGallery(event) {
+  if (!event.currentTarget.classList.contains('pagination__list')) {
+    return;
+  }
+
+  console.log(event);
+
   const dataSet = event.target.dataset.action;
 
   changeCurrentPage(dataSet);

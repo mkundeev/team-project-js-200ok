@@ -1,9 +1,8 @@
-
 import './js/service/firebaseStorage';
 import './js/service/firebaseAuth';
 import './js/modal/modal';
 import './js/form/registration';
-
+import './js/modal/renderMarkupCard';
 import './js/template/pagination';
 
 import './js/scroll/scroll';
@@ -48,8 +47,12 @@ const movieTrending = async () => {
 document.addEventListener('DOMContentLoaded', movieTrending);
 
 // запрос и отрисовка фильмов по поиску
+
+console.log(MovieService._page);
+
 const movieSearch = async ev => {
   ev.preventDefault();
+  MovieService.changePage(1);
 
   MovieService._query = ev.target.elements.query.value.trim();
 
@@ -60,7 +63,8 @@ const movieSearch = async ev => {
     const { results, total_pages } = await MovieService.getSearchMovieResult();
 
     MovieService.total_pages = total_pages;
-    MovieService._page = 1;
+
+    console.log(MovieService._page);
     renderSearchResultMovie(results);
     createPagination();
     refs.form.reset();
@@ -68,6 +72,7 @@ const movieSearch = async ev => {
     console.error(error.message);
   }
 };
+
 refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
