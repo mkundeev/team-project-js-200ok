@@ -76,12 +76,6 @@ export function createPagination() {
 }
 
 async function onRenderGallery(event) {
-  if (!event.currentTarget.classList.contains('pagination__list')) {
-    return;
-  }
-
-  console.log(event);
-
   const dataSet = event.target.dataset.action;
 
   changeCurrentPage(dataSet);

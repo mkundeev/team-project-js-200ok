@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header home-bg">
   <div class="container">
     <nav class="site-nav">
       <a class="logo" href="./index.html">
@@ -9,20 +9,33 @@
       </a>
       <ul class="site-nav__list">
         <li class="site-nav__item">
-          <a class="site-nav__link site-nav__link-current" href="./index.html"
-            >Home</a>
+          <a
+            class="site-nav__link site-nav__link-current js-home"
+            href="./index.html"
+            >Home</a
+          >
         </li>
         <li class="site-nav__item">
-          <a class="site-nav__link" href="./library.html">my library</a>
+          <a class="site-nav__link js-library" href="">my library</a>
         </li>
         <li class="site-nav__item mr-0 js-site-nav">
-          <a class="site-nav__link " href="">Log in</a>
+          <a class="site-nav__link" href="">Log in</a>
         </li>
-        <li class="site-nav__item  js-exit-btn d-none">
-          <a class="site-nav__link"  href="">Log out</a>
+        <li class="site-nav__item js-exit-btn d-none">
+          <a class="site-nav__link" href="">Log out</a>
         </li>
       </ul>
     </nav>
+
+    <ul class="library__list header-none">
+      <li class="library__item">
+        <button class="library__btn" type="button" id="watched">Watched</button>
+      </li>
+      <li class="library__item">
+        <button class="library__btn" type="button" id="queue">queue</button>
+      </li>
+    </ul>
+
     <div class="form-wrap">
       <form class="search-form">
         <input
