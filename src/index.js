@@ -3,10 +3,12 @@ import './js/service/firebaseStorage';
 import './js/service/firebaseAuth';
 import './js/modal/modal';
 import './js/form/registration';
-
 import './js/template/pagination';
-
+import './js/library/library';
 import './js/scroll/scroll';
+import './js/modal/renderMarkupCard'
+import './js/template/pagination'
+
 
 import { VisibleComponent } from './js/spinner/spinner';
 import { renderMarkupCard } from './js/modal/renderMarkupCard';
@@ -17,14 +19,20 @@ import {
   renderSearchResultMovie,
 } from './js/template/renderMarkup';
 import { createPagination } from './js/template/pagination';
+import { getCurrentCardData } from './js/library/library';
+
 
 const spinner = new VisibleComponent({
   selector: '.js-spinner',
   className: 'visually-hidden',
   isHide: true,
 });
+
+let currentCardData = {};
+
+
 // spinner.show();  //спинер додається
-// spinner.hide()  //спінер удаляється
+spinner.hide()  //спінер удаляється
 
 // MovieService.getSearchMovieResult().then(response => console.log(response));
 // MovieService.getGenres().then(response => console.log(response));
@@ -72,10 +80,12 @@ refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
 const movieSearchOneFilm = async ev => {
-  if (ev.target.classList.contains('moviе-item__img')) {
+  console.log(ev.target.tagName )
+  if (ev.target.tagName === 'IMG') {
     const response = await MovieService.getSearchMovieById(
       ev.target.dataset.id
     );
+   getCurrentCardData(response);
     renderMarkupCard(response);
   }
 };
