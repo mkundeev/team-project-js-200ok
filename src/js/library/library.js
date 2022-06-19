@@ -1,5 +1,6 @@
 import { updateFilms, getFilms } from '../service/firebaseStorage'
-import {renderMovieGallery} from '../template/renderMarkup'
+import { renderMovieGallery } from '../template/renderMarkup'
+import{refs as el} from '../service/refs'
 
 
 let currentCardData={}
@@ -37,9 +38,16 @@ async function showFilmList(watched,queue) {
     refs.watchBtn.classList.toggle('is-active')
     refs.queueBtn.classList.toggle('is-active')
     let results = [];
-    watched ? results = await getFilms(watched) : results = await getFilms(queue);
-    renderMovieGallery((Object.values(results)),watched,queue)
+    try
+   { watched ? results = await getFilms(watched) : results = await getFilms(queue);
+        renderMovieGallery((Object.values(results)), watched, queue)
+    }catch(error){
+        console.error(error);
+        el.movieContainer.innerHTML = '<li><p>There are no films in your library</p></li>'
+};
 }
+
+ 
 
 // async function showWatchedList() {
 //     refs.watchBtn.classList.toggle('is-active')

@@ -104,12 +104,12 @@
   }
 }
 .modal.modal-footer {
-  top: 10%;
+  top: 10vh;
   @include tablet {
-    top: 130%;
+    top: 10vh;
   }
   @include desktop {
-    top: 50%;
+    top: 5vh;
   }
 }
 .developer {

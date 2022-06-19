@@ -3,6 +3,7 @@ import firebaseConfig from '../config/firebaseConfig'
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile} from "firebase/auth";
 import { getUserId } from './firebaseStorage';
+import { libraryLinkEl } from '../library/replace-header';
 
 
 const app = initializeApp(firebaseConfig);
@@ -29,10 +30,12 @@ onAuthStateChanged(auth, (user )=> {
     getUserId(userId)
     exitBtn.classList.remove('d-none')
     logInBtn.classList.add('d-none')
+    libraryLinkEl.parentNode.classList.remove('d-none')
   } else {
     userId = null;
     exitBtn.classList.add('d-none')
     logInBtn.classList.remove('d-none')
+    libraryLinkEl.parentNode.classList.add('d-none')
     getUserId(null)
   }
 });

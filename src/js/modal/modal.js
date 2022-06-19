@@ -9,11 +9,11 @@ controlModal(
   '.js-btn-modal',
   '.js-auth-modal'
 );
-controlModal(
-  '.films__gallery',
-  '.modal__close-button',
-  '.js-backdrop'
-);
+// controlModal(
+//   '.films__gallery',
+//   '.modal__close-button',
+//   '.js-backdrop'
+// );
 
 
 function controlModal(openModalBtn, closeModalBtn, modal) {
@@ -96,3 +96,38 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
 // const authModal = new Modal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
 // authModal.addEventListener
 // console.log(authModal)
+
+const refModal = {
+    openModalBtn: document.querySelector('.films__gallery'),
+    closeModalBtn: document.querySelector('.modal__close-button'),
+  modal: document.querySelector('.js-backdrop'),
+    body: document.querySelector('body'),
+  };
+
+ refModal.openModalBtn.addEventListener('click', showModal);
+  refModal.closeModalBtn.addEventListener('click', closeModal);
+refModal.modal.addEventListener('click', closeEmptyField);
+  
+  function closeEmptyField(evt) {
+    if (evt.target === evt.currentTarget) {
+      closeModal();
+    }
+  }
+function showModal(evt) {
+  evt.preventDefault();
+  if(evt.target.tagName !== 'UL')
+  {document.addEventListener('keydown', closeEsc);
+  refModal.body.classList.add('modal-open');
+  refModal.modal.classList.toggle('is-hidden');}
+  }
+  function closeModal(evt) {
+    refModal.modal.classList.toggle('is-hidden');
+    document.removeEventListener('keydown', closeEsc);
+    refModal.body.classList.remove('modal-open')
+  }
+
+function closeEsc(evt) {
+  if (evt.key === 'Escape') {
+    closeModal();
+  }
+}

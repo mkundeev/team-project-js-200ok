@@ -17,8 +17,10 @@ function renderMarkup(results, watched, queue) {
     .map(
       ({ id, title, vote_average, release_date, genre_ids, poster_path }) =>
         `
-<li class="gallery-items films__gallery-item" data-id=${id}>
-<a href="#!" class="list-card__link">
+<li class="gallery-items films__gallery-item" data-id=${id} data-watched=${watched}
+         data-queue=${queue}>
+<a href="#!" class="list-card__link" data-id=${id} data-watched=${watched}
+         data-queue=${queue}>
 <!-- постер -->
 
 
@@ -36,15 +38,21 @@ function renderMarkup(results, watched, queue) {
   }
   
 <!-- обгортка інформації під постером -->
-<div class="moviе-stats">
-    <h2 class="moviе-stats__title">${title}</h2>
-    <div class="moviе-stats__info">
+<div class="moviе-stats" data-id=${id} data-watched=${watched}
+         data-queue=${queue}>
+    <h2 class="moviе-stats__title" data-id=${id} data-watched=${watched}
+         data-queue=${queue}>${title}</h2>
+    <div class="moviе-stats__info" data-id=${id} data-watched=${watched}
+         data-queue=${queue}>
 <!-- список жанрів -->
-<p class="moviе-genre">${genre_ids}</p>
+<p class="moviе-genre" data-id=${id} data-watched=${watched}
+         data-queue=${queue}>${genre_ids}</p>
 <!-- дата виходу та рейтинг -->
-<p class="moviе-year">${new Date(release_date).getFullYear()}</p>
+<p class="moviе-year" data-id=${id} data-watched=${watched}
+         data-queue=${queue}>${new Date(release_date).getFullYear()}</p>
 <!-- рейтинг -->
-<p class="moviе-vote">${vote_average}</p>
+<p class="moviе-vote" data-id=${id} data-watched=${watched}
+         data-queue=${queue}>${vote_average}</p>
 </div>
     </div>
 </a>
