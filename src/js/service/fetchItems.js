@@ -8,7 +8,7 @@ export const MovieService = {
   _page: 1,
   total_pages: '',
   id: null,
-  key: null,
+  keyVideo: null,
 
   async getMovieTrend() {
     const response = await axios.get(
@@ -59,7 +59,6 @@ export const MovieService = {
   },
 
   async getSearchMovieById(id) {
-    console.log(id);
     const response = await axios.get(`movie/${id}`);
 
     console.log(response);
@@ -67,11 +66,8 @@ export const MovieService = {
   },
 
   async getVideo(id) {
-    console.log(id);
     const response = await axios.get(`movie/${id}/videos?language=en-US-UA-RU`);
-    key = response.data.results[1].key;
-    console.log(response.data.results);
-    console.log(key);
-    return key;
+    keyVideo = response.data.results[1].key;
+    return keyVideo;
   },
 };
