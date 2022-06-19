@@ -1,15 +1,16 @@
 import { refs } from '../service/refs';
+
 const { MovieTrendContainer } = refs;
 
-export function renderMovieGallery(results, watched ='1',queue='1') {
-  renderMarkup(results,watched,queue);
+export function renderMovieGallery(results, watched = '1', queue = '1') {
+  renderMarkup(results, watched, queue);
 }
 
 export function renderSearchResultMovie(results) {
   renderMarkup(results);
 }
 
-function renderMarkup(results,watched,queue) {
+function renderMarkup(results, watched, queue) {
   refs.movieContainer.innerHTML = '';
 
   const markup = results
@@ -22,15 +23,20 @@ function renderMarkup(results,watched,queue) {
          data-queue=${queue}>
 <!-- постер -->
 
- <img
-         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"
-        alt="${title}"
+
+
+  ${
+    poster_path
+      ? ` <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}"   alt="${title}"
          class="moviе-item__img" 
+          loading="lazy" 
          data-id=${id}
          data-watched=${watched}
          data-queue=${queue}
-   />
-
+   />`
+      : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg" alt="${title}" class="moviе-item__img" loading="lazy"  data-id=${id}   data-watched=${watched} data-queue=${queue}>`
+  }
+  
 <!-- обгортка інформації під постером -->
 <div class="moviе-stats" data-id=${id} data-watched=${watched}
          data-queue=${queue}>

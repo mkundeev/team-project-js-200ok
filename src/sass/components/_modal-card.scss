@@ -15,9 +15,9 @@ body.modal-open {
   transform: translateX(-50%);
   padding: 50px 20px 40px 20px;
 
-  transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1000ms var(--cubic-bezier);
 
-  .backdrop.visually-hidden & {
+  .backdrop.is-hidden & {
     transform: translate(-50%, -50%);
   }
 
@@ -43,6 +43,7 @@ body.modal-open {
   background-color: transparent;
   box-sizing: border-box;
   padding: 0;
+  border-radius: 5px;
 
   width: 30px;
   height: 30px;
@@ -55,16 +56,19 @@ body.modal-open {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: border-color 250ms var(--cubic-bezier);
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+  }
 }
 
 .modal__close-icon {
-  stroke: #000000;
-
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  .modal__close-button:hover &,
-  :focus & {
-    stroke: var(--accent-background-color-button-modal);
+  stroke: var(--logo-fill);
+  transition: stroke 250ms var(--cubic-bezier);
+  &:hover,
+  &:focus {
+    stroke: var(--primary-text-header-color);
   }
 }
 .modal__container {
@@ -206,16 +210,14 @@ table td {
   color: var(--primary-color-text-modal);
 }
 
-
-.modal__button-wrap{
-    display: flex;
-    justify-content: space-between;
+.modal__button-wrap {
+  display: flex;
+  justify-content: space-between;
 
   @include desktop {
     justify-content: start;
   }
 }
-
 
 .modal__button {
   width: 110px;
