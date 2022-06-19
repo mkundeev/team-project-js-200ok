@@ -17,13 +17,25 @@ function getUserData(id, name) {
   userName = name;
 }
 
+function getFilms(src) {
+  return get(ref(db, `users/${userId}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+    console.log(snapshot.val()[src])
+    return snapshot.val()[src]
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error);
+});
+}
 
 function updateFilms(results, src) {
   if (userId === null) {
     console.log('Please register for access to library')
     return
   }
-  get(ref(db, `users/${userId}`)).then((snapshot) => {
+  get(ref(db, `users/${userId}/${src}/${[results.id]}`)).then((snapshot) => {
     if (snapshot.exists()) {
     console.log(`${userName}, you alredy have this film in your library`)
   
@@ -46,17 +58,6 @@ function deletFilm(id, src) {
 }
 
 
-function getFilms(src) {
-  return get(ref(db, `users/${userId}`)).then((snapshot) => {
-    if (snapshot.exists()) {
-    console.log(snapshot.val()[src])
-    return snapshot.val()[src]
-  } else {
-    console.log("No data available");
-  }
-}).catch((error) => {
-  console.error(error);
-});
-}
+
 
 export {getUserData, updateFilms, getFilms, deletFilm }
