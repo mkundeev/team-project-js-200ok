@@ -1,6 +1,7 @@
 import './js/service/firebaseStorage';
 import './js/service/firebaseAuth';
 import './js/modal/modal';
+import './js/template/showing-warning-text';
 import './js/form/registration';
 import './js/template/pagination';
 import './js/library/library';
@@ -10,9 +11,8 @@ import './js/template/pagination';
 
 import './js/library/replace-header';
 
-
-
-import {deletFilm} from './js/service/firebaseStorage'
+import { deletFilm } from './js/service/firebaseStorage';
+import { showingWarningText } from './js/template/showing-warning-text';
 import { VisibleComponent } from './js/spinner/spinner';
 import { renderMarkupCard } from './js/modal/renderMarkupCard';
 import { refs } from './js/service/refs';
@@ -56,7 +56,6 @@ const movieTrending = async () => {
 
 document.addEventListener('DOMContentLoaded', movieTrending);
 
-
 // запрос и отрисовка фильмов по поиску
 const movieSearch = async ev => {
   ev.preventDefault();
@@ -69,6 +68,8 @@ const movieSearch = async ev => {
   try {
     refs.movieContainer.innerHTML = '';
     const { results, total_pages } = await MovieService.getSearchMovieResult();
+
+    showingWarningText(total_pages);
 
     MovieService.total_pages = total_pages;
 
@@ -83,14 +84,12 @@ refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
 const movieSearchOneFilm = async ev => {
-   
     const response = await MovieService.getSearchMovieById( ev.target.dataset.id);
     // const key = await MovieService.getVideo(ev.target.dataset.id);
     getCurrentCardData(response);
     renderMarkupCard(response);
+
 };
-
-
 
 // добавить слушателя на отрисованую разметку
 const creatModal = ev => {
@@ -100,20 +99,19 @@ const creatModal = ev => {
     const delWatchBtn = document.querySelector('.js-watched-delete');
     const delQueueBtn = document.querySelector('.js-queue-delete');
 
-    if (ev.target.dataset.watched === "watched") {
+    if (ev.target.dataset.watched === 'watched') {
       addWatchBtn.classList.add('visually-hidden');
       delWatchBtn.classList.remove('visually-hidden');
     }
-    if (ev.target.dataset.queue === "queue") {
+    if (ev.target.dataset.queue === 'queue') {
       addQueueBtn.classList.add('visually-hidden');
       delQueueBtn.classList.remove('visually-hidden');
     }
-   
-    delWatchBtn.addEventListener('click',(e)=>delFromList(e, 'watched'))
-    delQueueBtn.addEventListener('click',(e)=>delFromList(e, 'queue'))
-    
-  })
-}
+
+    delWatchBtn.addEventListener('click', e => delFromList(e, 'watched'));
+    delQueueBtn.addEventListener('click', e => delFromList(e, 'queue'));
+  });
+};
 
 function delFromList(e, src) {
       const id = e.target.dataset.id
@@ -126,8 +124,12 @@ function delFromList(e, src) {
     }
 
 
+function delFromList(e, src) {
+  const id = e.target.dataset.id;
+  deletFilm(id, src);
+  refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
+}
+
 refs.movieOneCardContainer.addEventListener('click', creatModal);
 
-
-
-export{movieTrending}
+export { movieTrending };
