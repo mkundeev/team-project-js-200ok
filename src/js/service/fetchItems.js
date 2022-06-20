@@ -68,10 +68,10 @@ export const MovieService = {
     return response.data;
   },
 
-  // async getVideo(id) {
-  //   const response = await axios.get(`movie/${id}/videos?language=en-US-UA-RU`);
-  //   keyVideo = await response.data.results[1].key;
-
-  //   return keyVideo;
-  // },
+  async getVideo(id) {
+    const response = await axios.get(`movie/${id}/videos?language=en-US-UA-RU`);
+    const key = await response.data.results[1].key;
+    keyVideo = key;
+    return key;
+  },
 };
