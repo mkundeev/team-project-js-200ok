@@ -18,7 +18,7 @@ function getUserData(id, name) {
   userName = name;
 }
 
-
+function getFilms(src){
   return get(ref(db, `users/${userId}`)).then((snapshot) => {
     if (snapshot.exists()) {
     return snapshot.val()[src]
@@ -27,13 +27,13 @@ function getUserData(id, name) {
   }
 }).catch((error) => {
   console.log(error.message);
-});
+});}
 
-}
+
 
 function updateFilms(results, src) {
   if (userId === null) {
-    console.log('Please register for access to library');
+    Notify.failure('Please register for access to library',notifyConfigs);
     return;
   }
 
