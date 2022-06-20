@@ -88,7 +88,7 @@ const movieSearchOneFilm = async ev => {
   const key = await MovieService.getVideo(ev.target.dataset.id);
   getCurrentCardData(response);
   renderMarkupCard(response, key);
-
+}
 // добавить слушателя на отрисованую разметку
 const creatModal = ev => {
   movieSearchOneFilm(ev).then(() => {
@@ -121,7 +121,7 @@ function delFromList(e, src) {
     refs.movieContainer.innerHTML =
       '<li><p>There are no films in your library</p></li>';
   }
-}
+  };
 
 
 
