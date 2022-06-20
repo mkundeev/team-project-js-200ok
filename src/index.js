@@ -30,7 +30,6 @@ const spinner = new VisibleComponent({
   isHide: true,
 });
 
-let currentCardData = {};
 
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
@@ -90,8 +89,6 @@ const movieSearchOneFilm = async ev => {
   getCurrentCardData(response);
   renderMarkupCard(response, key);
 
-};
-
 // добавить слушателя на отрисованую разметку
 const creatModal = ev => {
   movieSearchOneFilm(ev).then(() => {
@@ -115,6 +112,7 @@ const creatModal = ev => {
 };
 
 function delFromList(e, src) {
+
   const id = e.target.dataset.id;
   deletFilm(id, src);
   refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
@@ -125,12 +123,9 @@ function delFromList(e, src) {
   }
 }
 
-function delFromList(e, src) {
-  const id = e.target.dataset.id;
-  deletFilm(id, src);
-  refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
-}
 
-refs.movieOneCardContainer.addEventListener('click', creatModal);
+
+
+refs.movieOneCardContainer.addEventListener('click',(e)=>{e.target.tagName!=='UL' && creatModal(e)} );
 
 export { movieTrending };

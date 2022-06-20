@@ -15,8 +15,8 @@ export const refs = {
     deletQueueBtn: document.querySelector('#js-queue-delete'),  
 }
 
-refs.watchBtn.addEventListener('click',(e)=> showFilmList("watched",false))
-refs.queueBtn.addEventListener('click', (e)=> showFilmList(false ,"queue"))
+refs.watchBtn.addEventListener('click',(e)=> showFilmsOnClick("watched",false,e))
+refs.queueBtn.addEventListener('click', (e)=> showFilmsOnClick(false ,"queue",e))
 refs.modalCard.addEventListener('click', addFilmToDb)
 
 
@@ -36,34 +36,31 @@ function addFilmToDb(e) {
      console.log(currentCardData)   
     updateFilms(currentCardData, "queue")}
 }
+function showFilmsOnClick(watched, queue, e) {
+    showFilmList(watched, queue);
+    changeActiveButton(e);
+} 
 
 async function showFilmList(watched,queue) {
-    refs.watchBtn.classList.toggle('is-active')
-    refs.queueBtn.classList.toggle('is-active')
     let results = [];
     try
    { watched ? results = await getFilms(watched) : results = await getFilms(queue);
         renderMovieGallery((Object.values(results)), watched, queue);
         
     }catch(error){
-        console.error(error);
+        console.log(error.message);
         el.movieContainer.innerHTML = '<li><p>There are no films in your library</p></li>'
-};
+    };
 }
-
- 
-
-// async function showWatchedList() {
-//     refs.watchBtn.classList.toggle('is-active')
-//     refs.queueBtn.classList.toggle('is-active')
-//     const results = await getFilms("watched")
-//     renderMovieGallery((Object.values(results)),"watched",false)
-// }
-// async function showQueueList() {
-//     refs.watchBtn.classList.toggle('is-active')
-//     refs.queueBtn.classList.toggle('is-active')
-//     const results = await getFilms("queue")
-//     renderMovieGallery((Object.values(results)),false,"queue")
-// }
+function changeActiveButton(e) {
+    if (e.target === refs.watchBtn) {
+        e.target.classList.add('is-active')
+        refs.queueBtn.classList.remove('is-active')
+    } else if (e.target === refs.queueBtn) {
+        e.target.classList.add('is-active')
+        refs.watchBtn.classList.remove('is-active')
+   
+    }
+}
 
 export {getCurrentCardData, showFilmList}
