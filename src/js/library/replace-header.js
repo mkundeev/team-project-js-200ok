@@ -18,11 +18,9 @@ function onReplaceHeaderByLibrary(event) {
   MovieService.changePage(1);
   showFilmList('watched', false);
 
-
   showFilmList('watched', false, event);
- refs.watchBtn.classList.add('is-active');
+  refs.watchBtn.classList.add('is-active');
   refs.queueBtn.classList.remove('is-active');
-  
 
   headerFormEl.classList.add('header-none');
   headerListEl.classList.remove('header-none');
@@ -37,7 +35,7 @@ function onReplaceHeaderByLibrary(event) {
 function onReplaceHeaderByHome(event) {
   event.preventDefault();
   MovieService.library = false;
-
+  MovieService._query = '';
   MovieService.changePage(1);
 
   movieTrending();
