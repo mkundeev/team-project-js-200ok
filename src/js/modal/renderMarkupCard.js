@@ -1,6 +1,6 @@
 import { refs } from '../service/refs';
 
-export function renderMarkupCard(data, key) {
+export function renderMarkupCard(data) {
   refs.cardModalMovie.innerHTML = '';
   const {
     poster_path,
@@ -16,7 +16,7 @@ export function renderMarkupCard(data, key) {
 
   const markup = `
 <div class="modal__img-wrap">
-      <a href="https://www.youtube.com/watch?v=${key}" class="modal__img-link">
+      
 
   ${
     poster_path
@@ -85,3 +85,5 @@ export function renderMarkupCard(data, key) {
       </div>`;
   refs.cardModalMovie.insertAdjacentHTML('beforeend', markup);
 }
+
+{/* <a href="https://www.youtube.com/watch?v=${key}" class="modal__img-link"></a> */}
