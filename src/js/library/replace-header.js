@@ -1,6 +1,6 @@
-import { movieTrending } from '../../index'
+import { movieTrending } from '../../index';
 import { showFilmList, refs } from './library';
-
+import { MovieService } from '../service/fetchItems';
 
 const libraryLinkEl = document.querySelector('.js-library');
 const homeLinkEl = document.querySelector('.js-home');
@@ -12,13 +12,13 @@ libraryLinkEl.addEventListener('click', onReplaceHeaderByLibrary);
 homeLinkEl.addEventListener('click', onReplaceHeaderByHome);
 
 function onReplaceHeaderByLibrary(event) {
-  event.preventDefault()
-  showFilmList("watched", false)
-  if(refs.queueBtn.classList.contains('is-active'))
-  { refs.watchBtn.classList.add('is-active')
-    refs.queueBtn.classList.remove('is-active')
+  event.preventDefault();
+  showFilmList('watched', false);
+  if (refs.queueBtn.classList.contains('is-active')) {
+    refs.watchBtn.classList.add('is-active');
+    refs.queueBtn.classList.remove('is-active');
   }
-  
+
   headerFormEl.classList.add('header-none');
   headerListEl.classList.remove('header-none');
 
@@ -30,8 +30,11 @@ function onReplaceHeaderByLibrary(event) {
 }
 
 function onReplaceHeaderByHome(event) {
-  event.preventDefault()
-  movieTrending()
+  event.preventDefault();
+
+  MovieService.changePage(1);
+
+  movieTrending();
   headerFormEl.classList.remove('header-none');
   headerListEl.classList.add('header-none');
 
@@ -42,4 +45,4 @@ function onReplaceHeaderByHome(event) {
   headerEl.classList.add('home-bg');
 }
 
-export {libraryLinkEl}
+export { libraryLinkEl };

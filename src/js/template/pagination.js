@@ -9,6 +9,7 @@ let page = MovieService._page;
 
 export function createPagination() {
   let totalPages = MovieService.total_pages;
+
   page = MovieService._page;
   let paginationItem = '';
   let activePage = '';
@@ -30,16 +31,20 @@ export function createPagination() {
     }
   }
 
-  if (page === totalPages) {
-    beforePage = beforePage - 2;
-  } else if (page === totalPages - 1) {
-    beforePage = beforePage - 1;
+  if (totalPages > 4) {
+    if (page === totalPages) {
+      beforePage = beforePage - 2;
+    } else if (page === totalPages - 1) {
+      beforePage = beforePage - 1;
+    }
   }
 
-  if (page === 1) {
-    afterPage = afterPage + 2;
-  } else if (page === 2) {
-    afterPage = afterPage + 1;
+  if (totalPages < 3 || totalPages > 4) {
+    if (page === 1) {
+      afterPage = afterPage + 2;
+    } else if (page === 2) {
+      afterPage = afterPage + 1;
+    }
   }
 
   for (let plength = beforePage; plength <= afterPage; plength++) {
