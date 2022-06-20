@@ -5,11 +5,11 @@
 
   @include tablet {
     width: 390px;
-    height: 390px;
+    min-height: 390px;
   }
   @include desktop {
     width: 410px;
-    height: 410px;
+    min-height: 410px;
   }
 }
 
@@ -101,7 +101,8 @@
   line-height: 1.33;
 
   text-transform: uppercase;
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
+  color: var(--primary-color-text-modal);
   background-color: var(--accent-color-text-button-modal);
   cursor: pointer;
 }
