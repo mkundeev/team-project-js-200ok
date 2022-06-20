@@ -124,12 +124,6 @@ function delFromList(e, src) {
     }
 
 
-function delFromList(e, src) {
-  const id = e.target.dataset.id;
-  deletFilm(id, src);
-  refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
-}
-
 refs.movieOneCardContainer.addEventListener('click', creatModal);
 
 export { movieTrending };
