@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { forceLongPolling } from 'firebase/database';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 const API_KEY = '5a76e3dab3643dd50fee1a5fab49be2c';
 axios.defaults.params = { api_key: API_KEY };
@@ -70,6 +71,7 @@ export const MovieService = {
   async getVideo(id) {
     const response = await axios.get(`movie/${id}/videos?language=en-US-UA-RU`);
     keyVideo = await response.data.results[1].key;
+
     return keyVideo;
   },
 };

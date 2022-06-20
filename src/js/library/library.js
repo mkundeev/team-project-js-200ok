@@ -7,7 +7,7 @@ import { MovieService } from '../service/fetchItems';
 let currentCardData = {};
 
 let watchedFilmsArray = [];
-let queueFilmsArray = [];
+
 
 export const refs = {
   modalCard: document.querySelector('.modal__card'),
@@ -29,8 +29,11 @@ refs.watchBtn.addEventListener('click', e => {
   showFilmList('watched', false);
 });
 
-refs.queueBtn.addEventListener('click', e => {
-  // refs.queueBtn.classList.toggle('is-active');
+
+refs.watchBtn.addEventListener('click',(e)=> showFilmsOnClick("watched",false,e))
+refs.queueBtn.addEventListener('click', (e)=> showFilmsOnClick(false ,"queue",e))
+refs.modalCard.addEventListener('click', addFilmToDb)
+
 
   if (refs.watchBtn.classList.contains('is-active')) {
     refs.watchBtn.classList.remove('is-active');
@@ -57,6 +60,11 @@ function addFilmToDb(e) {
     updateFilms(currentCardData, 'queue');
   }
 }
+function showFilmsOnClick(watched, queue, e) {
+    showFilmList(watched, queue);
+    changeActiveButton(e);
+} 
+
 
 async function showFilmList(watched, queue) {
   let results = [];
@@ -86,5 +94,6 @@ async function showFilmList(watched, queue) {
 //     const results = await getFilms("queue")
 //     renderMovieGallery((Object.values(results)),false,"queue")
 // }
+
 
 export { getCurrentCardData, showFilmList };

@@ -60,46 +60,21 @@
   flex: 1;
 }
 
-// ----------------кнопка закрытия модалки -------------------
-.close-button__img {
-  stroke: black;
-}
-.close-button {
-  display: flex;
-  top: 8px;
-  right: 8px;
-  position: absolute;
-
-  width: 30px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid transparent;
-  border-radius: 50%;
-  cursor: pointer;
-
-  color: #000000;
-  background: #ffffff;
-
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.44;
-  transition: fill 250ms cubic-bezier(0.39, 1.03, 0.82, 0.08);
-  &:focus,
-  &:hover {
-    fill: rgb(157, 157, 243);
+// ---------- Стили модалки-----------------
+.developer {
+  margin-bottom: -30px;
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -30px;
   }
 }
-// ---------- Стили модалки-----------------
 .developer-item {
   width: 100%;
+
   margin: 0 10px 30px 10px;
   box-shadow: 3px 3px rgb(157, 157, 243), -1em 0 0.4em rgb(197, 197, 196);
   @include tablet {
-    width: calc(100% / 2 - 30px);
-  }
-  @include desktop {
     width: calc(100% / 3 - 30px);
   }
 }
@@ -109,15 +84,7 @@
     top: 10vh;
   }
   @include desktop {
-    top: 5vh;
-  }
-}
-.developer {
-  margin-bottom: -30px;
-  @include tablet {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -30px;
+    top: 1vh;
   }
 }
 .slogans {
