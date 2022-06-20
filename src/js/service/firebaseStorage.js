@@ -56,7 +56,7 @@ function deletFilm(id, src) {
 
   update(ref(db, `users/${userId}/${src}`),
    { [id]: null}
-  ).then(()=>Notify.success(`${userName}, you have add film to your library`, notifyConfigs));
+  ).then(()=>Notify.warning(`${userName}, you have delet film from your library`, notifyConfigs));
 
 }
 
