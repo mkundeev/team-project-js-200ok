@@ -5,9 +5,8 @@ import { getPageForLibrary } from '../template/pagination';
 import { MovieService } from '../service/fetchItems';
 
 let currentCardData = {};
-
 let watchedFilmsArray = [];
-
+let queueFilmsArray = [];
 
 export const refs = {
   modalCard: document.querySelector('.modal__card'),
@@ -21,31 +20,19 @@ refs.watchBtn.addEventListener('click', e => {
     refs.watchBtn.classList.add('is-active');
     refs.queueBtn.classList.remove('is-active');
   }
-
   MovieService.changePage(1);
-
-  // refs.watchBtn.classList.toggle('is-active');
-
   showFilmList('watched', false);
 });
 
-
-refs.watchBtn.addEventListener('click',(e)=> showFilmsOnClick("watched",false,e))
-refs.queueBtn.addEventListener('click', (e)=> showFilmsOnClick(false ,"queue",e))
-refs.modalCard.addEventListener('click', addFilmToDb)
-
-
+refs.queueBtn.addEventListener('click', e => {
   if (refs.watchBtn.classList.contains('is-active')) {
     refs.watchBtn.classList.remove('is-active');
     refs.queueBtn.classList.add('is-active');
   }
-
   MovieService.changePage(1);
-
   showFilmList(false, 'queue');
-});
+})
 refs.modalCard.addEventListener('click', addFilmToDb);
-
 function getCurrentCardData(data) {
   currentCardData = data;
 }
@@ -60,15 +47,9 @@ function addFilmToDb(e) {
     updateFilms(currentCardData, 'queue');
   }
 }
-function showFilmsOnClick(watched, queue, e) {
-    showFilmList(watched, queue);
-    changeActiveButton(e);
-} 
-
 
 async function showFilmList(watched, queue) {
   let results = [];
-
   try {
     watched
       ? (results = await getFilms(watched))
@@ -82,18 +63,6 @@ async function showFilmList(watched, queue) {
   }
 }
 
-// async function showWatchedList() {
-//     refs.watchBtn.classList.toggle('is-active')
-//     refs.queueBtn.classList.toggle('is-active')
-//     const results = await getFilms("watched")
-//     renderMovieGallery((Object.values(results)),"watched",false)
-// }
-// async function showQueueList() {
-//     refs.watchBtn.classList.toggle('is-active')
-//     refs.queueBtn.classList.toggle('is-active')
-//     const results = await getFilms("queue")
-//     renderMovieGallery((Object.values(results)),false,"queue")
-// }
-
-
 export { getCurrentCardData, showFilmList };
+
+

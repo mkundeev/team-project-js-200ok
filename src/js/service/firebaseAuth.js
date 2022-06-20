@@ -11,19 +11,16 @@ const auth = getAuth(app);
 let userId = null
 let userName = '';
 
-
-
-
 const formRegEl = document.querySelector('.form-register')
 const formAuthEl = document.querySelector('.form-authorization')
 const exitBtn = document.querySelector('.js-exit-btn')
 const logInBtn = document.querySelector('.js-site-nav')
+const authModal = document.querySelector('.js-auth-modal')
+const body = document.querySelector('body')
 
 formAuthEl.addEventListener('submit', SignUserEmailAndPasOnSubmit)
 formRegEl.addEventListener('submit', RegUserEmailAndPasOnSubmit)
 exitBtn.addEventListener('click', exitUser);
-
-
 
 onAuthStateChanged(auth, (user )=> {
   if (user) {
@@ -48,29 +45,37 @@ function SignUserEmailAndPasOnSubmit(e) {
   e.preventDefault()
   const{email, password} = e.target.elements
   signUser(email.value, password.value)
+ 
    e.target.reset();
 }
 function RegUserEmailAndPasOnSubmit(e) {
     e.preventDefault()
     const{email, password, name} = e.target.elements
-    creatUser(email.value, password.value, name.value)
+  creatUser(email.value, password.value, name.value)
+  authModal.classList.add('is-hidden');
+  body.classList.toggle('modal-open');
     e.target.reset();
 }
 
 function signUser(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
+      authModal.classList.add('is-hidden');
+      body.classList.toggle('modal-open');
       const user = userCredential.user;
       Notify.success(`Welcome back ${userName}!`, notifyConfigs);
+      
     })
     .catch(error => {
       console.log(error.message);
+      Notify.failure('Wrong password or e-mail',notifyConfigs);
     });
 }
 
 function creatUser(email, password, name) {
 createUserWithEmailAndPassword(auth, email, password, name)
   .then((userCredential) => {
+     authModal.classList.add('is-hidden'); 
     const user = userCredential.user;
     updateProfile(auth.currentUser, {
       displayName: name
@@ -78,6 +83,7 @@ createUserWithEmailAndPassword(auth, email, password, name)
     Notify.success(`Welcome ${userName}!`, notifyConfigs);
   })
   .catch((error) => {
+    Notify.failure('Such e-mail alredy exist',notifyConfigs);
     console.log(error.message);
   })
 };
