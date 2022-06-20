@@ -6,7 +6,7 @@ import{refs as el} from '../service/refs'
 let currentCardData = {}
 
 let watchedFilmsArray = [];
-let queueFilmsArray = [];
+
 
 export const refs = {
     modalCard: document.querySelector('.modal__card'),

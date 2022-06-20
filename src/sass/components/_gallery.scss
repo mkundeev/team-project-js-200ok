@@ -33,6 +33,9 @@
 }
 
 .films__gallery-item {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
     @include tablet {
         flex-basis: calc(100% / 2 - 32px);
         margin-left: 32px;
