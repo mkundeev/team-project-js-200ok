@@ -13,12 +13,10 @@ homeLinkEl.addEventListener('click', onReplaceHeaderByHome);
 
 function onReplaceHeaderByLibrary(event) {
   event.preventDefault();
-  showFilmList('watched', false);
-  if (refs.queueBtn.classList.contains('is-active')) {
-    refs.watchBtn.classList.add('is-active');
-    refs.queueBtn.classList.remove('is-active');
-  }
-
+  showFilmList('watched', false, event);
+ refs.watchBtn.classList.add('is-active');
+  refs.queueBtn.classList.remove('is-active');
+  
   headerFormEl.classList.add('header-none');
   headerListEl.classList.remove('header-none');
 

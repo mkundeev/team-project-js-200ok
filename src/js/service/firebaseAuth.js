@@ -1,10 +1,10 @@
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import firebaseConfig from '../config/firebaseConfig'
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile} from "firebase/auth";
 import { getUserData } from './firebaseStorage';
 import { libraryLinkEl } from '../library/replace-header';
-
+import { notifyConfigs } from '../config/notifyConfig';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -61,10 +61,10 @@ function signUser(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       const user = userCredential.user;
+      Notify.success(`Welcome back ${userName}!`, notifyConfigs);
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      console.log(error.message);
     });
 }
 
@@ -73,11 +73,12 @@ createUserWithEmailAndPassword(auth, email, password, name)
   .then((userCredential) => {
     const user = userCredential.user;
     updateProfile(auth.currentUser, {
-   displayName: name})
+      displayName: name
+    });
+    Notify.success(`Welcome ${userName}!`, notifyConfigs);
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    console.log(error.message);
   })
 };
 
@@ -85,12 +86,11 @@ function exitUser(e) {
   e.preventDefault()
   signOut(auth)
     .then(() => {
-        console.log('signoff')
+      Notify.success(`Waiting for you to come back!`, notifyConfigs);
       userId = null;
-      getUserId(null)
-      
+      getUserId(null);
     })
-    .catch(error => {
+    .catch(error => {console.log(error.message);
     });
 }
 

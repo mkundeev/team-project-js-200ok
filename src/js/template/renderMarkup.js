@@ -17,7 +17,7 @@ function renderMarkup(results, watched, queue) {
     .map(
       ({ id, title, vote_average, release_date, genre_ids, poster_path }) =>
         `
-<li class="gallery-items films__gallery-item">
+<li class="gallery-items films__gallery-item" data-id=${id}>
 <a href="#!" class="list-card__link">
 <!-- постер -->
   ${
