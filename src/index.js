@@ -84,10 +84,11 @@ refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
 const movieSearchOneFilm = async ev => {
-    const response = await MovieService.getSearchMovieById( ev.target.dataset.id);
-    // const key = await MovieService.getVideo(ev.target.dataset.id);
-    getCurrentCardData(response);
-    renderMarkupCard(response);
+
+  const response = await MovieService.getSearchMovieById(ev.target.dataset.id);
+  const key = await MovieService.getVideo(ev.target.dataset.id);
+  getCurrentCardData(response);
+  renderMarkupCard(response, key);
 
 };
 
@@ -114,15 +115,15 @@ const creatModal = ev => {
 };
 
 function delFromList(e, src) {
-      const id = e.target.dataset.id
-      deletFilm(id, src);
-  refs.movieContainer.querySelector(`[data-id="${id}"]`).remove()
-  console.dir(refs.movieContainer.childNodes)
-  if(refs.movieContainer.childNodes.length <= 1)
-  {refs.movieContainer.innerHTML = '<li><p>There are no films in your library</p></li>'}
-
-    }
-
+  const id = e.target.dataset.id;
+  deletFilm(id, src);
+  refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
+  console.dir(refs.movieContainer.childNodes);
+  if (refs.movieContainer.childNodes.length <= 1) {
+    refs.movieContainer.innerHTML =
+      '<li><p>There are no films in your library</p></li>';
+  }
+}
 
 function delFromList(e, src) {
   const id = e.target.dataset.id;
