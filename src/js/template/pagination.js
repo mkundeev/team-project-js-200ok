@@ -1,7 +1,11 @@
 // import { refs } from '../service/refs';
 import { MovieService } from '../service/fetchItems';
-import { renderMovieGallery } from '../template/renderMarkup';
+import { renderMovieGallery } from './renderMarkup';
+import { showFilmList } from '../library/library';
+import { getFilms } from '../service/firebaseStorage';
+
 const paginationEl = document.querySelector('.pagination__list');
+const queueBtn = document.querySelector('#queue');
 
 paginationEl.addEventListener('click', onRenderGallery);
 
@@ -80,28 +84,6 @@ export function createPagination() {
   paginationEl.innerHTML = paginationItem;
 }
 
-async function onRenderGallery(event) {
-  const dataSet = event.target.dataset.action;
-
-  changeCurrentPage(dataSet);
-
-  MovieService.changePage(page);
-
-  try {
-    if (MovieService._query === '') {
-      const { results } = await MovieService.getMovieTrend();
-      renderMovieGallery(results);
-      createPagination();
-    } else {
-      const { results } = await MovieService.getSearchMovieResult();
-      renderMovieGallery(results);
-      createPagination();
-    }
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
 function changeCurrentPage(dataSet) {
   const dots = 3;
 
@@ -120,5 +102,57 @@ function changeCurrentPage(dataSet) {
     if (dataSet === 'dots-plus') {
       page += dots;
     }
+  }
+}
+
+export function getPageForLibrary(results) {
+  const showCardMax = 20;
+  const pageArr = [];
+
+  for (let i = 0; i < Object.values(results).length; i += showCardMax) {
+    pageArr.push(Object.values(results).slice(i, i + showCardMax));
+  }
+
+  MovieService.total_pages = pageArr.length;
+  createPagination();
+
+  return pageArr[page - 1];
+}
+
+async function onRenderGallery(event) {
+  const dataSet = event.target.dataset.action;
+
+  changeCurrentPage(dataSet);
+
+  MovieService.changePage(page);
+
+  try {
+    if (!MovieService.library) {
+      if (MovieService._query === '') {
+        const { results } = await MovieService.getMovieTrend();
+        renderMovieGallery(results);
+        createPagination();
+      } else {
+        const { results } = await MovieService.getSearchMovieResult();
+        renderMovieGallery(results);
+        createPagination();
+      }
+    } else {
+      if (queueBtn.classList.contains('is-active')) {
+        MovieService.queue = true;
+      } else {
+        MovieService.queue = false;
+      }
+
+      if (!MovieService.queue) {
+        showFilmList('watched', false);
+        createPagination();
+      } else {
+        showFilmList(false, 'queue');
+        createPagination();
+      }
+    }
+  } catch (error) {
+    console.log(error.message);
   }
 }

@@ -5,6 +5,8 @@ const API_KEY = '5a76e3dab3643dd50fee1a5fab49be2c';
 axios.defaults.params = { api_key: API_KEY };
 
 export const MovieService = {
+  library: false,
+  queue: null,
   _query: '',
   _page: 1,
   total_pages: '',
