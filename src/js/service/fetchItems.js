@@ -70,8 +70,7 @@ export const MovieService = {
 
   async getVideo(id) {
     const response = await axios.get(`movie/${id}/videos?language=en-US-UA-RU`);
-    const key = await response.data.results[1].key;
-    keyVideo = key;
-    return key;
+    this.keyVideo = await response.data.results[1].key;
+    return  this.keyVideo;
   },
 };
