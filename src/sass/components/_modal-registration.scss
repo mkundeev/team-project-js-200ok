@@ -3,11 +3,16 @@
   min-height: 380px;
   padding: 0;
 
-  @media screen and (min-width: 768px) {
-    min-width: 390px;
-    min-height: 390px;
+  @include tablet {
+    width: 390px;
+    height: 390px;
+  }
+  @include desktop {
+    width: 410px;
+    height: 410px;
   }
 }
+
 .form-field {
   padding: 0 20px 40px 20px;
 }
@@ -66,8 +71,12 @@
 }
 
 .auth-modal-close {
-  top: -28px;
-  right: -28px;
+  top: -30px;
+  right: 0;
+  @include tablet {
+    top: -26px;
+    right: -26px;
+  }
 }
 
 .auth-btn-container {
