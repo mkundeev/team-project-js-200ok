@@ -13,11 +13,9 @@ homeLinkEl.addEventListener('click', onReplaceHeaderByHome);
 
 function onReplaceHeaderByLibrary(event) {
   event.preventDefault();
+  MovieService.library = true;
+  MovieService.changePage(1);
   showFilmList('watched', false);
-  if (refs.queueBtn.classList.contains('is-active')) {
-    refs.watchBtn.classList.add('is-active');
-    refs.queueBtn.classList.remove('is-active');
-  }
 
   headerFormEl.classList.add('header-none');
   headerListEl.classList.remove('header-none');
@@ -31,6 +29,7 @@ function onReplaceHeaderByLibrary(event) {
 
 function onReplaceHeaderByHome(event) {
   event.preventDefault();
+  MovieService.library = false;
 
   MovieService.changePage(1);
 
