@@ -1,20 +1,10 @@
-
-controlModal(
-  '[data-modal-open]',
-  '[data-modal-close]',
-  '[data-modal]'
-);
- controlModal(
-  '.js-site-nav',
-  '.js-btn-modal',
-  '.js-auth-modal'
-);
+controlModal('[data-modal-open]', '[data-modal-close]', '[data-modal]');
+controlModal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
 // controlModal(
 //   '.films__gallery',
 //   '.modal__close-button',
 //   '.js-backdrop'
 // );
-
 
 function controlModal(openModalBtn, closeModalBtn, modal) {
   const refs = {
@@ -30,7 +20,7 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
     }
   }
   function showModal(evt) {
-    refs.body.classList.add('modal-open')
+    refs.body.classList.add('modal-open');
     evt.preventDefault();
     evt.stopPropagation();
     document.addEventListener('keydown', closeEsc);
@@ -39,7 +29,7 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
   function closeModal(evt) {
     refs.modal.classList.toggle('is-hidden');
     document.removeEventListener('keydown', closeEsc);
-    refs.body.classList.remove('modal-open')
+    refs.body.classList.remove('modal-open');
   }
 
   function closeEsc(evt) {
@@ -59,7 +49,7 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
 //     this.closeModalBtn = document.querySelector(closeModalBtn);
 //     this.modalEl = document.querySelector(modal);
 //     this.body = document.querySelector('body');
-    
+
 //   }
 //   addEventListners() {
 //     this.openModalBtn.addEventListener('click', this.showModal);
@@ -98,33 +88,34 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
 // console.log(authModal)
 
 const refModal = {
-    openModalBtn: document.querySelector('.films__gallery'),
-    closeModalBtn: document.querySelector('.modal__close-button'),
+  openModalBtn: document.querySelector('.films__gallery'),
+  closeModalBtn: document.querySelector('.js-close-button'),
   modal: document.querySelector('.js-backdrop'),
-    body: document.querySelector('body'),
-  };
+  body: document.querySelector('body'),
+};
 
- refModal.openModalBtn.addEventListener('click', showModal);
-  refModal.closeModalBtn.addEventListener('click', closeModal);
+refModal.openModalBtn.addEventListener('click', showModal);
+refModal.closeModalBtn.addEventListener('click', closeModal);
 refModal.modal.addEventListener('click', closeEmptyField);
-  
-  function closeEmptyField(evt) {
-    if (evt.target === evt.currentTarget) {
-      closeModal();
-    }
+
+function closeEmptyField(evt) {
+  if (evt.target === evt.currentTarget) {
+    closeModal();
   }
+}
 function showModal(evt) {
   evt.preventDefault();
-  if(evt.target.tagName !== 'UL')
-  {document.addEventListener('keydown', closeEsc);
-  refModal.body.classList.add('modal-open');
-  refModal.modal.classList.toggle('is-hidden');}
-  }
-  function closeModal(evt) {
+  if (evt.target.tagName !== 'UL') {
+    document.addEventListener('keydown', closeEsc);
+    refModal.body.classList.add('modal-open');
     refModal.modal.classList.toggle('is-hidden');
-    document.removeEventListener('keydown', closeEsc);
-    refModal.body.classList.remove('modal-open')
   }
+}
+function closeModal(evt) {
+  refModal.modal.classList.toggle('is-hidden');
+  document.removeEventListener('keydown', closeEsc);
+  refModal.body.classList.remove('modal-open');
+}
 
 function closeEsc(evt) {
   if (evt.key === 'Escape') {
