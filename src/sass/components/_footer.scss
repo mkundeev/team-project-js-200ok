@@ -61,14 +61,20 @@
 }
 
 // ---------- Стили модалки-----------------
+.developer {
+  margin-bottom: -30px;
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -30px;
+  }
+}
 .developer-item {
   width: 100%;
+
   margin: 0 10px 30px 10px;
   box-shadow: 3px 3px rgb(157, 157, 243), -1em 0 0.4em rgb(197, 197, 196);
   @include tablet {
-    width: calc(100% / 2 - 30px);
-  }
-  @include desktop {
     width: calc(100% / 3 - 30px);
   }
 }
@@ -78,15 +84,7 @@
     top: 10vh;
   }
   @include desktop {
-    top: 5vh;
-  }
-}
-.developer {
-  margin-bottom: -30px;
-  @include tablet {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -30px;
+    top: 1vh;
   }
 }
 .slogans {
