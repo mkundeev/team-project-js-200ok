@@ -1,9 +1,10 @@
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { getDatabase, ref, set, update, get, child } from 'firebase/database';
+import { getDatabase, ref, set, update, get} from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../config/firebaseConfig'
 import { notifyConfigs } from '../config/notifyConfig';
+import { getRecommendId } from '../library/library';
 
 
 
@@ -13,10 +14,24 @@ const db = getDatabase();
 let userId = null;
 let userName = '';
 
+
+
 function getUserData(id, name) {
   userId = id;
   userName = name;
 }
+
+function getRecomendedFilms(){
+return get(ref(db, `users/${userId}/recommend/results`)).then((snapshot) => {
+  if (snapshot.exists()) {
+      console.log(snapshot.val())
+    return snapshot.val()
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.log(error.message);
+});}
 
 function getFilms(src){
   return get(ref(db, `users/${userId}`)).then((snapshot) => {
@@ -30,6 +45,14 @@ function getFilms(src){
 });}
 
 
+function updateRecommendFilms(results) {
+  update(ref(db, `users/${userId}/recommend`),
+   { results}
+    ).catch((error) => {
+  console.log(error.message);
+});
+}
+
 
 function updateFilms(results, src) {
   if (userId === null) {
@@ -40,10 +63,13 @@ function updateFilms(results, src) {
   get(ref(db, `users/${userId}/${src}/${[results.id]}`)).then((snapshot) => {
     if (snapshot.exists()) {
       Notify.info(`${userName}, you alredy have this film in your library`, notifyConfigs)
-  } else {
+    } else {
+      if (src === 'queue') {
+        getRecommendId(results.id);
+          console.log(results.id)}
     update(ref(db, `users/${userId}/${src}`),
    { [results.id]: results}
-  ).then(()=>Notify.success(`${userName}, you have add film to your library`, notifyConfigs));
+    ).then(() => Notify.success(`${userName}, you have add film to your library`, notifyConfigs));
   }
 }).catch((error) => {
   console.log(error.message);
@@ -60,4 +86,4 @@ function deletFilm(id, src) {
 
 }
 
-export { getUserData, updateFilms, getFilms, deletFilm };
+export { getUserData, updateFilms, getFilms, deletFilm,  updateRecommendFilms, getRecomendedFilms };

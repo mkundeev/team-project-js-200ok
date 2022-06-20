@@ -63,8 +63,6 @@ export const MovieService = {
 
   async getSearchMovieById(id) {
     const response = await axios.get(`movie/${id}`);
-
-    console.log(response);
     return response.data;
   },
 
@@ -76,7 +74,7 @@ export const MovieService = {
 
   async getRecommendMovies(id) {
     const response = await axios.get(`movie/${id}/recommendations?language=en-US-UA-RU`);
-    return recomendation
+    return response
   }
 
 };
