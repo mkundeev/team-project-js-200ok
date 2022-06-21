@@ -67,15 +67,24 @@ export const MovieService = {
   },
 
   async getVideo(id) {
-    const response = await axios.get(`movie/${id}/videos?language=en-US-UA-RU`);
-    this.keyVideo = await response.data.results[1].key;
-    return  this.keyVideo;
+    try {
+      const response = await axios.get(
+        `movie/${id}/videos?language=en-US-UA-RU`
+      );
+      this.keyVideo = await response.data.results[1].key;
+      return this.keyVideo;
+    } catch (error) {
+      console.log(error.message);
+      return false;
+    }
   },
 
   async getRecommendMovies(id) {
-    const response = await axios.get(`movie/${id}/recommendations?language=en-US-UA-RU`);
+    const response = await axios.get(
+      `movie/${id}/recommendations?language=en-US-UA-RU`
+    );
     const { genres } = await this.getGenres(); //массив обьектов жанров
-    let { results} = response.data;
+    let { results } = response.data;
     results = results.map(result => ({
       ...result,
       genre_ids: result.genre_ids.map(
@@ -84,6 +93,5 @@ export const MovieService = {
     }));
 
     return results;
-  }
-
+  },
 };
