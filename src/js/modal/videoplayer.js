@@ -45,7 +45,7 @@ function stopVideo() {
 
 function videoPlay(ev) {
   ev.preventDefault();
-  if (ev.target.tagName === 'BUTTON') {
+  if (ev.target.classList.contains('play')) {
     onYouTubeIframeAPIReady(ev.target.dataset.src);
     refs.backdropMovie.classList.remove('visually-hidden');
     refs.modalWindowBehind.classList.add('visually-hidden');

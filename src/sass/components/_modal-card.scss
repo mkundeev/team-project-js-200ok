@@ -201,15 +201,15 @@ table td {
 //   background: transparent;
 //   color: #000;
 // }
-.modal__svg-background::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+// .modal__play-bacground::before {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
 
-}
+// }
 .modal__play-bacground {
   border: none;
   width: 85px;
@@ -223,6 +223,7 @@ table td {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 .modal__play-bacground:hover,

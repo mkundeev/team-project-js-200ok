@@ -129,6 +129,7 @@ const movieSearchOneFilm = async e => {
 
 // добавить слушателя на отрисованую разметку
 const creatModal = e => {
+  
   movieSearchOneFilm(e).then(() => {
     const addWatchBtn = document.querySelector('.js-watched-add');
     const addQueueBtn = document.querySelector('.js-queue-add');
@@ -145,7 +146,7 @@ const creatModal = e => {
 };
 
 async function delFromList(e, src) {
-  addSelector(e);
+  userId && addSelector(e);
   const id = e.target.dataset.id;
   deletFilm(id, src);
 
@@ -157,7 +158,7 @@ async function delFromList(e, src) {
 
   };
 async function addFilmToList(e, src) {
-  addSelector(e)
+  userId && addSelector(e)
   addFilmToDb(e)
   if(src==='watched' && watchBtn.classList.contains('is-active') || src==='queue' && queueBtn.classList.contains('is-active'))
  { const id = e.target.dataset.id;
