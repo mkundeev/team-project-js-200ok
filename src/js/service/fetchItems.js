@@ -80,7 +80,7 @@ export const MovieService = {
       ...result,
       genre_ids: result.genre_ids.map(
         id => genres.find(genre => genre.id === id).name
-      ),
+      ).join(', '),
     }));
 
     return results;
