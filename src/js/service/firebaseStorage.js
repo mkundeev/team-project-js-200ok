@@ -37,8 +37,10 @@ function getFilms(src){
   return get(ref(db, `users/${userId}`)).then((snapshot) => {
     if (snapshot.exists()) {
     return snapshot.val()[src]
-  } else {
-    console.log("No data available");
+    } else {
+      console.log("No data available");
+      return []
+    
   }
 }).catch((error) => {
   console.log(error.message);

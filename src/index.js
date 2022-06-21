@@ -14,7 +14,7 @@ import './js/library/replace-header';
 import { deletFilm, getFilms } from './js/service/firebaseStorage';
 import { showingWarningText } from './js/template/showing-warning-text';
 import { VisibleComponent } from './js/spinner/spinner';
-import { renderMarkupCard} from './js/modal/renderMarkupCard';
+import { renderMarkupCard, renderMarkupCardNoId} from './js/modal/renderMarkupCard';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import {
@@ -94,8 +94,8 @@ const movieSearchOneFilm = async e => {
   if (watchedFilms) {
     watched = Object.keys(watchedFilms).includes(response.id.toString());
     if (queueFilms) { queue = Object.keys(queueFilms).includes(response.id.toString()) };
-    
-    renderMarkupCard(response, key, watched, queue);
+
+    userId ? renderMarkupCard(response, key, watched, queue) : renderMarkupCardNoId(response, key);
   }
 }
 // добавить слушателя на отрисованую разметку
