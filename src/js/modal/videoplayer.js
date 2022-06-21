@@ -41,12 +41,15 @@ function onPlayerStateChange(event) {
 }
 function stopVideo() {
   player.stopVideo();
+  player.clearVideo();
+  console.log(player);
   backdropMovie.classList.add('visually-hidden');
   modalWindowBehind.classList.remove('visually-hidden');
 }
 
 function videoPlay(ev) {
   ev.preventDefault();
+  console.log(ev.target);
   if (ev.target.tagName === 'BUTTON') {
     onYouTubeIframeAPIReady(ev.target.dataset.src);
     backdropMovie.classList.remove('visually-hidden');
