@@ -8,7 +8,7 @@ import './js/library/library';
 import './js/scroll/scroll';
 import './js/modal/renderMarkupCard';
 import './js/template/pagination';
-
+import './js/day-night/day-night';
 import './js/library/replace-header';
 
 import { deletFilm } from './js/service/firebaseStorage';
@@ -29,7 +29,6 @@ const spinner = new VisibleComponent({
   className: 'visually-hidden',
   isHide: true,
 });
-
 
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
@@ -83,12 +82,11 @@ refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
 const movieSearchOneFilm = async ev => {
-
   const response = await MovieService.getSearchMovieById(ev.target.dataset.id);
   const key = await MovieService.getVideo(ev.target.dataset.id);
   getCurrentCardData(response);
   renderMarkupCard(response, key);
-}
+};
 // добавить слушателя на отрисованую разметку
 const creatModal = ev => {
   movieSearchOneFilm(ev).then(() => {
@@ -112,7 +110,6 @@ const creatModal = ev => {
 };
 
 function delFromList(e, src) {
-
   const id = e.target.dataset.id;
   deletFilm(id, src);
   refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
@@ -121,11 +118,10 @@ function delFromList(e, src) {
     refs.movieContainer.innerHTML =
       '<li><p>There are no films in your library</p></li>';
   }
-  };
+}
 
-
-
-
-refs.movieOneCardContainer.addEventListener('click',(e)=>{e.target.tagName!=='UL' && creatModal(e)} );
+refs.movieOneCardContainer.addEventListener('click', e => {
+  e.target.tagName !== 'UL' && creatModal(e);
+});
 
 export { movieTrending };
