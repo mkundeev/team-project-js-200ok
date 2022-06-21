@@ -1,7 +1,6 @@
-const btnAutorization = document.querySelector('.auth-btn');
-const btnRegistration = document.querySelector('.regist-btn');
-const formAutorization = document.querySelector('.form-authorization');
-const formRegistration = document.querySelector('.form-register');
+import { refs } from '../service/refs';
+const { btnAutorization, btnRegistration, formAutorization, formRegistration } =
+  refs;
 
 btnAutorization.addEventListener('click', onAutorization);
 btnRegistration.addEventListener('click', onRegistration);
