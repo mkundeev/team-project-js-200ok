@@ -14,15 +14,19 @@ var player;
 
 function onYouTubeIframeAPIReady(key) {
   console.log(key);
-  player = new YT.Player('player', {
-    height: '460',
-    width: '740',
-    videoId: key,
-    events: {
-      onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange,
-    },
-  });
+  if (!player) {
+    player = new YT.Player('player', {
+      height: '460',
+      width: '740',
+      videoId: key,
+      events: {
+        onReady: onPlayerReady,
+        onStateChange: onPlayerStateChange,
+      },
+    });
+  } else {
+    player.videoId = key;
+  }
 }
 
 // 4. The API will call this function when the video player is ready.
@@ -45,6 +49,7 @@ function stopVideo() {
   console.log(player);
   backdropMovie.classList.add('visually-hidden');
   modalWindowBehind.classList.remove('visually-hidden');
+  document.removeEventListener('keydown', closeEsc);
 }
 
 function videoPlay(ev) {
@@ -54,6 +59,7 @@ function videoPlay(ev) {
     onYouTubeIframeAPIReady(ev.target.dataset.src);
     backdropMovie.classList.remove('visually-hidden');
     modalWindowBehind.classList.add('visually-hidden');
+    document.addEventListener('keydown', closeEsc);
   }
 }
 
@@ -62,5 +68,18 @@ const closeBtn = document.querySelector('.video__close-icon');
 const modalWindowBehind = document.querySelector('.modal__card');
 const videoIframe = document.querySelector('#player');
 refs.cardModalMovie.addEventListener('click', videoPlay);
+backdropMovie.addEventListener('click', closeEmptyField);
 
 closeBtn.addEventListener('click', stopVideo);
+
+function closeEsc(evt) {
+  if (evt.key === 'Escape') {
+    stopVideo();
+  }
+}
+
+function closeEmptyField(evt) {
+  if (evt.target === evt.currentTarget) {
+    stopVideo();
+  }
+}

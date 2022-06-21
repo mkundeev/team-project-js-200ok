@@ -1,10 +1,5 @@
 controlModal('[data-modal-open]', '[data-modal-close]', '[data-modal]');
 controlModal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
-// controlModal(
-//   '.films__gallery',
-//   '.modal__close-button',
-//   '.js-backdrop'
-// );
 
 function controlModal(openModalBtn, closeModalBtn, modal) {
   const refs = {
