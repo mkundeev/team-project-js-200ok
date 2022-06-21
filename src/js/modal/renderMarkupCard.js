@@ -16,22 +16,21 @@ export function renderMarkupCard(data, key, watched, queue) {
 
   const markup = `
 <div class="modal__img-wrap">
-      <a href="https://www.youtube.com/watch?v=${key}" class="modal__img-link">
-
   ${
     poster_path
       ? ` <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}" 
          alt="${title}" loading="lazy" 
         class="modal__img" data-id=${id}
-   />`
+   />
+   <button class="modal__play-bacground ${
+     !key && 'visually-hidden'
+   }" data-src=${key}>
+          <svg class="modal__svg-background"></svg>
+        </button>`
       : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg"  alt="${title}" loading="lazy" 
         class="modal__img" data-id=${id} >`
   }
 
-        <div class="modal__play-bacground">
-          <span class="modal__svg-background"></span>
-        </div>
-        </a>
 </div>
 
       <div class="modal__info-container">
@@ -66,18 +65,26 @@ export function renderMarkupCard(data, key, watched, queue) {
         </p>
         <div class="modal__button-wrap">
           <div class="modal__button-container">
-            <button type="submit" class="modal__button js-watched js-watched-add ${watched && 'visually-hidden'}" id="js-watched-add" data-id=${id}>
+            <button type="submit" class="modal__button js-watched js-watched-add ${
+              watched && 'visually-hidden'
+            }" id="js-watched-add" data-id=${id}>
               ADD TO WATCHED
             </button>
-            <button type="button" class="modal__button js-watched js-watched-del ${!watched && 'visually-hidden'}" id="js-watched-del" data-id=${id}>
+            <button type="button" class="modal__button js-watched js-watched-del ${
+              !watched && 'visually-hidden'
+            }" id="js-watched-del" data-id=${id}>
               DELETE FROM WATCHED
             </button>
           </div>
           <div class="modal__button-container">
-          <button type="submit" class="modal__button js-queue  js-queue-add ${queue && 'visually-hidden'}" id="js-queue-add" data-id=${id}>
+          <button type="submit" class="modal__button js-queue  js-queue-add ${
+            queue && 'visually-hidden'
+          }" id="js-queue-add" data-id=${id}>
               ADD TO QUEUE
             </button>
-            <button type="submit" class="modal__button js-queue js-queue-del ${!queue && 'visually-hidden'}" id="js-queue-del" data-id=${id}>
+            <button type="submit" class="modal__button js-queue js-queue-del ${
+              !queue && 'visually-hidden'
+            }" id="js-queue-del" data-id=${id}>
               DELETE FROM  QUEUE
             </button>
           </div>
@@ -101,22 +108,23 @@ export function renderMarkupCardNoId(data, key) {
 
   const markup = `
 <div class="modal__img-wrap">
-      <a href="https://www.youtube.com/watch?v=${key}" class="modal__img-link">
-
   ${
     poster_path
-      ? ` <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}" 
+      ? `
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}" 
          alt="${title}" loading="lazy" 
         class="modal__img" data-id=${id}
-   />`
+   />
+           <button class="modal__play-bacground ${
+             !key && 'visually-hidden'
+           }" data-src=${key}>
+          <svg class="modal__svg-background"></svg>
+        </button>
+        `
       : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg"  alt="${title}" loading="lazy" 
         class="modal__img" data-id=${id} >`
   }
 
-        <div class="modal__play-bacground">
-          <span class="modal__svg-background"></span>
-        </div>
-        </a>
 </div>
 
       <div class="modal__info-container">
@@ -170,4 +178,3 @@ export function renderMarkupCardNoId(data, key) {
       </div>`;
   refs.cardModalMovie.insertAdjacentHTML('beforeend', markup);
 }
-

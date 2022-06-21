@@ -8,7 +8,12 @@ import './js/library/library';
 import './js/scroll/scroll';
 import './js/modal/renderMarkupCard';
 import './js/template/pagination';
+
+import './js/modal/videoplayer';
+
+
 import './js/day-night/day-night';
+
 import './js/library/replace-header';
 import './js/template/masiania';
 
@@ -28,7 +33,9 @@ import {
 import { createPagination } from './js/template/pagination';
 import { getCurrentCardData, addFilmToDb } from './js/library/library';
 import { libraryLinkEl } from './js/library/replace-header';
+
 import { renderOneFilm } from './js/template/renderMarkup';
+
 
 const spinner = new VisibleComponent({
   selector: '.js-spinner',
@@ -37,13 +44,15 @@ const spinner = new VisibleComponent({
 });
 let userId = null;
 
+
 const watchBtn = document.querySelector('#watched');
 const queueBtn = document.querySelector('#queue');
+
 
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
 
-MovieService.getMovieTrend().then(response => console.log(response));
+// MovieService.getMovieTrend().then(response => console.log(response));
 // MovieService.getGenres().then(response => console.log(response));
 
 // запрос и отрисовка популярных фильмов
@@ -113,6 +122,7 @@ const movieSearchOneFilm = async e => {
     userId
       ? renderMarkupCard(response, key, watched, queue)
       : renderMarkupCardNoId(response, key);
+
 
   }
 };

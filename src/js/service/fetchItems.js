@@ -83,6 +83,7 @@ export const MovieService = {
     const response = await axios.get(
       `movie/${id}/recommendations?language=en-US-UA-RU`
     );
+
     const { genres } = await this.getGenres(); //массив обьектов жанров
     let { results } = response.data;
     results = results.map(result => ({
@@ -93,5 +94,6 @@ export const MovieService = {
     }));
 
     return results;
+
   },
 };

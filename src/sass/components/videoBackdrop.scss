@@ -1,0 +1,72 @@
+.movie-backdrop {
+  position: fixed;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.336);
+  left: 0;
+  top: 0;
+  transition: opacity 0.3s var(--cubic-bezier);
+}
+
+.video-wrap {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -65%);
+  height: 200px;
+  width: 310px;
+
+  @include tablet {
+    height: 460px;
+    width: 740px;
+  }
+}
+
+.video-wrap > .video__close-button {
+  border: transparent;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 0;
+  border-radius: 5px;
+  top: 300px;
+  right: 150px;
+  width: 30px;
+  height: 30px;
+  margin-right: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: -30px;
+  right: 5px;
+  transition: border-color 250ms var(--cubic-bezier);
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+  }
+
+  @include tablet {
+    top: -30px;
+    right: -20px;
+  }
+}
+
+.video__close-icon {
+  stroke: var(--accent-color-text-button-modal);
+  transition: stroke 250ms var(--cubic-bezier);
+  &:hover,
+  &:focus {
+    stroke: var(--primary-color-text-modal);
+  }
+}
+
+#player {
+  height: 200px;
+  width: 310px;
+  @include tablet {
+    height: 460px;
+    width: 740px;
+  }
+}
