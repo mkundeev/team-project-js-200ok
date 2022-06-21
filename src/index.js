@@ -23,14 +23,16 @@ import {
 } from './js/template/renderMarkup';
 import { createPagination } from './js/template/pagination';
 import { getCurrentCardData, addFilmToDb  } from './js/library/library';
-import { libraryLinkEl} from './js/library/replace-header';
+import { libraryLinkEl } from './js/library/replace-header';
+import { renderOneFilm } from './js/template/renderMarkup';
 
 const spinner = new VisibleComponent({
   selector: '.js-spinner',
   className: 'visually-hidden',
   isHide: true,
 });
-let userId = null
+let userId = null;
+
 
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
@@ -101,10 +103,10 @@ const movieSearchOneFilm = async e => {
 // добавить слушателя на отрисованую разметку
 const creatModal = e => { 
 movieSearchOneFilm(e).then(() => {
-  const addWatchBtn = document.querySelector('.js-watched-add');
-  const addQueueBtn = document.querySelector('.js-queue-add');
-  const delWatchBtn = document.querySelector('.js-watched-del');
-  const delQueueBtn = document.querySelector('.js-queue-del');
+   const addWatchBtn = document.querySelector('.js-watched-add');
+    const addQueueBtn = document.querySelector('.js-queue-add');
+    const delWatchBtn = document.querySelector('.js-watched-del');
+    const delQueueBtn = document.querySelector('.js-queue-del');
 
   addWatchBtn.addEventListener('click', addFilmToList);
   addQueueBtn.addEventListener('click', addFilmToList);
@@ -119,14 +121,7 @@ function addFilmToList(e) {
     const delWatchBtn = document.querySelector('.js-watched-del');
     const delQueueBtn = document.querySelector('.js-queue-del');
   e.preventDefault()
-  if (e.target.classList.contains('js-watched')) {
-      addWatchBtn.classList.toggle('visually-hidden');
-    delWatchBtn.classList.toggle('visually-hidden');
-    }
-    if (e.target.classList.contains('js-queue')) {
-      addQueueBtn.classList.toggle('visually-hidden');
-      delQueueBtn.classList.toggle('visually-hidden');
-    }
+  
     addFilmToDb(e)
 }
 
@@ -136,28 +131,60 @@ async function delFromList(e, src) {
     const addQueueBtn = document.querySelector('.js-queue-add');
     const delWatchBtn = document.querySelector('.js-watched-del');
     const delQueueBtn = document.querySelector('.js-queue-del');
-  console.log(e.target.classList)
-  // console.log(addWatchBtn, addQueueBtn, delWatchBtn,delQueueBtn )
   e.preventDefault()
-  if (e.target.classList.contains('js-watched')) {
+    if (e.target.classList.contains('js-watched')) {
       addWatchBtn.classList.toggle('visually-hidden');
     delWatchBtn.classList.toggle('visually-hidden');
-    console.log(1)
     }
     if (e.target.classList.contains('js-queue')) {
       addQueueBtn.classList.toggle('visually-hidden');
       delQueueBtn.classList.toggle('visually-hidden');
-      console.log(2)
     }
   const id = e.target.dataset.id;
   deletFilm(id, src);
   if(libraryLinkEl.classList.contains('site-nav__link-current'))
   {refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
-  if (refs.movieContainer.childNodes.length <= 1) {
-    refs.movieContainer.innerHTML =
-      '<li><p>There are no films in your library</p></li>';
-  }}
+  // if (refs.movieContainer.childNodes.length <= 1) {
+  //   refs.movieContainer.innerHTML =
+  //     '<li><p>There are no films in your library</p></li>';
+    // }
+  }
   };
+async function addFilmToList(e) {
+  const addWatchBtn = document.querySelector('.js-watched-add');
+    const addQueueBtn = document.querySelector('.js-queue-add');
+    const delWatchBtn = document.querySelector('.js-watched-del');
+    const delQueueBtn = document.querySelector('.js-queue-del');
+  e.preventDefault()
+   if (e.target.classList.contains('js-watched')) {
+      addWatchBtn.classList.toggle('visually-hidden');
+    delWatchBtn.classList.toggle('visually-hidden');
+    }
+    if (e.target.classList.contains('js-queue')) {
+      addQueueBtn.classList.toggle('visually-hidden');
+      delQueueBtn.classList.toggle('visually-hidden');
+    }
+  addFilmToDb(e)
+  const id = e.target.dataset.id;
+  console.log(id)
+  const result = await MovieService.getSearchMovieById(id);
+  console.log(result)
+  const markup = renderOneFilm(result)
+  console.log(markup)
+  refs.movieContainer.insertAdjacentHTML("beforeend", markup )
+
+}
+
+// function changeActiveLibraryBtn(e) {
+//   if (e.target.classList.contains('js-watched')) {
+//       addWatchBtn.classList.toggle('visually-hidden');
+//     delWatchBtn.classList.toggle('visually-hidden');
+//     }
+//     if (e.target.classList.contains('js-queue')) {
+//       addQueueBtn.classList.toggle('visually-hidden');
+//       delQueueBtn.classList.toggle('visually-hidden');
+//     }
+// }
 
 
 function getUserId(id) {
