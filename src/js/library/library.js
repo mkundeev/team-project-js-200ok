@@ -93,8 +93,14 @@ async function showFilmList(watched, queue) {
   let results = [];
   try {
     if (watched) { results = await getFilms(watched) };
-    if (queue) {results = await getFilms(queue)}
-    renderMovieGallery(getPageForLibrary(results), watched, queue);
+    if (queue) { results = await getFilms(queue) }
+    getPageForLibrary(results)
+    results = Object.values(results)
+    results = results.map(result => ({
+      ...result,
+      genre_ids: result.genres.map(({name}) => name).join(', '),
+    }));
+    renderMovieGallery(results, watched, queue);
   } catch(error) {
     console.log(error.message);
     el.movieContainer.innerHTML =
