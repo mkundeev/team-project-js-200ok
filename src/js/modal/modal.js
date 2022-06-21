@@ -1,10 +1,7 @@
+import { refs } from '../service/refs';
+const { movieContainer, closeModalBtn, modal, body } = refs;
 controlModal('[data-modal-open]', '[data-modal-close]', '[data-modal]');
 controlModal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
-// controlModal(
-//   '.films__gallery',
-//   '.modal__close-button',
-//   '.js-backdrop'
-// );
 
 function controlModal(openModalBtn, closeModalBtn, modal) {
   const refs = {
@@ -43,16 +40,16 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
   refs.modal.addEventListener('click', closeEmptyField);
 }
 // ============================================================================================
-const refModal = {
-  openModalBtn: document.querySelector('.films__gallery'),
-  closeModalBtn: document.querySelector('.js-close-button'),
-  modal: document.querySelector('.js-backdrop'),
-  body: document.querySelector('body'),
-};
+// const refModal = {
+//   movieContainer: document.querySelector('.films__gallery'),
+//   closeModalBtn: document.querySelector('.js-close-button'),
+//   modal: document.querySelector('.js-backdrop'),
+//   body: document.querySelector('body'),
+// };
 
-refModal.openModalBtn.addEventListener('click', showModal);
-refModal.closeModalBtn.addEventListener('click', closeModal);
-refModal.modal.addEventListener('click', closeEmptyField);
+movieContainer.addEventListener('click', showModal);
+closeModalBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', closeEmptyField);
 
 function closeEmptyField(evt) {
   if (evt.target === evt.currentTarget) {
@@ -63,14 +60,14 @@ function showModal(evt) {
   evt.preventDefault();
   if (evt.target.tagName !== 'UL') {
     document.addEventListener('keydown', closeEsc);
-    refModal.body.classList.add('modal-open');
-    refModal.modal.classList.toggle('is-hidden');
+    body.classList.add('modal-open');
+    modal.classList.toggle('is-hidden');
   }
 }
 function closeModal(evt) {
-  refModal.modal.classList.toggle('is-hidden');
+  modal.classList.toggle('is-hidden');
   document.removeEventListener('keydown', closeEsc);
-  refModal.body.classList.remove('modal-open');
+  body.classList.remove('modal-open');
 }
 
 function closeEsc(evt) {
