@@ -63,8 +63,6 @@ export const MovieService = {
 
   async getSearchMovieById(id) {
     const response = await axios.get(`movie/${id}`);
-
-    console.log(response);
     return response.data;
   },
 
@@ -73,4 +71,10 @@ export const MovieService = {
     this.keyVideo = await response.data.results[1].key;
     return  this.keyVideo;
   },
+
+  async getRecommendMovies(id) {
+    const response = await axios.get(`movie/${id}/recommendations?language=en-US-UA-RU`);
+    return response
+  }
+
 };

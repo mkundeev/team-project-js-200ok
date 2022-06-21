@@ -18,10 +18,9 @@ function onReplaceHeaderByLibrary(event) {
   MovieService.changePage(1);
   showFilmList('watched', false);
 
-  showFilmList('watched', false, event);
   refs.watchBtn.classList.add('is-active');
   refs.queueBtn.classList.remove('is-active');
-
+  refs.recommendBtn.classList.remove('is-active');
   headerFormEl.classList.add('header-none');
   headerListEl.classList.remove('header-none');
 

@@ -11,10 +11,10 @@ import './js/template/pagination';
 import './js/day-night/day-night';
 import './js/library/replace-header';
 
-import { deletFilm } from './js/service/firebaseStorage';
+import { deletFilm, getFilms } from './js/service/firebaseStorage';
 import { showingWarningText } from './js/template/showing-warning-text';
 import { VisibleComponent } from './js/spinner/spinner';
-import { renderMarkupCard } from './js/modal/renderMarkupCard';
+import { renderMarkupCard, renderMarkupCardNoId} from './js/modal/renderMarkupCard';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import {
@@ -22,13 +22,16 @@ import {
   renderSearchResultMovie,
 } from './js/template/renderMarkup';
 import { createPagination } from './js/template/pagination';
-import { getCurrentCardData } from './js/library/library';
+import { getCurrentCardData, addFilmToDb  } from './js/library/library';
+import { libraryLinkEl } from './js/library/replace-header';
+import { renderOneFilm } from './js/template/renderMarkup';
 
 const spinner = new VisibleComponent({
   selector: '.js-spinner',
   className: 'visually-hidden',
   isHide: true,
 });
+let userId = null;
 
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
@@ -81,47 +84,116 @@ const movieSearch = async ev => {
 refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
-const movieSearchOneFilm = async ev => {
-  const response = await MovieService.getSearchMovieById(ev.target.dataset.id);
-  const key = await MovieService.getVideo(ev.target.dataset.id);
+
+const movieSearchOneFilm = async e => {
+  const watchedFilms = await getFilms('watched');
+  const queueFilms = await getFilms('queue');
+  let watched = [];
+  let queue = [];
+  const response = await MovieService.getSearchMovieById(e.target.dataset.id);
+  const key = await MovieService.getVideo(e.target.dataset.id);
   getCurrentCardData(response);
-  renderMarkupCard(response, key);
-};
-// добавить слушателя на отрисованую разметку
-const creatModal = ev => {
-  movieSearchOneFilm(ev).then(() => {
-    const addWatchBtn = document.querySelector('.js-watched-add');
-    const addQueueBtn = document.querySelector('.js-queue-add');
-    const delWatchBtn = document.querySelector('.js-watched-delete');
-    const delQueueBtn = document.querySelector('.js-queue-delete');
+  if (watchedFilms) {
+    watched = Object.keys(watchedFilms).includes(response.id.toString());
+    if (queueFilms) { queue = Object.keys(queueFilms).includes(response.id.toString()) };
 
-    if (ev.target.dataset.watched === 'watched') {
-      addWatchBtn.classList.add('visually-hidden');
-      delWatchBtn.classList.remove('visually-hidden');
-    }
-    if (ev.target.dataset.queue === 'queue') {
-      addQueueBtn.classList.add('visually-hidden');
-      delQueueBtn.classList.remove('visually-hidden');
-    }
-
-    delWatchBtn.addEventListener('click', e => delFromList(e, 'watched'));
-    delQueueBtn.addEventListener('click', e => delFromList(e, 'queue'));
-  });
-};
-
-function delFromList(e, src) {
-  const id = e.target.dataset.id;
-  deletFilm(id, src);
-  refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
-  console.dir(refs.movieContainer.childNodes);
-  if (refs.movieContainer.childNodes.length <= 1) {
-    refs.movieContainer.innerHTML =
-      '<li><p>There are no films in your library</p></li>';
+    userId ? renderMarkupCard(response, key, watched, queue) : renderMarkupCardNoId(response, key);
   }
 }
 
-refs.movieOneCardContainer.addEventListener('click', e => {
-  e.target.tagName !== 'UL' && creatModal(e);
-});
+// добавить слушателя на отрисованую разметку
+const creatModal = e => { 
+movieSearchOneFilm(e).then(() => {
+   const addWatchBtn = document.querySelector('.js-watched-add');
+    const addQueueBtn = document.querySelector('.js-queue-add');
+    const delWatchBtn = document.querySelector('.js-watched-del');
+    const delQueueBtn = document.querySelector('.js-queue-del');
 
-export { movieTrending };
+  addWatchBtn.addEventListener('click', addFilmToList);
+  addQueueBtn.addEventListener('click', addFilmToList);
+  delWatchBtn.addEventListener('click', e => delFromList(e, 'watched'));
+  delQueueBtn.addEventListener('click', e => delFromList(e, 'queue'));}
+);
+};
+
+function addFilmToList(e) {
+  const addWatchBtn = document.querySelector('.js-watched-add');
+    const addQueueBtn = document.querySelector('.js-queue-add');
+    const delWatchBtn = document.querySelector('.js-watched-del');
+    const delQueueBtn = document.querySelector('.js-queue-del');
+  e.preventDefault()
+  
+    addFilmToDb(e)
+}
+
+
+async function delFromList(e, src) {
+  const addWatchBtn = document.querySelector('.js-watched-add');
+    const addQueueBtn = document.querySelector('.js-queue-add');
+    const delWatchBtn = document.querySelector('.js-watched-del');
+    const delQueueBtn = document.querySelector('.js-queue-del');
+  e.preventDefault()
+    if (e.target.classList.contains('js-watched')) {
+      addWatchBtn.classList.toggle('visually-hidden');
+    delWatchBtn.classList.toggle('visually-hidden');
+    }
+    if (e.target.classList.contains('js-queue')) {
+      addQueueBtn.classList.toggle('visually-hidden');
+      delQueueBtn.classList.toggle('visually-hidden');
+    }
+
+  const id = e.target.dataset.id;
+  deletFilm(id, src);
+  if(libraryLinkEl.classList.contains('site-nav__link-current'))
+  {refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
+  // if (refs.movieContainer.childNodes.length <= 1) {
+  //   refs.movieContainer.innerHTML =
+  //     '<li><p>There are no films in your library</p></li>';
+    // }
+  }
+  };
+async function addFilmToList(e) {
+  const addWatchBtn = document.querySelector('.js-watched-add');
+    const addQueueBtn = document.querySelector('.js-queue-add');
+    const delWatchBtn = document.querySelector('.js-watched-del');
+    const delQueueBtn = document.querySelector('.js-queue-del');
+  e.preventDefault()
+   if (e.target.classList.contains('js-watched')) {
+      addWatchBtn.classList.toggle('visually-hidden');
+    delWatchBtn.classList.toggle('visually-hidden');
+    }
+    if (e.target.classList.contains('js-queue')) {
+      addQueueBtn.classList.toggle('visually-hidden');
+      delQueueBtn.classList.toggle('visually-hidden');
+    }
+  addFilmToDb(e)
+  const id = e.target.dataset.id;
+  console.log(id)
+  const result = await MovieService.getSearchMovieById(id);
+  console.log(result)
+  const markup = renderOneFilm(result)
+  console.log(markup)
+  refs.movieContainer.insertAdjacentHTML("beforeend", markup )
+
+}
+
+// function changeActiveLibraryBtn(e) {
+//   if (e.target.classList.contains('js-watched')) {
+//       addWatchBtn.classList.toggle('visually-hidden');
+//     delWatchBtn.classList.toggle('visually-hidden');
+//     }
+//     if (e.target.classList.contains('js-queue')) {
+//       addQueueBtn.classList.toggle('visually-hidden');
+//       delQueueBtn.classList.toggle('visually-hidden');
+//     }
+// }
+
+
+function getUserId(id) {
+    userId=id
+  }
+
+refs.movieOneCardContainer.addEventListener('click',(e)=>{e.target.tagName!=='UL' && creatModal(e)} );
+
+
+export { movieTrending, getUserId };
