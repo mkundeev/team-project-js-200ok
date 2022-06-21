@@ -1,0 +1,166 @@
+.masiania {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-200%);
+  transition: transform 250ms;
+
+  &__img {
+    width: 150px;
+    height: 130px;
+
+    @media screen and (min-width: 768px) {
+      width: 250px;
+      height: 210px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      width: 300px;
+      height: 290px;
+    }
+  }
+
+  &.masiania-show {
+    transform: translateX(0);
+  }
+
+  &__wrapp {
+    transition: opacity 250ms;
+  }
+
+  &__img-message {
+    position: absolute;
+    top: -115px;
+    right: -120px;
+
+    @media screen and (min-width: 768px) {
+      top: -140px;
+      right: -190px;
+      width: 250px;
+      height: 200px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      width: 340px;
+      height: 235px;
+      top: -175px;
+      right: -230px;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    top: -115px;
+    right: -133px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 182px;
+    height: 70px;
+    font-size: 11px;
+    line-height: 1.14;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+      font-size: 15px;
+      line-height: 1.14;
+      top: -130px;
+      right: -150px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-size: 15px;
+      line-height: 1.5;
+      top: -155px;
+      right: -165px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    position: absolute;
+    top: -50px;
+    right: -90px;
+
+    @media screen and (min-width: 768px) {
+      top: -50px;
+      right: -110px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      top: -70px;
+      right: -130px;
+    }
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 25px;
+
+    @media screen and (min-width: 1280px) {
+      margin-right: 40px;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    transition: transform 250ms;
+
+    @media screen and (min-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
+    @media screen and (min-width: 1280px) {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  &__link:hover {
+    @media screen and (min-width: 1280px) {
+      transform: scale(1.4);
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: -135px;
+    right: -135px;
+    background-color: #00bfff;
+
+    @media screen and (min-width: 768px) {
+      top: -155px;
+      right: -200px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      top: -185px;
+      right: -235px;
+    }
+  }
+}
+
+.masiania-right {
+  position: fixed;
+  right: 0;
+  top: 200px;
+  transform: translateX(150%);
+  transition: transform 500ms;
+
+  &.masiania-right-show {
+    transform: translateX(50%);
+  }
+
+  &__img {
+    transform: rotate(-90deg);
+    width: 150px;
+    height: 200px;
+
+    @media screen and (min-width: 768px) {
+      width: 250px;
+      height: 350px;
+    }
+  }
+}
