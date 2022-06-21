@@ -33,6 +33,9 @@ const spinner = new VisibleComponent({
 });
 let userId = null;
 
+const watchBtn = document.querySelector('#watched');
+const queueBtn = document.querySelector('#queue');
+
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
 
@@ -113,8 +116,8 @@ movieSearchOneFilm(e).then(() => {
     const delWatchBtn = document.querySelector('.js-watched-del');
     const delQueueBtn = document.querySelector('.js-queue-del');
 
-  addWatchBtn.addEventListener('click', addFilmToList);
-  addQueueBtn.addEventListener('click', addFilmToList);
+  addWatchBtn.addEventListener('click', e => addFilmToList(e, 'watched'));
+  addQueueBtn.addEventListener('click', e => addFilmToList(e, 'queue'));
   delWatchBtn.addEventListener('click', e => delFromList(e, 'watched'));
   delQueueBtn.addEventListener('click', e => delFromList(e, 'queue'));}
 );
@@ -125,18 +128,20 @@ async function delFromList(e, src) {
   addSelector(e)
   const id = e.target.dataset.id;
   deletFilm(id, src);
-  if(libraryLinkEl.classList.contains('site-nav__link-current'))
-  {refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
+  if(src==='watched' && watchBtn.classList.contains('is-active') || src==='queue' && queueBtn.classList.contains('is-active'))
+ { if(libraryLinkEl.classList.contains('site-nav__link-current'))
+  {refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();}
  
   }
   };
-async function addFilmToList(e) {
+async function addFilmToList(e, src) {
   addSelector(e)
   addFilmToDb(e)
-  const id = e.target.dataset.id;
+  if(src==='watched' && watchBtn.classList.contains('is-active') || src==='queue' && queueBtn.classList.contains('is-active'))
+ { const id = e.target.dataset.id;
   const result = await MovieService.getSearchMovieById(id);
   const markup = renderOneFilm(result)
-  refs.movieContainer.insertAdjacentHTML("beforeend", markup )
+  refs.movieContainer.insertAdjacentHTML("beforeend", markup )}
 
 }
 
