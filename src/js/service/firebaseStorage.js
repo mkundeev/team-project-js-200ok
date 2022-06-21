@@ -36,7 +36,10 @@ return get(ref(db, `users/${userId}/recommend/results`)).then((snapshot) => {
 function getFilms(src){
   return get(ref(db, `users/${userId}`)).then((snapshot) => {
     if (snapshot.exists()) {
-    return snapshot.val()[src]
+      if (snapshot.val()[src]) {
+        return snapshot.val()[src]
+      } else return []
+    
     } else {
       console.log("No data available");
       return []
@@ -44,6 +47,7 @@ function getFilms(src){
   }
 }).catch((error) => {
   console.log(error.message);
+  return []
 });}
 
 
@@ -67,7 +71,7 @@ function updateFilms(results, src) {
     } else {
       if (src === 'queue') {
         getRecommendId(results.id);
-          console.log(results.id)}
+         }
     update(ref(db, `users/${userId}/${src}`),
    { [results.id]: results}
     ).then(() => Notify.success(`${userName}, you have add film to your library`, notifyConfigs));

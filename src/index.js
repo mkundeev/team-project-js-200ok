@@ -90,11 +90,15 @@ refs.form.addEventListener('submit', movieSearch);
 // запрос и отрисовка фильма по ID
 
 const movieSearchOneFilm = async e => {
+
   const watchedFilms = await getFilms('watched');
   const queueFilms = await getFilms('queue');
-  let watched = [];
-  let queue = [];
+  let watched = false;
+  let queue = false;
+  console.log(watchedFilms);
+  console.log(queueFilms);
   const response = await MovieService.getSearchMovieById(e.target.dataset.id);
+  console.log(response.id)
   const key = await MovieService.getVideo(e.target.dataset.id);
   getCurrentCardData(response);
   if (watchedFilms) {
@@ -106,6 +110,7 @@ const movieSearchOneFilm = async e => {
     userId
       ? renderMarkupCard(response, key, watched, queue)
       : renderMarkupCardNoId(response, key);
+
   }
 };
 
@@ -128,24 +133,23 @@ async function delFromList(e, src) {
   addSelector(e);
   const id = e.target.dataset.id;
   deletFilm(id, src);
-  if (libraryLinkEl.classList.contains('site-nav__link-current')) {
-    refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
-    // if (refs.movieContainer.childNodes.length <= 1) {
-    //   refs.movieContainer.innerHTML =
-    //     '<li><p>There are no films in your library</p></li>';
-    // }
+
+  if(libraryLinkEl.classList.contains('site-nav__link-current'))
+  {refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
+ 
+
   }
 }
 async function addFilmToList(e) {
   addSelector(e);
   addFilmToDb(e);
   const id = e.target.dataset.id;
-  console.log(id);
+
   const result = await MovieService.getSearchMovieById(id);
-  console.log(result);
-  const markup = renderOneFilm(result);
-  console.log(markup);
-  refs.movieContainer.insertAdjacentHTML('beforeend', markup);
+  const markup = renderOneFilm(result)
+  refs.movieContainer.insertAdjacentHTML("beforeend", markup )
+
+
 }
 
 function addSelector(e) {
