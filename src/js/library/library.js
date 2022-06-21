@@ -53,9 +53,8 @@ async function showRecomendedFilms(e) {
   console.log(recommendId)
   if (recommendId) {
     const results = await MovieService.getRecommendMovies(recommendId);
-    console.log(results.data.results)
-    updateRecommendFilms(results.data.results);
-    renderSearchResultMovie(results.data.results);
+    updateRecommendFilms(results);
+    renderSearchResultMovie(results);
   } else {
     try {      
       const results = await getRecomendedFilms();
@@ -81,9 +80,10 @@ function getRecommendId(id) {
 function addFilmToDb(e) {
   e.preventDefault();
   if (e.target.classList.contains('js-watched-add')) {
+    console.log(currentCardData)
     updateFilms(currentCardData, 'watched');
   } else if (e.target.classList.contains('js-queue-add')) {
-    console.log(e.target)
+    console.log(currentCardData)
     updateFilms(currentCardData, 'queue');
     
   } 
@@ -92,10 +92,14 @@ function addFilmToDb(e) {
 async function showFilmList(watched, queue) {
   let results = [];
   try {
-    watched
-      ? (results = await getFilms(watched))
-      : (results = await getFilms(queue));
-
+    if (watched) { results = await getFilms(watched) };
+    if (queue) { results = await getFilms(queue) }
+    
+    results = Object.values(results)
+    results = results.map(result => ({
+      ...result,
+      genre_ids: result.genres.map(({name}) => name).join(', '),
+    }));
     renderMovieGallery(getPageForLibrary(results), watched, queue);
   } catch(error) {
     console.log(error.message);

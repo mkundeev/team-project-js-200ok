@@ -1,50 +1,46 @@
 // розміщення секції з фільмами
 
 .movie-gallery {
-    padding-top: 20px;
-    padding-bottom: 40px;
-    
-    
-    @include tablet {
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-}
+  padding-top: 70px;
+  padding-bottom: 40px;
 
+  @include tablet {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+}
 
 .films__gallery {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -32px;
+    margin-bottom: -32px;
+  }
 
-    @include tablet {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: -32px;
-        margin-bottom: -32px;
-    }
-
-    @include desktop {
-        margin-left: -16px;
-    }
+  @include desktop {
+    margin-left: -16px;
+  }
 }
 
-.films__gallery-item+.films__gallery-item {
-    @media screen and (max-width: 767px) {
-        margin-top: 20px;
-    }
+.films__gallery-item + .films__gallery-item {
+  @media screen and (max-width: 767px) {
+    margin-top: 20px;
+  }
 }
 
 .films__gallery-item {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    position: relative;
-    @include tablet {
-        flex-basis: calc(100% / 2 - 32px);
-        margin-left: 32px;
-        margin-bottom: 32px;
-    }
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  @include tablet {
+    flex-basis: calc(100% / 2 - 32px);
+    margin-left: 32px;
+    margin-bottom: 32px;
+  }
 
-    @include desktop {
-        flex-basis: calc(100% / 3 - 16px);
-        margin-left: 16px;
-    }
+  @include desktop {
+    flex-basis: calc(100% / 3 - 16px);
+    margin-left: 16px;
+  }
 }
-

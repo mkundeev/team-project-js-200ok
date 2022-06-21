@@ -8,4 +8,14 @@ export const refs = {
   modalWindowBehind: document.querySelector('.modal__card'),
   videoIframe: document.querySelector('#player'),
   playBtn: document.querySelector('.modal__play-bacground'),
+  btnAutorization: document.querySelector('.auth-btn'),
+  btnRegistration: document.querySelector('.regist-btn'),
+  formAutorization: document.querySelector('.form-authorization'),
+  formRegistration: document.querySelector('.form-register'),
+  scrollEl: document.querySelector('.js-scroll'),
+  closeModalBtn: document.querySelector('.js-close-button'),
+  modal: document.querySelector('.js-backdrop'),
+  body: document.querySelector('body'),
+  toggle: document.querySelector('.toggle-input'),
+
 };

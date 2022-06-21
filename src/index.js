@@ -8,9 +8,14 @@ import './js/library/library';
 import './js/scroll/scroll';
 import './js/modal/renderMarkupCard';
 import './js/template/pagination';
+
 import './js/modal/videoplayer';
 
+
+import './js/day-night/day-night';
+
 import './js/library/replace-header';
+import './js/template/masiania';
 
 import { deletFilm, getFilms } from './js/service/firebaseStorage';
 import { showingWarningText } from './js/template/showing-warning-text';
@@ -29,12 +34,20 @@ import { createPagination } from './js/template/pagination';
 import { getCurrentCardData, addFilmToDb } from './js/library/library';
 import { libraryLinkEl } from './js/library/replace-header';
 
+import { renderOneFilm } from './js/template/renderMarkup';
+
+
 const spinner = new VisibleComponent({
   selector: '.js-spinner',
   className: 'visually-hidden',
   isHide: true,
 });
 let userId = null;
+
+
+const watchBtn = document.querySelector('#watched');
+const queueBtn = document.querySelector('#queue');
+
 
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
@@ -87,12 +100,17 @@ const movieSearch = async ev => {
 refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
+
 const movieSearchOneFilm = async e => {
+
   const watchedFilms = await getFilms('watched');
   const queueFilms = await getFilms('queue');
-  let watched = [];
-  let queue = [];
+  let watched = false;
+  let queue = false;
+  console.log(watchedFilms);
+  console.log(queueFilms);
   const response = await MovieService.getSearchMovieById(e.target.dataset.id);
+  console.log(response.id)
   const key = await MovieService.getVideo(e.target.dataset.id);
   getCurrentCardData(response);
   if (watchedFilms) {
@@ -104,8 +122,11 @@ const movieSearchOneFilm = async e => {
     userId
       ? renderMarkupCard(response, key, watched, queue)
       : renderMarkupCardNoId(response, key);
+
+
   }
 };
+
 // добавить слушателя на отрисованую разметку
 const creatModal = e => {
   movieSearchOneFilm(e).then(() => {
@@ -114,56 +135,53 @@ const creatModal = e => {
     const delWatchBtn = document.querySelector('.js-watched-del');
     const delQueueBtn = document.querySelector('.js-queue-del');
 
-    addWatchBtn.addEventListener('click', addFilmToList);
-    addQueueBtn.addEventListener('click', addFilmToList);
-    delWatchBtn.addEventListener('click', e => delFromList(e, 'watched'));
-    delQueueBtn.addEventListener('click', e => delFromList(e, 'queue'));
-  });
+
+  addWatchBtn.addEventListener('click', e => addFilmToList(e, 'watched'));
+  addQueueBtn.addEventListener('click', e => addFilmToList(e, 'queue'));
+  delWatchBtn.addEventListener('click', e => delFromList(e, 'watched'));
+  delQueueBtn.addEventListener('click', e => delFromList(e, 'queue'));}
+);
+
 };
 
-function addFilmToList(e) {
-  const addWatchBtn = document.querySelector('.js-watched-add');
-  const addQueueBtn = document.querySelector('.js-queue-add');
-  const delWatchBtn = document.querySelector('.js-watched-del');
-  const delQueueBtn = document.querySelector('.js-queue-del');
-  e.preventDefault();
-  if (e.target.classList.contains('js-watched')) {
-    addWatchBtn.classList.toggle('visually-hidden');
-    delWatchBtn.classList.toggle('visually-hidden');
-  }
-  if (e.target.classList.contains('js-queue')) {
-    addQueueBtn.classList.toggle('visually-hidden');
-    delQueueBtn.classList.toggle('visually-hidden');
-  }
-  addFilmToDb(e);
-}
-
 async function delFromList(e, src) {
-  const addWatchBtn = document.querySelector('.js-watched-add');
-  const addQueueBtn = document.querySelector('.js-queue-add');
-  const delWatchBtn = document.querySelector('.js-watched-del');
-  const delQueueBtn = document.querySelector('.js-queue-del');
-  console.log(e.target.classList);
-  // console.log(addWatchBtn, addQueueBtn, delWatchBtn,delQueueBtn )
-  e.preventDefault();
-  if (e.target.classList.contains('js-watched')) {
-    addWatchBtn.classList.toggle('visually-hidden');
-    delWatchBtn.classList.toggle('visually-hidden');
-    console.log(1);
-  }
-  if (e.target.classList.contains('js-queue')) {
-    addQueueBtn.classList.toggle('visually-hidden');
-    delQueueBtn.classList.toggle('visually-hidden');
-    console.log(2);
-  }
+  addSelector(e);
   const id = e.target.dataset.id;
   deletFilm(id, src);
-  if (libraryLinkEl.classList.contains('site-nav__link-current')) {
-    refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
-    if (refs.movieContainer.childNodes.length <= 1) {
-      refs.movieContainer.innerHTML =
-        '<li><p>There are no films in your library</p></li>';
-    }
+
+  if(src==='watched' && watchBtn.classList.contains('is-active') || src==='queue' && queueBtn.classList.contains('is-active'))
+ { if(libraryLinkEl.classList.contains('site-nav__link-current'))
+  {refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();}
+
+  }
+
+  };
+async function addFilmToList(e, src) {
+  addSelector(e)
+  addFilmToDb(e)
+  if(src==='watched' && watchBtn.classList.contains('is-active') || src==='queue' && queueBtn.classList.contains('is-active'))
+ { const id = e.target.dataset.id;
+
+  const result = await MovieService.getSearchMovieById(id);
+  const markup = renderOneFilm(result)
+  refs.movieContainer.insertAdjacentHTML("beforeend", markup )}
+
+
+}
+
+function addSelector(e) {
+  const addWatchBtn = document.querySelector('.js-watched-add');
+  const addQueueBtn = document.querySelector('.js-queue-add');
+  const delWatchBtn = document.querySelector('.js-watched-del');
+  const delQueueBtn = document.querySelector('.js-queue-del');
+
+  if (e.target.classList.contains('js-watched')) {
+    addWatchBtn.classList.toggle('visually-hidden');
+    delWatchBtn.classList.toggle('visually-hidden');
+  }
+  if (e.target.classList.contains('js-queue')) {
+    addQueueBtn.classList.toggle('visually-hidden');
+    delQueueBtn.classList.toggle('visually-hidden');
   }
 }
 
