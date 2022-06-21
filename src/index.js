@@ -116,32 +116,9 @@ movieSearchOneFilm(e).then(() => {
 );
 };
 
-function addFilmToList(e) {
-  const addWatchBtn = document.querySelector('.js-watched-add');
-    const addQueueBtn = document.querySelector('.js-queue-add');
-    const delWatchBtn = document.querySelector('.js-watched-del');
-    const delQueueBtn = document.querySelector('.js-queue-del');
-  e.preventDefault()
-  
-    addFilmToDb(e)
-}
-
 
 async function delFromList(e, src) {
-  const addWatchBtn = document.querySelector('.js-watched-add');
-    const addQueueBtn = document.querySelector('.js-queue-add');
-    const delWatchBtn = document.querySelector('.js-watched-del');
-    const delQueueBtn = document.querySelector('.js-queue-del');
-  e.preventDefault()
-    if (e.target.classList.contains('js-watched')) {
-      addWatchBtn.classList.toggle('visually-hidden');
-    delWatchBtn.classList.toggle('visually-hidden');
-    }
-    if (e.target.classList.contains('js-queue')) {
-      addQueueBtn.classList.toggle('visually-hidden');
-      delQueueBtn.classList.toggle('visually-hidden');
-    }
-
+  addSelector(e)
   const id = e.target.dataset.id;
   deletFilm(id, src);
   if(libraryLinkEl.classList.contains('site-nav__link-current'))
@@ -153,19 +130,7 @@ async function delFromList(e, src) {
   }
   };
 async function addFilmToList(e) {
-  const addWatchBtn = document.querySelector('.js-watched-add');
-    const addQueueBtn = document.querySelector('.js-queue-add');
-    const delWatchBtn = document.querySelector('.js-watched-del');
-    const delQueueBtn = document.querySelector('.js-queue-del');
-  e.preventDefault()
-   if (e.target.classList.contains('js-watched')) {
-      addWatchBtn.classList.toggle('visually-hidden');
-    delWatchBtn.classList.toggle('visually-hidden');
-    }
-    if (e.target.classList.contains('js-queue')) {
-      addQueueBtn.classList.toggle('visually-hidden');
-      delQueueBtn.classList.toggle('visually-hidden');
-    }
+  addSelector(e)
   addFilmToDb(e)
   const id = e.target.dataset.id;
   console.log(id)
@@ -177,16 +142,21 @@ async function addFilmToList(e) {
 
 }
 
-// function changeActiveLibraryBtn(e) {
-//   if (e.target.classList.contains('js-watched')) {
-//       addWatchBtn.classList.toggle('visually-hidden');
-//     delWatchBtn.classList.toggle('visually-hidden');
-//     }
-//     if (e.target.classList.contains('js-queue')) {
-//       addQueueBtn.classList.toggle('visually-hidden');
-//       delQueueBtn.classList.toggle('visually-hidden');
-//     }
-// }
+function addSelector(e) {
+    const addWatchBtn = document.querySelector('.js-watched-add');
+    const addQueueBtn = document.querySelector('.js-queue-add');
+    const delWatchBtn = document.querySelector('.js-watched-del');
+    const delQueueBtn = document.querySelector('.js-queue-del');
+  
+    if (e.target.classList.contains('js-watched')) {
+      addWatchBtn.classList.toggle('visually-hidden');
+    delWatchBtn.classList.toggle('visually-hidden');
+    }
+    if (e.target.classList.contains('js-queue')) {
+      addQueueBtn.classList.toggle('visually-hidden');
+      delQueueBtn.classList.toggle('visually-hidden');
+    }
+}
 
 
 function getUserId(id) {
