@@ -26,15 +26,15 @@ import { getCurrentCardData, addFilmToDb  } from './js/library/library';
 import { libraryLinkEl } from './js/library/replace-header';
 import { renderOneFilm } from './js/template/renderMarkup';
 
-const spinner = new VisibleComponent({
-  selector: '.js-spinner',
-  className: 'visually-hidden',
-  isHide: true,
-});
+// const spinner = new VisibleComponent({
+//   selector: '.js-spinner',
+//   className: 'visually-hidden',
+//   isHide: true,
+// });
 let userId = null;
 
 // spinner.show();  //спинер додається
-spinner.hide(); //спінер удаляється
+// spinner.hide(); //спінер удаляється
 
 MovieService.getMovieTrend().then(response => console.log(response));
 // MovieService.getGenres().then(response => console.log(response));
