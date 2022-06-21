@@ -37,8 +37,10 @@ function getFilms(src){
   return get(ref(db, `users/${userId}`)).then((snapshot) => {
     if (snapshot.exists()) {
     return snapshot.val()[src]
-  } else {
-    console.log("No data available");
+    } else {
+      console.log("No data available");
+      return []
+    
   }
 }).catch((error) => {
   console.log(error.message);
@@ -59,7 +61,6 @@ function updateFilms(results, src) {
     Notify.failure('Please register for access to library',notifyConfigs);
     return;
   }
-
   get(ref(db, `users/${userId}/${src}/${[results.id]}`)).then((snapshot) => {
     if (snapshot.exists()) {
       Notify.info(`${userName}, you alredy have this film in your library`, notifyConfigs)

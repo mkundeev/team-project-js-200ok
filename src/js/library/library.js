@@ -43,12 +43,14 @@ function showQueueFilms() {
 }
 
 
-async function showRecomendedFilms() {
+async function showRecomendedFilms(e) {
+  e.preventDefault()
   if (refs.watchBtn.classList.contains('is-active') || refs.queueBtn.classList.contains('is-active')) {
      refs.watchBtn.classList.remove('is-active');
      refs.queueBtn.classList.remove('is-active');
     refs.recommendBtn.classList.add('is-active');
   }
+  console.log(recommendId)
   if (recommendId) {
     const results = await MovieService.getRecommendMovies(recommendId);
     console.log(results.data.results)
@@ -59,18 +61,14 @@ async function showRecomendedFilms() {
       const results = await getRecomendedFilms();
       renderSearchResultMovie(results);
   } catch (error) {
-    console.error(error);
+    console.log(error.message);
     el.movieContainer.innerHTML =
       '<li><p>There are no recommend films</p></li>';
   }
-
-  }
-
-  
+  } 
 }
 
-
-refs.modalCard.addEventListener('click', addFilmToDb);
+// refs.modalCard.addEventListener('click', addFilmToDb);
 
 function getCurrentCardData(data) {
   currentCardData = data;
@@ -99,13 +97,13 @@ async function showFilmList(watched, queue) {
       : (results = await getFilms(queue));
 
     renderMovieGallery(getPageForLibrary(results), watched, queue);
-  } catch (error) {
-    console.error(error);
+  } catch(error) {
+    console.log(error.message);
     el.movieContainer.innerHTML =
       '<li><p>There are no films in your library</p></li>';
   }
 }
 
-export { getCurrentCardData, showFilmList, getRecommendId };
+export { getCurrentCardData, showFilmList, getRecommendId, addFilmToDb };
 
 

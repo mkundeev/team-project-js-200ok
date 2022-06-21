@@ -5,6 +5,8 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { getUserData } from './firebaseStorage';
 import { libraryLinkEl } from '../library/replace-header';
 import { notifyConfigs } from '../config/notifyConfig';
+import { getRecommendId } from '../library/library';
+import { getUserId } from '../..';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -27,6 +29,7 @@ onAuthStateChanged(auth, (user )=> {
     userId = user.uid;
     userName= user.displayName
     getUserData(userId, userName)
+    getUserId(userId)
     exitBtn.classList.remove('d-none')
     logInBtn.classList.add('d-none')
     libraryLinkEl.parentNode.classList.remove('d-none')
@@ -37,6 +40,8 @@ onAuthStateChanged(auth, (user )=> {
     logInBtn.classList.remove('d-none')
     libraryLinkEl.parentNode.classList.add('d-none')
     getUserData(null, '')
+    getRecommendId(null)
+    getUserId(null)
   }
 });
 
