@@ -23,12 +23,12 @@
     background-color: var(--accent-background-color-button-modal);
     color: var(--accent-color-text-button-modal);
   }
-  @media screen and (min-width: 768px) {
+  @include tablet {
     width: 125px;
     height: 40px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @include desktop {
     width: 136px;
     height: 44px;
   }
