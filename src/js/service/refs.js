@@ -8,4 +8,8 @@ export const refs = {
   formAutorization: document.querySelector('.form-authorization'),
   formRegistration: document.querySelector('.form-register'),
   scrollEl: document.querySelector('.js-scroll'),
+  closeModalBtn: document.querySelector('.js-close-button'),
+  modal: document.querySelector('.js-backdrop'),
+  body: document.querySelector('body'),
+  toggle: document.querySelector('.toggle-input'),
 };

@@ -150,11 +150,15 @@
 .toggle {
   position: relative;
   display: inline-block;
-  width: 80px;
-  height: 40px; /////////
+  width: 60px;
+  height: 30px;
   margin-left: 100px;
   padding: 4px;
   border-radius: 40px;
+  @include tablet {
+    width: 80px;
+    height: 40px;
+  }
 }
 
 .toggle:before,
@@ -185,7 +189,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  // border: 1px solid red;
   border-radius: 40px;
   z-index: 2;
   opacity: 0;
@@ -193,18 +196,23 @@
 
 .toggle-switch {
   position: relative;
-  width: 30px;
-  height: 30px;
-  margin-left: 38px;
+  width: 23px;
+  height: 23px;
+  margin-left: 25px;
   background-color: #f5eb42;
   border: 4px solid #e4c74d;
   border-radius: 50%;
   transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  @include tablet {
+    width: 30px;
+    height: 30px;
+    margin-left: 38px;
+  }
 }
 
 .toggle-switch-figure {
   position: absolute;
-  bottom: -12px;
+  bottom: -10px;
   left: -40px;
   display: block;
   width: 50px;
@@ -215,10 +223,10 @@
   transform: scale(0.4);
   transition: all 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   &:after {
-    @include cloudBubble(-65px, -42px, 15px, 15px, 70deg);
+    @include cloudBubble(-65px, -42px, 15px, 15px, 10deg);
   }
   &:before {
-    @include cloudBubble(-25px, -10px, 30px, 30px, 30deg);
+    @include cloudBubble(-25px, -10px, 30px, 30px, 10deg);
   }
 }
 
@@ -234,11 +242,11 @@
 }
 
 .toggle-switch-figureAlt:before {
-  @include crater(-6px, 18px, 7px);
+  @include crater(20px, 50px, 7px);
 }
 
 .toggle-switch-figureAlt:after {
-  @include crater(19px, 15px, 2px);
+  @include crater(10px, 18px, 2px);
 }
 //========= кнопка ночь ===========
 .toggle-input:checked ~ .toggle-switch {
@@ -253,13 +261,16 @@
 }
 
 .toggle-input:checked ~ .toggle-switch .toggle-switch-figure {
-  margin-left: 40px;
+  margin-left: 0px;
   opacity: 0;
   transform: scale(0.1);
 }
 
 .toggle-input:checked ~ .toggle-switch .toggle-switch-figureAlt {
-  transform: scale(1);
+  transform: scale(0.7);
+  @include tablet {
+    transform: scale(0.9);
+  }
 }
 
 // =========стили для темной темы =========

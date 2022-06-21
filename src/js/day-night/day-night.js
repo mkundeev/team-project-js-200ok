@@ -1,4 +1,6 @@
-const toggle = document.querySelector('.toggle-input');
+import { refs } from '../service/refs';
+const { toggle } = refs;
+
 const initialState = localStorage.getItem('toggleState') == 'true';
 toggle.checked = initialState;
 
