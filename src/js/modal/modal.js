@@ -68,6 +68,7 @@ function closeModal(evt) {
   modal.classList.toggle('is-hidden');
   document.removeEventListener('keydown', closeEsc);
   body.classList.remove('modal-open');
+  refs.cardModalMovie.innerHTML = ''
 }
 
 function closeEsc(evt) {
