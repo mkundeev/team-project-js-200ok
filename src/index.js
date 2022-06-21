@@ -10,11 +10,15 @@ import './js/modal/renderMarkupCard';
 import './js/template/pagination';
 import './js/day-night/day-night';
 import './js/library/replace-header';
+import './js/template/masiania';
 
 import { deletFilm, getFilms } from './js/service/firebaseStorage';
 import { showingWarningText } from './js/template/showing-warning-text';
 import { VisibleComponent } from './js/spinner/spinner';
-import { renderMarkupCard, renderMarkupCardNoId} from './js/modal/renderMarkupCard';
+import {
+  renderMarkupCard,
+  renderMarkupCardNoId,
+} from './js/modal/renderMarkupCard';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import {
@@ -22,7 +26,7 @@ import {
   renderSearchResultMovie,
 } from './js/template/renderMarkup';
 import { createPagination } from './js/template/pagination';
-import { getCurrentCardData, addFilmToDb  } from './js/library/library';
+import { getCurrentCardData, addFilmToDb } from './js/library/library';
 import { libraryLinkEl } from './js/library/replace-header';
 import { renderOneFilm } from './js/template/renderMarkup';
 
@@ -101,72 +105,82 @@ const movieSearchOneFilm = async e => {
   const key = await MovieService.getVideo(e.target.dataset.id);
   getCurrentCardData(response);
   if (watchedFilms) {
-     watched = Object.keys(watchedFilms).includes(response.id.toString());
-  if (queueFilms) { queue = Object.keys(queueFilms).includes(response.id.toString()) };
-    console.log(watched, queue )
-    userId ? renderMarkupCard(response, key, watched, queue) : renderMarkupCardNoId(response, key);
+    watched = Object.keys(watchedFilms).includes(response.id.toString());
+    if (queueFilms) {
+      queue = Object.keys(queueFilms).includes(response.id.toString());
+    }
+
+    userId
+      ? renderMarkupCard(response, key, watched, queue)
+      : renderMarkupCardNoId(response, key);
+
   }
-}
+};
 
 // добавить слушателя на отрисованую разметку
-const creatModal = e => { 
-movieSearchOneFilm(e).then(() => {
-   const addWatchBtn = document.querySelector('.js-watched-add');
+const creatModal = e => {
+  movieSearchOneFilm(e).then(() => {
+    const addWatchBtn = document.querySelector('.js-watched-add');
     const addQueueBtn = document.querySelector('.js-queue-add');
     const delWatchBtn = document.querySelector('.js-watched-del');
     const delQueueBtn = document.querySelector('.js-queue-del');
+
 
   addWatchBtn.addEventListener('click', e => addFilmToList(e, 'watched'));
   addQueueBtn.addEventListener('click', e => addFilmToList(e, 'queue'));
   delWatchBtn.addEventListener('click', e => delFromList(e, 'watched'));
   delQueueBtn.addEventListener('click', e => delFromList(e, 'queue'));}
 );
+
 };
 
-
 async function delFromList(e, src) {
-  addSelector(e)
+  addSelector(e);
   const id = e.target.dataset.id;
   deletFilm(id, src);
+
   if(src==='watched' && watchBtn.classList.contains('is-active') || src==='queue' && queueBtn.classList.contains('is-active'))
  { if(libraryLinkEl.classList.contains('site-nav__link-current'))
   {refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();}
- 
+
   }
+
   };
 async function addFilmToList(e, src) {
   addSelector(e)
   addFilmToDb(e)
   if(src==='watched' && watchBtn.classList.contains('is-active') || src==='queue' && queueBtn.classList.contains('is-active'))
  { const id = e.target.dataset.id;
+
   const result = await MovieService.getSearchMovieById(id);
   const markup = renderOneFilm(result)
   refs.movieContainer.insertAdjacentHTML("beforeend", markup )}
 
+
 }
 
 function addSelector(e) {
-    const addWatchBtn = document.querySelector('.js-watched-add');
-    const addQueueBtn = document.querySelector('.js-queue-add');
-    const delWatchBtn = document.querySelector('.js-watched-del');
-    const delQueueBtn = document.querySelector('.js-queue-del');
-  
-    if (e.target.classList.contains('js-watched')) {
-      addWatchBtn.classList.toggle('visually-hidden');
+  const addWatchBtn = document.querySelector('.js-watched-add');
+  const addQueueBtn = document.querySelector('.js-queue-add');
+  const delWatchBtn = document.querySelector('.js-watched-del');
+  const delQueueBtn = document.querySelector('.js-queue-del');
+
+  if (e.target.classList.contains('js-watched')) {
+    addWatchBtn.classList.toggle('visually-hidden');
     delWatchBtn.classList.toggle('visually-hidden');
-    }
-    if (e.target.classList.contains('js-queue')) {
-      addQueueBtn.classList.toggle('visually-hidden');
-      delQueueBtn.classList.toggle('visually-hidden');
-    }
+  }
+  if (e.target.classList.contains('js-queue')) {
+    addQueueBtn.classList.toggle('visually-hidden');
+    delQueueBtn.classList.toggle('visually-hidden');
+  }
 }
 
-
 function getUserId(id) {
-    userId=id
-  }
+  userId = id;
+}
 
-refs.movieOneCardContainer.addEventListener('click',(e)=>{e.target.tagName!=='UL' && creatModal(e)} );
-
+refs.movieOneCardContainer.addEventListener('click', e => {
+  e.target.tagName !== 'UL' && creatModal(e);
+});
 
 export { movieTrending, getUserId };
