@@ -1,6 +1,6 @@
 import { refs } from '../service/refs';
 
-export function renderMarkupCard(data, key) {
+export function renderMarkupCard(data, key, watched, queue) {
   refs.cardModalMovie.innerHTML = '';
   const {
     poster_path,
@@ -66,18 +66,18 @@ export function renderMarkupCard(data, key) {
         </p>
         <div class="modal__button-wrap">
           <div class="modal__button-container">
-            <button type="submit" class="modal__button js-watched-add" id="js-watched-add" data-id=${id}>
+            <button type="submit" class="modal__button js-watched js-watched-add ${watched && 'visually-hidden'}" id="js-watched-add" data-id=${id}>
               ADD TO WATCHED
             </button>
-            <button type="button" class="modal__button js-watched-delete visually-hidden" id="js-watched-del" data-id=${id}>
+            <button type="button" class="modal__button js-watched js-watched-del ${!watched && 'visually-hidden'}" id="js-watched-del" data-id=${id}>
               DELETE FROM WATCHED
             </button>
           </div>
           <div class="modal__button-container">
-          <button type="submit" class="modal__button js-queue-add" id="js-queue-add" data-id=${id}>
+          <button type="submit" class="modal__button js-queue  js-queue-add ${queue && 'visually-hidden'}" id="js-queue-add" data-id=${id}>
               ADD TO QUEUE
             </button>
-            <button type="submit" class="modal__button js-queue-delete visually-hidden" id="js-queue-del" data-id=${id}>
+            <button type="submit" class="modal__button js-queue js-queue-del ${!queue && 'visually-hidden'}" id="js-queue-del" data-id=${id}>
               DELETE FROM  QUEUE
             </button>
           </div>

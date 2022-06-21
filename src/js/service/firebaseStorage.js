@@ -59,7 +59,6 @@ function updateFilms(results, src) {
     Notify.failure('Please register for access to library',notifyConfigs);
     return;
   }
-
   get(ref(db, `users/${userId}/${src}/${[results.id]}`)).then((snapshot) => {
     if (snapshot.exists()) {
       Notify.info(`${userName}, you alredy have this film in your library`, notifyConfigs)
