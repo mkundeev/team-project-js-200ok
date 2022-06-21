@@ -26,6 +26,7 @@ function onYouTubeIframeAPIReady(key) {
     });
   } else {
     player.videoId = key;
+    console.log(player.videoId);
   }
 }
 
@@ -45,10 +46,12 @@ function onPlayerStateChange(event) {
 }
 function stopVideo() {
   player.stopVideo();
-  player.clearVideo();
-  console.log(player);
-  backdropMovie.classList.add('visually-hidden');
-  modalWindowBehind.classList.remove('visually-hidden');
+  console.log(player.getIframe());
+  console.log(player.getVideoEmbedCode());
+  // player.videoId = null;
+  // console.log(player);
+  refs.backdropMovie.classList.add('visually-hidden');
+  refs.modalWindowBehind.classList.remove('visually-hidden');
   document.removeEventListener('keydown', closeEsc);
 }
 
@@ -57,20 +60,18 @@ function videoPlay(ev) {
   console.log(ev.target);
   if (ev.target.tagName === 'BUTTON') {
     onYouTubeIframeAPIReady(ev.target.dataset.src);
-    backdropMovie.classList.remove('visually-hidden');
-    modalWindowBehind.classList.add('visually-hidden');
+    console.log(player);
+    console.log(ev.target.dataset.src);
+    refs.backdropMovie.classList.remove('visually-hidden');
+    refs.modalWindowBehind.classList.add('visually-hidden');
     document.addEventListener('keydown', closeEsc);
   }
 }
 
-const backdropMovie = document.querySelector('.movie-backdrop');
-const closeBtn = document.querySelector('.video__close-icon');
-const modalWindowBehind = document.querySelector('.modal__card');
-const videoIframe = document.querySelector('#player');
 refs.cardModalMovie.addEventListener('click', videoPlay);
-backdropMovie.addEventListener('click', closeEmptyField);
+refs.backdropMovie.addEventListener('click', closeEmptyField);
 
-closeBtn.addEventListener('click', stopVideo);
+refs.closeBtn.addEventListener('click', stopVideo);
 
 function closeEsc(evt) {
   if (evt.key === 'Escape') {
