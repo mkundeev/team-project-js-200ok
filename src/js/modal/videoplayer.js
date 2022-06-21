@@ -2,18 +2,17 @@ import { forceLongPolling } from 'firebase/database';
 import { refs } from '../service/refs';
 
 // 2. This code loads the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
+let tag = document.createElement('script');
 
 tag.src = 'https://www.youtube.com/iframe_api';
-var firstScriptTag = document.getElementsByTagName('script')[0];
+let firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
-var player;
+let player;
 
 function onYouTubeIframeAPIReady(key) {
-  console.log(key);
   if (!player) {
     player = new YT.Player('player', {
       height: '460',
@@ -21,12 +20,10 @@ function onYouTubeIframeAPIReady(key) {
       videoId: key,
       events: {
         onReady: onPlayerReady,
-        onStateChange: onPlayerStateChange,
       },
     });
   } else {
-    player.videoId = key;
-    console.log(player.videoId);
+    player.loadVideoById(key);
   }
 }
 
@@ -38,18 +35,9 @@ function onPlayerReady(event) {
 // 5. The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
 //    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    done = true;
-  }
-}
+
 function stopVideo() {
   player.stopVideo();
-  console.log(player.getIframe());
-  console.log(player.getVideoEmbedCode());
-  // player.videoId = null;
-  // console.log(player);
   refs.backdropMovie.classList.add('visually-hidden');
   refs.modalWindowBehind.classList.remove('visually-hidden');
   document.removeEventListener('keydown', closeEsc);
@@ -57,11 +45,8 @@ function stopVideo() {
 
 function videoPlay(ev) {
   ev.preventDefault();
-  console.log(ev.target);
   if (ev.target.tagName === 'BUTTON') {
     onYouTubeIframeAPIReady(ev.target.dataset.src);
-    console.log(player);
-    console.log(ev.target.dataset.src);
     refs.backdropMovie.classList.remove('visually-hidden');
     refs.modalWindowBehind.classList.add('visually-hidden');
     document.addEventListener('keydown', closeEsc);
@@ -70,7 +55,6 @@ function videoPlay(ev) {
 
 refs.cardModalMovie.addEventListener('click', videoPlay);
 refs.backdropMovie.addEventListener('click', closeEmptyField);
-
 refs.closeBtn.addEventListener('click', stopVideo);
 
 function closeEsc(evt) {

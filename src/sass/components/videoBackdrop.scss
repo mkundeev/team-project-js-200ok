@@ -14,8 +14,13 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -65%);
-  height: 460px;
-  width: 740px;
+  height: 200px;
+  width: 310px;
+
+  @include tablet {
+    height: 460px;
+    width: 740px;
+  }
 }
 
 .video-wrap > .video__close-button {
@@ -35,11 +40,16 @@
   cursor: pointer;
   position: absolute;
   top: -30px;
-  right: -20px;
+  right: 5px;
   transition: border-color 250ms var(--cubic-bezier);
   &:hover,
   &:focus {
     background-color: #ff6b01;
+  }
+
+  @include tablet {
+    top: -30px;
+    right: -20px;
   }
 }
 
@@ -49,5 +59,14 @@
   &:hover,
   &:focus {
     stroke: var(--primary-color-text-modal);
+  }
+}
+
+#player {
+  height: 200px;
+  width: 310px;
+  @include tablet {
+    height: 460px;
+    width: 740px;
   }
 }

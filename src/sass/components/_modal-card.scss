@@ -200,13 +200,13 @@ table td {
 //   background: transparent;
 //   color: #000;
 // }
-.modal__play-bacground::before {
+.modal__svg-background::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  content: '';
 }
 .modal__play-bacground {
   border: none;

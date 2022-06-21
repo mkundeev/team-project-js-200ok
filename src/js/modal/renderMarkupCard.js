@@ -22,7 +22,9 @@ export function renderMarkupCard(data, key, watched, queue) {
          alt="${title}" loading="lazy" 
         class="modal__img" data-id=${id}
    />
-   <button class="modal__play-bacground" data-src=${key}>
+   <button class="modal__play-bacground ${
+     !key && 'visually-hidden'
+   }" data-src=${key}>
           <svg class="modal__svg-background"></svg>
         </button>`
       : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg"  alt="${title}" loading="lazy" 
@@ -113,7 +115,9 @@ export function renderMarkupCardNoId(data, key) {
          alt="${title}" loading="lazy" 
         class="modal__img" data-id=${id}
    />
-           <button class="modal__play-bacground" data-src=${key}>
+           <button class="modal__play-bacground ${
+             !key && 'visually-hidden'
+           }" data-src=${key}>
           <svg class="modal__svg-background"></svg>
         </button>
         `

@@ -67,14 +67,22 @@ export const MovieService = {
   },
 
   async getVideo(id) {
-    const response = await axios.get(`movie/${id}/videos?language=en-US-UA-RU`);
-    this.keyVideo = await response.data.results[1].key;
-    return  this.keyVideo;
+    try {
+      const response = await axios.get(
+        `movie/${id}/videos?language=en-US-UA-RU`
+      );
+      this.keyVideo = await response.data.results[1].key;
+      return this.keyVideo;
+    } catch (error) {
+      console.log(error.message);
+      return false;
+    }
   },
 
   async getRecommendMovies(id) {
-    const response = await axios.get(`movie/${id}/recommendations?language=en-US-UA-RU`);
-    return response
-  }
-
+    const response = await axios.get(
+      `movie/${id}/recommendations?language=en-US-UA-RU`
+    );
+    return response;
+  },
 };

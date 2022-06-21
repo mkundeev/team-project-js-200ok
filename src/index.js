@@ -39,7 +39,7 @@ let userId = null;
 // spinner.show();  //спинер додається
 spinner.hide(); //спінер удаляється
 
-MovieService.getMovieTrend().then(response => console.log(response));
+// MovieService.getMovieTrend().then(response => console.log(response));
 // MovieService.getGenres().then(response => console.log(response));
 
 // запрос и отрисовка популярных фильмов

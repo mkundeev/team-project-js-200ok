@@ -7,4 +7,5 @@ export const refs = {
   closeBtn: document.querySelector('.video__close-icon'),
   modalWindowBehind: document.querySelector('.modal__card'),
   videoIframe: document.querySelector('#player'),
+  playBtn: document.querySelector('.modal__play-bacground'),
 };
