@@ -20,6 +20,9 @@ export const refs = {
  exitBtn:document.querySelector('.js-exit-btn'),
  logInBtn: document.querySelector('.js-site-nav'),
  authModal: document.querySelector('.js-auth-modal'),
-
-
+  watchBtn: document.querySelector('#watched'),
+  queueBtn: document.querySelector('#queue'),
+  recommendBtn: document.querySelector('#recommend'),
+  libraryBtns: document.querySelectorAll('.library__btn'),
+  libraryLinkEl: document.querySelector('.js-library'),
 };

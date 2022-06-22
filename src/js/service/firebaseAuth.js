@@ -19,6 +19,8 @@ refs.formAutorization.addEventListener('submit', SignUserEmailAndPasOnSubmit)
 refs.formRegistration.addEventListener('submit', RegUserEmailAndPasOnSubmit)
 refs.exitBtn.addEventListener('click', exitUser);
 
+
+
 onAuthStateChanged(auth, (user )=> {
   if (user) {
     userId = user.uid;

@@ -1,6 +1,6 @@
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { getDatabase, ref, set, update, get} from 'firebase/database';
+import { getDatabase, ref,  update, get} from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../config/firebaseConfig'
 import { notifyConfigs } from '../config/notifyConfig';

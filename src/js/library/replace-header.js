@@ -1,7 +1,7 @@
 import { movieTrending } from '../../index';
-import { showFilmList, refs } from './library';
+import { showFilmList } from './library';
 import { MovieService } from '../service/fetchItems';
-
+import { refs } from '../service/refs';
 const libraryLinkEl = document.querySelector('.js-library');
 const homeLinkEl = document.querySelector('.js-home');
 const headerFormEl = document.querySelector('.form-wrap');
@@ -38,7 +38,9 @@ function onReplaceHeaderByHome(event) {
   MovieService.changePage(1);
 
   movieTrending();
-  refs.watchBtn.classList.remove('is-active');
+  refs.libraryBtns.forEach(btn => btn.classList.remove('is-active'))
+  console.log(refs.watchBtn.classList)
+ console.log(refs.queueBtn.classList)
   headerFormEl.classList.remove('header-none');
   headerListEl.classList.add('header-none');
 
