@@ -12,4 +12,5 @@ export const refs = {
   modal: document.querySelector('.js-backdrop'),
   body: document.querySelector('body'),
   toggle: document.querySelector('.toggle-input'),
+  footer: document.querySelector('footer'),
 };

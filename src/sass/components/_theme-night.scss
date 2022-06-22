@@ -1,9 +1,5 @@
 .wrapper-day-night {
-  position: absolute;
-  top: 240px;
-  left: 0;
-  padding: 0;
-  text-align: center;
+  padding: 30;
 }
 
 // =====кнопка день====
@@ -12,7 +8,7 @@
   display: inline-block;
   width: 60px;
   height: 30px;
-  margin-left: 100px;
+
   padding: 4px;
   border-radius: 40px;
   @include tablet {
@@ -141,4 +137,5 @@
     rgba(140, 24, 44, 1) 0%,
     rgba(40, 46, 53, 1) 75%
   );
+  color: #fff;
 }

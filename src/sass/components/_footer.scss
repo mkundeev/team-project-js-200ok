@@ -26,8 +26,8 @@
 .footer {
   padding: 28.71px 0 29.7px 0;
 
-  color: var(--footer-text-color);
-  background: var(--footer-background-color);
+  color: inherit;
+  background: inherit;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
@@ -39,6 +39,10 @@
   }
   @include desktop {
     padding-bottom: 28px;
+  }
+  &.light {
+    color: var(--footer-text-color);
+    background: var(--footer-background-color);
   }
 }
 .wrap-footer-bottom {
