@@ -1,20 +1,20 @@
-// import { refs } from '../service/refs';
 import { MovieService } from '../service/fetchItems';
 import { renderMovieGallery } from './renderMarkup';
-import { showFilmList } from '../library/library';
-import { getFilms } from '../service/firebaseStorage';
-
-const paginationEl = document.querySelector('.pagination__list');
-const queueBtn = document.querySelector('#queue');
+import { showFilmList, showRecomendedFilms } from '../library/library';
+import {
+  paginationEl,
+  queueBtn,
+  watchBtn,
+  recommendBtn,
+} from '../service/refs';
 
 paginationEl.addEventListener('click', onRenderGallery);
 
 let page = MovieService._page;
 
 export function createPagination() {
-  let totalPages = MovieService.total_pages;
-
   page = MovieService._page;
+  let totalPages = MovieService.total_pages;
   let paginationItem = '';
   let activePage = '';
   let beforePage = page - 1;
@@ -23,7 +23,7 @@ export function createPagination() {
   if (page > 1) {
     paginationItem += `<li class="pagination__item">
         <span class="pagination__btn-minus" data-action="minus">
-          
+          &#10148;
         </span>
       </li>`;
   }
@@ -77,7 +77,8 @@ export function createPagination() {
 
   if (page < totalPages) {
     paginationItem += `<li class="pagination__item">
-      <span class="pagination__btn-plus" data-action="plus"></span>
+      <span class="pagination__btn-plus" data-action="plus">	
+		&#10148;</span>
     </li>`;
   }
 
@@ -109,8 +110,8 @@ export function getPageForLibrary(results) {
   const showCardMax = 20;
   const pageArr = [];
 
-  for (let i = 0; i < Object.values(results).length; i += showCardMax) {
-    pageArr.push(Object.values(results).slice(i, i + showCardMax));
+  for (let i = 0; i < results.length; i += showCardMax) {
+    pageArr.push(results.slice(i, i + showCardMax));
   }
 
   MovieService.total_pages = pageArr.length;
@@ -139,16 +140,13 @@ async function onRenderGallery(event) {
       }
     } else {
       if (queueBtn.classList.contains('is-active')) {
-        MovieService.queue = true;
-      } else {
-        MovieService.queue = false;
-      }
-
-      if (!MovieService.queue) {
+        showFilmList(false, 'queue');
+        createPagination();
+      } else if (watchBtn.classList.contains('is-active')) {
         showFilmList('watched', false);
         createPagination();
-      } else {
-        showFilmList(false, 'queue');
+      } else if (recommendBtn.classList.contains('is-active')) {
+        showRecomendedFilms();
         createPagination();
       }
     }

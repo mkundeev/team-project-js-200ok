@@ -42,6 +42,7 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
   refs.closeModalBtn.addEventListener('click', closeModal);
   refs.modal.addEventListener('click', closeEmptyField);
 }
+
 //======открытие модального окна с подробной информацией о фильме==============
 
 

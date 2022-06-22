@@ -25,4 +25,33 @@ export const refs = {
   recommendBtn: document.querySelector('#recommend'),
   libraryBtns: document.querySelectorAll('.library__btn'),
   libraryLinkEl: document.querySelector('.js-library'),
+  footer: document.querySelector('footer'),
+
 };
+
+////////////////masiania////////////////////
+
+export const masianiaEl = document.querySelector('.masiania');
+export const masianiaMessage = document.querySelector('.masiania__wrapp');
+export const masianiaTextEl = document.querySelector('.masiania__text');
+export const masianiaBtnListEl = document.querySelector('.masiania__list');
+export const masianiaBtnCloseEl = document.querySelector(
+  '.masiania__close-btn'
+);
+export const masianiaLinkEl = document.querySelector('.masiania__link');
+export const masianiaRightEl = document.querySelector('.masiania-right');
+
+////////////////pagination////////////////////
+
+export const paginationEl = document.querySelector('.pagination__list');
+export const queueBtn = document.querySelector('#queue');
+export const watchBtn = document.querySelector('#watched');
+export const recommendBtn = document.querySelector('#recommend');
+
+////////////////header////////////////////
+
+export const libraryLinkEl = document.querySelector('.js-library');
+export const homeLinkEl = document.querySelector('.js-home');
+export const headerFormEl = document.querySelector('.form-wrap');
+export const headerListEl = document.querySelector('.library__list');
+export const headerEl = document.querySelector('.header');

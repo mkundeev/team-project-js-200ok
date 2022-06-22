@@ -14,10 +14,10 @@ let currentCardData = {};
 let recommendId = null;
 
 
-
 refs.watchBtn.addEventListener('click', showWatchedFilms);
 refs.queueBtn.addEventListener('click', showQueueFilms);
-refs.recommendBtn.addEventListener('click', showRecomendedFilms);
+refs.recommendBtn.addEventListener('click', showRecomendedFilmsAndReplacePage);
+
 
 function getCurrentCardData(data) {
   currentCardData = data;
@@ -46,22 +46,42 @@ function showQueueFilms(e) {
   showFilmList(false, 'queue');
 }
 //=========отображение фильмов в разделе recommend==============
+function showRecomendedFilmsAndReplacePage() {
+  
+  MovieService.changePage(1);
+
+  if (
+    refs.watchBtn.classList.contains('is-active') ||
+    refs.queueBtn.classList.contains('is-active')
+  ) {
+    refs.watchBtn.classList.remove('is-active');
+    refs.recommendBtn.classList.add('is-active');
+    refs.queueBtn.classList.remove('is-active');
+  }
+
+  showRecomendedFilms();
+}
+
 async function showRecomendedFilms(e) {
   // e.preventDefault()
   toggleLibraryBtns(e)
  //=========если есть фильм добавленный в очеред просмотров============== 
   if (recommendId) {
+
     spinner.show()
     const results = await MovieService.getRecommendMovies(recommendId);
+
     updateRecommendFilms(results);
     renderSearchResultMovie(results);
     spinner.hide()
+
   }
   //=========если нет фильма добавленого в очеред просмотров, отображаеться ранее сохраненный список рекомендованих фильмов============== 
   else{
     spinner.show()
-    try {      
+    try {
       const results = await getRecomendedFilms();
+        MovieService.total_pages = Math.ceil(results.length / 20);
       renderSearchResultMovie(results);
   } catch (error) {
     console.log(error.message);
@@ -77,23 +97,27 @@ async function showFilmList(watched, queue) {
   let results = [];
   spinner.show()
   try {
-    if (watched) { results = await getFilms(watched) };
-    if (queue) { results = await getFilms(queue) }
-    
-    results = Object.values(results)
+    if (watched) {
+      results = await getFilms(watched);
+    }
+    if (queue) {
+      results = await getFilms(queue);
+    }
+
+    results = Object.values(results);
     results = results.map(result => ({
       ...result,
-      genre_ids: result.genres.map(({name}) => name).join(', '),
+      genre_ids: result.genres.map(({ name }) => name).join(', '),
     }));
+    results = Object.values(results);
     renderMovieGallery(getPageForLibrary(results), watched, queue);
-  } catch(error) {
+  } catch (error) {
     console.log(error.message);
     refs.movieContainer.innerHTML =
       '<li><p>There are no films in your library</p></li>';
   }
   spinner.hide()
 }
-
 
 
 //=========удаляет карточку фильма из галереи соответсвующтх фильмов и из бази данних==============
@@ -129,6 +153,4 @@ function addFilmToDb(e) {
 }
 
 
-export { getCurrentCardData, showFilmList, getRecommendId, addFilmToDb, delFromList, addFilmToList };
-
-
+export { getCurrentCardData, showFilmList, getRecommendId, addFilmToDb, delFromList, addFilmToList, showRecomendedFilms };

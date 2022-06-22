@@ -1,12 +1,16 @@
 import { movieTrending } from '../../index';
 import { showFilmList } from './library';
 import { MovieService } from '../service/fetchItems';
-import { refs } from '../service/refs';
-const libraryLinkEl = document.querySelector('.js-library');
-const homeLinkEl = document.querySelector('.js-home');
-const headerFormEl = document.querySelector('.form-wrap');
-const headerListEl = document.querySelector('.library__list');
-const headerEl = document.querySelector('.header');
+
+
+import {
+  libraryLinkEl,
+  homeLinkEl,
+  headerFormEl,
+  headerListEl,
+  headerEl,
+} from '../service/refs';
+
 
 libraryLinkEl.addEventListener('click', onReplaceHeaderByLibrary);
 homeLinkEl.addEventListener('click', onReplaceHeaderByHome);

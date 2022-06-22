@@ -6,7 +6,6 @@ axios.defaults.params = { api_key: API_KEY };
 
 export const MovieService = {
   library: false,
-  queue: null,
   _query: '',
   _page: 1,
   total_pages: '',
@@ -88,12 +87,11 @@ export const MovieService = {
     let { results } = response.data;
     results = results.map(result => ({
       ...result,
-      genre_ids: result.genre_ids.map(
-        id => genres.find(genre => genre.id === id).name
-      ).join(', '),
+      genre_ids: result.genre_ids
+        .map(id => genres.find(genre => genre.id === id).name)
+        .join(', '),
     }));
 
     return results;
-
   },
 };
