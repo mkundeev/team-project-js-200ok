@@ -37,7 +37,7 @@ function renderMarkup(results, watched, queue) {
 <!-- список жанрів -->
 <p class="moviе-genre">${genre_ids}</p>
 <!-- дата виходу та рейтинг -->
-<p class="moviе-year">${new Date(release_date).getFullYear()}</p>
+<p class="moviе-year">|  ${new Date(release_date).getFullYear()}</p>
 <!-- рейтинг -->
 <p class="moviе-vote">${vote_average}</p>
 </div>
@@ -79,7 +79,7 @@ export function renderOneFilm({
 <!-- список жанрів -->
 <p class="moviе-genre">${genre_ids}</p>
 <!-- дата виходу та рейтинг -->
-<p class="moviе-year">${new Date(release_date).getFullYear()}</p>
+<p class="moviе-year">|  ${new Date(release_date).getFullYear()}</p>
 <!-- рейтинг -->
 <p class="moviе-vote">${vote_average}</p>
 </div>

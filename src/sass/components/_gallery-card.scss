@@ -26,14 +26,21 @@
   line-height: 1.667;
   text-transform: uppercase;
   color: inherit;
+  @include desktop {
+      font-size: 20px;
+      line-height: 24px;
+    }
 
 }
 
 .moviе-stats__info {
   display: flex;
+  align-items: flex-end;
 }
 
 .moviе-genre {
+  position: relative;
+
   display: flex;
   font-weight: 500;
   font-size: 12px;
@@ -41,9 +48,12 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  position: relative;
   margin-right: 8px;
   color: var(--color-genre);
+  @include desktop {
+      font-size: 20px;
+      line-height: 24px;
+    }
 }
 
 .moviе-year {
@@ -52,9 +62,16 @@
   line-height: 16px;
   margin-right: 8px;
   color: var(--color-year);
+  white-space: nowrap;
+  
+  @include desktop {
+      font-size: 20px;
+      line-height: 24px;
+    }
 }
 
 .moviе-vote {
+  display: inline-block;
   margin-left: 4px;
   font-weight: 500;
   font-size: 12px;
@@ -67,6 +84,13 @@
   color: var(--primary-text-header-color);
   background-color: var(--accent-header-color);
   padding: 0 10px;
+  height: 16px;
+  min-width: 36px;
+
+  @include desktop {
+      height: 20px;
+      min-width: 40px;
+    }
 }
 
 .list-card__link {
