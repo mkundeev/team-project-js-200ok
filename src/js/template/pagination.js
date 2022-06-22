@@ -1,11 +1,12 @@
 import { MovieService } from '../service/fetchItems';
 import { renderMovieGallery } from './renderMarkup';
 import { showFilmList, showRecomendedFilms } from '../library/library';
-
-const paginationEl = document.querySelector('.pagination__list');
-const queueBtn = document.querySelector('#queue');
-const watchBtn = document.querySelector('#watched');
-const recommendBtn = document.querySelector('#recommend');
+import {
+  paginationEl,
+  queueBtn,
+  watchBtn,
+  recommendBtn,
+} from '../service/refs';
 
 paginationEl.addEventListener('click', onRenderGallery);
 
@@ -22,7 +23,7 @@ export function createPagination() {
   if (page > 1) {
     paginationItem += `<li class="pagination__item">
         <span class="pagination__btn-minus" data-action="minus">
-          
+          &#10148;
         </span>
       </li>`;
   }
@@ -76,7 +77,8 @@ export function createPagination() {
 
   if (page < totalPages) {
     paginationItem += `<li class="pagination__item">
-      <span class="pagination__btn-plus" data-action="plus"></span>
+      <span class="pagination__btn-plus" data-action="plus">	
+		&#10148;</span>
     </li>`;
   }
 

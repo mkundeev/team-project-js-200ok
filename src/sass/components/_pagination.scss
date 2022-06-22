@@ -52,17 +52,10 @@
   }
 
   &__btn-minus {
-    background-image: url(.././images/arrow-left.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px;
+    transform: rotate(180deg);
   }
 
   &__btn-plus {
-    background-image: url(.././images/arrow-right.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px;
   }
 }
 
