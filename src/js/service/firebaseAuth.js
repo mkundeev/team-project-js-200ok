@@ -7,22 +7,19 @@ import { libraryLinkEl } from '../library/replace-header';
 import { notifyConfigs } from '../config/notifyConfig';
 import { getRecommendId } from '../library/library';
 import { getUserId } from '../..';
+import { refs } from './refs'; 
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 let userId = null
 let userName = '';
 
-const formRegEl = document.querySelector('.form-register')
-const formAuthEl = document.querySelector('.form-authorization')
-const exitBtn = document.querySelector('.js-exit-btn')
-const logInBtn = document.querySelector('.js-site-nav')
-const authModal = document.querySelector('.js-auth-modal')
-const body = document.querySelector('body')
 
-formAuthEl.addEventListener('submit', SignUserEmailAndPasOnSubmit)
-formRegEl.addEventListener('submit', RegUserEmailAndPasOnSubmit)
-exitBtn.addEventListener('click', exitUser);
+refs.formAutorization.addEventListener('submit', SignUserEmailAndPasOnSubmit)
+refs.formRegistration.addEventListener('submit', RegUserEmailAndPasOnSubmit)
+refs.exitBtn.addEventListener('click', exitUser);
+
+
 
 onAuthStateChanged(auth, (user )=> {
   if (user) {
@@ -30,14 +27,14 @@ onAuthStateChanged(auth, (user )=> {
     userName= user.displayName
     getUserData(userId, userName)
     getUserId(userId)
-    exitBtn.classList.remove('d-none')
-    logInBtn.classList.add('d-none')
+    refs.exitBtn.classList.remove('d-none')
+    refs.logInBtn.classList.add('d-none')
     libraryLinkEl.parentNode.classList.remove('d-none')
   } else {
     userId = null;
     userName = null;
-    exitBtn.classList.add('d-none')
-    logInBtn.classList.remove('d-none')
+    refs.exitBtn.classList.add('d-none')
+    refs.logInBtn.classList.remove('d-none')
     libraryLinkEl.parentNode.classList.add('d-none')
     getUserData(null, '')
     getRecommendId(null)
@@ -57,17 +54,18 @@ function RegUserEmailAndPasOnSubmit(e) {
     e.preventDefault()
     const{email, password, name} = e.target.elements
   creatUser(email.value, password.value, name.value)
-  authModal.classList.add('is-hidden');
-  body.classList.toggle('modal-open');
+  refs.authModal.classList.add('is-hidden');
+  refs.body.classList.toggle('modal-open');
     e.target.reset();
 }
 
 function signUser(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
-      authModal.classList.add('is-hidden');
-      body.classList.toggle('modal-open');
+      refs.authModal.classList.add('is-hidden');
+      refs.body.classList.toggle('modal-open');
       const user = userCredential.user;
+      
       Notify.success(`Welcome back ${userName}!`, notifyConfigs);
       
     })
@@ -80,12 +78,12 @@ function signUser(email, password) {
 function creatUser(email, password, name) {
 createUserWithEmailAndPassword(auth, email, password, name)
   .then((userCredential) => {
-     authModal.classList.add('is-hidden'); 
+     refs.authModal.classList.add('is-hidden'); 
     const user = userCredential.user;
     updateProfile(auth.currentUser, {
       displayName: name
-    });
-    Notify.success(`Welcome ${userName}!`, notifyConfigs);
+    })
+    Notify.success(`Welcome!`, notifyConfigs)
   })
   .catch((error) => {
     Notify.failure('Such e-mail alredy exist',notifyConfigs);

@@ -16,3 +16,9 @@ export class VisibleComponent {
     this.selector.classList.remove(this.className);
   }
 }
+
+export const spinner = new VisibleComponent({
+  selector: '.js-spinner',
+  className: 'visually-hidden',
+  isHide: true,
+});

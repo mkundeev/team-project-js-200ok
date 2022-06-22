@@ -1,5 +1,8 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { getDatabase, ref, set, update, get } from 'firebase/database';
+
+import { getDatabase, ref,  update, get} from 'firebase/database';
+
+
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../config/firebaseConfig';
 import { notifyConfigs } from '../config/notifyConfig';
@@ -15,20 +18,29 @@ function getUserData(id, name) {
   userName = name;
 }
 
-function getRecomendedFilms() {
-  return get(ref(db, `users/${userId}/recommend/results`))
-    .then(snapshot => {
-      if (snapshot.exists()) {
-        // console.log(snapshot.val());
-        return snapshot.val();
-      } else {
-        console.log('No data available');
-      }
-    })
-    .catch(error => {
-      console.log(error.message);
-    });
-}
+
+function getRecomendedFilms(){
+return get(ref(db, `users/${userId}/recommend/results`)).then((snapshot) => {
+  if (snapshot.exists()) 
+    return snapshot.val()
+}).catch((error) => {
+  console.log(error.message);
+});}
+
+function getFilms(src){
+  return get(ref(db, `users/${userId}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      if (snapshot.val()[src]) {
+        return snapshot.val()[src]
+      } else return []
+    
+    } else return []
+ 
+}).catch((error) => {
+  console.log(error.message);
+  return []
+});}
+
 
 function getFilms(src) {
   return get(ref(db, `users/${userId}`))

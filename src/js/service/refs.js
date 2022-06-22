@@ -17,7 +17,16 @@ export const refs = {
   modal: document.querySelector('.js-backdrop'),
   body: document.querySelector('body'),
   toggle: document.querySelector('.toggle-input'),
+ exitBtn:document.querySelector('.js-exit-btn'),
+ logInBtn: document.querySelector('.js-site-nav'),
+ authModal: document.querySelector('.js-auth-modal'),
+  watchBtn: document.querySelector('#watched'),
+  queueBtn: document.querySelector('#queue'),
+  recommendBtn: document.querySelector('#recommend'),
+  libraryBtns: document.querySelectorAll('.library__btn'),
+  libraryLinkEl: document.querySelector('.js-library'),
   footer: document.querySelector('footer'),
+
 };
 
 ////////////////masiania////////////////////

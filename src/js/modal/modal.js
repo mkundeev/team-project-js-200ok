@@ -1,5 +1,8 @@
 import { refs } from '../service/refs';
 const { movieContainer, closeModalBtn, modal, body } = refs;
+
+//======открытие модального окна авторизации и футера==============
+
 controlModal('[data-modal-open]', '[data-modal-close]', '[data-modal]');
 controlModal('.js-site-nav', '.js-btn-modal', '.js-auth-modal');
 
@@ -39,11 +42,13 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
   refs.closeModalBtn.addEventListener('click', closeModal);
   refs.modal.addEventListener('click', closeEmptyField);
 }
-// ============================================================================================
+
+//======открытие модального окна с подробной информацией о фильме==============
+
 
 movieContainer.addEventListener('click', showModal);
 closeModalBtn.addEventListener('click', closeModal);
-modal.addEventListener('click', closeEmptyField);
+
 
 function closeEmptyField(evt) {
   if (evt.target === evt.currentTarget) {
@@ -52,13 +57,15 @@ function closeEmptyField(evt) {
 }
 function showModal(evt) {
   evt.preventDefault();
+  modal.addEventListener('click', closeEmptyField);
   if (evt.target.tagName !== 'UL') {
     document.addEventListener('keydown', closeEsc);
     body.classList.add('modal-open');
     modal.classList.toggle('is-hidden');
   }
 }
-function closeModal(evt) {
+function closeModal() {
+  modal.removeEventListener('click', closeEmptyField);
   modal.classList.toggle('is-hidden');
   document.removeEventListener('keydown', closeEsc);
   body.classList.remove('modal-open');
