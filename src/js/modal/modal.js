@@ -40,12 +40,6 @@ function controlModal(openModalBtn, closeModalBtn, modal) {
   refs.modal.addEventListener('click', closeEmptyField);
 }
 // ============================================================================================
-// const refModal = {
-//   movieContainer: document.querySelector('.films__gallery'),
-//   closeModalBtn: document.querySelector('.js-close-button'),
-//   modal: document.querySelector('.js-backdrop'),
-//   body: document.querySelector('body'),
-// };
 
 movieContainer.addEventListener('click', showModal);
 closeModalBtn.addEventListener('click', closeModal);

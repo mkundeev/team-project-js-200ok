@@ -1,0 +1,74 @@
+.developer {
+  margin-bottom: -30px;
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -30px;
+  }
+}
+.developer-item {
+  width: 100%;
+
+  margin: 0 10px 30px 10px;
+  box-shadow: 3px 3px rgb(157, 157, 243), -0.5em 0 0.4em rgb(197, 197, 196);
+  @include tablet {
+    width: calc(100% / 3 - 30px);
+  }
+}
+.modal.modal-footer {
+  top: 10vh;
+  @include tablet {
+    top: 10vh;
+  }
+  @include desktop {
+    top: 1vh;
+  }
+}
+.slogans {
+  font-weight: italic;
+  font-size: 18px;
+  line-height: 1.14;
+  color: var(--footer-heart-color);
+  text-shadow: 1px 1px 2px rgb(16, 16, 16);
+  @include tablet {
+    font-size: 35px;
+  }
+  @include desktop {
+    margin-right: 50px;
+  }
+}
+.name-company {
+  font-size: 12px;
+  line-height: 1.5;
+  @include tablet {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+}
+.wrap-slogans {
+  margin-left: 15px;
+}
+.wrap-logo-developer {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: center;
+  align-items: flex-end;
+  @include tablet {
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+}
+.logo-developer {
+  margin-right: 8px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 2px 2px rgb(157, 157, 243), -1em 0 0.4em rgb(197, 197, 196);
+  @include tablet {
+    margin-right: 12px;
+  }
+  @include desktop {
+    margin-right: 20px;
+  }
+}

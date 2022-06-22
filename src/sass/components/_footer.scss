@@ -8,7 +8,7 @@
   display: block;
   text-align: center;
 }
-.footer_logo-video {
+.footer_logo-img {
   margin: 0 10px;
   width: 30px;
   height: 30px;
@@ -21,13 +21,13 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  margin-bottom: 9.9px;
+  margin-bottom: 10px;
 }
 .footer {
   padding: 28.71px 0 29.7px 0;
 
-  color: var(--footer-text-color);
-  background: var(--footer-background-color);
+  color: inherit;
+  background: inherit;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
@@ -39,6 +39,10 @@
   }
   @include desktop {
     padding-bottom: 28px;
+  }
+  &.light {
+    color: var(--footer-text-color);
+    background: var(--footer-background-color);
   }
 }
 .wrap-footer-bottom {
@@ -58,228 +62,4 @@
 }
 .content {
   flex: 1;
-}
-
-// ---------- Стили модалки-----------------
-.developer {
-  margin-bottom: -30px;
-  @include tablet {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -30px;
-  }
-}
-.developer-item {
-  width: 100%;
-
-  margin: 0 10px 30px 10px;
-  box-shadow: 3px 3px rgb(157, 157, 243), -0.5em 0 0.4em rgb(197, 197, 196);
-  @include tablet {
-    width: calc(100% / 3 - 30px);
-  }
-}
-.modal.modal-footer {
-  top: 10vh;
-  @include tablet {
-    top: 10vh;
-  }
-  @include desktop {
-    top: 1vh;
-  }
-}
-.slogans {
-  font-weight: italic;
-  font-size: 18px;
-  line-height: 1.14;
-  color: var(--footer-heart-color);
-  text-shadow: 1px 1px 2px rgb(16, 16, 16);
-  @include tablet {
-    font-size: 35px;
-  }
-  @include desktop {
-    margin-right: 50px;
-  }
-}
-.name-company {
-  font-size: 12px;
-  line-height: 1.5;
-  @include tablet {
-    font-size: 22px;
-    line-height: 1.15;
-  }
-}
-.wrap-slogans {
-  margin-left: 15px;
-}
-.wrap-logo-developer {
-  display: flex;
-  margin-bottom: 16px;
-  justify-content: center;
-  align-items: flex-end;
-  @include tablet {
-    justify-content: flex-start;
-    margin-left: 20px;
-    margin-bottom: 20px;
-  }
-}
-.logo-developer {
-  margin-right: 8px;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 2px 2px rgb(157, 157, 243), -1em 0 0.4em rgb(197, 197, 196);
-  @include tablet {
-    margin-right: 12px;
-  }
-  @include desktop {
-    margin-right: 20px;
-  }
-}
-
-// =============кнопка день/ночь=========
-
-.wrapper-day-night {
-  position: absolute;
-  top: 240px;
-  left: 0;
-  padding: 0;
-  text-align: center;
-}
-
-// =====кнопка день====
-.toggle {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 30px;
-  margin-left: 100px;
-  padding: 4px;
-  border-radius: 40px;
-  @include tablet {
-    width: 80px;
-    height: 40px;
-  }
-}
-
-.toggle:before,
-.toggle:after {
-  content: '';
-  display: table;
-}
-
-.toggle:after {
-  clear: both;
-}
-
-.toggle-bg {
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 100%;
-  height: 100%;
-  background-color: #c0e6f6;
-  border-radius: 40px;
-  border: 4px solid #81c0d5;
-  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.toggle-input {
-  position: absolute;
-  top: 0px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 40px;
-  z-index: 2;
-  opacity: 0;
-}
-
-.toggle-switch {
-  position: relative;
-  width: 23px;
-  height: 23px;
-  margin-left: 25px;
-  background-color: #f5eb42;
-  border: 4px solid #e4c74d;
-  border-radius: 50%;
-  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  @include tablet {
-    width: 30px;
-    height: 30px;
-    margin-left: 38px;
-  }
-}
-
-.toggle-switch-figure {
-  position: absolute;
-  bottom: -10px;
-  left: -40px;
-  display: block;
-  width: 50px;
-  height: 30px;
-  border: 8px solid #d4d4d2;
-  border-radius: 20px;
-  background-color: #fff;
-  transform: scale(0.4);
-  transition: all 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  &:after {
-    @include cloudBubble(-65px, -42px, 15px, 15px, 10deg);
-  }
-  &:before {
-    @include cloudBubble(-25px, -10px, 30px, 30px, 10deg);
-  }
-}
-
-.toggle-switch-figureAlt {
-  @include crater(5px, 2px, 2px);
-
-  box-shadow: 42px -7px 0 -3px #fcfcfc, 75px -10px 0 -3px #fcfcfc,
-    54px 4px 0 -4px #fcfcfc, 83px 7px 0 -2px #fcfcfc, 63px 18px 0 -4px #fcfcfc,
-    44px 28px 0 -2px #fcfcfc, 78px 23px 0 -3px #fcfcfc;
-
-  transition: all 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: scale(0);
-}
-
-.toggle-switch-figureAlt:before {
-  @include crater(20px, 50px, 7px);
-}
-
-.toggle-switch-figureAlt:after {
-  @include crater(10px, 18px, 2px);
-}
-//========= кнопка ночь ===========
-.toggle-input:checked ~ .toggle-switch {
-  margin-left: 0;
-  border-color: #dee1c5;
-  background-color: #fffdf2;
-}
-
-.toggle-input:checked ~ .toggle-bg {
-  background-color: #484848;
-  border-color: #202020;
-}
-
-.toggle-input:checked ~ .toggle-switch .toggle-switch-figure {
-  margin-left: 0px;
-  opacity: 0;
-  transform: scale(0.1);
-}
-
-.toggle-input:checked ~ .toggle-switch .toggle-switch-figureAlt {
-  transform: scale(0.7);
-  @include tablet {
-    transform: scale(0.9);
-  }
-}
-
-// =========стили для темной темы =========
-.night-theme {
-  background: rgb(140, 24, 44);
-  background: radial-gradient(
-    circle,
-    rgba(140, 24, 44, 1) 0%,
-    rgba(40, 46, 53, 1) 75%
-  );
-  color: #fff;
 }

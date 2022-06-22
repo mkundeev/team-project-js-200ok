@@ -50,7 +50,14 @@ function renderMarkup(results, watched, queue) {
   refs.movieContainer.insertAdjacentHTML('beforeend', markup);
 }
 
-export function renderOneFilm({ id, title, vote_average, release_date, genre_ids, poster_path }) {
+export function renderOneFilm({
+  id,
+  title,
+  vote_average,
+  release_date,
+  genre_ids,
+  poster_path,
+}) {
   return `
 <li class="gallery-items films__gallery-item" data-id=${id}>
 <a href="#!" class="list-card__link">
@@ -78,5 +85,5 @@ export function renderOneFilm({ id, title, vote_average, release_date, genre_ids
 </div>
     </div>
 </a>
-</li>`
-} 
+</li>`;
+}
