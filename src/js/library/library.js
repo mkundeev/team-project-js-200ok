@@ -69,7 +69,7 @@ async function showRecomendedFilms(e) {
     spinner.show()
     try {
       const results = await getRecomendedFilms();
-        MovieService.total_pages = Math.ceil(results.length / 20);
+      MovieService.total_pages = Math.ceil(results.length / 20);
       renderSearchResultMovie(results);
   } catch (error) {
     console.log(error.message);

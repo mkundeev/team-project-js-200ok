@@ -25,6 +25,7 @@ return get(ref(db, `users/${userId}/recommend/results`)).then((snapshot) => {
     return snapshot.val()
 }).catch((error) => {
   console.log(error.message);
+  return []
 });}
 
 function getFilms(src){
@@ -62,6 +63,7 @@ function getFilms(src) {
 function updateRecommendFilms(results) {
   update(ref(db, `users/${userId}/recommend`), { results }).catch(error => {
     console.log(error.message);
+    
   });
 }
 
