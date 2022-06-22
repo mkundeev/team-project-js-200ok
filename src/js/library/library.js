@@ -11,6 +11,7 @@ import {
 import { refs as el } from '../service/refs';
 import { getPageForLibrary, getPageForRecommend } from '../template/pagination';
 import { MovieService } from '../service/fetchItems';
+import {spinner} from '../../'
 
 let currentCardData = {};
 
@@ -40,7 +41,9 @@ function showWatchedFilms() {
     refs.queueBtn.classList.remove('is-active');
   }
 
+
   showFilmList('watched', false);
+
 }
 function showQueueFilms() {
   MovieService.changePage(1);
@@ -54,7 +57,9 @@ function showQueueFilms() {
     refs.queueBtn.classList.add('is-active');
   }
 
+
   showFilmList(false, 'queue');
+
 }
 
 function showRecomendedFilmsAndReplacePage() {
@@ -74,12 +79,16 @@ function showRecomendedFilmsAndReplacePage() {
 
 async function showRecomendedFilms() {
   if (recommendId) {
-    console.log(recommendId);
+
+    spinner.show()
     const results = await MovieService.getRecommendMovies(recommendId);
 
     updateRecommendFilms(results);
     renderSearchResultMovie(results);
+    spinner.hide()
   } else {
+
+    spinner.show()
     try {
       const results = await getRecomendedFilms();
 
@@ -90,8 +99,9 @@ async function showRecomendedFilms() {
       console.log(error.message);
       el.movieContainer.innerHTML =
         '<li><p>There are no recommend films</p></li>';
-    }
+    }spinner.hide()
   }
+
 }
 
 // refs.modalCard.addEventListener('click', addFilmToDb);
@@ -117,6 +127,7 @@ function addFilmToDb(e) {
 
 async function showFilmList(watched, queue) {
   let results = [];
+  spinner.show()
   try {
     if (watched) {
       results = await getFilms(watched);
@@ -137,6 +148,7 @@ async function showFilmList(watched, queue) {
     el.movieContainer.innerHTML =
       '<li><p>There are no films in your library</p></li>';
   }
+  spinner.hide()
 }
 
 export {

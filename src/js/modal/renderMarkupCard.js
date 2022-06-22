@@ -22,13 +22,13 @@ export function renderMarkupCard(data, key, watched, queue) {
          alt="${title}" loading="lazy" 
         class="modal__img" data-id=${id}
    />
-   <button class="modal__play-bacground ${
+   <button class="modal__play-bacground play ${
      !key && 'visually-hidden'
    }" data-src=${key}>
-          <svg class="modal__svg-background"></svg>
+          <svg class="modal__svg-background play"></svg>
         </button>`
       : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg"  alt="${title}" loading="lazy" 
-        class="modal__img" data-id=${id} >`
+        class="modal__img" data-id=${id} />`
   }
 
 </div>
@@ -115,14 +115,14 @@ export function renderMarkupCardNoId(data, key) {
          alt="${title}" loading="lazy" 
         class="modal__img" data-id=${id}
    />
-           <button class="modal__play-bacground ${
+           <button class="modal__play-bacground play ${
              !key && 'visually-hidden'
            }" data-src=${key}>
-          <svg class="modal__svg-background"></svg>
+          <svg class="modal__svg-background play"></svg>
         </button>
         `
       : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg"  alt="${title}" loading="lazy" 
-        class="modal__img" data-id=${id} >`
+        class="modal__img" data-id=${id}/>`
   }
 
 </div>
@@ -159,19 +159,22 @@ export function renderMarkupCardNoId(data, key) {
         </p>
         <div class="modal__button-wrap">
           <div class="modal__button-container">
-            <button type="submit" class="modal__button js-watched js-watched-add  disabled" disabled id="js-watched-add" data-id=${id}>
+            <button type="submit" class="modal__button js-watched js-watched-add "  id="js-watched-add" data-id=${id}>
               ADD TO WATCHED
             </button>
-            <button type="button" class="modal__button js-watched js-watched-del visually-hidden" disabled id="js-watched-del" data-id=${id}>
-              DELETE FROM WATCHED
+            <button type="button" class="modal__button js-watched js-watched-del visually-hidden" id="js-watched-del" data-id=${id}>
+              ADD TO WATCHED
             </button>
           </div>
           <div class="modal__button-container">
-          <button type="submit" class="modal__button js-queue  js-queue-add  disabled" disabled id="js-queue-add" data-id=${id}>
+          <button type="submit" class="modal__button js-queue  js-queue-add " id="js-queue-add" data-id=${id}>
               ADD TO QUEUE
             </button>
-            <button type="submit" class="modal__button js-queue js-queue-del visually-hidden" disabled id="js-queue-del" data-id=${id}>
+            <button type="submit" class="modal__button js-queue js-queue-del visually-hidden"  id="js-queue-del" data-id=${id}>
               ADD TO QUEUE
+            </button>
+            <button type="submit" class="modal__button js-queue js-queue-del  js-watched-del d-none" disabled id="js-queue-del" data-id=${id}>
+              empty
             </button>
           </div>
         </div>
