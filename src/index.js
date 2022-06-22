@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', movieTrending);
 // запрос и отрисовка фильмов по поиску
 const movieSearch = async ev => {
   ev.preventDefault();
+  spinner.show()
   MovieService._page = 1;
 
   MovieService._query = ev.target.elements.query.value.trim();
@@ -81,7 +82,7 @@ const movieSearch = async ev => {
   } catch (error) {
     console.error(error.message);
   }
-  
+  spinner.hide()
 };
 refs.form.addEventListener('submit', movieSearch);
 
@@ -116,7 +117,7 @@ refs.movieOneCardContainer.addEventListener('click', e => {
 });
 
 const creatModal = async e => {
-  spinner.show()
+  
   movieSearchOneFilm(e).then(() => {
     // добавить слушателей и ссылок на елементы отрисованоой модалки
     const addWatchBtn = document.querySelector('.js-watched-add');
@@ -130,7 +131,7 @@ const creatModal = async e => {
   delWatchBtn.addEventListener('click', e => delFromList(e, 'watched', userId));
   delQueueBtn.addEventListener('click', e => delFromList(e, 'queue', userId));}
 );
-spinner.hide()
+
 };
 
 // добавить слушателя на отрисованую разметку
