@@ -1,10 +1,12 @@
-const masianiaEl = document.querySelector('.masiania');
-const masianiaMessage = document.querySelector('.masiania__wrapp');
-const masianiaTextEl = document.querySelector('.masiania__text');
-const masianiaBtnListEl = document.querySelector('.masiania__list');
-const masianiaBtnCloseEl = document.querySelector('.masiania__close-btn');
-const masianiaLinkEl = document.querySelector('.masiania__link');
-const masianiaRightEl = document.querySelector('.masiania-right');
+import {
+  masianiaEl,
+  masianiaMessage,
+  masianiaTextEl,
+  masianiaBtnListEl,
+  masianiaBtnCloseEl,
+  masianiaLinkEl,
+  masianiaRightEl,
+} from '../service/refs';
 
 masianiaBtnCloseEl.addEventListener('click', onCloseMasiania);
 masianiaLinkEl.addEventListener('click', onHideMasiania);
@@ -14,7 +16,7 @@ const MASIANIA_DELAY = 20000;
 let line = 0;
 let count = 0;
 let out = '';
-const messageMasianiaClose = 'Жадіна!';
+const messageMasianiaClose = '<span style="font-size: 30px">Жадіна!</span>';
 
 const masianiaText = [
   'Привіт!<br/>\n',
@@ -73,9 +75,8 @@ function onCloseMasiania() {
   masianiaBtnCloseEl.classList.add('is-hidden');
   setTimeout(() => {
     masianiaMessage.classList.add('is-hidden');
-    setTimeout(() => {
-      masianiaEl.classList.remove('masiania-show');
-    }, 2000);
+
+    masianiaEl.classList.remove('masiania-show');
   }, 2000);
 }
 
