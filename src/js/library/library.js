@@ -1,13 +1,20 @@
-import { updateFilms, getFilms, updateRecommendFilms, getRecomendedFilms } from '../service/firebaseStorage';
-import { renderMovieGallery, renderSearchResultMovie } from '../template/renderMarkup';
+import {
+  updateFilms,
+  getFilms,
+  updateRecommendFilms,
+  getRecomendedFilms,
+} from '../service/firebaseStorage';
+import {
+  renderMovieGallery,
+  renderSearchResultMovie,
+} from '../template/renderMarkup';
 import { refs as el } from '../service/refs';
-import { getPageForLibrary } from '../template/pagination';
+import { getPageForLibrary, getPageForRecommend } from '../template/pagination';
 import { MovieService } from '../service/fetchItems';
 
 let currentCardData = {};
 
 let recommendId = null;
-
 
 export const refs = {
   modalCard: document.querySelector('.modal__card'),
@@ -19,52 +26,72 @@ export const refs = {
 
 refs.watchBtn.addEventListener('click', showWatchedFilms);
 refs.queueBtn.addEventListener('click', showQueueFilms);
-refs.recommendBtn.addEventListener('click', showRecomendedFilms);
+refs.recommendBtn.addEventListener('click', showRecomendedFilmsAndReplacePage);
 
 function showWatchedFilms() {
-  if (refs.queueBtn.classList.contains('is-active') || refs.recommendBtn.classList.contains('is-active')) {
+  MovieService.changePage(1);
+
+  if (
+    refs.queueBtn.classList.contains('is-active') ||
+    refs.recommendBtn.classList.contains('is-active')
+  ) {
     refs.watchBtn.classList.add('is-active');
-     refs.recommendBtn.classList.remove('is-active');
+    refs.recommendBtn.classList.remove('is-active');
     refs.queueBtn.classList.remove('is-active');
   }
-  MovieService.changePage(1);
-  showFilmList('watched', false);
 
+  showFilmList('watched', false);
 }
 function showQueueFilms() {
-   if (refs.watchBtn.classList.contains('is-active') || refs.recommendBtn.classList.contains('is-active')) {
-     refs.watchBtn.classList.remove('is-active');
-     refs.recommendBtn.classList.remove('is-active');
+  MovieService.changePage(1);
+
+  if (
+    refs.watchBtn.classList.contains('is-active') ||
+    refs.recommendBtn.classList.contains('is-active')
+  ) {
+    refs.watchBtn.classList.remove('is-active');
+    refs.recommendBtn.classList.remove('is-active');
     refs.queueBtn.classList.add('is-active');
   }
-  MovieService.changePage(1);
-  showFilmList(false, 'queue');
 
+  showFilmList(false, 'queue');
 }
 
+function showRecomendedFilmsAndReplacePage() {
+  MovieService.changePage(1);
 
-async function showRecomendedFilms(e) {
-  e.preventDefault()
-  if (refs.watchBtn.classList.contains('is-active') || refs.queueBtn.classList.contains('is-active')) {
-     refs.watchBtn.classList.remove('is-active');
-     refs.queueBtn.classList.remove('is-active');
+  if (
+    refs.watchBtn.classList.contains('is-active') ||
+    refs.queueBtn.classList.contains('is-active')
+  ) {
+    refs.watchBtn.classList.remove('is-active');
     refs.recommendBtn.classList.add('is-active');
+    refs.queueBtn.classList.remove('is-active');
   }
-  console.log(recommendId)
+
+  showRecomendedFilms();
+}
+
+async function showRecomendedFilms() {
   if (recommendId) {
+    console.log(recommendId);
     const results = await MovieService.getRecommendMovies(recommendId);
+
     updateRecommendFilms(results);
     renderSearchResultMovie(results);
   } else {
-    try {      
+    try {
       const results = await getRecomendedFilms();
-      renderSearchResultMovie(results);
-  } catch (error) {
-    console.log(error.message);
-    el.movieContainer.innerHTML =
-      '<li><p>There are no recommend films</p></li>';
+
+      MovieService.total_pages = Math.ceil(results.length / 20);
+
+      renderSearchResultMovie(getPageForLibrary(results));
+    } catch (error) {
+      console.log(error.message);
+      el.movieContainer.innerHTML =
+        '<li><p>There are no recommend films</p></li>';
+    }
   }
-  } 
 }
 
 // refs.modalCard.addEventListener('click', addFilmToDb);
@@ -74,40 +101,48 @@ function getCurrentCardData(data) {
 }
 
 function getRecommendId(id) {
-   recommendId=id
+  recommendId = id;
 }
 
 function addFilmToDb(e) {
   e.preventDefault();
   if (e.target.classList.contains('js-watched-add')) {
-    console.log(currentCardData)
+    console.log(currentCardData);
     updateFilms(currentCardData, 'watched');
   } else if (e.target.classList.contains('js-queue-add')) {
-    console.log(currentCardData)
+    console.log(currentCardData);
     updateFilms(currentCardData, 'queue');
-    
-  } 
+  }
 }
 
 async function showFilmList(watched, queue) {
   let results = [];
   try {
-    if (watched) { results = await getFilms(watched) };
-    if (queue) { results = await getFilms(queue) }
-    
-    results = Object.values(results)
+    if (watched) {
+      results = await getFilms(watched);
+    }
+    if (queue) {
+      results = await getFilms(queue);
+    }
+
+    results = Object.values(results);
     results = results.map(result => ({
       ...result,
-      genre_ids: result.genres.map(({name}) => name).join(', '),
+      genre_ids: result.genres.map(({ name }) => name).join(', '),
     }));
+    results = Object.values(results);
     renderMovieGallery(getPageForLibrary(results), watched, queue);
-  } catch(error) {
+  } catch (error) {
     console.log(error.message);
     el.movieContainer.innerHTML =
       '<li><p>There are no films in your library</p></li>';
   }
 }
 
-export { getCurrentCardData, showFilmList, getRecommendId, addFilmToDb };
-
-
+export {
+  getCurrentCardData,
+  showFilmList,
+  getRecommendId,
+  addFilmToDb,
+  showRecomendedFilms,
+};
