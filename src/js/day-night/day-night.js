@@ -1,23 +1,32 @@
 import { refs } from '../service/refs';
-const { toggle, movieTitle } = refs;
+const { toggle } = refs;
+const theme = {
+  DARK_THEME: 'night-theme',
+  LIGHT_THEME: 'light-theme',
+};
+const LOCAL_STORAGE_KEY = 'theme';
 
-const initialState = localStorage.getItem('toggleState') === 'true';
-toggle.checked = initialState;
+const bodyTheme = document.body.classList;
 
-toggle.addEventListener('change', addNightTheme);
+bodyTheme.add(
+  localStorage.getItem(LOCAL_STORAGE_KEY) === null
+    ? theme.LIGHT_THEME
+    : localStorage.getItem(LOCAL_STORAGE_KEY)
+);
 
-function addNightTheme(evt) {
-  evt.preventDefault();
-  localStorage.setItem('toggleState', toggle.checked);
-  const settings = JSON.parse(localStorage.getItem('toggleState'));
+if (bodyTheme.value === theme.DARK_THEME) {
+  toggle.checked = true;
+}
 
-  if (settings || settings) {
-    document.body.classList.add('night-theme');
-    // movieTitle.body.classList.add('wite-title');
-    // console.log(settings);
-  } else {
-    document.body.classList.remove('night-theme');
-    // movieTitle.body.classList.remove('wite-title');
-    // console.log(settings);
+toggle.addEventListener('change', addNightDayTheme);
+function addNightDayTheme(evt) {
+  console.log(evt.target.checked);
+  const themeNaw = evt.target.checked;
+  if (themeNaw) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, theme.DARK_THEME);
+    bodyTheme.replace(theme.LIGHT_THEME, theme.DARK_THEME);
+    return;
   }
+  localStorage.setItem('theme', theme.LIGHT_THEME);
+  bodyTheme.replace(theme.DARK_THEME, theme.LIGHT_THEME);
 }
