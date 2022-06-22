@@ -50,7 +50,6 @@ function getFilms(src) {
           return snapshot.val()[src];
         } else return [];
       } else {
-        console.log('No data available');
         return [];
       }
     })

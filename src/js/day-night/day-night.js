@@ -26,7 +26,6 @@ if (bodyTheme.value === theme.DARK_THEME) {
 
 toggle.addEventListener('change', addNightDayTheme);
 function addNightDayTheme(evt) {
-  console.log(evt.target.checked);
   const themeNaw = evt.target.checked;
   if (themeNaw) {
     footer.classList.remove('light');
