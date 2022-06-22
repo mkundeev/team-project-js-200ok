@@ -28,8 +28,9 @@ function showWatchedFilms() {
     refs.queueBtn.classList.remove('is-active');
   }
   MovieService.changePage(1);
+ 
   showFilmList('watched', false);
-
+ 
 }
 function showQueueFilms() {
    if (refs.watchBtn.classList.contains('is-active') || refs.recommendBtn.classList.contains('is-active')) {
@@ -38,8 +39,9 @@ function showQueueFilms() {
     refs.queueBtn.classList.add('is-active');
   }
   MovieService.changePage(1);
+  
   showFilmList(false, 'queue');
-
+  
 }
 
 
@@ -91,6 +93,7 @@ function addFilmToDb(e) {
 
 async function showFilmList(watched, queue) {
   let results = [];
+  
   try {
     if (watched) { results = await getFilms(watched) };
     if (queue) { results = await getFilms(queue) }
@@ -106,6 +109,7 @@ async function showFilmList(watched, queue) {
     el.movieContainer.innerHTML =
       '<li><p>There are no films in your library</p></li>';
   }
+  
 }
 
 export { getCurrentCardData, showFilmList, getRecommendId, addFilmToDb };

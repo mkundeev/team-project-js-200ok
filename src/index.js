@@ -37,7 +37,7 @@ import { libraryLinkEl } from './js/library/replace-header';
 import { renderOneFilm } from './js/template/renderMarkup';
 
 
-const spinner = new VisibleComponent({
+export const spinner = new VisibleComponent({
   selector: '.js-spinner',
   className: 'visually-hidden',
   isHide: true,
@@ -57,6 +57,7 @@ spinner.hide(); //спінер удаляється
 
 // запрос и отрисовка популярных фильмов
 const movieTrending = async () => {
+  spinner.show()
   try {
     refs.movieContainer.innerHTML = '';
 
@@ -69,6 +70,7 @@ const movieTrending = async () => {
   } catch (error) {
     console.error(error.message);
   }
+  spinner.hide()
 };
 
 document.addEventListener('DOMContentLoaded', movieTrending);
@@ -79,7 +81,7 @@ const movieSearch = async ev => {
   MovieService._page = 1;
 
   MovieService._query = ev.target.elements.query.value.trim();
-
+  spinner.show()
   if (!MovieService._query) return;
 
   try {
@@ -96,13 +98,14 @@ const movieSearch = async ev => {
   } catch (error) {
     console.error(error.message);
   }
+  spinner.hide()
 };
 refs.form.addEventListener('submit', movieSearch);
 
 // запрос и отрисовка фильма по ID
 
 const movieSearchOneFilm = async e => {
-
+  spinner.show()
   const watchedFilms = await getFilms('watched');
   const queueFilms = await getFilms('queue');
   let watched = false;
@@ -122,7 +125,7 @@ const movieSearchOneFilm = async e => {
     userId
       ? renderMarkupCard(response, key, watched, queue)
       : renderMarkupCardNoId(response, key);
-
+    spinner.hide()
 
   }
 };
