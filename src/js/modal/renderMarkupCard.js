@@ -20,7 +20,7 @@ export function renderMarkupCard(data, key, watched, queue) {
     poster_path
       ? ` <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}" 
          alt="${title}" loading="lazy" 
-        class="modal__img play" data-id=${id}
+        class="modal__img" data-id=${id}
    />
    <button class="modal__play-bacground play ${
      !key && 'visually-hidden'
@@ -28,7 +28,7 @@ export function renderMarkupCard(data, key, watched, queue) {
           <svg class="modal__svg-background play"></svg>
         </button>`
       : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg"  alt="${title}" loading="lazy" 
-        class="modal__img play" data-id=${id} >`
+        class="modal__img" data-id=${id} />`
   }
 
 </div>
@@ -113,7 +113,7 @@ export function renderMarkupCardNoId(data, key) {
       ? `
       <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${poster_path}" 
          alt="${title}" loading="lazy" 
-        class="modal__img play" data-id=${id}
+        class="modal__img" data-id=${id}
    />
            <button class="modal__play-bacground play ${
              !key && 'visually-hidden'
@@ -122,7 +122,7 @@ export function renderMarkupCardNoId(data, key) {
         </button>
         `
       : `<img src="https://sd.keepcalms.com/i-w600/sorry-poster-is-missing.jpg"  alt="${title}" loading="lazy" 
-        class="modal__img" data-id=${id} play>`
+        class="modal__img" data-id=${id}/>`
   }
 
 </div>

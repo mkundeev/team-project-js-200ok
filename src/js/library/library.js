@@ -3,6 +3,7 @@ import { renderMovieGallery, renderSearchResultMovie } from '../template/renderM
 import { refs as el } from '../service/refs';
 import { getPageForLibrary } from '../template/pagination';
 import { MovieService } from '../service/fetchItems';
+import {spinner} from '../../'
 
 let currentCardData = {};
 
@@ -54,10 +55,13 @@ async function showRecomendedFilms(e) {
   }
   console.log(recommendId)
   if (recommendId) {
+    spinner.show()
     const results = await MovieService.getRecommendMovies(recommendId);
     updateRecommendFilms(results);
     renderSearchResultMovie(results);
+    spinner.hide()
   } else {
+    spinner.show()
     try {      
       const results = await getRecomendedFilms();
       renderSearchResultMovie(results);
@@ -65,7 +69,7 @@ async function showRecomendedFilms(e) {
     console.log(error.message);
     el.movieContainer.innerHTML =
       '<li><p>There are no recommend films</p></li>';
-  }
+  }spinner.hide()
   } 
 }
 
@@ -93,7 +97,7 @@ function addFilmToDb(e) {
 
 async function showFilmList(watched, queue) {
   let results = [];
-  
+  spinner.show()
   try {
     if (watched) { results = await getFilms(watched) };
     if (queue) { results = await getFilms(queue) }
@@ -109,7 +113,7 @@ async function showFilmList(watched, queue) {
     el.movieContainer.innerHTML =
       '<li><p>There are no films in your library</p></li>';
   }
-  
+  spinner.hide()
 }
 
 export { getCurrentCardData, showFilmList, getRecommendId, addFilmToDb };

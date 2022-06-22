@@ -81,7 +81,6 @@ const movieSearch = async ev => {
   MovieService._page = 1;
 
   MovieService._query = ev.target.elements.query.value.trim();
-  spinner.show()
   if (!MovieService._query) return;
 
   try {
@@ -98,7 +97,7 @@ const movieSearch = async ev => {
   } catch (error) {
     console.error(error.message);
   }
-  spinner.hide()
+  
 };
 refs.form.addEventListener('submit', movieSearch);
 
@@ -131,9 +130,9 @@ const movieSearchOneFilm = async e => {
 };
 
 // добавить слушателя на отрисованую разметку
-const creatModal = e => {
-  
-  movieSearchOneFilm(e).then(() => {
+const creatModal = async e => {
+  spinner.show()
+  const showModal = await movieSearchOneFilm(e).then(() => {
     const addWatchBtn = document.querySelector('.js-watched-add');
     const addQueueBtn = document.querySelector('.js-queue-add');
     const delWatchBtn = document.querySelector('.js-watched-del');
@@ -145,7 +144,7 @@ const creatModal = e => {
   delWatchBtn.addEventListener('click', e => delFromList(e, 'watched'));
   delQueueBtn.addEventListener('click', e => delFromList(e, 'queue'));}
 );
-
+spinner.hide()
 };
 
 async function delFromList(e, src) {
