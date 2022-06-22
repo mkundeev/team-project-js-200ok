@@ -6,15 +6,10 @@ import firebaseConfig from '../config/firebaseConfig'
 import { notifyConfigs } from '../config/notifyConfig';
 import { getRecommendId } from '../library/library';
 
-
-
-
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 let userId = null;
 let userName = '';
-
-
 
 function getUserData(id, name) {
   userId = id;
@@ -51,7 +46,6 @@ function updateRecommendFilms(results) {
   console.log(error.message);
 });
 }
-
 
 function updateFilms(results, src) {
   if (userId === null) {
