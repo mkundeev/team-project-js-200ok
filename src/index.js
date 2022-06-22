@@ -6,7 +6,7 @@ import './js/form/registration';
 import './js/template/pagination';
 import './js/library/library';
 import './js/scroll/scroll';
-import './js/modal/renderMarkupCard';
+import './js/template/renderMarkupCard';
 import './js/template/pagination';
 
 import './js/modal/videoplayer';
@@ -23,7 +23,7 @@ import { VisibleComponent } from './js/spinner/spinner';
 import {
   renderMarkupCard,
   renderMarkupCardNoId,
-} from './js/modal/renderMarkupCard';
+} from './js/template/renderMarkupCard';
 import { refs } from './js/service/refs';
 import { MovieService } from './js/service/fetchItems';
 import {
@@ -47,13 +47,6 @@ let userId = null;
 
 const watchBtn = document.querySelector('#watched');
 const queueBtn = document.querySelector('#queue');
-
-
-// spinner.show();  //спинер додається
-spinner.hide(); //спінер удаляється
-
-// MovieService.getMovieTrend().then(response => console.log(response));
-// MovieService.getGenres().then(response => console.log(response));
 
 // запрос и отрисовка популярных фильмов
 const movieTrending = async () => {
@@ -109,10 +102,8 @@ const movieSearchOneFilm = async e => {
   const queueFilms = await getFilms('queue');
   let watched = false;
   let queue = false;
-  console.log(watchedFilms);
-  console.log(queueFilms);
   const response = await MovieService.getSearchMovieById(e.target.dataset.id);
-  console.log(response.id)
+
   const key = await MovieService.getVideo(e.target.dataset.id);
   getCurrentCardData(response);
   if (watchedFilms) {

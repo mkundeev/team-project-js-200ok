@@ -53,7 +53,6 @@ async function showRecomendedFilms(e) {
      refs.queueBtn.classList.remove('is-active');
     refs.recommendBtn.classList.add('is-active');
   }
-  console.log(recommendId)
   if (recommendId) {
     spinner.show()
     const results = await MovieService.getRecommendMovies(recommendId);
@@ -86,12 +85,9 @@ function getRecommendId(id) {
 function addFilmToDb(e) {
   e.preventDefault();
   if (e.target.classList.contains('js-watched-add')) {
-    console.log(currentCardData)
     updateFilms(currentCardData, 'watched');
   } else if (e.target.classList.contains('js-queue-add')) {
-    console.log(currentCardData)
-    updateFilms(currentCardData, 'queue');
-    
+    updateFilms(currentCardData, 'queue'); 
   } 
 }
 

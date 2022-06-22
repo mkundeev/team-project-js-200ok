@@ -23,12 +23,8 @@ function getUserData(id, name) {
 
 function getRecomendedFilms(){
 return get(ref(db, `users/${userId}/recommend/results`)).then((snapshot) => {
-  if (snapshot.exists()) {
-      console.log(snapshot.val())
+  if (snapshot.exists()) 
     return snapshot.val()
-  } else {
-    console.log("No data available");
-  }
 }).catch((error) => {
   console.log(error.message);
 });}
@@ -40,11 +36,8 @@ function getFilms(src){
         return snapshot.val()[src]
       } else return []
     
-    } else {
-      console.log("No data available");
-      return []
-    
-  }
+    } else return []
+ 
 }).catch((error) => {
   console.log(error.message);
   return []
