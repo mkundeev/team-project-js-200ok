@@ -1,6 +1,7 @@
 import { movieTrending } from '../../index';
 import { showFilmList } from './library';
 import { MovieService } from '../service/fetchItems';
+import {refs} from '../service/refs';
 
 
 import {
@@ -43,8 +44,6 @@ function onReplaceHeaderByHome(event) {
 
   movieTrending();
   refs.libraryBtns.forEach(btn => btn.classList.remove('is-active'))
-  console.log(refs.watchBtn.classList)
- console.log(refs.queueBtn.classList)
   headerFormEl.classList.remove('header-none');
   headerListEl.classList.add('header-none');
 

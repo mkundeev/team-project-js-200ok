@@ -46,31 +46,19 @@ function showQueueFilms(e) {
   showFilmList(false, 'queue');
 }
 //=========отображение фильмов в разделе recommend==============
-function showRecomendedFilmsAndReplacePage() {
-  
+function showRecomendedFilmsAndReplacePage(e) {
+  toggleLibraryBtns(e)
   MovieService.changePage(1);
-
-  if (
-    refs.watchBtn.classList.contains('is-active') ||
-    refs.queueBtn.classList.contains('is-active')
-  ) {
-    refs.watchBtn.classList.remove('is-active');
-    refs.recommendBtn.classList.add('is-active');
-    refs.queueBtn.classList.remove('is-active');
-  }
-
   showRecomendedFilms();
 }
 
 async function showRecomendedFilms(e) {
-  // e.preventDefault()
-  toggleLibraryBtns(e)
+  
  //=========если есть фильм добавленный в очеред просмотров============== 
   if (recommendId) {
 
     spinner.show()
     const results = await MovieService.getRecommendMovies(recommendId);
-
     updateRecommendFilms(results);
     renderSearchResultMovie(results);
     spinner.hide()
