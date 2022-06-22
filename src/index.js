@@ -8,12 +8,8 @@ import './js/library/library';
 import './js/scroll/scroll';
 import './js/template/renderMarkupCard';
 import './js/template/pagination';
-
 import './js/modal/videoplayer';
-
-
 import './js/day-night/day-night';
-
 import './js/library/replace-header';
 import './js/template/masiania';
 
