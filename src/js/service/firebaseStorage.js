@@ -43,23 +43,6 @@ function getFilms(src){
 });}
 
 
-function getFilms(src) {
-  return get(ref(db, `users/${userId}`))
-    .then(snapshot => {
-      if (snapshot.exists()) {
-        if (snapshot.val()[src]) {
-          return snapshot.val()[src];
-        } else return [];
-      } else {
-        return [];
-      }
-    })
-    .catch(error => {
-      console.log(error.message);
-      return [];
-    });
-}
-
 function updateRecommendFilms(results) {
   update(ref(db, `users/${userId}/recommend`), { results }).catch(error => {
     console.log(error.message);

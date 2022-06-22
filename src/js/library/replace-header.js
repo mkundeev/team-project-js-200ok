@@ -54,4 +54,4 @@ function onReplaceHeaderByHome(event) {
   headerEl.classList.add('home-bg');
 }
 
-export { libraryLinkEl };
+export { onReplaceHeaderByHome };

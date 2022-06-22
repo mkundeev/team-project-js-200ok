@@ -58,9 +58,13 @@ async function showRecomendedFilms(e) {
   if (recommendId) {
 
     spinner.show()
-    const results = await MovieService.getRecommendMovies(recommendId);
+    try {const results = await MovieService.getRecommendMovies(recommendId);
     updateRecommendFilms(results);
-    renderSearchResultMovie(results);
+    renderSearchResultMovie(results);}catch (error) {
+    console.log(error.message);
+    refs.movieContainer.innerHTML =
+      '<li><p>There are no recommend films</p></li>';
+  }
     spinner.hide()
 
   }

@@ -3,7 +3,7 @@ import firebaseConfig from '../config/firebaseConfig'
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile} from "firebase/auth";
 import { getUserData } from './firebaseStorage';
-import { libraryLinkEl } from '../library/replace-header';
+import { onReplaceHeaderByHome } from '../library/replace-header';
 import { notifyConfigs } from '../config/notifyConfig';
 import { getRecommendId } from '../library/library';
 import { getUserId } from '../display-results/display-results';
@@ -29,13 +29,13 @@ onAuthStateChanged(auth, (user )=> {
     getUserId(userId)
     refs.exitBtn.classList.remove('d-none')
     refs.logInBtn.classList.add('d-none')
-    libraryLinkEl.parentNode.classList.remove('d-none')
+    refs.libraryLinkEl.parentNode.classList.remove('d-none')
   } else {
     userId = null;
     userName = null;
     refs.exitBtn.classList.add('d-none')
     refs.logInBtn.classList.remove('d-none')
-    libraryLinkEl.parentNode.classList.add('d-none')
+    refs.libraryLinkEl.parentNode.classList.add('d-none')
     getUserData(null, '')
     getRecommendId(null)
     getUserId(null)
@@ -93,6 +93,7 @@ createUserWithEmailAndPassword(auth, email, password, name)
 
 function exitUser(e) {
   e.preventDefault()
+  onReplaceHeaderByHome(e) 
   signOut(auth)
     .then(() => {
       Notify.success(`Waiting for you to come back!`, notifyConfigs);
