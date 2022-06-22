@@ -4,7 +4,7 @@ import { refs } from '../service/refs';
 import { getPageForLibrary } from '../template/pagination';
 import { MovieService } from '../service/fetchItems';
 import { spinner } from '../spinner/spinner';
-import { addSelector } from '../..';
+import { addSelector } from '../display-results/display-results';
 
 
 

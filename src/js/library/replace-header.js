@@ -1,4 +1,4 @@
-import { movieTrending } from '../../index';
+import { movieTrending } from '../display-results/display-results';
 import { showFilmList } from './library';
 import { MovieService } from '../service/fetchItems';
 import {refs} from '../service/refs';

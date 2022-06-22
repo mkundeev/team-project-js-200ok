@@ -6,7 +6,7 @@ import { getUserData } from './firebaseStorage';
 import { libraryLinkEl } from '../library/replace-header';
 import { notifyConfigs } from '../config/notifyConfig';
 import { getRecommendId } from '../library/library';
-import { getUserId } from '../..';
+import { getUserId } from '../display-results/display-results';
 import { refs } from './refs'; 
 
 const app = initializeApp(firebaseConfig);
