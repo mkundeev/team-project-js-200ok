@@ -38,6 +38,7 @@ function onReplaceHeaderByHome(event) {
   MovieService.changePage(1);
 
   movieTrending();
+  refs.watchBtn.classList.remove('is-active');
   headerFormEl.classList.remove('header-none');
   headerListEl.classList.add('header-none');
 
