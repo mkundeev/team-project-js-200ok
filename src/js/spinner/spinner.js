@@ -19,6 +19,6 @@ export class VisibleComponent {
 
 export const spinner = new VisibleComponent({
   selector: '.js-spinner',
-  className: 'visually-hidden',
+  className: 'd-none',
   isHide: true,
 });
