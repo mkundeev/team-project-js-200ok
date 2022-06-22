@@ -78,8 +78,6 @@ async function showRecomendedFilms(e) {
   }spinner.hide()
   } 
 }
-
-
 //=========создание галереи фильмов==============
 async function showFilmList(watched, queue) {
   let results = [];
@@ -97,7 +95,6 @@ async function showFilmList(watched, queue) {
       ...result,
       genre_ids: result.genres.map(({ name }) => name).join(', '),
     }));
-    results = Object.values(results);
     renderMovieGallery(getPageForLibrary(results), watched, queue);
   } catch (error) {
     console.log(error.message);
