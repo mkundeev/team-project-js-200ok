@@ -51,7 +51,10 @@ const movieSearch = async ev => {
   MovieService._page = 1;
 
   MovieService._query = ev.target.elements.query.value.trim();
-  if (!MovieService._query) return;
+  if (!MovieService._query) {
+    spinner.hide()
+    return
+  };
 
   try {
     refs.movieContainer.innerHTML = '';
