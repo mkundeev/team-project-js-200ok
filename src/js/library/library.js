@@ -125,11 +125,7 @@ async function delFromList(e, src, userId) {
   ) {
     if (refs.libraryLinkEl.classList.contains('site-nav__link-current')) {
       refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
-      console.log(refs.movieContainer.childNodes.length)
-      if (refs.movieContainer.childNodes.length <= 1) {
-    refs.movieContainer.innerHTML =
-      '<li class="no-films"><p>There are no films in your library</p></li>';
-  }
+
     }
   }
 
