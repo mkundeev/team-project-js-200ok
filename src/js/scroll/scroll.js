@@ -15,6 +15,6 @@ function onScrollClick(e) {
 }
 function scrolToTop(e) {
   if (e.target.classList.contains('pagination__number')) {
-    window.scroll(0, 0);
+    window.scroll(0, 220);
   }
 }
