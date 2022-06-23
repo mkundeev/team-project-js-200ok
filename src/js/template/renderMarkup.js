@@ -77,7 +77,7 @@ export function renderOneFilm({
          data-queue=${queue}>${title}</h2>
     <div class="moviе-stats__info" >
 <!-- список жанрів -->
-<p class="moviе-genre">${addOther(genre_ids)}</p>
+<p class="moviе-genre">${genre_ids}</p>
 <!-- дата виходу та рейтинг -->
 <p class="moviе-year">|  ${new Date(release_date).getFullYear()}</p>
 <!-- рейтинг -->
@@ -88,7 +88,7 @@ export function renderOneFilm({
 </li>`;
 }
 
-
+//========если жанров больше 2 заменяет остальные жанры на other и меняет Science Fiction на Sci-Fi//
 function addOther(array) {
   if (array.includes('Science Fiction')) {
     const index = array.indexOf('Science Fiction')
