@@ -69,7 +69,7 @@ async function showRecomendedFilms(e) {
     } catch (error) {
       console.log(error.message);
       refs.movieContainer.innerHTML =
-        '<li><p>There are no recommend films</p></li>';
+        '<li class="no-films"><p>There are no recommend films</p></li>';
     }
     spinner.hide();
   }
@@ -83,7 +83,7 @@ async function showRecomendedFilms(e) {
     } catch (error) {
       console.log(error.message);
       refs.movieContainer.innerHTML =
-        '<li><p>There are no recommend films</p></li>';
+        '<li class="no-films"><p>There are no recommend films</p></li>';
     }
     spinner.hide();
   }
@@ -109,7 +109,7 @@ async function showFilmList(watched, queue) {
   } catch (error) {
     console.log(error.message);
     refs.movieContainer.innerHTML =
-      '<li><p>There are no films in your library</p></li>';
+      '<li class="no-films"><p>There are no films in your library</p></li>';
   }
   spinner.hide();
 }
@@ -125,8 +125,15 @@ async function delFromList(e, src, userId) {
   ) {
     if (refs.libraryLinkEl.classList.contains('site-nav__link-current')) {
       refs.movieContainer.querySelector(`[data-id="${id}"]`).remove();
+      console.log(refs.movieContainer.childNodes.length)
+      if (refs.movieContainer.childNodes.length <= 1) {
+    refs.movieContainer.innerHTML =
+      '<li class="no-films"><p>There are no films in your library</p></li>';
+  }
     }
   }
+
+  
 }
 //=========добавляет фильм в галерею соответсвующих фильмов и в базу данних==============
 async function addFilmToList(e, src, userId) {
