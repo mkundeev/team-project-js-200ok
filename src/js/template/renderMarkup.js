@@ -35,11 +35,11 @@ function renderMarkup(results, watched, queue) {
          data-queue=${queue}>${title}</h2>
     <div class="moviе-stats__info" >
 <!-- список жанрів -->
-<p class="moviе-genre">${genre_ids}</p>
+<p class="moviе-genre">${addOther(genre_ids)}</p>
 <!-- дата виходу та рейтинг -->
 <p class="moviе-year">|  ${new Date(release_date).getFullYear()}</p>
 <!-- рейтинг -->
-<p class="moviе-vote">${vote_average}</p>
+<p class="moviе-vote">${(vote_average).toFixed(1)}</p>
 </div>
     </div>
 </a>
@@ -77,13 +77,26 @@ export function renderOneFilm({
          data-queue=${queue}>${title}</h2>
     <div class="moviе-stats__info" >
 <!-- список жанрів -->
-<p class="moviе-genre">${genre_ids}</p>
+<p class="moviе-genre">${addOther(genre_ids)}</p>
 <!-- дата виходу та рейтинг -->
 <p class="moviе-year">|  ${new Date(release_date).getFullYear()}</p>
 <!-- рейтинг -->
-<p class="moviе-vote">${vote_average}</p>
+<p class="moviе-vote">${(vote_average).toFixed(1)}</p>
 </div>
     </div>
 </a>
 </li>`;
+}
+
+
+function addOther(array) {
+  if (array.includes('Science Fiction')) {
+    const index = array.indexOf('Science Fiction')
+     array.splice(index, 1, 'Sci-Fi')
+ }
+  if (array.length > 2) {
+  const newArray=  array.slice(0, 2)
+    newArray.push('Other')
+   return  newArray.join(', ')
+  } return array.join(', ')
 }

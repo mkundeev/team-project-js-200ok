@@ -103,7 +103,7 @@ async function showFilmList(watched, queue) {
     results = Object.values(results);
     results = results.map(result => ({
       ...result,
-      genre_ids: result.genres.map(({ name }) => name).join(', '),
+      genre_ids: result.genres.map(({ name }) => name),
     }));
     renderMovieGallery(getPageForLibrary(results), watched, queue);
   } catch (error) {
