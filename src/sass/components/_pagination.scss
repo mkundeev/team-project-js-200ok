@@ -55,7 +55,8 @@
     transform: rotate(180deg);
   }
 
-  &__btn-plus {
+  & .pagination-none {
+    display: none;
   }
 }
 

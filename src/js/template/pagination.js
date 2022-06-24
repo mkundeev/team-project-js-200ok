@@ -154,3 +154,11 @@ async function onRenderGallery(event) {
     console.log(error.message);
   }
 }
+
+export function hidePagination(results) {
+  if (results.length < 1) {
+    paginationEl.classList.add('pagination-none');
+  } else {
+    paginationEl.classList.remove('pagination-none');
+  }
+}
