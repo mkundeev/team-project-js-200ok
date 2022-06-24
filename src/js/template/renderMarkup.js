@@ -1,4 +1,5 @@
 import { refs } from '../service/refs';
+import { hidePagination } from '../template/pagination';
 
 const { MovieTrendContainer } = refs;
 
@@ -12,6 +13,8 @@ export function renderSearchResultMovie(results) {
 
 function renderMarkup(results, watched, queue) {
   refs.movieContainer.innerHTML = '';
+
+  hidePagination(results);
 
   const markup = results
     .map(
@@ -39,7 +42,7 @@ function renderMarkup(results, watched, queue) {
 <!-- дата виходу та рейтинг -->
 <p class="moviе-year">|  ${new Date(release_date).getFullYear()}</p>
 <!-- рейтинг -->
-<p class="moviе-vote">${(vote_average).toFixed(1)}</p>
+<p class="moviе-vote">${vote_average.toFixed(1)}</p>
 </div>
     </div>
 </a>
@@ -81,7 +84,7 @@ export function renderOneFilm({
 <!-- дата виходу та рейтинг -->
 <p class="moviе-year">|  ${new Date(release_date).getFullYear()}</p>
 <!-- рейтинг -->
-<p class="moviе-vote">${(vote_average).toFixed(1)}</p>
+<p class="moviе-vote">${vote_average.toFixed(1)}</p>
 </div>
     </div>
 </a>
@@ -91,12 +94,13 @@ export function renderOneFilm({
 //========если жанров больше 2 заменяет остальные жанры на other и меняет Science Fiction на Sci-Fi//
 function addOther(array) {
   if (array.includes('Science Fiction')) {
-    const index = array.indexOf('Science Fiction')
-     array.splice(index, 1, 'Sci-Fi')
- }
+    const index = array.indexOf('Science Fiction');
+    array.splice(index, 1, 'Sci-Fi');
+  }
   if (array.length > 2) {
-  const newArray=  array.slice(0, 2)
-    newArray.push('Other')
-   return  newArray.join(', ')
-  } return array.join(', ')
+    const newArray = array.slice(0, 2);
+    newArray.push('Other');
+    return newArray.join(', ');
+  }
+  return array.join(', ');
 }
