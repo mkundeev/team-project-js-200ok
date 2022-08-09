@@ -13,7 +13,7 @@ HTML5, SASS, JS
 [refer to documentation](https://parceljs.org/);
 - For user registration and authorization was used Firebase Authentication; 
 - For data storage was used Firebase Realtime Database;
-- Information about movies was received from Movie Database API
+- Information about movies is receiving from Movie Database API
 
 ## Contibutors
 
