@@ -3,7 +3,7 @@
 Filmoteka is adaptive SPA for searchimg movies. This application allows you to
 create your own user account to store a list of watched movies and movies you
 want to watch. Also, based on the user's preferences, a list of recommended
-films will be created.
+films will be created. Aplication has dark and light mode. [link](https://mkundeev.github.io/team-project-js-200ok/)
 
 ## Used technologies
 
