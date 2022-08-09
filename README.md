@@ -10,10 +10,10 @@ films will be created.
 HTML5, SASS, JS
 
 - This project was created with Parcel. For dating and setting additional features
-[refer to documentation](https://parceljs.org/).
+[refer to documentation](https://parceljs.org/);
 - For user registration and authorization was used Firebase Authentication; 
 - For data storage was used Firebase Realtime Database;
-- Information about movies received from Movie Database API
+- Information about movies was received from Movie Database API
 
 ## Contibutors
 
