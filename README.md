@@ -9,20 +9,22 @@ films will be created.
 
 HTML5, SASS, JS
 
-This project was created with Parcel. For dating and setting additional features
+-This project was created with Parcel. For dating and setting additional features
 [refer to documentation](https://parceljs.org/).
+-For user registration and authorization was used Firebase Authentication; 
+-For data storage was used Firebase Realtime Database;
+-Information about movies received from Movie Database API
 
-For user registration and authorization was used Firebase Authentication; 
-For data storage was used Firebase Realtime Database;
+## Contibutors
 
-Information about movies received from Movie Database API
+-Maksym Kundieiev 
+-Anna Lakhmaniuk 
+-Iuliia Iavorska 
+-Ioanna Istomina 
+-Maksym Korolko 
+-Anatolii Riabohlyst
 
-### Contibutors
-
-Maksym Kundieiev, Anna Lakhmaniuk, Iuliia Iavorska, Ioanna Istomina, Maksym
-Korolko, Anatolii Riabohlyst
-
-#### Presentation
+## Presentation
 
 Presentation of the project
 [link to presentation](https://drive.google.com/file/d/1yLDocMnvx7b8CLmClaylT7mCpVYene4j/view?usp=sharing)
